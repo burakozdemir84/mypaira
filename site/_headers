@@ -1,0 +1,20 @@
+# NOTE: Cloudflare Pages applies EVERY matching rule cumulatively, not just the
+# most specific one. So Cache-Control is set only on /assets/* here — putting it
+# on /* as well would concatenate both values into one contradictory header.
+
+# Images are cached for 30 days. Not "immutable": the filenames are not
+# content-hashed, so a replaced image still has to reach visitors.
+# To make a swapped image live immediately, change its filename.
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+/support.js
+  Cache-Control: public, max-age=86400
+
+# Security headers for every response. HTML deliberately has no Cache-Control
+# here, so it keeps the Pages default (revalidate on each request) and content
+# edits go live on deploy.
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin

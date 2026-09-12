@@ -1,0 +1,13 @@
+name = "paira"
+pages_build_output_dir = "site"
+compatibility_date = "2024-11-01"
+
+# D1 database bound as `env.DB` inside Pages Functions (functions/**).
+# database_id is filled in by setup-d1.sh after `wrangler d1 create paira_leads`.
+[[d1_databases]]
+binding = "DB"
+database_name = "paira_leads"
+database_id = "e11f297e-f76f-4a06-9bd0-13566d226631"
+
+# SHEET_WEBHOOK_URL is a secret and is not stored here. Add or rotate it with:
+#   npx wrangler@4 pages secret put SHEET_WEBHOOK_URL --project-name=paira

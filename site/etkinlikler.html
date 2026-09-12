@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+
+
+
+<!-- paira:responsive:start -->
+<style data-paira-responsive>
+/* Mobile layer. Desktop (>900px) is untouched. */
+img,video{max-width:100%;height:auto}
+
+@media (max-width:900px){
+  html,body{overflow-x:hidden}
+
+  /* The header is pinned with position:sticky - on some pages directly on
+     <header>, on others via a wrapper div. Once the nav wraps to two rows that
+     would permanently occupy ~25% of a phone screen, so on mobile it scrolls
+     away instead. Both shapes are covered here. */
+  header{position:static!important}
+  div[style*="position: sticky"]:has(header){position:static!important}
+
+  /* Header collapses to stacked rows instead of one overflowing line */
+  header > div{flex-wrap:wrap!important;justify-content:center!important;
+    gap:10px!important;padding:14px 20px!important}
+  header nav{flex-wrap:wrap!important;justify-content:center!important;
+    gap:12px 15px!important;width:100%!important}
+
+  /* 3- and 4-up card grids drop to 2 */
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr"]{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  /* Asymmetric hero/feature splits stack immediately */
+  [style*="grid-template-columns: 7fr 5fr"],
+  [style*="grid-template-columns: 5fr 7fr"],
+  [style*="grid-template-columns: 6fr 5fr"],
+  [style*="grid-template-columns: 5fr 6fr"],
+  [style*="grid-template-columns: 1fr auto 1fr"]{
+    grid-template-columns:minmax(0,1fr)!important}
+
+  [style*="max-width: 1240px"]{padding-left:22px!important;padding-right:22px!important}
+  [style*="gap: 72px"]{gap:34px!important}
+  [style*="gap: 48px"]{gap:26px!important}
+
+  /* Wide content must scroll inside itself, never widen the page */
+  table{display:block;overflow-x:auto;max-width:100%}
+}
+
+@media (max-width:640px){
+  /* Everything to a single column */
+  [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+  [style*="max-width: 1240px"]{padding-left:18px!important;padding-right:18px!important}
+
+  /* Section rhythm tightens so pages aren't endless on a phone */
+  [style*="padding: 96px 32px"],[style*="padding: 88px 32px"]{
+    padding-top:46px!important;padding-bottom:42px!important}
+  [style*="padding: 80px 32px"],[style*="padding: 72px 32px"]{
+    padding-top:42px!important;padding-bottom:38px!important}
+  [style*="padding: 48px 32px"]{padding-top:32px!important;padding-bottom:26px!important}
+
+  /* Display type scaled to phone widths */
+  [style*="font-size: 96px"]{font-size:40px!important;line-height:1.1!important}
+  [style*="font-size: 64px"]{font-size:34px!important;line-height:1.15!important}
+  [style*="font-size: 60px"]{font-size:32px!important;line-height:1.15!important}
+  [style*="font-size: 54px"],[style*="font-size: 52px"]{font-size:30px!important;line-height:1.18!important}
+  [style*="font-size: 50px"],[style*="font-size: 48px"]{font-size:28px!important;line-height:1.2!important}
+  [style*="font-size: 46px"],[style*="font-size: 44px"]{font-size:26px!important;line-height:1.2!important}
+  [style*="font-size: 40px"]{font-size:25px!important;line-height:1.22!important}
+  [style*="font-size: 38px"]{font-size:24px!important;line-height:1.25!important}
+  [style*="font-size: 36px"]{font-size:23px!important;line-height:1.25!important}
+  [style*="font-size: 34px"]{font-size:22px!important;line-height:1.3!important}
+  [style*="font-size: 31px"],[style*="font-size: 30px"]{font-size:21px!important;line-height:1.3!important}
+  [style*="font-size: 28px"]{font-size:20px!important;line-height:1.35!important}
+
+  /* Input + button rows stack so neither gets crushed */
+  form > div[style*="display: flex"],
+  div[style*="display: flex"][style*="gap: 10px"]{flex-wrap:wrap!important}
+  input[type="email"],input[type="text"],input[type="tel"],select,textarea{
+    min-width:0!important;width:100%!important;box-sizing:border-box!important}
+
+  /* Footer: brand block stacks above the link columns, which then wrap 2-up
+     instead of squeezing three columns into a phone width. */
+  footer div[style*="justify-content: space-between"]{flex-direction:column!important;gap:28px!important}
+  footer div[style*="gap: 56px"]{flex-wrap:wrap!important;gap:20px 36px!important}
+}
+</style>
+<!-- paira:responsive:end -->
+
+<!-- paira:i18n:start -->
+<link rel="canonical" href="https://www.mypaira.com/etkinlikler">
+<link rel="alternate" hreflang="tr" href="https://www.mypaira.com/etkinlikler">
+<link rel="alternate" hreflang="en" href="https://www.mypaira.com/en/events">
+<link rel="alternate" hreflang="x-default" href="https://www.mypaira.com/etkinlikler">
+<script>
+(function(){try{
+  var K='paira-lang', p=location.pathname, isEN=false, ALT='/en/events';
+  // Never auto-route a crawler: Googlebot must be able to reach the Turkish home.
+  if(/bot|crawl|spider|slurp|bingpreview|googlebot|yandex|duckduck/i.test(navigator.userAgent||'')) return;
+  // ?lang=tr / ?lang=en is an explicit override: remembered, and honoured by
+  // jumping to this page's counterpart when it disagrees with the current one.
+  var q=(location.search.match(/[?&]lang=(tr|en)/i)||[])[1];
+  if(q){
+    q=q.toLowerCase(); localStorage.setItem(K,q);
+    if((q==='en')!==isEN){location.replace(ALT);return;}
+  } else {
+    var stored=localStorage.getItem(K);
+    // Only the bare Turkish home auto-routes, and only for a first-time visitor.
+    if(p==='/'&&!stored){
+      var nav=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();
+      if(nav.indexOf('tr')!==0){localStorage.setItem(K,'en');location.replace('/en/');return;}
+    }
+    // Otherwise remember whichever language they are actually reading.
+    localStorage.setItem(K,isEN?'en':'tr');
+  }
+}catch(e){}})();
+</script>
+<!-- paira:i18n:end -->
+<!-- paira:seo:start -->
+<meta name="description" content="PAIRA etkinlikleri: yapay zeka ve hukuk üzerine tematik ve kurumsal etkinlikler, atölyeler ve söyleşiler.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Etkinlikler · PAIRA">
+<meta property="og:description" content="PAIRA etkinlikleri: yapay zeka ve hukuk üzerine tematik ve kurumsal etkinlikler, atölyeler ve söyleşiler.">
+<meta property="og:url" content="https://www.mypaira.com/etkinlikler">
+<meta property="og:site_name" content="PAIRA">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Etkinlikler · PAIRA">
+<meta name="twitter:description" content="PAIRA etkinlikleri: yapay zeka ve hukuk üzerine tematik ve kurumsal etkinlikler, atölyeler ve söyleşiler.">
+<!-- paira:seo:end -->
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>document.documentElement.lang='tr';</script>
+<title>Etkinlikler · PAIRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; font-family: 'Outfit', sans-serif; color: #22324B; }
+  a { color: #2E6FB0; }
+  a:hover { color: #15233E; }
+  header a { text-decoration: none; color: #15233E; }
+  input::placeholder { color: #5C6B82; }
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
+    <a href="/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
+    <nav style="display: flex; align-items: center; gap: 22px">
+      <a href="/skorkart" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hazırlık Skoru</a>
+      <a href="/danismanlik" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Danışmanlık</a>
+      <a href="/egitimler" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Eğitimler</a>
+      <a href="/etkinlikler" style="font-size: 14px; font-weight: 500; color: #15233E; text-decoration: none">Etkinlikler</a>
+      <a href="/manifesto" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Manifesto</a>
+      <a href="/hakkimizda" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hakkımızda</a>
+      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #D7E0EA; border-radius: 999px; padding: 5px 12px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #15233E">TR</span>
+        <span style="width: 1px; height: 11px; background: #D7E0EA"></span>
+        <a href="/en/events" style="font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: #5C6B82; text-decoration: none" style-hover="color: #15233E">EN</a>
+      </div>
+      <a href="/skorkart?start=1" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Skorunuzu Keşfedin</a>
+    </nav>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section data-screen-label="Etkinlikler Intro" style="background: #FFFFFF">
+  <div style="max-width: 840px; margin: 0 auto; padding: 88px 32px 64px; display: flex; flex-direction: column; gap: 20px; text-align: center; align-items: center">
+    <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Etkinlikler ve Topluluk</div>
+    <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 52px; line-height: 1.1; color: #15233E">Yapay zekanın anlaşılması için insan öncelikli buluşmalar</h1>
+    <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #5C6B82; max-width: 600px">Etkinlikler topluluğu, topluluk da etkinlikleri besler. Hukuk ve teknolojiyi aynı masada buluşturan sakin, nitelikli buluşmalar.</p>
+  </div>
+</section>
+
+<!-- TEMATİK ETKİNLİKLER · PERA FORUM -->
+<section data-screen-label="Tematik Etkinlikler" style="background: #15233E">
+  <div style="max-width: 840px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 20px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Tematik Etkinlikler</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1.1; color: #FFFFFF">Pera Forum</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #ABD4EC; max-width: 560px">PAIRA'nın amiral etkinlik markası Pera Forum, hukuk ve yapay zeka kesişiminin buluşma noktası olarak hazırlanıyor. Sahne kurulduğunda ilk haberi bekleme listesindekiler alacak.</p>
+      <div style="display: flex; align-items: center; gap: 16px; margin-top: 4px">
+        <a href="/iletisim?konu=Tematik%20Etkinlikler" style="background: #FFFFFF; color: #15233E; font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 8px; text-decoration: none" style-hover="background: #E9F2F9; color: #15233E">Bilgi alın veya sponsor olun</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KURUMSAL ETKİNLİKLER -->
+<section data-screen-label="Kurumsal Etkinlikler" style="background: #FFFFFF; border-bottom: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: grid; grid-template-columns: 5fr 7fr; gap: 64px; align-items: center">
+    <div style="aspect-ratio: 16 / 10; border-radius: 12px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/kurumsal-etkinlik.webp" alt="Kurumsal etkinlik" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+    <div style="display: flex; flex-direction: column; gap: 18px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Kurumsal Etkinlikler</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.12; color: #15233E">Kurumunuza özel, sizin gündeminizle</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #5C6B82; max-width: 560px">PAIRA, hukuk ve yapay zeka kesişiminde kurumlara özel etkinlikler organize eder: panel, iç konferans, yönetici oturumu. İçerik kurumunuzun sorularına göre kurulur.</p>
+      <div style="margin-top: 4px">
+        <a href="#etkinlik-talebi" style="display: inline-block; background: #15233E; color: #FFFFFF; font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Kurumunuz için etkinlik planlayın</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOPLULUK ETKİNLİKLERİ · VIBELEGAL -->
+<section data-screen-label="Topluluk Etkinlikleri" style="background: #F4F7FA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: grid; grid-template-columns: 7fr 5fr; gap: 64px; align-items: center">
+    <div style="display: flex; flex-direction: column; gap: 18px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Topluluk Etkinlikleri</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.12; color: #15233E">Topluluğun buluşma noktası: VibeLegal</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #5C6B82; max-width: 560px">PAIRA topluluğunun buluşma noktası VibeLegal'dır. Yapay zeka pratiğini birlikte geliştiren hukuk profesyonelleri, farklı noktalarda ve farklı zamanlarda bir araya gelir.</p>
+      <div style="margin-top: 4px">
+        <a href="/vibe-legal" style="display: inline-block; background: #15233E; color: #FFFFFF; font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">VibeLegal'a katılın</a>
+      </div>
+    </div>
+    <div style="aspect-ratio: 16 / 10; border-radius: 12px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/topluluk-bulusmasi.webp" alt="Topluluk buluşması" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+  </div>
+</section>
+
+<!-- ETKİNLİK TALEBİ -->
+<section id="etkinlik-talebi" data-screen-label="Etkinlik Talebi" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 760px; margin: 0 auto; padding: 84px 32px; display: flex; flex-direction: column; gap: 24px">
+    <div style="display: flex; flex-direction: column; gap: 12px; text-align: center; align-items: center">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Etkinlik Talebi</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 36px; line-height: 1.15; color: #15233E">Bir etkinlik mi planlıyorsunuz?</h2>
+      <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #5C6B82; max-width: 560px">Kurumunuz için özel bir oturum, panel veya konuşmacı talebinizi buradan iletin. Bir iş gününde dönüş yaparız.</p>
+    </div>
+
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background: #F4F7FA; border: 1px solid #D7E0EA; border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 10px; text-align: center">
+        <p style="margin: 0; font-size: 18px; line-height: 1.5; color: #15233E; font-weight: 500">Talebiniz bize ulaştı.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82">Etkinlik talebinizi aldık. Bir iş günü içinde e-posta ile dönüş yapacağız.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+    <div style="background: #F4F7FA; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 14px">
+      <input value="{{ name }}" onChange="{{ setName }}" placeholder="Ad Soyad *" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
+      <input value="{{ email }}" onChange="{{ setEmail }}" type="email" placeholder="E-posta *" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
+      <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 12.5px; color: #A8842C; margin-top: -6px">{{ emailError }}</div>
+      </sc-if>
+      <input value="{{ org }}" onChange="{{ setOrg }}" placeholder="Kurum adı" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
+      <select value="{{ eventType }}" onChange="{{ setEventType }}" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
+        <option value="Kurumsal Etkinlik">Etkinlik türü: Kurumsal etkinlik</option>
+        <option value="Pera Forum">Etkinlik türü: Pera Forum</option>
+        <option value="Topluluk Buluşması">Etkinlik türü: Topluluk buluşması</option>
+        <option value="Konuşmacı Talebi">Etkinlik türü: Konuşmacı talebi</option>
+        <option value="Diğer">Etkinlik türü: Diğer</option>
+      </select>
+      <textarea value="{{ message }}" onChange="{{ setMessage }}" placeholder="Etkinliğiniz hakkında kısaca bilgi verin (tarih, katılımcı sayısı, gündem) *" rows="5" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; resize: vertical; background: #FFFFFF"></textarea>
+      <label style="display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk }}" onChange="{{ toggleKvkk }}" style="margin-top: 2px"> <span>Kişisel verilerimin, talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla <a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a> kapsamında işlendiğini okudum ve anladım. *</span></label>
+      <sc-if value="{{ errorMsg }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size: 13px; color: #A8842C">{{ errorMsg }}</div>
+      </sc-if>
+      <sc-if value="{{ notSending }}" hint-placeholder-val="{{ true }}">
+        <button onClick="{{ submitEvent }}" style="background: #15233E; color: #FFFFFF; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; padding: 15px; border-radius: 8px; border: none; cursor: pointer; width: 100%" style-hover="background: #223E68">Etkinlik Talebi Gönderin</button>
+      </sc-if>
+      <sc-if value="{{ sending }}" hint-placeholder-val="{{ false }}">
+        <button disabled="disabled" style="background: #8A98AC; color: #FFFFFF; font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 500; padding: 15px; border-radius: 8px; border: none; cursor: default; opacity: 0.7; width: 100%">Gönderiliyor…</button>
+      </sc-if>
+    </div>
+    </sc-if>
+  </div>
+</section>
+
+<!-- CTA BANDI -->
+<section data-screen-label="CTA Bandi" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
+    <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #15233E; max-width: 640px">Yapay zeka yolculuğunuzun neresindesiniz?</h2>
+    <p style="margin: 0; font-size: 16px; color: #5C6B82">3 dakikada öğrenin.</p>
+    <a href="/skorkart?start=1" style="background: #15233E; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 15px 32px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Skorunuzu Keşfedin</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #15233E">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 36px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <div style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 16px; color: #FFFFFF">PAIRA</div>
+        <p style="margin: 0; font-size: 13px; color: #ABD4EC; max-width: 300px; line-height: 1.6">People-first AI Readiness and Adoption. İnsan öncelikli yapay zeka hazırlığı ve içselleştirme.</p>
+      </div>
+      <div style="display: flex; gap: 56px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/skorkart" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hazırlık Skoru</a>
+          <a href="/danismanlik" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Danışmanlık</a>
+          <a href="/egitimler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Eğitimler</a>
+          <a href="/etkinlikler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Etkinlikler</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/manifesto" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Manifesto</a>
+          <a href="/hakkimizda" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hakkımızda</a>
+          <a href="/vibe-legal" style="font-size: 13px; color: #ABD4EC; text-decoration: none">VibeLegal</a>
+          <a href="/paira-notes" style="font-size: 13px; color: #ABD4EC; text-decoration: none">PAIRA Notes</a>
+          <a href="/iletisim" style="font-size: 13px; color: #ABD4EC; text-decoration: none">İletişim</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/aydinlatma-metni" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Aydınlatma Metni</a>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 22px">
+      <span style="font-size: 12px; color: #5C6B82">© 2026 PAIRA · mypaira.com</span>
+      <div style="display: flex; gap: 18px"><!-- paira:langlink:start --><a href="/en/events" hreflang="en" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">English</a><!-- paira:langlink:end --><a href="/aydinlatma-metni" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">Aydınlatma Metni</a></div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+// Mirrors a subset of the server-side disposable-domain blocklist enforced by
+// POST /api/lead (which returns 422 {ok:false, reason:"disposable"} for these).
+// Checked client-side first so users get instant feedback with no round-trip.
+const DISPOSABLE_EMAIL_DOMAINS = ['mailinator.com', 'yopmail.com', 'guerrillamail.com', '10minutemail.com', 'temp-mail.org', 'tempmail.com', 'getnada.com', 'trashmail.com', 'maildrop.cc', 'sharklasers.com', 'throwawaymail.com', '1secmail.com', 'mailsac.com', 'dispostable.com', 'fakeinbox.com', 'tempmailo.com', 'moakt.com', 'emailondeck.com', 'discard.email'];
+
+class Component extends DCLogic {
+  state = {
+    name: '', email: '', org: '', message: '', eventType: 'Kurumsal Etkinlik', kvkk: false,
+    emailError: '', errorMsg: '', sending: false, sent: false,
+    clientId: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Math.random()).slice(2)
+  };
+  componentDidMount() {
+    // Deep-link support: /etkinlikler?tur=Pera%20Forum preselects the type.
+    try {
+      const tur = new URLSearchParams(window.location.search).get('tur');
+      const valid = ['Kurumsal Etkinlik', 'Pera Forum', 'Topluluk Buluşması', 'Konuşmacı Talebi', 'Diğer'];
+      if (tur && valid.includes(tur)) this.setState({ eventType: tur });
+    } catch (e) {}
+  }
+
+  isValidEmailSyntax(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  isDisposableEmail(email) {
+    const at = email.lastIndexOf('@');
+    if (at < 0) return false;
+    const domain = email.slice(at + 1).toLowerCase();
+    return DISPOSABLE_EMAIL_DOMAINS.indexOf(domain) !== -1;
+  }
+
+  emailErrorMessage(reason) {
+    const messages = {
+      syntax: 'Geçerli bir e-posta adresi girin.',
+      disposable: 'Lütfen geçici/tek kullanımlık değil, gerçek bir e-posta adresi girin.',
+      undeliverable: 'Bu e-posta alan adına ulaşılamıyor. Adresi kontrol edin.',
+      required: 'E-posta adresi gerekli.',
+      network: 'Bağlantı hatası. Lütfen tekrar deneyin.'
+    };
+    return messages[reason] || messages.network;
+  }
+
+  postLead(body) {
+    try {
+      return fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body), keepalive: true })
+        .then(function(r){ return r.json().catch(function(){ return { ok: true }; }); })
+        .catch(function(){ return null; });
+    } catch (e) {
+      return Promise.resolve(null);
+    }
+  }
+
+  renderVals() {
+    const st = this.state;
+    return {
+      name: st.name, setName: (e) => this.setState({ name: e.target.value }),
+      email: st.email, setEmail: (e) => this.setState({ email: e.target.value }),
+      org: st.org, setOrg: (e) => this.setState({ org: e.target.value }),
+      message: st.message, setMessage: (e) => this.setState({ message: e.target.value }),
+      eventType: st.eventType, setEventType: (e) => this.setState({ eventType: e.target.value }),
+      kvkk: st.kvkk, toggleKvkk: () => this.setState({ kvkk: !st.kvkk }),
+
+      emailError: st.emailError,
+      errorMsg: st.errorMsg,
+      sending: st.sending,
+      notSending: !st.sending,
+      sent: st.sent,
+      notSent: !st.sent,
+
+      submitEvent: async () => {
+        const email = st.email.trim();
+        if (!st.name.trim() || !email || !st.message.trim()) { this.setState({ errorMsg: 'Ad soyad, e-posta ve etkinlik bilgisi alanları zorunludur.', emailError: '' }); return; }
+        if (!st.kvkk) { this.setState({ errorMsg: 'Devam etmek için aydınlatma metnini okuduğunuzu onaylamanız gereklidir.', emailError: '' }); return; }
+        if (!this.isValidEmailSyntax(email)) { this.setState({ errorMsg: '', emailError: this.emailErrorMessage('syntax') }); return; }
+        if (this.isDisposableEmail(email)) { this.setState({ errorMsg: '', emailError: this.emailErrorMessage('disposable') }); return; }
+        this.setState({ errorMsg: '', emailError: '', sending: true });
+        const result = await this.postLead({
+          client_id: st.clientId, source: 'events', stage: 'complete', lang: 'tr',
+          name: st.name.trim(), email: email, org: st.org.trim(), segment: st.eventType, kvkk_ok: !!st.kvkk,
+          meta: { path: location.pathname }, answers: { event_type: st.eventType, message: st.message.trim() }
+        });
+        if (result && result.ok !== false) {
+          this.setState({ sending: false, sent: true });
+        } else if (result && result.ok === false) {
+          this.setState({ sending: false, emailError: this.emailErrorMessage(result.reason) });
+        } else {
+          this.setState({ sending: false, errorMsg: this.emailErrorMessage('network') });
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
