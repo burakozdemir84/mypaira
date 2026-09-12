@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="/support.js"></script>
+
+
+
+<!-- paira:responsive:start -->
+<style data-paira-responsive>
+/* Mobile layer. Desktop (>900px) is untouched. */
+img,video{max-width:100%;height:auto}
+
+@media (max-width:900px){
+  html,body{overflow-x:hidden}
+
+  /* The header is pinned with position:sticky - on some pages directly on
+     <header>, on others via a wrapper div. Once the nav wraps to two rows that
+     would permanently occupy ~25% of a phone screen, so on mobile it scrolls
+     away instead. Both shapes are covered here. */
+  header{position:static!important}
+  div[style*="position: sticky"]:has(header){position:static!important}
+
+  /* Header collapses to stacked rows instead of one overflowing line */
+  header > div{flex-wrap:wrap!important;justify-content:center!important;
+    gap:10px!important;padding:14px 20px!important}
+  header nav{flex-wrap:wrap!important;justify-content:center!important;
+    gap:12px 15px!important;width:100%!important}
+
+  /* 3- and 4-up card grids drop to 2 */
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr"]{
+    grid-template-columns:repeat(2,minmax(0,1fr))!important}
+
+  /* Asymmetric hero/feature splits stack immediately */
+  [style*="grid-template-columns: 7fr 5fr"],
+  [style*="grid-template-columns: 5fr 7fr"],
+  [style*="grid-template-columns: 6fr 5fr"],
+  [style*="grid-template-columns: 5fr 6fr"],
+  [style*="grid-template-columns: 1fr auto 1fr"]{
+    grid-template-columns:minmax(0,1fr)!important}
+
+  [style*="max-width: 1240px"]{padding-left:22px!important;padding-right:22px!important}
+  [style*="gap: 72px"]{gap:34px!important}
+  [style*="gap: 48px"]{gap:26px!important}
+
+  /* Wide content must scroll inside itself, never widen the page */
+  table{display:block;overflow-x:auto;max-width:100%}
+}
+
+@media (max-width:640px){
+  /* Everything to a single column */
+  [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
+  [style*="max-width: 1240px"]{padding-left:18px!important;padding-right:18px!important}
+
+  /* Section rhythm tightens so pages aren't endless on a phone */
+  [style*="padding: 96px 32px"],[style*="padding: 88px 32px"]{
+    padding-top:46px!important;padding-bottom:42px!important}
+  [style*="padding: 80px 32px"],[style*="padding: 72px 32px"]{
+    padding-top:42px!important;padding-bottom:38px!important}
+  [style*="padding: 48px 32px"]{padding-top:32px!important;padding-bottom:26px!important}
+
+  /* Display type scaled to phone widths */
+  [style*="font-size: 96px"]{font-size:40px!important;line-height:1.1!important}
+  [style*="font-size: 64px"]{font-size:34px!important;line-height:1.15!important}
+  [style*="font-size: 60px"]{font-size:32px!important;line-height:1.15!important}
+  [style*="font-size: 54px"],[style*="font-size: 52px"]{font-size:30px!important;line-height:1.18!important}
+  [style*="font-size: 50px"],[style*="font-size: 48px"]{font-size:28px!important;line-height:1.2!important}
+  [style*="font-size: 46px"],[style*="font-size: 44px"]{font-size:26px!important;line-height:1.2!important}
+  [style*="font-size: 40px"]{font-size:25px!important;line-height:1.22!important}
+  [style*="font-size: 38px"]{font-size:24px!important;line-height:1.25!important}
+  [style*="font-size: 36px"]{font-size:23px!important;line-height:1.25!important}
+  [style*="font-size: 34px"]{font-size:22px!important;line-height:1.3!important}
+  [style*="font-size: 31px"],[style*="font-size: 30px"]{font-size:21px!important;line-height:1.3!important}
+  [style*="font-size: 28px"]{font-size:20px!important;line-height:1.35!important}
+
+  /* Input + button rows stack so neither gets crushed */
+  form > div[style*="display: flex"],
+  div[style*="display: flex"][style*="gap: 10px"]{flex-wrap:wrap!important}
+  input[type="email"],input[type="text"],input[type="tel"],select,textarea{
+    min-width:0!important;width:100%!important;box-sizing:border-box!important}
+
+  /* Footer: brand block stacks above the link columns, which then wrap 2-up
+     instead of squeezing three columns into a phone width. */
+  footer div[style*="justify-content: space-between"]{flex-direction:column!important;gap:28px!important}
+  footer div[style*="gap: 56px"]{flex-wrap:wrap!important;gap:20px 36px!important}
+}
+</style>
+<!-- paira:responsive:end -->
+
+<!-- paira:i18n:start -->
+<link rel="canonical" href="https://www.mypaira.com/mesafeli-satis">
+<!-- paira:i18n:end -->
+<!-- paira:seo:start -->
+<meta name="description" content="Legal in the Loop Master Class eğitim hizmetine ilişkin mesafeli satış sözleşmesi.">
+<meta name="robots" content="noindex, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Madde 1: Taraflar · PAIRA">
+<meta property="og:description" content="Legal in the Loop Master Class eğitim hizmetine ilişkin mesafeli satış sözleşmesi.">
+<meta property="og:url" content="https://www.mypaira.com/mesafeli-satis">
+<meta property="og:site_name" content="PAIRA">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Madde 1: Taraflar · PAIRA">
+<meta name="twitter:description" content="Legal in the Loop Master Class eğitim hizmetine ilişkin mesafeli satış sözleşmesi.">
+<!-- paira:seo:end -->
+</head>
+<body>
+<x-dc>
+<helmet>
+<script>document.documentElement.lang='tr';</script>
+<title>Madde 1: Taraflar · PAIRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #FFFFFF; font-family: 'Outfit', sans-serif; color: #22324B; }
+  a { color: #2E6FB0; }
+  a:hover { color: #15233E; }
+  header a { text-decoration: none; color: #15233E; }
+</style>
+</helmet>
+
+<!-- HEADER -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
+    <a href="/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
+    <nav style="display: flex; align-items: center; gap: 22px">
+      <a href="/skorkart" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hazırlık Skoru</a>
+      <a href="/danismanlik" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Danışmanlık</a>
+      <a href="/egitimler" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Eğitimler</a>
+      <a href="/etkinlikler" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Etkinlikler</a>
+      <a href="/manifesto" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Manifesto</a>
+      <a href="/hakkimizda" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hakkımızda</a>
+      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #D7E0EA; border-radius: 999px; padding: 5px 12px">
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #15233E">TR</span>
+        <span style="width: 1px; height: 11px; background: #D7E0EA"></span>
+        <a href="/en/" style="font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: #5C6B82; text-decoration: none" style-hover="color: #15233E">EN</a>
+      </div>
+      <a href="/skorkart?start=1" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Skorunuzu Keşfedin</a>
+    </nav>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section data-screen-label="Madde 1: Taraflar Intro" style="background: #FFFFFF">
+  <div style="max-width: 820px; margin: 0 auto; padding: 88px 32px 40px; display: flex; flex-direction: column; gap: 18px">
+    <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Mesafeli Satış</div>
+    <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 46px; line-height: 1.12; color: #15233E">Madde 1: Taraflar</h1>
+    <p style="margin: 0; font-size: 16px; line-height: 1.65; color: #5C6B82; max-width: 680px">Legal in the Loop Master Class eğitim hizmetinin <a href="https://www.mypaira.com" style="color: #2E6FB0; text-decoration: none">mypaira.com</a> üzerinden satın alınmasına ilişkin olarak, 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği uyarınca tarafların hak ve yükümlülüklerini düzenler.</p>
+    <span style="font-size: 13px; color: #5C6B82">Son güncelleme: 12 Eylül 2026</span>
+  </div>
+</section>
+
+<!-- METİN -->
+<section data-screen-label="Madde 1: Taraflar Govde" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 820px; margin: 0 auto; padding: 56px 32px 88px; display: flex; flex-direction: column; gap: 44px; font-size: 16px; line-height: 1.72; color: #22324B">
+
+<div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0"><strong style="color: #15233E">Satıcı:</strong> OD ETÜD VE MÜŞAVİRLİK LTD. ŞTİ. (bundan sonra "PAIRA" ya da "Satıcı")</p><p style="margin: 0">Adres: Çavuşbaşı Cad. Üniversal Plaza No:36 K-4, 34810 Kavacık/İstanbul</p><p style="margin: 0">Vergi dairesi ve numarası: Beykoz V.D. / 1150071180</p><p style="margin: 0">MERSİS numarası: 0115007118000015</p><p style="margin: 0">Ticaret sicil numarası: 266113</p><p style="margin: 0">E-posta: <a href="mailto:burak@mypaira.com" style="color: #2E6FB0; text-decoration: none">burak@mypaira.com</a></p></div>
+<p style="margin: 0"><strong style="color: #15233E">Alıcı:</strong> Ödeme adımında ad, soyad, adres, e-posta ve telefon bilgilerini bildiren gerçek ya da tüzel kişi (bundan sonra "Alıcı"). Alıcı'nın kimlik ve iletişim bilgileri, iyzico ödeme formunda beyan edilen bilgilerdir ve bu sözleşmenin eki sayılır.</p>
+    <!-- 1 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 2: Konu</h2>
+      <p style="margin: 0">Bu sözleşmenin konusu, Alıcı'nın <a href="https://www.mypaira.com" style="color: #2E6FB0; text-decoration: none">mypaira.com</a> internet sitesi üzerinden elektronik ortamda satın aldığı Legal in the Loop Master Class eğitim hizmetine ilişkin olarak, 6502 sayılı Tüketicinin Korunması Hakkında Kanun ve Mesafeli Sözleşmeler Yönetmeliği hükümleri uyarınca tarafların hak ve yükümlülüklerinin belirlenmesidir.</p>
+    </div>
+    <!-- 2 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 3: Hizmetin nitelikleri ve bedeli</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">3.1. Hizmet: Legal in the Loop Master Class, 26 Eylül 2026, 10:00 ila 16:00.</p><p style="margin: 0">3.2. Fiziki katılım: Komünite Space, Vadistanbul, İstanbul. Bedel: 9.000 TL (KDV dahil).</p><p style="margin: 0">3.3. Çevrimiçi katılım: Zoom üzerinden canlı yayın. Bedel: 5.000 TL (KDV dahil).</p><p style="margin: 0">3.4. Her iki katılım biçiminin kapsamı Ön Bilgilendirme Formu'nun 2 nci maddesinde belirtilmiştir.</p><p style="margin: 0">3.5. Alıcı'nın satın aldığı katılım biçimi ve ödediği toplam bedel, ödeme onayı ve kayıt teyidi e-postasında belirtilir.</p></div>
+    </div>
+    <!-- 3 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 4: Ödeme</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">4.1. Ödeme, iyzico ödeme altyapısı aracılığıyla kredi kartı ya da banka kartıyla yapılır. Satıcı, kart bilgilerine erişmez ve bu bilgileri saklamaz.</p><p style="margin: 0">4.2. Ödemenin herhangi bir nedenle bankaca onaylanmaması ya da iptal edilmesi halinde Satıcı'nın hizmeti ifa yükümlülüğü doğmaz.</p><p style="margin: 0">4.3. Kurumsal ve çoklu bilet alımlarında fatura karşılığı havale seçeneği sunulur. Bu alımlarda kayıt, ödemenin Satıcı hesabına ulaşmasıyla kesinleşir.</p><p style="margin: 0">4.4. Fatura, Alıcı'nın ödeme adımında bildirdiği bilgilere göre e-fatura ya da e-arşiv fatura olarak düzenlenir ve e-posta ile gönderilir.</p></div>
+    </div>
+    <!-- 4 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 5: İfa ve teslim</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">5.1. Kayıt teyidi, ödemenin tamamlanmasının ardından Alıcı'nın e-posta adresine gönderilir.</p><p style="margin: 0">5.2. Çevrimiçi katılım için Zoom bağlantısı eğitim tarihinden iki gün önce gönderilir.</p><p style="margin: 0">5.3. Basılı materyaller fiziki katılımcılara eğitim günü yerinde teslim edilir. Çevrimiçi materyaller ve eğitim kaydına erişim bilgisi, eğitim tarihinden sonraki 2 iş günü içinde e-posta ile iletilir. Eğitim kaydına erişim, erişim bilgisinin gönderildiği tarihten itibaren 30 gündür.</p><p style="margin: 0">5.4. Sertifika numaralı katılım belgesi, eğitime katılan Alıcı'ya eğitim tarihinden sonraki 10 iş günü içinde elektronik olarak gönderilir.</p><p style="margin: 0">5.5. Fiziki katılım, eğitim günü giriş kaydında Alıcı'nın adıyla teyit edilir. Alıcı, bileti Madde 7 kapsamında devretmişse devralan kişinin bilgilerini en geç eğitim tarihinden bir gün önce Satıcı'ya bildirir.</p></div>
+    </div>
+    <!-- 5 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 6: Cayma hakkı</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">6.1. Alıcı, sözleşmenin kurulduğu tarihten itibaren 14 gün içinde gerekçe göstermeksizin ve cezai şart ödemeksizin sözleşmeden cayabilir. Cayma bildirimi <a href="mailto:burak@mypaira.com" style="color: #2E6FB0; text-decoration: none">burak@mypaira.com</a> adresine e-posta ile yapılır.</p><p style="margin: 0">6.2. Cayma halinde bedel, bildirimin Satıcı'ya ulaştığı tarihten itibaren 14 gün içinde ödemenin yapıldığı araçla iade edilir.</p><p style="margin: 0">6.3. Mesafeli Sözleşmeler Yönetmeliği'nin 15 inci maddesi uyarınca aşağıdaki hallerde cayma hakkı kullanılamaz:</p><p style="margin: 0">a) Eğitim tarihinin sözleşmenin kurulduğu tarihten itibaren 14 gün içinde olması halinde, Alıcı ödeme adımındaki onay kutusunu işaretleyerek hizmetin cayma süresi içinde ifasına açık onay verir. Hizmetin ifa edildiği andan itibaren cayma hakkı sona erer.</p><p style="margin: 0">b) Eğitim kaydına ve çevrimiçi materyallere erişim sağlandıktan sonra, elektronik ortamda ifa edilen bu içerikler bakımından cayma hakkı sona erer.</p></div>
+    </div>
+    <!-- 6 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 7: Cayma süresi dışında iptal, devir ve dönüşüm</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">7.1. Fiziki katılım: 16 Eylül 2026 tarihine kadar (bu tarih dahil) iletilen iptal taleplerinde bedelin tamamı iade edilir. Bu tarihten sonra bilet, aynı kurumdan başka bir kişiye devredilebilir ya da çevrimiçi katılıma dönüştürülebilir. Dönüşümde bedel farkı 14 gün içinde iade edilir.</p><p style="margin: 0">7.2. Çevrimiçi katılım: Madde 6'daki kanuni cayma hakkı saklı kalmak üzere, cayma süresi dışında iptal ve iade yapılmaz. Bilet, eğitim tarihinden önce Satıcı'ya bildirilmek koşuluyla başka bir kişiye devredilebilir.</p><p style="margin: 0">7.3. Devir ve dönüşüm talepleri <a href="mailto:burak@mypaira.com" style="color: #2E6FB0; text-decoration: none">burak@mypaira.com</a> adresine e-posta ile iletilir.</p><p style="margin: 0">7.4. Eğitime katılmayan ve süresi içinde iptal, devir ya da dönüşüm talebinde bulunmayan Alıcı'ya iade yapılmaz; eğitim kaydına 30 gün erişim ve çevrimiçi materyaller bu Alıcı'ya da sağlanır.</p></div>
+    </div>
+    <!-- 7 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 8: Satıcı&#x27;nın hak ve yükümlülükleri</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">8.1. Satıcı, hizmeti Ön Bilgilendirme Formu'nda belirtilen niteliklere uygun olarak ifa etmekle yükümlüdür.</p><p style="margin: 0">8.2. Satıcı, eğitmen kadrosunda, program akışında ve mekanda, eğitimin niteliğini ve süresini korumak kaydıyla makul değişiklikler yapabilir. Değişiklikler Alıcı'ya e-posta ile bildirilir.</p><p style="margin: 0">8.3. Mücbir sebep, eğitmenin sağlık durumu, mekan kaynaklı engeller ya da fiziki katılımcı sayısının eğitimin verimli yürütülmesi için yetersiz kalması gibi hallerde Satıcı eğitimi erteleyebilir ya da iptal edebilir. Ertelemede Alıcı yeni tarihe katılım ya da tam iade seçeneklerinden birini kullanır. İptalde bedelin tamamı 14 gün içinde iade edilir. Bu haller dışında Alıcı'nın ulaşım ve konaklama gibi dolaylı masrafları Satıcı'nın sorumluluğunda değildir.</p><p style="margin: 0">8.4. Satıcı, çevrimiçi yayında Alıcı'nın internet bağlantısı, cihazı ya da Zoom hesabından kaynaklanan erişim sorunlarından sorumlu tutulamaz; yayın, Satıcı kaynaklı bir kesinti nedeniyle eksik kalırsa eksik bölümün kaydı Alıcı'ya sağlanır.</p></div>
+    </div>
+    <!-- 8 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 9: Alıcı&#x27;nın hak ve yükümlülükleri</h2>
+      <div style="display: flex; flex-direction: column; gap: 8px"><p style="margin: 0">9.1. Alıcı, ödeme adımında doğru ve güncel bilgi vermekle yükümlüdür. Hatalı bilgiden kaynaklanan gecikme ve aksaklıklar Alıcı'nın sorumluluğundadır.</p><p style="margin: 0">9.2. Eğitim materyalleri, eğitim kaydı ve Zoom bağlantısı yalnızca kayıtlı Alıcı'nın kişisel kullanımına özgüdür. Alıcı bu içerikleri çoğaltamaz, üçüncü kişilerle paylaşamaz, kamuya açık ortamlarda yayınlayamaz ve ticari amaçla kullanamaz. Zoom bağlantısının üçüncü kişilerle paylaşılması halinde Satıcı erişimi sonlandırabilir.</p><p style="margin: 0">9.3. Eğitim içeriği, sunumlar, materyaller ve kayıtlar üzerindeki fikri ve sınai haklar Satıcı'ya ve eğitmenlere aittir. Bu sözleşme Alıcı'ya bu içerikler üzerinde kullanım hakkı dışında bir hak vermez.</p><p style="margin: 0">9.4. Alıcı, eğitim sırasında kendi başına ses ya da görüntü kaydı almaz.</p></div>
+    </div>
+    <!-- 9 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 10: Kişisel verilerin korunması</h2>
+      <p style="margin: 0">Satıcı, Alıcı'nın kişisel verilerini 6698 sayılı Kişisel Verilerin Korunması Kanunu'na uygun olarak, sözleşmenin kurulması ve ifası, fatura düzenlenmesi, katılım belgesinin hazırlanması ve yasal yükümlülüklerin yerine getirilmesi amaçlarıyla işler. Ayrıntılı bilgi <a href="https://www.mypaira.com" style="color: #2E6FB0; text-decoration: none">mypaira.com</a> adresindeki <a href="/aydinlatma-metni" style="color: #2E6FB0; text-decoration: none">KVKK Aydınlatma Metni</a>'nde yer alır. Eğitim sırasında Satıcı tarafından alınan ses ve görüntü kayıtları, eğitim kaydının katılımcılara sunulması amacıyla işlenir; fiziki katılımcıların görüntülerinin tanıtım amaçlı kullanımı ayrıca alınacak açık rızaya bağlıdır.</p>
+    </div>
+    <!-- 10 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 11: Uyuşmazlıkların çözümü</h2>
+      <p style="margin: 0">Bu sözleşmeden doğan uyuşmazlıklarda, tüketici sıfatını haiz Alıcılar bakımından Ticaret Bakanlığı'nca belirlenen parasal sınırlar dahilinde Tüketici Hakem Heyetleri, bu sınırların üzerinde Tüketici Mahkemeleri görevlidir. Tüketici sıfatını haiz olmayan Alıcılar bakımından İstanbul (Çağlayan) Mahkemeleri ve İcra Daireleri yetkilidir.</p>
+    </div>
+    <!-- 11 -->
+    <div style="display: flex; flex-direction: column; gap: 14px">
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 27px; color: #15233E">Madde 12: Yürürlük</h2>
+      <p style="margin: 0">Alıcı, ödeme adımında Ön Bilgilendirme Formu'nu ve bu sözleşmeyi okuduğunu, anladığını ve kabul ettiğini onay kutusunu işaretleyerek beyan eder. Sözleşme, ödemenin tamamlandığı anda kurulur. Sözleşmenin bir örneği kayıt teyidi e-postasıyla Alıcı'ya gönderilir ve Satıcı tarafından üç yıl süreyle saklanır.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background: #15233E">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 36px; display: flex; flex-direction: column; gap: 28px">
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px">
+      <div style="display: flex; flex-direction: column; gap: 10px">
+        <div style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 16px; color: #FFFFFF">PAIRA</div>
+        <p style="margin: 0; font-size: 13px; color: #ABD4EC; max-width: 300px; line-height: 1.6">People-first AI Readiness and Adoption. İnsan öncelikli yapay zeka hazırlığı ve içselleştirme.</p>
+      </div>
+      <div style="display: flex; gap: 56px">
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/skorkart" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hazırlık Skoru</a>
+          <a href="/danismanlik" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Danışmanlık</a>
+          <a href="/egitimler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Eğitimler</a>
+          <a href="/etkinlikler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Etkinlikler</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/manifesto" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Manifesto</a>
+          <a href="/hakkimizda" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hakkımızda</a>
+          <a href="/vibe-legal" style="font-size: 13px; color: #ABD4EC; text-decoration: none">VibeLegal</a>
+          <a href="/paira-notes" style="font-size: 13px; color: #ABD4EC; text-decoration: none">PAIRA Notes</a>
+          <a href="/iletisim" style="font-size: 13px; color: #ABD4EC; text-decoration: none">İletişim</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 10px">
+          <a href="/aydinlatma-metni" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Aydınlatma Metni</a>
+          <a href="/on-bilgilendirme" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Ön Bilgilendirme Formu</a>
+          <a href="/mesafeli-satis" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Mesafeli Satış Sözleşmesi</a>
+          <a href="/iade" style="font-size: 13px; color: #ABD4EC; text-decoration: none">İade ve Değişim Politikası</a>
+          <a href="/teslimat" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Teslimat Politikası</a>
+        </div>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 22px">
+      <img src="/assets/iyzico-band-white.svg" alt="iyzico ile öde: Mastercard, Visa, American Express, Troy" style="height: 26px; width: auto; opacity: 0.9">
+    </div>
+    <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 22px">
+      <span style="font-size: 12px; color: #5C6B82">© 2026 PAIRA · mypaira.com</span>
+      <div style="display: flex; gap: 18px"><!-- paira:langlink:start --><a href="/en/" hreflang="en" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">English</a><!-- paira:langlink:end --><a href="/aydinlatma-metni" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">Aydınlatma Metni</a></div>
+    </div>
+  </div>
+</footer>
+</x-dc>
+</body>
+</html>

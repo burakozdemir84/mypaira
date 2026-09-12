@@ -3,568 +3,593 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/support.js"></script>
-
-
-
-<!-- paira:responsive:start -->
-<style data-paira-responsive>
-/* Mobile layer. Desktop (>900px) is untouched. */
-img,video{max-width:100%;height:auto}
-
-@media (max-width:900px){
-  html,body{overflow-x:hidden}
-
-  /* The header is pinned with position:sticky - on some pages directly on
-     <header>, on others via a wrapper div. Once the nav wraps to two rows that
-     would permanently occupy ~25% of a phone screen, so on mobile it scrolls
-     away instead. Both shapes are covered here. */
-  header{position:static!important}
-  div[style*="position: sticky"]:has(header){position:static!important}
-
-  /* Header collapses to stacked rows instead of one overflowing line */
-  header > div{flex-wrap:wrap!important;justify-content:center!important;
-    gap:10px!important;padding:14px 20px!important}
-  header nav{flex-wrap:wrap!important;justify-content:center!important;
-    gap:12px 15px!important;width:100%!important}
-
-  /* 3- and 4-up card grids drop to 2 */
-  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
-  [style*="grid-template-columns: 1fr 1fr 1fr"]{
-    grid-template-columns:repeat(2,minmax(0,1fr))!important}
-
-  /* Asymmetric hero/feature splits stack immediately */
-  [style*="grid-template-columns: 7fr 5fr"],
-  [style*="grid-template-columns: 5fr 7fr"],
-  [style*="grid-template-columns: 6fr 5fr"],
-  [style*="grid-template-columns: 5fr 6fr"],
-  [style*="grid-template-columns: 1fr auto 1fr"]{
-    grid-template-columns:minmax(0,1fr)!important}
-
-  [style*="max-width: 1240px"]{padding-left:22px!important;padding-right:22px!important}
-  [style*="gap: 72px"]{gap:34px!important}
-  [style*="gap: 48px"]{gap:26px!important}
-
-  /* Wide content must scroll inside itself, never widen the page */
-  table{display:block;overflow-x:auto;max-width:100%}
-}
-
-@media (max-width:640px){
-  /* Everything to a single column */
-  [style*="grid-template-columns"]{grid-template-columns:minmax(0,1fr)!important}
-  [style*="max-width: 1240px"]{padding-left:18px!important;padding-right:18px!important}
-
-  /* Section rhythm tightens so pages aren't endless on a phone */
-  [style*="padding: 96px 32px"],[style*="padding: 88px 32px"]{
-    padding-top:46px!important;padding-bottom:42px!important}
-  [style*="padding: 80px 32px"],[style*="padding: 72px 32px"]{
-    padding-top:42px!important;padding-bottom:38px!important}
-  [style*="padding: 48px 32px"]{padding-top:32px!important;padding-bottom:26px!important}
-
-  /* Display type scaled to phone widths */
-  [style*="font-size: 96px"]{font-size:40px!important;line-height:1.1!important}
-  [style*="font-size: 64px"]{font-size:34px!important;line-height:1.15!important}
-  [style*="font-size: 60px"]{font-size:32px!important;line-height:1.15!important}
-  [style*="font-size: 54px"],[style*="font-size: 52px"]{font-size:30px!important;line-height:1.18!important}
-  [style*="font-size: 50px"],[style*="font-size: 48px"]{font-size:28px!important;line-height:1.2!important}
-  [style*="font-size: 46px"],[style*="font-size: 44px"]{font-size:26px!important;line-height:1.2!important}
-  [style*="font-size: 40px"]{font-size:25px!important;line-height:1.22!important}
-  [style*="font-size: 38px"]{font-size:24px!important;line-height:1.25!important}
-  [style*="font-size: 36px"]{font-size:23px!important;line-height:1.25!important}
-  [style*="font-size: 34px"]{font-size:22px!important;line-height:1.3!important}
-  [style*="font-size: 31px"],[style*="font-size: 30px"]{font-size:21px!important;line-height:1.3!important}
-  [style*="font-size: 28px"]{font-size:20px!important;line-height:1.35!important}
-
-  /* Input + button rows stack so neither gets crushed */
-  form > div[style*="display: flex"],
-  div[style*="display: flex"][style*="gap: 10px"]{flex-wrap:wrap!important}
-  input[type="email"],input[type="text"],input[type="tel"],select,textarea{
-    min-width:0!important;width:100%!important;box-sizing:border-box!important}
-
-  /* Footer: brand block stacks above the link columns, which then wrap 2-up
-     instead of squeezing three columns into a phone width. */
-  footer div[style*="justify-content: space-between"]{flex-direction:column!important;gap:28px!important}
-  footer div[style*="gap: 56px"]{flex-wrap:wrap!important;gap:20px 36px!important}
-}
-</style>
-<!-- paira:responsive:end -->
-
+<title>Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA</title>
+<meta name="description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
 <!-- paira:i18n:start -->
 <link rel="canonical" href="https://www.mypaira.com/egitimler">
 <link rel="alternate" hreflang="tr" href="https://www.mypaira.com/egitimler">
 <link rel="alternate" hreflang="en" href="https://www.mypaira.com/en/trainings">
 <link rel="alternate" hreflang="x-default" href="https://www.mypaira.com/egitimler">
-<script>
-(function(){try{
-  var K='paira-lang', p=location.pathname, isEN=false, ALT='/en/trainings';
-  // Never auto-route a crawler: Googlebot must be able to reach the Turkish home.
-  if(/bot|crawl|spider|slurp|bingpreview|googlebot|yandex|duckduck/i.test(navigator.userAgent||'')) return;
-  // ?lang=tr / ?lang=en is an explicit override: remembered, and honoured by
-  // jumping to this page's counterpart when it disagrees with the current one.
-  var q=(location.search.match(/[?&]lang=(tr|en)/i)||[])[1];
-  if(q){
-    q=q.toLowerCase(); localStorage.setItem(K,q);
-    if((q==='en')!==isEN){location.replace(ALT);return;}
-  } else {
-    var stored=localStorage.getItem(K);
-    // Only the bare Turkish home auto-routes, and only for a first-time visitor.
-    if(p==='/'&&!stored){
-      var nav=((navigator.languages&&navigator.languages[0])||navigator.language||'').toLowerCase();
-      if(nav.indexOf('tr')!==0){localStorage.setItem(K,'en');location.replace('/en/');return;}
-    }
-    // Otherwise remember whichever language they are actually reading.
-    localStorage.setItem(K,isEN?'en':'tr');
-  }
-}catch(e){}})();
-</script>
 <!-- paira:i18n:end -->
 <!-- paira:seo:start -->
-<meta name="description" content="PAIRA eğitimleri: hukukçular için yapay zeka okuryazarlığından ileri seviye uygulamaya, uygulanabilir ve ölçülü eğitim programları.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Eğitimler · PAIRA">
-<meta property="og:description" content="PAIRA eğitimleri: hukukçular için yapay zeka okuryazarlığından ileri seviye uygulamaya, uygulanabilir ve ölçülü eğitim programları.">
+<meta property="og:title" content="Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA">
+<meta property="og:description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
 <meta property="og:url" content="https://www.mypaira.com/egitimler">
 <meta property="og:site_name" content="PAIRA">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Eğitimler · PAIRA">
-<meta name="twitter:description" content="PAIRA eğitimleri: hukukçular için yapay zeka okuryazarlığından ileri seviye uygulamaya, uygulanabilir ve ölçülü eğitim programları.">
+<meta name="twitter:title" content="Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA">
+<meta name="twitter:description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
 <!-- paira:seo:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#15233E; --navy2:#223E68; --accent:#2E6FB0; --sky:#ABD4EC; --skysoft:#E9F2F9;
+  --bluesoft:#E1ECF6; --blueink:#1B4F86; --gold:#A8842C; --goldsoft:#F4EEDD; --goldink:#6B5418;
+  --white:#FFFFFF; --paper:#F4F7FA; --ink:#22324B; --mute:#5C6B82; --line:#D7E0EA;
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Outfit',system-ui,sans-serif;
+  --max:1120px; --gutter:clamp(20px,5vw,64px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{font-family:var(--sans);font-weight:400;color:var(--ink);background:var(--white);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:18px}
+.eyebrow.gold{color:var(--gold)}
+.eyebrow.sky{color:var(--sky)}
+h1,h2{font-family:var(--serif);font-weight:500;line-height:1.08;color:var(--navy)}
+h2{font-size:clamp(32px,4vw,42px);margin-bottom:22px;max-width:22ch}
+h3{font-family:var(--sans);font-weight:500;font-size:20px;color:var(--navy);line-height:1.3}
+p{max-width:64ch}
+.lede{font-size:19px;line-height:1.6}
+section{padding:clamp(72px,9vw,120px) 0}
+.paper{background:var(--paper)}
+.hair{border:0;border-top:1px solid var(--line);margin:0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:500;font-size:15px;padding:15px 26px;border-radius:9px;border:1px solid transparent;transition:background-color .2s,color .2s,border-color .2s;white-space:nowrap}
+.btn:hover{text-decoration:none}
+.btn small{font-weight:300;opacity:.75;font-size:13px}
+.btn-primary{background:var(--navy);color:var(--white)}
+.btn-primary:hover{background:var(--navy2)}
+.btn-secondary{background:transparent;color:var(--navy);border-color:var(--navy)}
+.btn-secondary:hover{background:var(--skysoft)}
+.on-dark .btn-primary{background:var(--white);color:var(--navy)}
+.on-dark .btn-primary:hover{background:var(--skysoft)}
+.on-dark .btn-secondary{color:var(--white);border-color:rgba(255,255,255,.55)}
+.on-dark .btn-secondary:hover{background:rgba(255,255,255,.08)}
+.btn[aria-disabled="true"]{background:var(--mute);color:var(--white);border-color:transparent;cursor:not-allowed;pointer-events:none}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:20;background:rgba(21,35,62,.92);backdrop-filter:blur(8px);color:var(--white)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{font-family:var(--sans);font-weight:600;letter-spacing:.22em;color:var(--white);font-size:15px}
+.brand em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0;font-size:19px;margin-left:8px;color:var(--sky)}
+.nav-cta{font-size:14px;font-weight:500;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:9px 16px;border-radius:8px}
+.nav-cta:hover{background:rgba(255,255,255,.1);text-decoration:none}
+
+.logo-nav{height:22px;width:auto;display:block}
+.brand{display:inline-flex;align-items:center}
+.trainer .photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;margin-bottom:20px}
+.partners{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.partners .x{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mute)}
+.logo-paira-dark{height:22px;width:auto;background:var(--navy);padding:10px 14px;border-radius:8px;box-sizing:content-box}
+.logo-stratri{height:44px;width:auto}
+/* hero */
+.hero{background:var(--navy);color:var(--white);position:relative;overflow:hidden;padding:clamp(80px,11vw,140px) 0 clamp(64px,8vw,96px)}
+.rings{position:absolute;right:-8vw;top:-18vw;width:min(70vw,780px);height:min(70vw,780px);pointer-events:none}
+.rings circle{fill:none;stroke:var(--sky);stroke-opacity:.14;stroke-width:1}
+.rings .core{fill:var(--gold);stroke:none}
+.hero .wrap{position:relative}
+.hero h1{color:var(--white);font-size:clamp(46px,7vw,84px);max-width:12ch;margin-bottom:22px}
+.hero h1 span{display:block;font-style:italic;font-weight:500;color:var(--sky)}
+.hero .lede{color:var(--sky);max-width:56ch;font-size:clamp(18px,2vw,21px);margin-bottom:38px}
+.facts{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(171,212,236,.25);border-bottom:1px solid rgba(171,212,236,.25);margin-bottom:40px}
+.fact{padding:18px 32px 18px 0;margin-right:32px;border-right:1px solid rgba(171,212,236,.25)}
+.fact:last-child{border-right:0}
+.fact b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.1;color:var(--white)}
+.fact span{font-size:13px;color:var(--sky);letter-spacing:.04em}
+.seats{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--sky);margin-bottom:26px}
+.seats .n{font-family:var(--serif);font-size:30px;color:var(--white);line-height:1}
+.seats .bar{width:140px;height:3px;background:rgba(171,212,236,.25);border-radius:2px;overflow:hidden}
+.seats .bar i{display:block;height:100%;background:var(--gold);width:0}
+.ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+.micro{font-size:13px;color:var(--sky);opacity:.85;max-width:70ch}
+.micro a{color:var(--white);text-decoration:underline;text-underline-offset:3px}
+
+/* intro */
+.intro .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(32px,6vw,96px);align-items:start}
+.intro p+p{margin-top:18px}
+.intro .pull{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,34px);line-height:1.25;color:var(--navy);border-left:2px solid var(--gold);padding-left:22px;margin-top:8px}
+
+/* audience */
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:30px 28px;box-shadow:0 8px 28px rgba(21,35,62,.05)}
+.card h3{margin-bottom:12px}
+.card p{font-size:16px;color:var(--ink)}
+.common{margin-top:36px;font-family:var(--serif);font-size:22px;color:var(--navy);font-style:italic}
+
+/* outcomes */
+.outcomes .wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:clamp(32px,6vw,96px)}
+.outlist{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:26px 40px}
+.outlist li{padding-top:16px;border-top:1px solid var(--line)}
+.outlist b{display:block;font-weight:500;color:var(--navy);margin-bottom:6px;font-size:17px}
+.outlist span{font-size:15px;color:var(--mute);display:block}
+
+/* program */
+.program{list-style:none;border-top:1px solid var(--line)}
+.program li{display:grid;grid-template-columns:88px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
+.program .t{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--navy);line-height:1}
+.program .h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:8px}
+.program .h h3{font-size:21px}
+.program .h .who{font-size:13px;color:var(--mute);letter-spacing:.04em}
+.program .h .dur{font-size:13px;color:var(--gold);font-weight:500}
+.program p{font-size:15.5px;color:var(--ink);max-width:70ch}
+.program li.break{background:var(--paper);padding-left:0}
+.program li.break .t{color:var(--mute);font-size:20px;padding-left:0}
+.program li.break .h h3{font-weight:400;color:var(--mute);font-size:16px}
+
+/* trainers */
+.trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.trainer{padding-top:0}
+.trainer h3{font-family:var(--serif);font-size:28px;font-weight:500;margin-bottom:2px}
+.trainer .org{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.trainer p{font-size:15.5px;color:var(--mute);margin-bottom:14px}
+.trainer a{font-size:14px;font-weight:500}
+
+/* tickets */
+.tickets{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.ticket{border:1px solid var(--line);border-radius:14px;padding:36px 34px;background:var(--white);display:flex;flex-direction:column}
+.ticket.featured{background:var(--navy);color:var(--white);border-color:var(--navy)}
+.ticket .kind{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:14px}
+.ticket.featured .kind{color:var(--sky)}
+.ticket .price{font-family:var(--serif);font-size:44px;font-weight:500;color:var(--navy);line-height:1;margin-bottom:4px}
+.ticket.featured .price{color:var(--white)}
+.ticket .price small{font-family:var(--sans);font-size:14px;font-weight:300;margin-left:6px;color:var(--mute)}
+.ticket.featured .price small{color:var(--sky)}
+.ticket .cap{font-size:14px;color:var(--mute);margin-bottom:26px}
+.ticket.featured .cap{color:var(--sky)}
+.ticket ul{list-style:none;margin-bottom:32px;flex:1}
+.ticket li{padding:9px 0;border-top:1px solid var(--line);font-size:15.5px}
+.ticket.featured li{border-color:rgba(171,212,236,.2)}
+.ticket .btn{align-self:flex-start}
+
+/* consent */
+.consent{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:24px}
+.check{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--ink);cursor:pointer;padding:8px 0}
+.check+.check{border-top:1px solid var(--line)}
+.check input{margin-top:4px;width:18px;height:18px;flex-shrink:0;accent-color:var(--navy)}
+.consent-hint{font-size:13px;color:var(--mute);margin-top:10px}
+.consent-hint.warn{color:var(--goldink)}
+.btn[aria-disabled="true"][data-buy]{background:var(--line);color:var(--mute);border-color:transparent;cursor:not-allowed;pointer-events:auto}
+.ticket.featured .btn[aria-disabled="true"][data-buy]{background:rgba(255,255,255,.18);color:var(--sky)}
+/* corporate */
+.corp .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
+.corp p+p{margin-top:16px}
+form{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:32px;box-shadow:0 8px 28px rgba(21,35,62,.05)}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.field label{font-size:13px;font-weight:500;color:var(--navy)}
+.field input,.field textarea{font-family:var(--sans);font-size:15px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--white);color:var(--ink)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--skysoft)}
+.field textarea{min-height:90px;resize:vertical}
+form .btn{width:100%;justify-content:center;margin-top:6px}
+form .note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
+
+.consent-inline{border:0;padding:4px 0 14px;font-size:14px}
+.form-done{background:var(--skysoft);border-radius:10px;padding:18px 20px;margin-top:6px;font-size:15px}
+.form-done b{display:block;font-family:var(--serif);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:6px}
+.form-done p{color:var(--ink);font-size:15px}
+.note.err{color:var(--goldink)}
+/* faq */
+.faq{max-width:760px}
+.faq details{border-top:1px solid var(--line)}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:500;color:var(--navy);font-size:17px;display:flex;justify-content:space-between;gap:20px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold);flex-shrink:0}
+.faq details[open] summary::after{content:"–"}
+.faq details p{padding:0 0 22px;font-size:15.5px;color:var(--mute);max-width:64ch}
+
+/* closing */
+.closing{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.closing .rings{left:-14vw;right:auto;bottom:-30vw;top:auto}
+.closing .wrap{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
+.closing h2{color:var(--white);font-size:clamp(34px,5vw,56px);max-width:18ch;margin:0 auto 20px}
+.closing .lede{color:var(--sky);margin:0 auto 30px;font-size:18px}
+.closing .seats{justify-content:center}
+.closing .ctas{justify-content:center}
+
+/* footer */
+footer{padding:48px 0 0;font-size:13px;color:var(--mute)}
+footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-bottom:28px}
+footer .brand{color:var(--navy)}
+footer .brand em{color:var(--accent)}
+footer .legal{display:flex;flex-wrap:wrap;gap:8px 22px;margin:18px 0 36px}
+footer .legal a{color:var(--mute)}
+footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.payband{background:var(--navy);padding:22px 0}
+.payband .band{height:28px;width:auto;max-width:100%;display:block}
+.paylogo{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 12px;border:1px solid var(--line);border-radius:6px;font-weight:600;font-size:11px;letter-spacing:.08em;color:var(--navy)}
+
+@media (max-width:900px){
+  .intro .wrap,.outcomes .wrap,.corp .wrap{grid-template-columns:1fr}
+  .grid3,.trainers{grid-template-columns:1fr}
+  .outlist{grid-template-columns:1fr}
+  .tickets{grid-template-columns:1fr}
+  .program li{grid-template-columns:64px 1fr;gap:18px}
+  .program .t{font-size:21px}
+  .frow{grid-template-columns:1fr}
+  .fact{padding-right:20px;margin-right:20px}
+}
+@media (max-width:560px){
+  .facts{flex-direction:column}
+  .fact{border-right:0;border-bottom:1px solid rgba(171,212,236,.25);padding:14px 0;margin:0}
+  .fact:last-child{border-bottom:0}
+  .ctas .btn{width:100%;justify-content:center}
+  .nav-cta{display:none}
+}
+</style>
 </head>
 <body>
-<x-dc>
-<helmet>
-<script>document.documentElement.lang='tr';</script>
-<title>Eğitimler · PAIRA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&amp;family=Outfit:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
-<style>
-  body { margin: 0; background: #FFFFFF; font-family: 'Outfit', sans-serif; color: #22324B; }
-  a { color: #2E6FB0; }
-  a:hover { color: #15233E; }
-  header a { text-decoration: none; color: #15233E; }
-  input::placeholder { color: #5C6B82; }
-</style>
-</helmet>
 
-<!-- HEADER -->
-<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
-    <a href="/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
-    <nav style="display: flex; align-items: center; gap: 22px">
-      <a href="/skorkart" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hazırlık Skoru</a>
-      <a href="/danismanlik" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Danışmanlık</a>
-      <a href="/egitimler" style="font-size: 14px; font-weight: 500; color: #15233E; text-decoration: none">Eğitimler</a>
-      <a href="/etkinlikler" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Etkinlikler</a>
-      <a href="/manifesto" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Manifesto</a>
-      <a href="/hakkimizda" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Hakkımızda</a>
-      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #D7E0EA; border-radius: 999px; padding: 5px 12px">
-        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #15233E">TR</span>
-        <span style="width: 1px; height: 11px; background: #D7E0EA"></span>
-        <a href="/en/trainings" style="font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: #5C6B82; text-decoration: none" style-hover="color: #15233E">EN</a>
-      </div>
-      <a href="/skorkart?start=1" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Skorunuzu Keşfedin</a>
-    </nav>
+<nav class="nav" aria-label="Üst menü">
+  <div class="wrap">
+    <a class="brand" href="/"><img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-nav"><em>Legal in the Loop</em></a>
+    <a class="nav-cta" href="#katilim">Bilet alın</a>
+  </div>
+</nav>
+
+<header class="hero on-dark">
+  <svg class="rings" viewBox="0 0 800 800" aria-hidden="true">
+    <circle cx="400" cy="400" r="380"/><circle cx="400" cy="400" r="320"/><circle cx="400" cy="400" r="260"/>
+    <circle cx="400" cy="400" r="200"/><circle cx="400" cy="400" r="140"/><circle cx="400" cy="400" r="80"/>
+    <circle class="core" cx="400" cy="400" r="6"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow gold">Master Class · 26 Eylül 2026 · İstanbul ve çevrimiçi</div>
+    <h1>Legal in the Loop <span>Master Class</span></h1>
+    <p class="lede">Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass.</p>
+
+    <div class="facts">
+      <div class="fact"><b>26 Eylül 2026</b><span>Cumartesi, 10:00 ila 16:00</span></div>
+      <div class="fact"><b>Vadistanbul</b><span>Komünite Space</span></div>
+      <div class="fact"><b>50 koltuk</b><span>Fiziki katılım</span></div>
+      <div class="fact"><b>Sınırsız</b><span>Çevrimiçi katılım, Zoom</span></div>
+    </div>
+
+    <div class="seats" aria-live="polite">
+      <span class="n" data-seats>50</span>
+      <span>fiziki koltuk kaldı<br><span class="bar"><i data-seatbar></i></span></span>
+    </div>
+
+    <div class="ctas">
+      <a class="btn btn-primary" data-fiziki-jump href="#katilim">Fiziki katılım <small>9.000 TL, KDV dahil</small></a>
+      <a class="btn btn-secondary" href="#katilim">Çevrimiçi katılım <small>5.000 TL, KDV dahil</small></a>
+    </div>
+    <p class="micro">Fiyatlara KDV dahildir. Ödeme iyzico güvencesiyle alınır. Kurumsal ekipler için birden fazla bilet: <a href="#kurumsal">bize yazın</a>.</p>
   </div>
 </header>
 
-<!-- INTRO -->
-<section data-screen-label="Egitimler Intro" style="background: #FFFFFF">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 64px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center">
-    <div style="display: flex; flex-direction: column; gap: 20px">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Eğitim Programları</div>
-      <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 52px; line-height: 1.1; color: #15233E">Her seviyeye bir basamak</h1>
-      <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #5C6B82">Tüm eğitimler hukuk pratiğine uygun olarak, hukukçuların yapay zeka teknolojisine hazırlığı için özel tasarlanmıştır. Temel okuryazarlıktan ileri seviye yönetişime, yedi ürünlük bir merdiven.</p>
+<section class="intro">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Bu gün neye yarar</div>
+      <h2>Aracı tanıyın, sınırı çizin, süreci kurun.</h2>
     </div>
-    <div style="aspect-ratio: 4 / 3; border-radius: 12px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/egitim-atolye.webp" alt="PAIRA eğitim atölyesi" style="width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block"></div>
-  </div>
-</section>
-
-<!-- BANT 1: TEMEL OKURYAZARLIK -->
-<section data-screen-label="Bant 1 Temel" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; gap: 36px">
-    <div style="display: flex; align-items: baseline; gap: 16px">
-      <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #ABD4EC; line-height: 1">01</span>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #15233E">Temel Okuryazarlık</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
-      <!-- 1A -->
-      <div id="kayit-1a" style="background: #FFFFFF; border: 1px solid #A8842C; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 4px 24px rgba(21,35,62,0.06)">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #6B5418; border: 1px solid #A8842C; border-radius: 999px; padding: 4px 12px">Ücretsiz</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">Hukukçular için Yapay Zeka: Başlangıç</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82; flex: 1">Kısa formatlı başlangıç: temel bilgi, güvenli kullanım ve prompt pratiği. Yapay zeka yolculuğuna ücretsiz başlangıç; açıldığında ilk siz haberdar olun.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
-          <sc-if value="{{ sent1a }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">Kaydınızı aldık. Program açıldığında ilk siz haberdar olacaksınız.</span>
-          </sc-if>
-          <sc-if value="{{ notSent1a }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 13px; font-weight: 500; color: #22324B">Açıldığında haber verin</span>
-            <div style="display: flex; gap: 10px">
-              <input value="{{ email1a }}" onChange="{{ setEmail1a }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; border: 1px solid #D7E0EA; border-radius: 8px; padding: 12px 15px; font-family: 'Outfit', sans-serif; font-size: 14px; color: #22324B; outline: none">
-              <button onClick="{{ submit1a }}" style="border: 1px solid #15233E; background: #FFFFFF; color: #15233E; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #15233E; color: #FFFFFF">{{ btn1a }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk1a }}" onChange="{{ toggleKvkk1a }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum. PAIRA Notes bülteninin e-posta adresime gönderilmesine açık rıza veriyorum. *</span></label>
-            <sc-if value="{{ err1a }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 12px; color: #A8842C; line-height: 1.5">{{ err1a }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
-      </div>
-      <!-- 1B -->
-      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #2E6FB0; border: 1px solid #D7E0EA; border-radius: 999px; padding: 4px 12px">Canlı atölye</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">Hukukçular için Yapay Zeka Temel Atölyesi</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82; flex: 1">Ücretli canlı atölye: başlangıç eğitiminin üzerine uygulamalı pratik, gerçek dosyalarla çalışma ve soru-cevap. Küçük gruplar halinde düzenlenir.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
-          <sc-if value="{{ sent1b }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">Kaydınızı aldık. Program açıldığında ilk siz haberdar olacaksınız.</span>
-          </sc-if>
-          <sc-if value="{{ notSent1b }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 13px; font-weight: 500; color: #22324B">Açıldığında haber verin</span>
-            <div style="display: flex; gap: 10px">
-              <input value="{{ email1b }}" onChange="{{ setEmail1b }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; border: 1px solid #D7E0EA; border-radius: 8px; padding: 12px 15px; font-family: 'Outfit', sans-serif; font-size: 14px; color: #22324B; outline: none">
-              <button onClick="{{ submit1b }}" style="border: 1px solid #15233E; background: #FFFFFF; color: #15233E; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #15233E; color: #FFFFFF">{{ btn1b }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk1b }}" onChange="{{ toggleKvkk1b }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum. PAIRA Notes bülteninin e-posta adresime gönderilmesine açık rıza veriyorum. *</span></label>
-            <sc-if value="{{ err1b }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 12px; color: #A8842C; line-height: 1.5">{{ err1b }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
-      </div>
+    <div>
+      <p class="lede">Yapay zeka hukuk pratiğine girdi ve aradaki mesafe her ay biraz daha açılıyor: bir tarafta aracı kendi çalışma biçimine göre kurmuş ekipler, diğer tarafta hâlâ nereden başlayacağını arayanlar. Bu masterclass, sizi ilk tarafa taşımak için tasarlandı.</p>
+      <p>Sabah aracı tanır, sorumluluğun ve sınırın nerede başladığını görür, denetçi karşısında hangi belgeyi uzatacağınızı çalışırsınız. Öğleden sonra kendi süreçlerinizden birini birlikte tasarlar ve canlı olarak kurarsınız. Günün sonunda araç ekosisteminin haritasını ve verim sağlayan kullanım alışkanlıklarını alırsınız.</p>
+      <p class="pull">Pazartesi sabahı kime, hangi soruyla gideceğinizi bilerek ayrılırsınız.</p>
     </div>
   </div>
 </section>
 
-<!-- BANT 2: UZMANLIK -->
-<section data-screen-label="Bant 2 Uzmanlik" style="background: #FFFFFF">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; gap: 36px">
-    <div style="display: flex; align-items: baseline; gap: 16px">
-      <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #ABD4EC; line-height: 1">02</span>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #15233E">Uzmanlık Programları</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
-      <div style="background: #E9F2F9; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #1B4F86; border: 1px solid #ABD4EC; border-radius: 999px; padding: 4px 12px">Kurum içi hukuk ekipleri</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">Legal in the Loop</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #22324B; flex: 1">Kurum içi hukuk ekipleri için süreç temelli optimizasyon, yapay zeka ajanları ve denetim eğitimi. Departmanınızı sürecin lideri yapar.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
-          <sc-if value="{{ sent2a }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">Kaydınızı aldık. Program açıldığında ilk siz haberdar olacaksınız.</span>
-          </sc-if>
-          <sc-if value="{{ notSent2a }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 13px; font-weight: 500; color: #22324B">Açıldığında haber verin</span>
-            <div style="display: flex; gap: 10px">
-              <input value="{{ email2a }}" onChange="{{ setEmail2a }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; border: 1px solid #D7E0EA; border-radius: 8px; padding: 12px 15px; font-family: 'Outfit', sans-serif; font-size: 14px; color: #22324B; outline: none; background: #FFFFFF">
-              <button onClick="{{ submit2a }}" style="border: 1px solid #15233E; background: #FFFFFF; color: #15233E; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #15233E; color: #FFFFFF">{{ btn2a }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk2a }}" onChange="{{ toggleKvkk2a }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum. PAIRA Notes bülteninin e-posta adresime gönderilmesine açık rıza veriyorum. *</span></label>
-            <sc-if value="{{ err2a }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 12px; color: #A8842C; line-height: 1.5">{{ err2a }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
+<section class="paper">
+  <div class="wrap">
+    <div class="eyebrow">Katılımcı profili</div>
+    <h2>Kim için</h2>
+    <div class="grid3">
+      <div class="card">
+        <h3>Hukuk ekibi liderleri</h3>
+        <p>Kurum içinde yapay zeka kullanımının çerçevesini çizmek, ekibine güvenle yön vermek ve yönetime raporlamak isteyen hukuk müdürleri ve direktörleri.</p>
       </div>
-      <div style="background: #E9F2F9; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #1B4F86; border: 1px solid #ABD4EC; border-radius: 999px; padding: 4px 12px">Serbest ve büro avukatları</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">AI for Lawyers</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #22324B; flex: 1">Bağımsız ve büro avukatları için verimlilik artırıcı pratikler ve yapay zeka ajanları ile süreç tasarımı eğitimi.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
-          <sc-if value="{{ sent2b }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">Kaydınızı aldık. Program açıldığında ilk siz haberdar olacaksınız.</span>
-          </sc-if>
-          <sc-if value="{{ notSent2b }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 13px; font-weight: 500; color: #22324B">Açıldığında haber verin</span>
-            <div style="display: flex; gap: 10px">
-              <input value="{{ email2b }}" onChange="{{ setEmail2b }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; border: 1px solid #D7E0EA; border-radius: 8px; padding: 12px 15px; font-family: 'Outfit', sans-serif; font-size: 14px; color: #22324B; outline: none; background: #FFFFFF">
-              <button onClick="{{ submit2b }}" style="border: 1px solid #15233E; background: #FFFFFF; color: #15233E; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #15233E; color: #FFFFFF">{{ btn2b }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk2b }}" onChange="{{ toggleKvkk2b }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum. PAIRA Notes bülteninin e-posta adresime gönderilmesine açık rıza veriyorum. *</span></label>
-            <sc-if value="{{ err2b }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 12px; color: #A8842C; line-height: 1.5">{{ err2b }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
+      <div class="card">
+        <h3>Büro ortakları ve kıdemli avukatlar</h3>
+        <p>Sözleşme yoğun pratiklerde yapay zekayı kendi çalışma biçimine göre şekillendirmek isteyen bağımsız büro ortakları ve ekip liderleri.</p>
+      </div>
+      <div class="card">
+        <h3>Uyum ve kişisel veri sorumluları</h3>
+        <p>Yapay zeka sistemlerinin sınıflandırılması, belgelenmesi ve denetime hazırlanması alanında somut bir çalışma düzeni arayan uyum yöneticileri ve KVKK sorumluları.</p>
+      </div>
+    </div>
+    <p class="common">Ortak nokta: yapay zeka konusunda seyirci koltuğundan kalkıp masaya oturmaya karar vermiş hukukçular.</p>
+  </div>
+</section>
+
+<section class="outcomes">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Somut çıktılar</div>
+      <h2>Gün sonunda yanınızda götürecekleriniz</h2>
+    </div>
+    <ul class="outlist">
+      <li><b>Altı bileşenli yönetişim haritası</b><span>Kurumunuzda yapay zeka kullanımını hangi başlıklar altında yöneteceğinizi gösteren tek sayfalık çerçeve.</span></li>
+      <li><b>Üç kova sınıflandırması</b><span>Hangi kullanımın giremeyeceğini, hangisinin onayla gireceğini ve hangisinin serbest olduğunu ayırt etme yöntemi.</span></li>
+      <li><b>Dört karar hakkı</b><span>Öneren, onaylayan, veto eden ve itiraz eden rollerinin kurumunuzda kime ait olduğunu belirleme aracı.</span></li>
+      <li><b>Kanıt düzeni</b><span>Hangi sistem, kim karar verdi, ne değişti sorularına yanıt veren denetim izi mantığı.</span></li>
+      <li><b>Canlı kurulmuş bir süreç</b><span>Öğleden sonra birlikte tasarlanan ve çalışır halde bırakılan bir yapay zeka iş akışı.</span></li>
+      <li><b>Araç ekosistemi haritası</b><span>Hukukçular için yapay zeka ürün ve çözümlerinin güncel görünümü.</span></li>
+      <li><b>Pazartesi hamlesi</b><span>Ertesi iş günü atacağınız tek adım, yazılı ve sizin için belirlenmiş.</span></li>
+      <li><b>Katılım belgesi ve materyaller</b><span>Sertifika numaralı katılım belgesi ve tüm eğitim materyalleri.</span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="paper" id="program">
+  <div class="wrap">
+    <div class="eyebrow">Program</div>
+    <h2>Günün akışı</h2>
+    <ol class="program">
+      <li><div class="t">10:00</div><div><div class="h"><h3>Açılış ve kavram zemini</h3><span class="who">Burak Özdemir ve Nesibe Kırış Can</span><span class="dur">30 dk</span></div><p>Eğitim akışı ve eğitmenlerin tanıtımı. Dört mercek: etik doğru mu, uyum yasal mı, risk neye mal olur, yönetişim kim karar veriyor. İki senaryolu ayrım egzersizi. Düzenleyici zemin: AB, ABD ve Türkiye, üç farklı felsefe. Yönetişim mimarisinin altı bileşeni ve günün haritası.</p></div></li>
+      <li><div class="t">10:30</div><div><div class="h"><h3>Aracı tanımak</h3><span class="who">Burak Özdemir</span><span class="dur">30 dk</span></div><p>Modelin nasıl çalıştığı: veriden öğrenme, genelleme, hata payı ve olasılıksal yapı. Yönlendirmenin kurulması. Modelin hafızası ve bağlamın ömrü. Canlı örnek.</p></div></li>
+      <li><div class="t">11:00</div><div><div class="h"><h3>Sahiplik</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Sorumluluğun devredilemezliği: Colorado dersi ve Mata v. Avianca. İki yönlü hata: kullanmak da kullanmamak da risk. Üç pencere, üç rol: uygulayıcı, sağlayıcı, dağıtıcı. R.A.I.L. Loop: reflect, align, implement, log. Etik duraklama testi: kural yokken karar vermenin üç sorusu.</p></div></li>
+      <li class="break"><div class="t">11:40</div><div><div class="h"><h3>Ara, 10 dk</h3></div></div></li>
+      <li><div class="t">11:50</div><div><div class="h"><h3>Sınır</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Bugün yasak olan uygulamalar: işyerinde duygu tanıma, sosyal puanlama, biyometrik kategorilendirme. Yüksek risk ve takvim: Ek III, Ek I, Omnibus ertelemesi ve ertelenmeyenler. Canlı sınıflandırma: üç kova. Dört karar hakkı. Etkilenen taraf riski ve itiraz edilebilirlik.</p></div></li>
+      <li><div class="t">12:30</div><div><div class="h"><h3>Kanıt</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Hesap verebilirlik ispatlanabilirliktir; denetim izi savunmanın kendisidir. Kanıtın üç sorusu. Üç saat: olay bildirimi, veri ihlali, sektörel süre. Politika mimarisi ve tedariğin dört sorusu. Düşünce deneyi: denetçi karşısında hangi belgeyi uzatırsınız. Kurul raporlaması: üç sayı, üç risk, bir karar talebi.</p></div></li>
+      <li class="break"><div class="t">13:10</div><div><div class="h"><h3>Öğle yemeği, 60 dk</h3></div></div></li>
+      <li><div class="t">14:10</div><div><div class="h"><h3>Süreci görmek</h3><span class="who">Burak Özdemir</span><span class="dur">40 dk</span></div><p>Sürecin bileşenleri: girdi, faaliyet, karar, çıktı, kontrol. Yapay zekanın sürece girdiği nokta. Kurumdaki tipik süreç aileleri. Devir anları.</p></div></li>
+      <li><div class="t">14:50</div><div><div class="h"><h3>Kurmak ve gözetim</h3><span class="who">Burak Özdemir</span><span class="dur">40 dk</span></div><p>Kurgunun bileşenleri: model, talimat, hafıza, araçlar. Senaryodan adıma. Canlı kurulum. Gözetim modelleri ve durma koşulları.</p></div></li>
+      <li><div class="t">15:30</div><div><div class="h"><h3>Verimlilik</h3><span class="who">Anıl Akbaş</span><span class="dur">15 dk</span></div><p>Hukukçular için yapay zeka ürün ve çözüm ekosistemi. Daha verimli kullanım için pratik öneriler.</p></div></li>
+      <li><div class="t">15:45</div><div><div class="h"><h3>Kapanış</h3><span class="who">Üç eğitmen birlikte</span><span class="dur">15 dk</span></div><p>Tek hamle: pazartesi kime, hangi tek soruyla. Altı bileşenin son tekrarı. Soru ve cevap.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Günü kim yönetiyor</div>
+    <h2>Eğitmenler</h2>
+    <div class="trainers">
+      <div class="trainer">
+        <img class="photo" src="/assets/mc-burak-ozdemir.webp" alt="Burak Özdemir">
+        <h3>Burak Özdemir</h3>
+        <div class="org">PAIRA</div>
+        <p>Günün açılışını, aracı tanıma bölümünü ve öğleden sonraki süreç tasarımı ile canlı kurulum bölümlerini yönetir. Odağı, yapay zekayı hukuk ekibinin kendi pratiğine göre şekillendirmektir.</p>
+        <a href="https://www.linkedin.com/in/burakoz-demir/" target="_blank" rel="noopener">LinkedIn profili</a>
+      </div>
+      <div class="trainer">
+        <img class="photo" src="/assets/mc-nesibe-kiris-can.webp" alt="Nesibe Kırış Can">
+        <h3>Nesibe Kırış Can</h3>
+        <div class="org">STRATRI</div>
+        <p>Sahiplik, sınır ve kanıt bölümlerini yönetir. Odağı, yapay zeka kullanımında sorumluluğun, düzenleyici sınırın ve hesap verebilirliğin somut bir çalışma düzenine dönüşmesidir.</p>
+        <a href="https://www.linkedin.com/in/nesibekiris/" target="_blank" rel="noopener">LinkedIn profili</a>
+      </div>
+      <div class="trainer">
+        <img class="photo" src="/assets/mc-anil-akbas.webp" alt="Anıl Akbaş">
+        <h3>Anıl Akbaş</h3>
+        <div class="org">PAIRA</div>
+        <p>Verimlilik bölümünü yönetir. Odağı, hukukçular için araç ekosistemi ve günlük pratikte verim sağlayan kullanım alışkanlıklarıdır.</p>
+        <a href="https://www.linkedin.com/in/anil-akbas/" target="_blank" rel="noopener">LinkedIn profili</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BANT 3: İLERİ SEVİYE -->
-<section id="ileri-seviye" data-screen-label="Bant 3 Ileri" style="background: #15233E">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 36px">
-    <div style="display: flex; flex-direction: column; gap: 14px">
-      <div style="display: flex; align-items: baseline; gap: 16px">
-        <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #A8842C; line-height: 1">03</span>
-        <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #FFFFFF">İleri Seviye ve Kurumsal</h2>
-      </div>
-      <p style="margin: 0; font-size: 14px; color: #ABD4EC; display: flex; align-items: center; gap: 10px"><span style="display: inline-block; width: 32px; height: 1px; background: #A8842C"></span> Bu programlara erişim skor değerlendirmesiyle açılır.</p>
+<section class="paper" id="katilim">
+  <div class="wrap">
+    <div class="eyebrow">İki katılım, tek program</div>
+    <h2>Katılım biçimleri</h2>
+    <div class="consent" id="onay">
+      <label class="check">
+        <input type="checkbox" id="c1">
+        <span><a href="/on-bilgilendirme" target="_blank" rel="noopener">Ön Bilgilendirme Formu</a>'nu ve <a href="/mesafeli-satis" target="_blank" rel="noopener">Mesafeli Satış Sözleşmesi</a>'ni okudum, kabul ediyorum.</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="c2">
+        <span>Eğitim tarihinin cayma süresi içinde olması halinde hizmetin bu süre içinde ifa edilmesine onay veriyorum; hizmetin ifasıyla birlikte cayma hakkımın sona ereceğini biliyorum.</span>
+      </label>
+      <p class="consent-hint" data-hint>Bilet bağlantıları, iki onay kutusu işaretlendiğinde etkinleşir.</p>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px">
-      <div style="background: #223E68; border: 1px solid rgba(171,212,236,0.25); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #FFFFFF">AI Governance</h3>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #ABD4EC; flex: 1">Risk yönetimi, etik ve yapay zeka güvenliği: güvenli kullanım refleksi inşası, risk tanıma ve denetim becerisi.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 18px">
-          <sc-if value="{{ sent3a }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 12.5px; line-height: 1.6; color: #FFFFFF; font-weight: 500">Bilgileriniz bize ulaştı. Değerlendirme sonrasında sizinle iletişime geçeceğiz.</span>
-          </sc-if>
-          <sc-if value="{{ notSent3a }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 12.5px; line-height: 1.5; color: #ABD4EC">Bu program sınırlı kontenjanla açılır. Değerlendirme için bilgilerinizi bırakın.</span>
-            <div style="display: flex; gap: 8px">
-              <input value="{{ email3a }}" onChange="{{ setEmail3a }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; background: #15233E; border: 1px solid rgba(171,212,236,0.3); border-radius: 8px; padding: 11px 13px; font-family: 'Outfit', sans-serif; font-size: 13px; color: #FFFFFF; outline: none">
-              <button onClick="{{ submit3a }}" style="border: 1px solid #A8842C; background: none; color: #FFFFFF; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; padding: 11px 14px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #A8842C">{{ btn3a }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; color: #ABD4EC; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk3a }}" onChange="{{ toggleKvkk3a }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum; başvurumun değerlendirilmesi amacıyla bilgilerimin işlenmesine onay veriyorum. *</span></label>
-            <sc-if value="{{ err3a }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 11.5px; color: #E8C77A; line-height: 1.5">{{ err3a }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
+    <div class="tickets">
+      <div class="ticket featured on-dark">
+        <div class="kind">Fiziki katılım</div>
+        <div class="price">9.000 TL<small>KDV dahil</small></div>
+        <div class="cap">50 koltuk · Kalan: <span data-seats>50</span></div>
+        <ul>
+          <li>Vadistanbul, Komünite Space'te tam gün yüz yüze eğitim</li>
+          <li>Canlı kurulum bölümünde birebir geri bildirim</li>
+          <li>Eğitmenler ve katılımcılarla networking imkanı</li>
+          <li>Sınırsız kahve, çay ve soğuk içecek</li>
+          <li>Kahve molası ikramları ve öğle yemeği</li>
+          <li>Eğitim materyalleri, basılı ve çevrimiçi</li>
+          <li>Eğitim kaydına 30 gün erişim</li>
+          <li>Sertifika numaralı katılım belgesi</li>
+        </ul>
+        <a class="btn btn-primary" data-fiziki data-buy href="https://iyzi.link/AKuYKA" aria-disabled="true">Fiziki bilet alın</a>
       </div>
-      <div style="background: #223E68; border: 1px solid #A8842C; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <div style="display: flex; align-items: center">
-          <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: #A8842C">EN FAZLA 20 KİŞİ</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #FFFFFF">AI Leadership Roundtable</h3>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #ABD4EC; flex: 1">Birim yöneticilerine yönelik, araç veya prompt değil, yönetişim temelli strateji programı. Münhasır bir akran masası.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 18px">
-          <sc-if value="{{ sent3b }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 12.5px; line-height: 1.6; color: #FFFFFF; font-weight: 500">Bilgileriniz bize ulaştı. Değerlendirme sonrasında sizinle iletişime geçeceğiz.</span>
-          </sc-if>
-          <sc-if value="{{ notSent3b }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 12.5px; line-height: 1.5; color: #ABD4EC">Bu program sınırlı kontenjanla açılır. Değerlendirme için bilgilerinizi bırakın.</span>
-            <div style="display: flex; gap: 8px">
-              <input value="{{ email3b }}" onChange="{{ setEmail3b }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; background: #15233E; border: 1px solid rgba(171,212,236,0.3); border-radius: 8px; padding: 11px 13px; font-family: 'Outfit', sans-serif; font-size: 13px; color: #FFFFFF; outline: none">
-              <button onClick="{{ submit3b }}" style="border: 1px solid #A8842C; background: none; color: #FFFFFF; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; padding: 11px 14px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #A8842C">{{ btn3b }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; color: #ABD4EC; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk3b }}" onChange="{{ toggleKvkk3b }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum; başvurumun değerlendirilmesi amacıyla bilgilerimin işlenmesine onay veriyorum. *</span></label>
-            <sc-if value="{{ err3b }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 11.5px; color: #E8C77A; line-height: 1.5">{{ err3b }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
-      </div>
-      <div style="background: #223E68; border: 1px solid rgba(171,212,236,0.25); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 16px">
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #FFFFFF">Understanding AI Regulations</h3>
-        <p style="margin: 0; font-size: 14px; line-height: 1.6; color: #ABD4EC; flex: 1">Başta AB'nin AI Act düzenlemesi olmak üzere, dünyadaki yapay zeka regülasyonlarına bakış.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 18px">
-          <sc-if value="{{ sent3c }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 12.5px; line-height: 1.6; color: #FFFFFF; font-weight: 500">Bilgileriniz bize ulaştı. Değerlendirme sonrasında sizinle iletişime geçeceğiz.</span>
-          </sc-if>
-          <sc-if value="{{ notSent3c }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 12.5px; line-height: 1.5; color: #ABD4EC">Bu program sınırlı kontenjanla açılır. Değerlendirme için bilgilerinizi bırakın.</span>
-            <div style="display: flex; gap: 8px">
-              <input value="{{ email3c }}" onChange="{{ setEmail3c }}" type="email" placeholder="E-posta adresiniz" style="flex: 1; min-width: 0; background: #15233E; border: 1px solid rgba(171,212,236,0.3); border-radius: 8px; padding: 11px 13px; font-family: 'Outfit', sans-serif; font-size: 13px; color: #FFFFFF; outline: none">
-              <button onClick="{{ submit3c }}" style="border: 1px solid #A8842C; background: none; color: #FFFFFF; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; padding: 11px 14px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #A8842C">{{ btn3c }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 11.5px; color: #ABD4EC; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk3c }}" onChange="{{ toggleKvkk3c }}" style="margin-top: 2px"> <span><a href="/aydinlatma-metni" target="_blank" style="color: inherit">Aydınlatma Metni</a>'ni okudum; başvurumun değerlendirilmesi amacıyla bilgilerimin işlenmesine onay veriyorum. *</span></label>
-            <sc-if value="{{ err3c }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 11.5px; color: #E8C77A; line-height: 1.5">{{ err3c }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
+      <div class="ticket">
+        <div class="kind">Çevrimiçi katılım</div>
+        <div class="price">5.000 TL<small>KDV dahil</small></div>
+        <div class="cap">Sınırsız kontenjan · Zoom</div>
+        <ul>
+          <li>Tüm programı Zoom üzerinden canlı takip</li>
+          <li>Soru ve cevap bölümünde yazılı soru hakkı</li>
+          <li>Eğitim materyalleri, çevrimiçi</li>
+          <li>Eğitim kaydına 30 gün erişim</li>
+          <li>Sertifika numaralı katılım belgesi</li>
+        </ul>
+        <a class="btn btn-secondary" data-buy href="https://iyzi.link/AKuYKw" aria-disabled="true">Çevrimiçi bilet alın</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SAYFA SONU CTA -->
-<section data-screen-label="Egitim CTA" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center">
-    <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #15233E; max-width: 640px">Hangi eğitimin size uygun olduğundan emin değil misiniz?</h2>
-    <p style="margin: 0; font-size: 16px; color: #5C6B82">Skorunuzu keşfedin, size söyleyelim.</p>
-    <a href="/skorkart?start=1" style="background: #15233E; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 15px 32px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Skorunuzu Keşfedin</a>
+<section class="corp" id="kurumsal">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Ekibinizle gelin</div>
+      <h2>Kurumsal katılım</h2>
+      <p class="lede">Yapay zekayı kurumda tek kişi öğrendiğinde bilgi o kişide kalır; ekip öğrendiğinde kurumun çalışma biçimi değişir.</p>
+      <p>Aynı kurumdan birden fazla katılımcı için fatura karşılığı özel fiyat uyguluyoruz. Kısa formu doldurun, aynı iş günü içinde teklif ve fatura bilgileriyle dönelim.</p>
+    </div>
+    <form id="kurumsal-form" action="https://hook.eu1.make.com/9tjrypxa0pxp6swah8jlpl1skmsaaksp" method="post" novalidate>
+      <div class="frow">
+        <div class="field"><label for="kurum">Kurum adı</label><input id="kurum" name="kurum" required></div>
+        <div class="field"><label for="ad">Ad soyad</label><input id="ad" name="ad" required></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="eposta">E-posta</label><input id="eposta" name="eposta" type="email" required></div>
+        <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel"></div>
+      </div>
+      <div class="frow">
+        <div class="field"><label for="fiz">Fiziki bilet sayısı</label><input id="fiz" name="fiziki" type="number" min="0" value="0"></div>
+        <div class="field"><label for="cev">Çevrimiçi bilet sayısı</label><input id="cev" name="cevrimici" type="number" min="0" value="0"></div>
+      </div>
+      <div class="field"><label for="not">Not</label><textarea id="not" name="not"></textarea></div>
+      <label class="check consent-inline">
+        <input type="checkbox" id="c3" required>
+        <span>Kişisel verilerimin, talebimin değerlendirilmesi ve benimle iletişim kurulması amacıyla <a href="/aydinlatma-metni" target="_blank" rel="noopener">Aydınlatma Metni</a> kapsamında işlendiğini okudum ve anladım.</span>
+      </label>
+      <button class="btn btn-primary" type="submit" data-submit>Kurumsal teklif isteyin</button>
+      <p class="note" data-form-msg>Kurumsal kayıtlar, fatura düzenlenmesinin ardından havale ile tamamlanır. Kayıt teyidi ödeme sonrasında e-posta ile iletilir.</p>
+      <div class="form-done" data-form-done hidden>
+        <b>Talebiniz bize ulaştı.</b>
+        <p>Aynı iş günü içinde teklif ve fatura bilgileriyle burak@mypaira.com adresinden dönüş yapacağız.</p>
+      </div>
+    </form>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer style="background: #15233E">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 48px 32px 36px; display: flex; flex-direction: column; gap: 28px">
-    <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 40px">
-      <div style="display: flex; flex-direction: column; gap: 10px">
-        <div style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 16px; color: #FFFFFF">PAIRA</div>
-        <p style="margin: 0; font-size: 13px; color: #ABD4EC; max-width: 300px; line-height: 1.6">People-first AI Readiness and Adoption. İnsan öncelikli yapay zeka hazırlığı ve içselleştirme.</p>
+<section class="paper">
+  <div class="wrap">
+    <div class="eyebrow">Merak edilenler</div>
+    <h2>Sık sorulan sorular</h2>
+    <div class="faq">
+      <details><summary>Fatura alabilir miyim?</summary><p>Evet. Bireysel ve kurumsal tüm kayıtlar için OD Etüd ve Müşavirlik Ltd. Şti. tarafından fatura düzenlenir. Kurumsal fatura için ödeme adımında kurum bilgilerinizi girmeniz yeterlidir.</p></details>
+      <details><summary>Ödeme nasıl yapılır?</summary><p>Bireysel biletler iyzico üzerinden kredi ya da banka kartıyla alınır. Kurumsal ve çoklu biletlerde fatura karşılığı havale seçeneği sunulur.</p></details>
+      <details><summary>Katılamazsam ne olur?</summary><p>Fiziki katılım biletlerinde 16 Eylül 2026'ya kadar tam iade yapılır. Bu tarihten sonra bilet, aynı kurumdan başka bir kişiye devredilebilir ya da çevrimiçi katılıma dönüştürülür. Çevrimiçi katılım biletlerinde iptal ve iade yapılmaz; eğitim kaydına 30 gün erişim her durumda sağlanır.</p></details>
+      <details><summary>Eğitim kaydına erişebilecek miyim?</summary><p>Evet. Fiziki ve çevrimiçi tüm katılımcılar eğitim kaydına 30 gün boyunca erişir.</p></details>
+      <details><summary>Katılım belgesi verilecek mi?</summary><p>Evet. Her iki katılım biçimi için sertifika numaralı katılım belgesi düzenlenir.</p></details>
+      <details><summary>Çevrimiçi katılım hangi platformda?</summary><p>Zoom üzerinden. Katılım linki eğitimden iki gün önce e-posta ile iletilir.</p></details>
+      <details><summary>Mekana nasıl ulaşırım?</summary><p>Komünite Space, Vadistanbul'da Radisson Collection Otel girişinin hemen yanında yer alır. Metroyla ulaşım için M2 Yenikapı-Hacıosman hattında Seyrantepe istasyonunda inip havaray ile Vadistanbul'a geçebilirsiniz. Vadistanbul'da otopark bulunur; ilk 4 saat ücretsiz, sonrası ücretlidir.</p></details>
+      <details><summary>Fiziki koltuklar dolarsa?</summary><p>Fiziki katılım 50 kişiyle sınırlıdır. Koltuklar dolduğunda sayfada yalnızca çevrimiçi katılım seçeneği görünür.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="closing on-dark">
+  <svg class="rings" viewBox="0 0 800 800" aria-hidden="true">
+    <circle cx="400" cy="400" r="380"/><circle cx="400" cy="400" r="320"/><circle cx="400" cy="400" r="260"/>
+    <circle cx="400" cy="400" r="200"/><circle cx="400" cy="400" r="140"/><circle cx="400" cy="400" r="80"/>
+    <circle class="core" cx="400" cy="400" r="6"/>
+  </svg>
+  <div class="wrap">
+    <div class="eyebrow gold">26 Eylül 2026</div>
+    <h2>Pazartesi sabahı ne yapacağınızı bilerek ayrılın.</h2>
+    <p class="lede">Yapay zekayla ilgili ertelenen her hafta, bir başkasının önde başladığı hafta.</p>
+    <div class="seats"><span class="n" data-seats>50</span><span>fiziki koltuk kaldı<br><span class="bar"><i data-seatbar></i></span></span></div>
+    <div class="ctas">
+      <a class="btn btn-primary" data-fiziki-jump href="#katilim">Fiziki katılım <small>9.000 TL, KDV dahil</small></a>
+      <a class="btn btn-secondary" href="#katilim">Çevrimiçi katılım <small>5.000 TL, KDV dahil</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <div class="partners">
+          <img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-paira-dark">
+          <span class="x">iş birliğiyle</span>
+          <img src="/assets/stratri-logo.webp" alt="STRATRI, AI Governance &amp; Tech Policy" class="logo-stratri">
+        </div>
+        <p style="margin-top:14px;max-width:52ch">Legal in the Loop Master Class, PAIRA tarafından STRATRI iş birliğiyle düzenlenir.</p>
       </div>
-      <div style="display: flex; gap: 56px">
-        <div style="display: flex; flex-direction: column; gap: 10px">
-          <a href="/skorkart" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hazırlık Skoru</a>
-          <a href="/danismanlik" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Danışmanlık</a>
-          <a href="/egitimler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Eğitimler</a>
-          <a href="/etkinlikler" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Etkinlikler</a>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px">
-          <a href="/manifesto" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Manifesto</a>
-          <a href="/hakkimizda" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Hakkımızda</a>
-          <a href="/vibe-legal" style="font-size: 13px; color: #ABD4EC; text-decoration: none">VibeLegal</a>
-          <a href="/paira-notes" style="font-size: 13px; color: #ABD4EC; text-decoration: none">PAIRA Notes</a>
-          <a href="/iletisim" style="font-size: 13px; color: #ABD4EC; text-decoration: none">İletişim</a>
-        </div>
-        <div style="display: flex; flex-direction: column; gap: 10px">
-          <a href="/aydinlatma-metni" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Aydınlatma Metni</a>
-        </div>
+      <div>
+        OD Etüd ve Müşavirlik Ltd. Şti.<br>
+        Çavuşbaşı Cad. Üniversal Plaza No:36 K-4<br>
+        34810 Kavacık/İstanbul<br>
+        <a href="mailto:burak@mypaira.com">burak@mypaira.com</a>
       </div>
     </div>
-    <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 22px">
-      <span style="font-size: 12px; color: #5C6B82">© 2026 PAIRA · mypaira.com</span>
-      <div style="display: flex; gap: 18px"><!-- paira:langlink:start --><a href="/en/trainings" hreflang="en" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">English</a><!-- paira:langlink:end --><a href="/aydinlatma-metni" style="font-size: 12px; color: #5C6B82; text-decoration: none" style-hover="color: #ABD4EC">Aydınlatma Metni</a></div>
+    <hr class="hair">
+    <nav class="legal" aria-label="Yasal metinler">
+      <a href="/aydinlatma-metni">KVKK Aydınlatma Metni</a>
+      <a href="/aydinlatma-metni">Gizlilik Politikası</a>
+      <a href="/mesafeli-satis">Mesafeli Satış Sözleşmesi</a>
+      <a href="/on-bilgilendirme">Ön Bilgilendirme Formu</a>
+      <a href="/iade">İade ve Değişim Politikası</a>
+      <a href="/teslimat">Teslimat Politikası</a>
+    </nav>
+  </div>
+  <div class="payband">
+    <div class="wrap">
+      <img src="/assets/iyzico-band-white.svg" alt="iyzico ile öde: Mastercard, Visa, American Express, Troy" class="band">
     </div>
   </div>
 </footer>
-</x-dc>
-<script type="text/x-dc" data-dc-script>
-// Mirrors a subset of the server-side disposable-domain blocklist enforced by
-// POST /api/lead (which returns 422 {ok:false, reason:"disposable"} for these).
-// Checked client-side first so users get instant feedback with no round-trip.
-const DISPOSABLE_EMAIL_DOMAINS = ['mailinator.com', 'yopmail.com', 'guerrillamail.com', '10minutemail.com', 'temp-mail.org', 'tempmail.com', 'getnada.com', 'trashmail.com', 'maildrop.cc', 'sharklasers.com', 'throwawaymail.com', '1secmail.com', 'mailsac.com', 'dispostable.com', 'fakeinbox.com', 'tempmailo.com', 'moakt.com', 'emailondeck.com', 'discard.email'];
 
-// One waitlist form per program. `key` matches the {{ token }} suffixes in the
-// markup above; `segment` is what lands in D1 so a row says WHICH program was
-// requested. `news` marks the four cards whose consent copy covers the PAIRA
-// Notes bulletin — the three İleri Seviye cards only consent to evaluation.
-const PROGRAMS = [
-  { key: '1a', segment: 'Hukukçular için Yapay Zeka: Başlangıç', news: true },
-  { key: '1b', segment: 'Hukukçular için Yapay Zeka Temel Atölyesi', news: true },
-  { key: '2a', segment: 'Legal in the Loop', news: true },
-  { key: '2b', segment: 'AI for Lawyers', news: true },
-  { key: '3a', segment: 'AI Governance', news: false },
-  { key: '3b', segment: 'AI Leadership Roundtable', news: false },
-  { key: '3c', segment: 'Understanding AI Regulations', news: false }
-];
-
-function newClientId() {
-  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Math.random()).slice(2);
-}
-
-class Component extends DCLogic {
-  // Every form carries its OWN client_id. /api/lead upserts on client_id, so a
-  // shared id would make each new sign-up overwrite the previous program's row.
-  state = PROGRAMS.reduce(function (acc, p) {
-    acc['email' + p.key] = '';
-    acc['kvkk' + p.key] = false;
-    acc['sent' + p.key] = false;
-    acc['sending' + p.key] = false;
-    acc['err' + p.key] = '';
-    acc['cid' + p.key] = newClientId();
-    return acc;
-  }, {});
-
-  isValidEmailSyntax(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  }
-
-  isDisposableEmail(email) {
-    const at = email.lastIndexOf('@');
-    if (at < 0) return false;
-    const domain = email.slice(at + 1).toLowerCase();
-    return DISPOSABLE_EMAIL_DOMAINS.indexOf(domain) !== -1;
-  }
-
-  emailErrorMessage(reason) {
-    const messages = {
-      syntax: 'Geçerli bir e-posta adresi girin.',
-      disposable: 'Lütfen geçici/tek kullanımlık değil, gerçek bir e-posta adresi girin.',
-      undeliverable: 'Bu e-posta alan adına ulaşılamıyor. Adresi kontrol edin.',
-      required: 'E-posta adresi gerekli.',
-      network: 'Bağlantı hatası. Lütfen tekrar deneyin.'
-    };
-    return messages[reason] || messages.network;
-  }
-
-  postLead(body) {
-    try {
-      return fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body), keepalive: true })
-        .then(function(r){ return r.json().catch(function(){ return { ok: true }; }); })
-        .catch(function(){ return null; });
-    } catch (e) {
-      return Promise.resolve(null);
-    }
-  }
-
-  async submitProgram(p) {
-    const k = p.key;
-    if (this.state['sending' + k]) return;
-    const email = (this.state['email' + k] || '').trim();
-    const patch = {};
-    if (!email) { patch['err' + k] = this.emailErrorMessage('required'); this.setState(patch); return; }
-    if (!this.isValidEmailSyntax(email)) { patch['err' + k] = this.emailErrorMessage('syntax'); this.setState(patch); return; }
-    if (this.isDisposableEmail(email)) { patch['err' + k] = this.emailErrorMessage('disposable'); this.setState(patch); return; }
-    if (!this.state['kvkk' + k]) { patch['err' + k] = 'Devam etmek için aydınlatma metnini okuduğunuzu onaylamanız gereklidir.'; this.setState(patch); return; }
-
-    const start = {};
-    start['err' + k] = '';
-    start['sending' + k] = true;
-    this.setState(start);
-
-    const result = await this.postLead({
-      client_id: this.state['cid' + k], source: 'trainings', stage: 'complete', lang: 'tr',
-      email: email, segment: p.segment, kvkk_ok: true, news_ok: !!p.news,
-      meta: { path: location.pathname }
+<script>
+/* Koltuk sayacı: SATILAN_FIZIKI değerini güncelleyin (elle ya da iyzico webhook ile). */
+(function(){
+  var KAPASITE = 50;
+  var SATILAN_FIZIKI = 0;
+  var kalan = Math.max(0, KAPASITE - SATILAN_FIZIKI);
+  document.querySelectorAll('[data-seats]').forEach(function(el){ el.textContent = kalan; });
+  document.querySelectorAll('[data-seatbar]').forEach(function(el){ el.style.width = (SATILAN_FIZIKI / KAPASITE * 100) + '%'; });
+  var c1=document.getElementById('c1'), c2=document.getElementById('c2'), hint=document.querySelector('[data-hint]');
+  var buys=document.querySelectorAll('[data-buy]');
+  function gate(){
+    var ok=c1.checked && c2.checked;
+    buys.forEach(function(a){
+      if (a.dataset.full) return;
+      a.setAttribute('aria-disabled', ok ? 'false' : 'true');
+      if (ok) a.setAttribute('href', a.dataset.href); else { a.dataset.href = a.dataset.href || a.getAttribute('href'); a.removeAttribute('href'); }
     });
-
-    const done = {};
-    done['sending' + k] = false;
-    if (result && result.ok !== false) {
-      done['sent' + k] = true;
-    } else if (result && result.ok === false) {
-      done['err' + k] = this.emailErrorMessage(result.reason);
-      // Burned client_id could collide on retry; issue a fresh one.
-      done['cid' + k] = newClientId();
-    } else {
-      done['err' + k] = this.emailErrorMessage('network');
-    }
-    this.setState(done);
+    hint.classList.remove('warn');
   }
-
-  renderVals() {
-    const st = this.state;
-    const vals = {};
-    PROGRAMS.forEach((p) => {
-      const k = p.key;
-      vals['email' + k] = st['email' + k];
-      vals['setEmail' + k] = (e) => {
-        const patch = {};
-        patch['email' + k] = e.target.value;
-        patch['err' + k] = '';
-        this.setState(patch);
-      };
-      vals['kvkk' + k] = st['kvkk' + k];
-      vals['toggleKvkk' + k] = () => {
-        const patch = {};
-        patch['kvkk' + k] = !this.state['kvkk' + k];
-        this.setState(patch);
-      };
-      vals['sent' + k] = st['sent' + k];
-      vals['notSent' + k] = !st['sent' + k];
-      vals['err' + k] = st['err' + k];
-      vals['btn' + k] = st['sending' + k] ? 'Gönderiliyor…' : 'Gönder';
-      vals['submit' + k] = () => this.submitProgram(p);
+  buys.forEach(function(a){
+    a.dataset.href=a.getAttribute('href');
+    a.addEventListener('click',function(e){
+      if (a.getAttribute('aria-disabled')==='true'){ e.preventDefault(); hint.classList.add('warn'); hint.textContent='Devam etmek için iki onay kutusunu işaretleyin.'; document.getElementById('onay').scrollIntoView({behavior:'smooth',block:'center'}); }
     });
-    return vals;
+  });
+  c1.addEventListener('change',gate); c2.addEventListener('change',gate); gate();
+
+  /* Kurumsal form: sayfadan ayrılmadan gönderim */
+  var form=document.getElementById('kurumsal-form');
+  if(form){
+    var msg=form.querySelector('[data-form-msg]'), done=form.querySelector('[data-form-done]'), btn=form.querySelector('[data-submit]');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var kurum=form.kurum.value.trim(), ad=form.ad.value.trim(), ep=form.eposta.value.trim();
+      if(!kurum||!ad||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(ep)){ msg.classList.add('err'); msg.textContent='Lütfen kurum adı, ad soyad ve geçerli bir e-posta adresi girin.'; return; }
+      if(!document.getElementById('c3').checked){ msg.classList.add('err'); msg.textContent='Devam etmek için Aydınlatma Metni kutusunu işaretleyin.'; return; }
+      btn.disabled=true; btn.textContent='Gönderiliyor…';
+      var body=new URLSearchParams(new FormData(form)).toString();
+      fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
+        .then(function(){ form.querySelectorAll('.frow,.field,.consent-inline').forEach(function(el){el.hidden=true;}); btn.hidden=true; msg.hidden=true; done.hidden=false; })
+        .catch(function(){ btn.disabled=false; btn.textContent='Kurumsal teklif isteyin'; msg.classList.add('err'); msg.textContent='Gönderim başarısız oldu. Lütfen tekrar deneyin ya da burak@mypaira.com adresine yazın.'; });
+    });
   }
-}
+  if (kalan === 0) {
+    document.querySelectorAll('[data-fiziki],[data-fiziki-jump]').forEach(function(a){
+      a.dataset.full='1';
+      a.setAttribute('aria-disabled','true');
+      a.removeAttribute('href');
+      a.innerHTML = 'Fiziki koltuklar doldu';
+    });
+  }
+})();
 </script>
 </body>
 </html>

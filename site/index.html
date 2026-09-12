@@ -147,6 +147,18 @@ img,video{max-width:100%;height:auto}
 </helmet>
 
 <!-- STICKY ÜST BLOK: DUYURU BANDI + HEADER -->
+<!-- DUYURU BARI · MASTER CLASS -->
+<sc-if value="{{ barVisible }}" hint-placeholder-val="{{ true }}">
+<div style="background: #15233E; border-bottom: 1px solid rgba(171,212,236,0.2)">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 10px 56px; display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; position: relative">
+    <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #A8842C">26 Eylül 2026</span>
+    <span style="font-size: 14px; color: #FFFFFF">Hukukçular için "Legal in the Loop Master Class" eğitimini kaçırma!</span>
+    <a href="/egitimler" style="background: #FFFFFF; color: #15233E; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px; border-radius: 999px; text-decoration: none; white-space: nowrap" style-hover="background: #E9F2F9; color: #15233E">Hemen kayıt ol</a>
+    <button onClick="{{ closeBar }}" aria-label="Duyuruyu kapat" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: transparent; border: 0; color: #ABD4EC; font-size: 18px; line-height: 1; cursor: pointer; padding: 4px">×</button>
+  </div>
+</div>
+</sc-if>
+
 <div style="position: sticky; top: 0; z-index: 50">
   <header style="background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
     <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
@@ -303,12 +315,12 @@ img,video{max-width:100%;height:auto}
     <div style="max-width: 820px; margin: 0 auto; background: #E9F2F9; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px">
       <div style="display: flex; flex-direction: column; gap: 8px">
         <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #6B5418; border: 1px solid #A8842C; border-radius: 999px; padding: 4px 12px">Ücretsiz</span>
+          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #6B5418; border: 1px solid #A8842C; border-radius: 999px; padding: 4px 12px">26 Eylül 2026</span>
         </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">Yapay zeka yolculuğuna ücretsiz başlayın</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #5C6B82; max-width: 440px">Hukukçular için temel yapay zeka okuryazarlığı: kısa formatlı, hemen erişilebilir bir başlangıç.</p>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">Legal in the Loop Master Class</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.5; color: #5C6B82; max-width: 440px">Hukukçular için yapay zeka yönetişimi, süreç kurulumu ve verimlilik üzerine tam günlük masterclass. Vadistanbul'da yüz yüze ya da çevrimiçi.</p>
       </div>
-      <a href="/egitimler#kayit-1a" style="flex-shrink: 0; border: 1px solid #15233E; color: #15233E; font-size: 15px; font-weight: 500; padding: 13px 26px; border-radius: 8px; text-decoration: none" style-hover="background: #15233E; color: #FFFFFF">Hemen erişin</a>
+      <a href="/egitimler" style="flex-shrink: 0; border: 1px solid #15233E; color: #15233E; font-size: 15px; font-weight: 500; padding: 13px 26px; border-radius: 8px; text-decoration: none" style-hover="background: #15233E; color: #FFFFFF">Programı görün</a>
     </div>
   </div>
 </section>
@@ -380,8 +392,15 @@ img,video{max-width:100%;height:auto}
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px">
           <a href="/aydinlatma-metni" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Aydınlatma Metni</a>
+          <a href="/on-bilgilendirme" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Ön Bilgilendirme Formu</a>
+          <a href="/mesafeli-satis" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Mesafeli Satış Sözleşmesi</a>
+          <a href="/iade" style="font-size: 13px; color: #ABD4EC; text-decoration: none">İade ve Değişim Politikası</a>
+          <a href="/teslimat" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Teslimat Politikası</a>
         </div>
       </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 22px">
+      <img src="/assets/iyzico-band-white.svg" alt="iyzico ile öde: Mastercard, Visa, American Express, Troy" style="height: 26px; width: auto; opacity: 0.9">
     </div>
     <div style="display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(171,212,236,0.2); padding-top: 24px">
       <span style="font-size: 12px; color: #5C6B82">© 2026 PAIRA · mypaira.com</span>
