@@ -18,3 +18,5 @@
   X-Content-Type-Options: nosniff
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
+/mail/legal-in-the-loop/*.ics
+  Content-Type: text/calendar; charset=utf-8
