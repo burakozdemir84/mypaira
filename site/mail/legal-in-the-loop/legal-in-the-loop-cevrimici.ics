@@ -1,0 +1,22 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PAIRA//Legal in the Loop//TR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:legal-in-the-loop-20260926-cevrimici@mypaira.com
+DTSTAMP:20260921T060000Z
+DTSTART:20260926T070000Z
+DTEND:20260926T130000Z
+SUMMARY:Legal in the Loop Master Class (çevrimiçi)
+LOCATION:Zoom (bağlantı 24 Eylül’de e-postayla iletilecek)
+DESCRIPTION:Legal in the Loop Master Class\, PAIRA ve STRATRI iş birliği
+ yle.\nZoom bağlantısı 24 Eylül’de e-postayla iletilecek.
+URL:https://mypaira.com/egitimler
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Legal in the Loop yarın
+END:VALARM
+END:VEVENT
+END:VCALENDAR
