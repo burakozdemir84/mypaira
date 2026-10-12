@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA</title>
-<meta name="description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
+<title>Legal in the Loop: AI Agents Deep Dive · 27 Ekim 2026 · PAIRA</title>
+<meta name="description" content="Hukukçular için yapay zeka ajanları, süreç yönetimi ve süreç otomasyonu üzerine iki saatlik çevrimiçi atölye. 27 Ekim 2026, 20:00 ila 22:00, Zoom.">
 <!-- paira:i18n:start -->
 <link rel="canonical" href="https://www.mypaira.com/egitimler">
 <link rel="alternate" hreflang="tr" href="https://www.mypaira.com/egitimler">
@@ -13,14 +13,14 @@
 <!-- paira:i18n:end -->
 <!-- paira:seo:start -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA">
-<meta property="og:description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
+<meta property="og:title" content="Legal in the Loop: AI Agents Deep Dive · 27 Ekim 2026 · PAIRA">
+<meta property="og:description" content="Hukukçular için yapay zeka ajanları, süreç yönetimi ve süreç otomasyonu üzerine iki saatlik çevrimiçi atölye. 27 Ekim 2026, 20:00 ila 22:00, Zoom.">
 <meta property="og:url" content="https://www.mypaira.com/egitimler">
 <meta property="og:site_name" content="PAIRA">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Legal in the Loop Master Class · 26 Eylül 2026 · PAIRA">
-<meta name="twitter:description" content="Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass. 26 Eylül 2026, Vadistanbul ve çevrimiçi.">
+<meta name="twitter:title" content="Legal in the Loop: AI Agents Deep Dive · 27 Ekim 2026 · PAIRA">
+<meta name="twitter:description" content="Hukukçular için yapay zeka ajanları, süreç yönetimi ve süreç otomasyonu üzerine iki saatlik çevrimiçi atölye. 27 Ekim 2026, 20:00 ila 22:00, Zoom.">
 <!-- paira:seo:end -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,35 +70,34 @@ section{padding:clamp(72px,9vw,120px) 0}
 /* nav */
 .nav{position:sticky;top:0;z-index:20;background:rgba(21,35,62,.92);backdrop-filter:blur(8px);color:var(--white)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
-.brand{font-family:var(--sans);font-weight:600;letter-spacing:.22em;color:var(--white);font-size:15px}
+.brand{font-family:var(--sans);font-weight:600;letter-spacing:.22em;color:var(--white);font-size:15px;display:inline-flex;align-items:center}
 .brand em{font-family:var(--serif);font-style:italic;font-weight:500;letter-spacing:0;font-size:19px;margin-left:8px;color:var(--sky)}
+.logo-nav{height:22px;width:auto;display:block}
 .nav-cta{font-size:14px;font-weight:500;color:var(--white);border:1px solid rgba(255,255,255,.5);padding:9px 16px;border-radius:8px}
 .nav-cta:hover{background:rgba(255,255,255,.1);text-decoration:none}
 
-.logo-nav{height:22px;width:auto;display:block}
-.brand{display:inline-flex;align-items:center}
-.trainer .photo{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;display:block;margin-bottom:20px}
-.partners{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
-.partners .x{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--mute)}
-.logo-paira-dark{height:22px;width:auto;background:var(--navy);padding:10px 14px;border-radius:8px;box-sizing:content-box}
-.logo-stratri{height:44px;width:auto}
 /* hero */
 .hero{background:var(--navy);color:var(--white);position:relative;overflow:hidden;padding:clamp(80px,11vw,140px) 0 clamp(64px,8vw,96px)}
 .rings{position:absolute;right:-8vw;top:-18vw;width:min(70vw,780px);height:min(70vw,780px);pointer-events:none}
 .rings circle{fill:none;stroke:var(--sky);stroke-opacity:.14;stroke-width:1}
 .rings .core{fill:var(--gold);stroke:none}
 .hero .wrap{position:relative}
-.hero h1{color:var(--white);font-size:clamp(46px,7vw,84px);max-width:12ch;margin-bottom:22px}
+.hero h1{color:var(--white);font-size:clamp(46px,7vw,84px);max-width:17ch;margin-bottom:22px}
 .hero h1 span{display:block;font-style:italic;font-weight:500;color:var(--sky)}
-.hero .lede{color:var(--sky);max-width:56ch;font-size:clamp(18px,2vw,21px);margin-bottom:38px}
+.hero .lede{color:var(--sky);max-width:58ch;font-size:clamp(18px,2vw,21px);margin-bottom:38px}
 .facts{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid rgba(171,212,236,.25);border-bottom:1px solid rgba(171,212,236,.25);margin-bottom:40px}
 .fact{padding:18px 32px 18px 0;margin-right:32px;border-right:1px solid rgba(171,212,236,.25)}
 .fact:last-child{border-right:0}
 .fact b{display:block;font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.1;color:var(--white)}
 .fact span{font-size:13px;color:var(--sky);letter-spacing:.04em}
-.seats{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--sky);margin-bottom:26px}
+.buyrow{display:flex;flex-wrap:wrap;align-items:center;gap:28px 40px;margin-bottom:22px}
+.pricetag{display:flex;flex-direction:column;gap:4px}
+.pricetag .big{font-family:var(--serif);font-weight:500;font-size:44px;line-height:1;color:var(--white)}
+.pricetag .big small{font-size:26px;color:var(--sky);margin-left:4px}
+.pricetag .incl{font-size:13px;color:var(--sky);letter-spacing:.02em}
+.seats{display:inline-flex;align-items:center;gap:12px;font-size:14px;color:var(--sky)}
 .seats .n{font-family:var(--serif);font-size:30px;color:var(--white);line-height:1}
-.seats .bar{width:140px;height:3px;background:rgba(171,212,236,.25);border-radius:2px;overflow:hidden}
+.seats .bar{width:140px;height:3px;background:rgba(171,212,236,.25);border-radius:2px;overflow:hidden;display:block;margin-top:6px}
 .seats .bar i{display:block;height:100%;background:var(--gold);width:0}
 .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
 .micro{font-size:13px;color:var(--sky);opacity:.85;max-width:70ch}
@@ -108,6 +107,32 @@ section{padding:clamp(72px,9vw,120px) 0}
 .intro .wrap{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(32px,6vw,96px);align-items:start}
 .intro p+p{margin-top:18px}
 .intro .pull{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,34px);line-height:1.25;color:var(--navy);border-left:2px solid var(--gold);padding-left:22px;margin-top:8px}
+
+/* halves */
+.halves{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:56px}
+.half{border-radius:14px;padding:34px 32px;border:1px solid var(--line);background:var(--white)}
+.half.dark{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.half .when{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:12px}
+.half.dark .when{color:var(--sky)}
+.half h3{font-family:var(--serif);font-size:32px;font-weight:500;margin-bottom:10px}
+.half.dark h3{color:var(--white)}
+.half p{font-size:16px;color:var(--mute)}
+.half.dark p{color:var(--sky)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tools span{font-size:13px;font-weight:500;color:var(--white);border:1px solid rgba(171,212,236,.4);border-radius:999px;padding:5px 12px}
+
+/* program */
+.program{list-style:none;border-top:1px solid var(--line)}
+.program li{display:grid;grid-template-columns:88px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
+.program .t{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--navy);line-height:1}
+.program .h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:8px}
+.program .h h3{font-size:21px}
+.program .h .tag{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.program .h .dur{font-size:13px;color:var(--gold);font-weight:500}
+.program p{font-size:15.5px;color:var(--ink);max-width:70ch}
+.program li.split{padding:14px 0;border-bottom:1px solid var(--line)}
+.program li.split .t{font-size:16px;color:var(--mute)}
+.program li.split h3{font-size:15px;font-weight:500;color:var(--mute);letter-spacing:.04em}
 
 /* audience */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -123,53 +148,48 @@ section{padding:clamp(72px,9vw,120px) 0}
 .outlist b{display:block;font-weight:500;color:var(--navy);margin-bottom:6px;font-size:17px}
 .outlist span{font-size:15px;color:var(--mute);display:block}
 
-/* program */
-.program{list-style:none;border-top:1px solid var(--line)}
-.program li{display:grid;grid-template-columns:88px 1fr;gap:28px;padding:26px 0;border-bottom:1px solid var(--line)}
-.program .t{font-family:var(--serif);font-size:26px;font-weight:500;color:var(--navy);line-height:1}
-.program .h{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;margin-bottom:8px}
-.program .h h3{font-size:21px}
-.program .h .who{font-size:13px;color:var(--mute);letter-spacing:.04em}
-.program .h .dur{font-size:13px;color:var(--gold);font-weight:500}
-.program p{font-size:15.5px;color:var(--ink);max-width:70ch}
-.program li.break{background:var(--paper);padding-left:0}
-.program li.break .t{color:var(--mute);font-size:20px;padding-left:0}
-.program li.break .h h3{font-weight:400;color:var(--mute);font-size:16px}
+/* prep */
+.prep{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:26px 24px}
+.step .no{font-family:var(--serif);font-size:30px;color:var(--gold);line-height:1;margin-bottom:12px}
+.step h3{font-size:18px;margin-bottom:8px}
+.step p{font-size:15px;color:var(--mute)}
+.prep-note{margin-top:28px;font-size:15px;color:var(--mute);max-width:78ch}
 
-/* trainers */
-.trainers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-.trainer{padding-top:0}
-.trainer h3{font-family:var(--serif);font-size:28px;font-weight:500;margin-bottom:2px}
-.trainer .org{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
-.trainer p{font-size:15.5px;color:var(--mute);margin-bottom:14px}
-.trainer a{font-size:14px;font-weight:500}
+/* trainer */
+.solo{display:grid;grid-template-columns:320px 1fr;gap:clamp(32px,5vw,72px);align-items:center}
+.solo img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;display:block}
+.solo h3{font-family:var(--serif);font-size:36px;font-weight:500;margin-bottom:4px}
+.solo .org{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px}
+.solo p{font-size:17px;color:var(--mute);margin-bottom:16px}
+.solo a{font-size:15px;font-weight:500}
 
-/* tickets */
-.tickets{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.ticket{border:1px solid var(--line);border-radius:14px;padding:36px 34px;background:var(--white);display:flex;flex-direction:column}
-.ticket.featured{background:var(--navy);color:var(--white);border-color:var(--navy)}
-.ticket .kind{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--accent);margin-bottom:14px}
-.ticket.featured .kind{color:var(--sky)}
-.ticket .price{font-family:var(--serif);font-size:44px;font-weight:500;color:var(--navy);line-height:1;margin-bottom:4px}
-.ticket.featured .price{color:var(--white)}
-.ticket .price small{font-family:var(--sans);font-size:14px;font-weight:300;margin-left:6px;color:var(--mute)}
-.ticket.featured .price small{color:var(--sky)}
-.ticket .cap{font-size:14px;color:var(--mute);margin-bottom:26px}
-.ticket.featured .cap{color:var(--sky)}
+/* ticket */
+.ticketwrap{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;align-items:stretch}
+.ticket{border-radius:14px;padding:38px 36px;background:var(--navy);color:var(--white);display:flex;flex-direction:column}
+.ticket .kind{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--sky);margin-bottom:16px}
+.ticket .price{font-family:var(--serif);font-size:56px;font-weight:500;color:var(--white);line-height:1}
+.ticket .price small{font-size:30px;color:var(--sky);margin-left:4px}
+.ticket .incl{font-size:14px;color:var(--sky);margin:8px 0 6px}
+.ticket .cap{font-size:14px;color:var(--sky);margin-bottom:26px}
+.ticket .cap b{color:var(--white);font-weight:500}
 .ticket ul{list-style:none;margin-bottom:32px;flex:1}
-.ticket li{padding:9px 0;border-top:1px solid var(--line);font-size:15.5px}
-.ticket.featured li{border-color:rgba(171,212,236,.2)}
+.ticket li{padding:10px 0;border-top:1px solid rgba(171,212,236,.2);font-size:15.5px}
 .ticket .btn{align-self:flex-start}
+.side{display:flex;flex-direction:column;gap:24px}
 
 /* consent */
-.consent{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 26px;margin-bottom:24px}
+.consent{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 26px}
+.consent .ttl{font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--navy);margin-bottom:6px}
 .check{display:flex;gap:14px;align-items:flex-start;font-size:15px;color:var(--ink);cursor:pointer;padding:8px 0}
 .check+.check{border-top:1px solid var(--line)}
 .check input{margin-top:4px;width:18px;height:18px;flex-shrink:0;accent-color:var(--navy)}
 .consent-hint{font-size:13px;color:var(--mute);margin-top:10px}
 .consent-hint.warn{color:var(--goldink)}
-.btn[aria-disabled="true"][data-buy]{background:var(--line);color:var(--mute);border-color:transparent;cursor:not-allowed;pointer-events:auto}
-.ticket.featured .btn[aria-disabled="true"][data-buy]{background:rgba(255,255,255,.18);color:var(--sky)}
+.btn[aria-disabled="true"][data-buy]{background:rgba(255,255,255,.18);color:var(--sky);border-color:transparent;cursor:not-allowed;pointer-events:auto}
+.mini{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:22px 26px;font-size:15px;color:var(--mute)}
+.mini b{display:block;color:var(--navy);font-weight:500;margin-bottom:6px}
+
 /* corporate */
 .corp .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,96px);align-items:start}
 .corp p+p{margin-top:16px}
@@ -182,12 +202,12 @@ form{background:var(--white);border:1px solid var(--line);border-radius:14px;pad
 .field textarea{min-height:90px;resize:vertical}
 form .btn{width:100%;justify-content:center;margin-top:6px}
 form .note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
-
 .consent-inline{border:0;padding:4px 0 14px;font-size:14px}
 .form-done{background:var(--skysoft);border-radius:10px;padding:18px 20px;margin-top:6px;font-size:15px}
 .form-done b{display:block;font-family:var(--serif);font-size:22px;font-weight:500;color:var(--navy);margin-bottom:6px}
 .form-done p{color:var(--ink);font-size:15px}
 .note.err{color:var(--goldink)}
+
 /* faq */
 .faq{max-width:760px}
 .faq details{border-top:1px solid var(--line)}
@@ -195,46 +215,69 @@ form .note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
 .faq summary{list-style:none;cursor:pointer;padding:20px 0;font-weight:500;color:var(--navy);font-size:17px;display:flex;justify-content:space-between;gap:20px}
 .faq summary::-webkit-details-marker{display:none}
 .faq summary::after{content:"+";font-family:var(--serif);font-size:26px;line-height:1;color:var(--gold);flex-shrink:0}
-.faq details[open] summary::after{content:"–"}
+.faq details[open] summary::after{content:"\2013"}
 .faq details p{padding:0 0 22px;font-size:15.5px;color:var(--mute);max-width:64ch}
 
+/* past edition */
+.past{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
+.past .rings{left:auto;right:-20vw;top:auto;bottom:-34vw;opacity:.8}
+.past .wrap{position:relative}
+.past h2{color:var(--white);max-width:20ch}
+.past .lede{color:var(--sky);max-width:60ch}
+.pastfacts{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 48px}
+.pastfacts span{font-size:13px;font-weight:500;color:var(--white);border:1px solid rgba(171,212,236,.35);border-radius:999px;padding:7px 14px}
+.pastfacts span b{font-family:var(--serif);font-size:18px;font-weight:500;margin-right:4px}
+.reels{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:22px}
+.reel{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--navy2);border:1px solid rgba(171,212,236,.18)}
+.reel video{width:100%;height:100%;object-fit:cover;display:block;background:var(--navy2)}
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-auto-rows:auto;gap:18px}
+.gallery figure{margin:0;border-radius:14px;overflow:hidden;background:var(--navy2);border:1px solid rgba(171,212,236,.18);aspect-ratio:16/9}
+.gallery figure.lead{grid-row:span 2;aspect-ratio:auto}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.slot{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--sky);font-size:13px;letter-spacing:.08em;text-transform:uppercase;background:radial-gradient(circle at 50% 50%,rgba(171,212,236,.10) 0,rgba(171,212,236,.10) 18%,transparent 19%,transparent 32%,rgba(171,212,236,.07) 33%,transparent 34%,transparent 52%,rgba(171,212,236,.05) 53%,transparent 54%),var(--navy2)}
+.slot i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:block}
+.pastnote{margin-top:28px;font-size:14px;color:var(--sky);opacity:.85}
+
 /* closing */
-.closing{background:var(--navy);color:var(--white);position:relative;overflow:hidden}
-.closing .rings{left:-14vw;right:auto;bottom:-30vw;top:auto}
-.closing .wrap{position:relative;text-align:center;display:flex;flex-direction:column;align-items:center}
-.closing h2{color:var(--white);font-size:clamp(34px,5vw,56px);max-width:18ch;margin:0 auto 20px}
-.closing .lede{color:var(--sky);margin:0 auto 30px;font-size:18px}
-.closing .seats{justify-content:center}
+.closing{background:var(--paper);text-align:center}
+.closing .wrap{display:flex;flex-direction:column;align-items:center}
+.closing h2{font-size:clamp(34px,5vw,52px);max-width:20ch;margin:0 auto 20px}
+.closing .lede{color:var(--mute);margin:0 auto 30px;font-size:18px}
 .closing .ctas{justify-content:center}
 
 /* footer */
 footer{padding:48px 0 0;font-size:13px;color:var(--mute)}
 footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:24px;margin-bottom:28px}
-footer .brand{color:var(--navy)}
-footer .brand em{color:var(--accent)}
+.logo-paira-dark{height:22px;width:auto;background:var(--navy);padding:10px 14px;border-radius:8px;box-sizing:content-box}
 footer .legal{display:flex;flex-wrap:wrap;gap:8px 22px;margin:18px 0 36px}
 footer .legal a{color:var(--mute)}
-footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .payband{background:var(--navy);padding:22px 0}
 .payband .band{height:28px;width:auto;max-width:100%;display:block}
-.paylogo{display:inline-flex;align-items:center;justify-content:center;height:30px;padding:0 12px;border:1px solid var(--line);border-radius:6px;font-weight:600;font-size:11px;letter-spacing:.08em;color:var(--navy)}
 
 @media (max-width:900px){
   .intro .wrap,.outcomes .wrap,.corp .wrap{grid-template-columns:1fr}
-  .grid3,.trainers{grid-template-columns:1fr}
+  .grid3,.halves,.ticketwrap{grid-template-columns:1fr}
+  .prep{grid-template-columns:1fr 1fr}
   .outlist{grid-template-columns:1fr}
-  .tickets{grid-template-columns:1fr}
+  .solo{grid-template-columns:1fr}
+  .solo img{max-width:320px}
   .program li{grid-template-columns:64px 1fr;gap:18px}
   .program .t{font-size:21px}
   .frow{grid-template-columns:1fr}
   .fact{padding-right:20px;margin-right:20px}
+  .reels{grid-template-columns:repeat(4,minmax(200px,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .reel{scroll-snap-align:start}
+  .gallery{grid-template-columns:1fr}
+  .gallery figure.lead{grid-row:auto;aspect-ratio:16/9}
 }
 @media (max-width:560px){
   .facts{flex-direction:column}
   .fact{border-right:0;border-bottom:1px solid rgba(171,212,236,.25);padding:14px 0;margin:0}
   .fact:last-child{border-bottom:0}
+  .prep{grid-template-columns:1fr}
   .ctas .btn{width:100%;justify-content:center}
   .nav-cta{display:none}
+  .reels{grid-template-columns:repeat(4,72%)}
 }
 </style>
 </head>
@@ -243,7 +286,7 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 <nav class="nav" aria-label="Üst menü">
   <div class="wrap">
     <a class="brand" href="/"><img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-nav"><em>Legal in the Loop</em></a>
-    <a class="nav-cta" href="#katilim">Bilet alın</a>
+    <a class="nav-cta" href="#katilim">Kayıt olun</a>
   </div>
 </nav>
 
@@ -254,41 +297,94 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     <circle class="core" cx="400" cy="400" r="6"/>
   </svg>
   <div class="wrap">
-    <div class="eyebrow gold">Master Class · 26 Eylül 2026 · İstanbul ve çevrimiçi</div>
-    <h1>Legal in the Loop <span>Master Class</span></h1>
-    <p class="lede">Hukukçular için yapay zeka yönetişimi, yapay zeka süreçlerinin kurulumu ve verimlilik üzerine tam günlük bir masterclass.</p>
+    <div class="eyebrow gold">Çevrimiçi atölye · 27 Ekim 2026 · 20:00 ila 22:00</div>
+    <h1>Legal in the Loop <span>AI Agents Deep Dive</span></h1>
+    <p class="lede">Hukukçular için iki saatlik çevrimiçi bir atölye. İlk saat yapay zeka ajanlarının ve süreç otomasyonunun mantığını birlikte kuruyoruz. İkinci saat Make, Claude ve ChatGPT üzerinde kendi ajanlarınızı canlı olarak kuruyorsunuz.</p>
 
     <div class="facts">
-      <div class="fact"><b>26 Eylül 2026</b><span>Cumartesi, 10:00 ila 16:00</span></div>
-      <div class="fact"><b>Vadistanbul</b><span>Komünite Space</span></div>
-      <div class="fact"><b>50 koltuk</b><span>Fiziki katılım</span></div>
-      <div class="fact"><b>Sınırsız</b><span>Çevrimiçi katılım, Zoom</span></div>
+      <div class="fact"><b>27 Ekim 2026</b><span>Salı, 20:00 ila 22:00 (TSİ)</span></div>
+      <div class="fact"><b>2 saat</b><span>1 saat teori, 1 saat atölye</span></div>
+      <div class="fact"><b>Çevrimiçi</b><span>Zoom üzerinden canlı</span></div>
+      <div class="fact"><b>30 kişi</b><span>Sınırlı kontenjan</span></div>
     </div>
 
-    <div class="seats" aria-live="polite">
-      <span class="n" data-seats>50</span>
-      <span>fiziki koltuk kaldı<br><span class="bar"><i data-seatbar></i></span></span>
+    <div class="buyrow">
+      <div class="pricetag">
+        <span class="big">2.000 TL<small>+ KDV</small></span>
+        <span class="incl">2.400 TL (KDV dahil)</span>
+      </div>
+      <div class="seats" aria-live="polite">
+        <span class="n" data-seats>30</span>
+        <span>kişilik kontenjan kaldı<span class="bar"><i data-seatbar></i></span></span>
+      </div>
     </div>
 
     <div class="ctas">
-      <a class="btn btn-primary" data-fiziki-jump href="#katilim">Fiziki katılım <small>9.000 TL, KDV dahil</small></a>
-      <a class="btn btn-secondary" href="#katilim">Çevrimiçi katılım <small>5.000 TL, KDV dahil</small></a>
+      <a class="btn btn-primary" data-jump href="#katilim">Kayıt olun</a>
+      <a class="btn btn-secondary" href="#program">Programı görün</a>
     </div>
-    <p class="micro">Fiyatlara KDV dahildir. Ödeme iyzico güvencesiyle alınır. Kurumsal ekipler için birden fazla bilet: <a href="#kurumsal">bize yazın</a>.</p>
+    <p class="micro">Ödeme iyzico güvencesiyle alınır. Kurumsal ekipler için birden fazla kayıt: <a href="#kurumsal">bize yazın</a>.</p>
   </div>
 </header>
 
 <section class="intro">
   <div class="wrap">
     <div>
-      <div class="eyebrow">Bu gün neye yarar</div>
-      <h2>Aracı tanıyın, sınırı çizin, süreci kurun.</h2>
+      <div class="eyebrow">Bu atölye neye yarar</div>
+      <h2>Bir iş akışı seçin, ajanını kurun, son kararı elinizde tutun.</h2>
     </div>
     <div>
-      <p class="lede">Yapay zeka hukuk pratiğine girdi ve aradaki mesafe her ay biraz daha açılıyor: bir tarafta aracı kendi çalışma biçimine göre kurmuş ekipler, diğer tarafta hâlâ nereden başlayacağını arayanlar. Bu masterclass, sizi ilk tarafa taşımak için tasarlandı.</p>
-      <p>Sabah aracı tanır, sorumluluğun ve sınırın nerede başladığını görür, denetçi karşısında hangi belgeyi uzatacağınızı çalışırsınız. Öğleden sonra kendi süreçlerinizden birini birlikte tasarlar ve canlı olarak kurarsınız. Günün sonunda araç ekosisteminin haritasını ve verim sağlayan kullanım alışkanlıklarını alırsınız.</p>
-      <p class="pull">Pazartesi sabahı kime, hangi soruyla gideceğinizi bilerek ayrılırsınız.</p>
+      <p class="lede">Hukuk ekiplerinin çoğunda yapay zeka araçları zaten masada. Asıl kazanç, bu araçlar tekrar eden bir iş akışının içine yerleştirildiğinde ortaya çıkıyor: talep gelir, ajan sınıflandırır, taslağı hazırlar, son kararı avukat verir.</p>
+      <p>İlk saatte bir ajanın hangi parçalardan oluştuğunu, bir hukuki sürecin hangi adımlarının ajana devredilebileceğini ve insan onayının nereye yerleşeceğini birlikte görüyoruz. İkinci saatte aynı mantığı üç farklı uygulamada, kendi bilgisayarınızda kuruyorsunuz.</p>
+      <p class="pull">Ertesi sabah, kendi hesabınızda kurulu ilk ajanınızla güne başlarsınız.</p>
     </div>
+  </div>
+</section>
+
+<section class="paper" id="program">
+  <div class="wrap">
+    <div class="eyebrow">Program</div>
+    <h2>İki saat, iki yarı</h2>
+    <div class="halves">
+      <div class="half">
+        <div class="when">20:00 ila 21:00 · Teori</div>
+        <h3>Mantığı kurmak</h3>
+        <p>Ajanın anatomisi, hukuki sürecin bileşenleri ve insan onayının yeri. Teknik ön bilgi gerektirmeyen, hukukçunun diliyle anlatılmış bir zemin.</p>
+      </div>
+      <div class="half dark">
+        <div class="when">21:00 ila 22:00 · Atölye</div>
+        <h3>Canlı kurmak</h3>
+        <p>Üç uygulamada, adım adım ve kendi ekranınızda. Her kurulumun sonunda çalışan bir akış ve tekrar kullanabileceğiniz bir şablon.</p>
+        <div class="tools"><span>Make</span><span>Claude</span><span>ChatGPT</span></div>
+      </div>
+    </div>
+    <ol class="program">
+      <li class="split"><div class="t">Teori</div><div><h3>Birinci saat</h3></div></li>
+      <li><div class="t">20:00</div><div><div class="h"><h3>Ajanın anatomisi</h3><span class="dur">20 dk</span></div><p>Bir ajanı oluşturan dört bileşen: model, talimat, hafıza ve araçlar. Sohbet penceresinden iş akışına geçerken değişen şey. Tetikleyici, eylem ve onay kavramları.</p></div></li>
+      <li><div class="t">20:20</div><div><div class="h"><h3>Süreci görmek</h3><span class="dur">20 dk</span></div><p>Bir hukuki sürecin bileşenleri: girdi, faaliyet, karar, çıktı ve kontrol. Ajana uygun süreci seçmenin dört ölçütü: hacim, kural, ölçü ve sorumluluk. Örnek akış: gelen talepten avukat onaylı yanıta.</p></div></li>
+      <li><div class="t">20:40</div><div><div class="h"><h3>İnsan döngüde</h3><span class="dur">20 dk</span></div><p>Onay noktaları, denetim izi ve durma koşulları. Müvekkil sırrı ve kişisel veriyle çalışırken akışa eklenen güvenceler. Hangi iş için hangi araç.</p></div></li>
+      <li class="split"><div class="t">Atölye</div><div><h3>İkinci saat</h3></div></li>
+      <li><div class="t">21:00</div><div><div class="h"><h3>Make ile süreç otomasyonu</h3><span class="tag">Canlı kurulum</span><span class="dur">20 dk</span></div><p>Bir e-postanın ya da form girdisinin tetiklediği akışı kurmak: gelen bilgi okunur, sınıflandırılır ve doğru kişiye iletilir. Akışa yapay zeka adımı eklemek.</p></div></li>
+      <li><div class="t">21:20</div><div><div class="h"><h3>Claude ile hukuki ajan</h3><span class="tag">Canlı kurulum</span><span class="dur">20 dk</span></div><p>Proje, talimat ve skill kullanarak tekrar eden bir hukuki görev için ajan kurmak. Ajanı kendi şablon belgelerinizle beslemek.</p></div></li>
+      <li><div class="t">21:40</div><div><div class="h"><h3>ChatGPT ile ajan ve kapanış</h3><span class="tag">Canlı kurulum</span><span class="dur">20 dk</span></div><p>ChatGPT'de proje ve özel asistan kurgusu. Üç aracın birbirine göre güçlü olduğu alanlar. Soru ve cevap; ertesi gün atılacak ilk adım.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="outcomes">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Somut çıktılar</div>
+      <h2>Atölyeden yanınızda götürecekleriniz</h2>
+    </div>
+    <ul class="outlist">
+      <li><b>Kendi hesabınızda kurulu ajanlar</b><span>Atölyede adım adım kurduğunuz akışlar, eğitimden sonra da hesabınızda çalışmaya devam eder.</span></li>
+      <li><b>Şablon ve senaryo dosyaları</b><span>Make senaryoları, ajan talimatları ve örnek belgeler. Kendi sürecinize uyarlamaya hazır.</span></li>
+      <li><b>Süreç seçim çerçevesi</b><span>Ekibinizdeki hangi işin ajana uygun olduğunu dört ölçütle değerlendirmenizi sağlayan tek sayfalık araç.</span></li>
+      <li><b>İnsan onayı tasarımı</b><span>Onay noktası, denetim izi ve durma koşulunu akışa yerleştirmenin pratik mantığı.</span></li>
+      <li><b>Eğitim kaydına 30 gün erişim</b><span>Atölye adımlarını kendi hızınızda tekrar izleyebilirsiniz.</span></li>
+      <li><b>Katılım belgesi</b><span>Eğitimin sonunda tüm katılımcılara düzenlenir.</span></li>
+    </ul>
   </div>
 </section>
 
@@ -298,149 +394,102 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     <h2>Kim için</h2>
     <div class="grid3">
       <div class="card">
-        <h3>Hukuk ekibi liderleri</h3>
-        <p>Kurum içinde yapay zeka kullanımının çerçevesini çizmek, ekibine güvenle yön vermek ve yönetime raporlamak isteyen hukuk müdürleri ve direktörleri.</p>
+        <h3>Büro avukatları ve ortaklar</h3>
+        <p>Tekrar eden dosya işlerini, müvekkil taleplerini ve yazışmaları daha düzenli bir akışa taşımak isteyen avukatlar ve büro ortakları.</p>
       </div>
       <div class="card">
-        <h3>Büro ortakları ve kıdemli avukatlar</h3>
-        <p>Sözleşme yoğun pratiklerde yapay zekayı kendi çalışma biçimine göre şekillendirmek isteyen bağımsız büro ortakları ve ekip liderleri.</p>
+        <h3>Şirket hukuk ekipleri</h3>
+        <p>İç müşteri taleplerini, sözleşme ön incelemesini ve raporlamayı otomasyonla hızlandırmak isteyen şirket avukatları ve hukuk müdürleri.</p>
       </div>
       <div class="card">
-        <h3>Uyum ve kişisel veri sorumluları</h3>
-        <p>Yapay zeka sistemlerinin sınıflandırılması, belgelenmesi ve denetime hazırlanması alanında somut bir çalışma düzeni arayan uyum yöneticileri ve KVKK sorumluları.</p>
+        <h3>Yapay zekayı denemiş hukukçular</h3>
+        <p>Sohbet araçlarını kullanmış, bir sonraki adımda bu araçları birbirine bağlayıp sürece dönüştürmek isteyen tüm hukukçular.</p>
       </div>
     </div>
-    <p class="common">Ortak nokta: yapay zeka konusunda seyirci koltuğundan kalkıp masaya oturmaya karar vermiş hukukçular.</p>
+    <p class="common">Teknik ön bilgi gerekmez. Atölye hukukçular için, hukukçunun diliyle tasarlandı.</p>
   </div>
 </section>
 
-<section class="outcomes">
+<section id="hazirlik">
   <div class="wrap">
-    <div>
-      <div class="eyebrow">Somut çıktılar</div>
-      <h2>Gün sonunda yanınızda götürecekleriniz</h2>
+    <div class="eyebrow">Atölyeye hazırlık</div>
+    <h2>Gelmeden önce dört adım</h2>
+    <div class="prep">
+      <div class="step"><div class="no">1</div><h3>Bilgisayar</h3><p>Atölyede kurulumları kendi ekranınızda yapacaksınız. Dizüstü ya da masaüstü bilgisayar ile katılmanızı öneririz.</p></div>
+      <div class="step"><div class="no">2</div><h3>Make hesabı</h3><p>Ücretsiz Make hesabı atölye için yeterlidir.</p></div>
+      <div class="step"><div class="no">3</div><h3>Claude hesabı</h3><p>Ücretsiz Claude hesabı atölye için yeterlidir.</p></div>
+      <div class="step"><div class="no">4</div><h3>ChatGPT hesabı</h3><p>Ücretsiz hesapla takip edebilirsiniz. Plus aboneliğiniz varsa özel asistan kurulumunu da kendi hesabınızda yapabilirsiniz.</p></div>
     </div>
-    <ul class="outlist">
-      <li><b>Altı bileşenli yönetişim haritası</b><span>Kurumunuzda yapay zeka kullanımını hangi başlıklar altında yöneteceğinizi gösteren tek sayfalık çerçeve.</span></li>
-      <li><b>Üç kova sınıflandırması</b><span>Hangi kullanımın giremeyeceğini, hangisinin onayla gireceğini ve hangisinin serbest olduğunu ayırt etme yöntemi.</span></li>
-      <li><b>Dört karar hakkı</b><span>Öneren, onaylayan, veto eden ve itiraz eden rollerinin kurumunuzda kime ait olduğunu belirleme aracı.</span></li>
-      <li><b>Kanıt düzeni</b><span>Hangi sistem, kim karar verdi, ne değişti sorularına yanıt veren denetim izi mantığı.</span></li>
-      <li><b>Canlı kurulmuş bir süreç</b><span>Öğleden sonra birlikte tasarlanan ve çalışır halde bırakılan bir yapay zeka iş akışı.</span></li>
-      <li><b>Araç ekosistemi haritası</b><span>Hukukçular için yapay zeka ürün ve çözümlerinin güncel görünümü.</span></li>
-      <li><b>Pazartesi hamlesi</b><span>Ertesi iş günü atacağınız tek adım, yazılı ve sizin için belirlenmiş.</span></li>
-      <li><b>Katılım belgesi ve materyaller</b><span>Sertifika numaralı katılım belgesi ve tüm eğitim materyalleri.</span></li>
-    </ul>
+    <p class="prep-note">Hesap açma adımlarını ve atölyede kullanacağımız dosyaları eğitimden önce e-posta ile iletiyoruz. Zoom katılım bağlantısı da aynı e-postada yer alır.</p>
   </div>
 </section>
 
-<section class="paper" id="program">
+<section class="paper">
   <div class="wrap">
-    <div class="eyebrow">Program</div>
-    <h2>Günün akışı</h2>
-    <ol class="program">
-      <li><div class="t">10:00</div><div><div class="h"><h3>Açılış ve kavram zemini</h3><span class="who">Burak Özdemir ve Nesibe Kırış Can</span><span class="dur">30 dk</span></div><p>Eğitim akışı ve eğitmenlerin tanıtımı. Dört mercek: etik doğru mu, uyum yasal mı, risk neye mal olur, yönetişim kim karar veriyor. İki senaryolu ayrım egzersizi. Düzenleyici zemin: AB, ABD ve Türkiye, üç farklı felsefe. Yönetişim mimarisinin altı bileşeni ve günün haritası.</p></div></li>
-      <li><div class="t">10:30</div><div><div class="h"><h3>Aracı tanımak</h3><span class="who">Burak Özdemir</span><span class="dur">30 dk</span></div><p>Modelin nasıl çalıştığı: veriden öğrenme, genelleme, hata payı ve olasılıksal yapı. Yönlendirmenin kurulması. Modelin hafızası ve bağlamın ömrü. Canlı örnek.</p></div></li>
-      <li><div class="t">11:00</div><div><div class="h"><h3>Sahiplik</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Sorumluluğun devredilemezliği: Colorado dersi ve Mata v. Avianca. İki yönlü hata: kullanmak da kullanmamak da risk. Üç pencere, üç rol: uygulayıcı, sağlayıcı, dağıtıcı. R.A.I.L. Loop: reflect, align, implement, log. Etik duraklama testi: kural yokken karar vermenin üç sorusu.</p></div></li>
-      <li class="break"><div class="t">11:40</div><div><div class="h"><h3>Ara, 10 dk</h3></div></div></li>
-      <li><div class="t">11:50</div><div><div class="h"><h3>Sınır</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Bugün yasak olan uygulamalar: işyerinde duygu tanıma, sosyal puanlama, biyometrik kategorilendirme. Yüksek risk ve takvim: Ek III, Ek I, Omnibus ertelemesi ve ertelenmeyenler. Canlı sınıflandırma: üç kova. Dört karar hakkı. Etkilenen taraf riski ve itiraz edilebilirlik.</p></div></li>
-      <li><div class="t">12:30</div><div><div class="h"><h3>Kanıt</h3><span class="who">Nesibe Kırış Can</span><span class="dur">40 dk</span></div><p>Hesap verebilirlik ispatlanabilirliktir; denetim izi savunmanın kendisidir. Kanıtın üç sorusu. Üç saat: olay bildirimi, veri ihlali, sektörel süre. Politika mimarisi ve tedariğin dört sorusu. Düşünce deneyi: denetçi karşısında hangi belgeyi uzatırsınız. Kurul raporlaması: üç sayı, üç risk, bir karar talebi.</p></div></li>
-      <li class="break"><div class="t">13:10</div><div><div class="h"><h3>Öğle yemeği, 60 dk</h3></div></div></li>
-      <li><div class="t">14:10</div><div><div class="h"><h3>Süreci görmek</h3><span class="who">Burak Özdemir</span><span class="dur">40 dk</span></div><p>Sürecin bileşenleri: girdi, faaliyet, karar, çıktı, kontrol. Yapay zekanın sürece girdiği nokta. Kurumdaki tipik süreç aileleri. Devir anları.</p></div></li>
-      <li><div class="t">14:50</div><div><div class="h"><h3>Kurmak ve gözetim</h3><span class="who">Burak Özdemir</span><span class="dur">40 dk</span></div><p>Kurgunun bileşenleri: model, talimat, hafıza, araçlar. Senaryodan adıma. Canlı kurulum. Gözetim modelleri ve durma koşulları.</p></div></li>
-      <li><div class="t">15:30</div><div><div class="h"><h3>Verimlilik</h3><span class="who">Anıl Akbaş</span><span class="dur">15 dk</span></div><p>Hukukçular için yapay zeka ürün ve çözüm ekosistemi. Daha verimli kullanım için pratik öneriler.</p></div></li>
-      <li><div class="t">15:45</div><div><div class="h"><h3>Kapanış</h3><span class="who">Üç eğitmen birlikte</span><span class="dur">15 dk</span></div><p>Tek hamle: pazartesi kime, hangi tek soruyla. Altı bileşenin son tekrarı. Soru ve cevap.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <div class="eyebrow">Günü kim yönetiyor</div>
-    <h2>Eğitmenler</h2>
-    <div class="trainers">
-      <div class="trainer">
-        <img class="photo" src="/assets/mc-burak-ozdemir.webp" alt="Burak Özdemir">
+    <div class="eyebrow">Atölyeyi kim yönetiyor</div>
+    <h2>Eğitmen</h2>
+    <div class="solo">
+      <img src="/assets/mc-burak-ozdemir.webp" alt="Burak Özdemir">
+      <div>
         <h3>Burak Özdemir</h3>
         <div class="org">PAIRA</div>
-        <p>Günün açılışını, aracı tanıma bölümünü ve öğleden sonraki süreç tasarımı ile canlı kurulum bölümlerini yönetir. Odağı, yapay zekayı hukuk ekibinin kendi pratiğine göre şekillendirmektir.</p>
+        <p>Atölyenin iki saatini de yönetir. Hukuk ekipleriyle birlikte iş akışlarını yapay zeka ajanları etrafında yeniden tasarlıyor; atölyede anlattığı akışlar bu sahadaki çalışmalardan geliyor.</p>
         <a href="https://www.linkedin.com/in/burakoz-demir/" target="_blank" rel="noopener">LinkedIn profili</a>
       </div>
-      <div class="trainer">
-        <img class="photo" src="/assets/mc-nesibe-kiris-can.webp" alt="Nesibe Kırış Can">
-        <h3>Nesibe Kırış Can</h3>
-        <div class="org">STRATRI</div>
-        <p>Sahiplik, sınır ve kanıt bölümlerini yönetir. Odağı, yapay zeka kullanımında sorumluluğun, düzenleyici sınırın ve hesap verebilirliğin somut bir çalışma düzenine dönüşmesidir.</p>
-        <a href="https://www.linkedin.com/in/nesibekiris/" target="_blank" rel="noopener">LinkedIn profili</a>
-      </div>
-      <div class="trainer">
-        <img class="photo" src="/assets/anil-akbas-2026.webp" alt="Anıl Akbaş">
-        <h3>Anıl Akbaş</h3>
-        <div class="org">PAIRA</div>
-        <p>Verimlilik bölümünü yönetir. Odağı, hukukçular için araç ekosistemi ve günlük pratikte verim sağlayan kullanım alışkanlıklarıdır.</p>
-        <a href="https://www.linkedin.com/in/anil-akbas/" target="_blank" rel="noopener">LinkedIn profili</a>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="paper" id="katilim">
+<section id="katilim">
   <div class="wrap">
-    <div class="eyebrow">İki katılım, tek program</div>
-    <h2>Katılım biçimleri</h2>
-    <div class="consent" id="onay">
-      <label class="check">
-        <input type="checkbox" id="c1">
-        <span><a href="/on-bilgilendirme" target="_blank" rel="noopener">Ön Bilgilendirme Formu</a>'nu ve <a href="/mesafeli-satis" target="_blank" rel="noopener">Mesafeli Satış Sözleşmesi</a>'ni okudum, kabul ediyorum.</span>
-      </label>
-      <label class="check">
-        <input type="checkbox" id="c2">
-        <span>Eğitim tarihinin cayma süresi içinde olması halinde hizmetin bu süre içinde ifa edilmesine onay veriyorum; hizmetin ifasıyla birlikte cayma hakkımın sona ereceğini biliyorum.</span>
-      </label>
-      <p class="consent-hint" data-hint>Bilet bağlantıları, iki onay kutusu işaretlendiğinde etkinleşir.</p>
-    </div>
-    <div class="tickets">
-      <div class="ticket featured on-dark">
-        <div class="kind">Fiziki katılım</div>
-        <div class="price">9.000 TL<small>KDV dahil</small></div>
-        <div class="cap">50 koltuk · Kalan: <span data-seats>50</span></div>
+    <div class="eyebrow">Kayıt</div>
+    <h2>Katılım</h2>
+    <div class="ticketwrap">
+      <div class="ticket on-dark">
+        <div class="kind">Çevrimiçi katılım · Zoom</div>
+        <div class="price">2.000 TL<small>+ KDV</small></div>
+        <div class="incl">2.400 TL (KDV dahil)</div>
+        <div class="cap">30 kişilik kontenjan · Kalan: <b data-seats>30</b></div>
         <ul>
-          <li>Vadistanbul, Komünite Space'te tam gün yüz yüze eğitim</li>
-          <li>Canlı kurulum bölümünde birebir geri bildirim</li>
-          <li>Eğitmenler ve katılımcılarla networking imkanı</li>
-          <li>Sınırsız kahve, çay ve soğuk içecek</li>
-          <li>Kahve molası ikramları ve öğle yemeği</li>
-          <li>Eğitim materyalleri, basılı ve çevrimiçi</li>
+          <li>27 Ekim 2026, 20:00 ila 22:00, Zoom üzerinden canlı</li>
+          <li>İlk saat teori, ikinci saat uygulamalı atölye</li>
+          <li>Make, Claude ve ChatGPT'de canlı ajan kurulumu</li>
+          <li>Şablon ve senaryo dosyaları</li>
           <li>Eğitim kaydına 30 gün erişim</li>
-          <li>Sertifika numaralı katılım belgesi</li>
+          <li>Katılım belgesi</li>
         </ul>
-        <a class="btn btn-primary" data-fiziki data-buy href="https://iyzi.link/AKuYKA" aria-disabled="true">Fiziki bilet alın</a>
+        <a class="btn btn-primary" data-buy href="#" aria-disabled="true">Kayıt olun</a>
       </div>
-      <div class="ticket">
-        <div class="kind">Çevrimiçi katılım</div>
-        <div class="price">5.000 TL<small>KDV dahil</small></div>
-        <div class="cap">Sınırsız kontenjan · Zoom</div>
-        <ul>
-          <li>Tüm programı Zoom üzerinden canlı takip</li>
-          <li>Soru ve cevap bölümünde yazılı soru hakkı</li>
-          <li>Eğitim materyalleri, çevrimiçi</li>
-          <li>Eğitim kaydına 30 gün erişim</li>
-          <li>Sertifika numaralı katılım belgesi</li>
-        </ul>
-        <a class="btn btn-secondary" data-buy href="https://iyzi.link/AKuYKw" aria-disabled="true">Çevrimiçi bilet alın</a>
+      <div class="side">
+        <div class="consent" id="onay">
+          <div class="ttl">Kayıt öncesi onay</div>
+          <label class="check">
+            <input type="checkbox" id="c1">
+            <span><a href="/on-bilgilendirme" target="_blank" rel="noopener">Ön Bilgilendirme Formu</a>'nu ve <a href="/mesafeli-satis" target="_blank" rel="noopener">Mesafeli Satış Sözleşmesi</a>'ni okudum, kabul ediyorum.</span>
+          </label>
+          <label class="check">
+            <input type="checkbox" id="c2">
+            <span>Eğitim tarihinin cayma süresi içinde olması halinde hizmetin bu süre içinde ifa edilmesine onay veriyorum; hizmetin ifasıyla birlikte cayma hakkımın sona ereceğini biliyorum.</span>
+          </label>
+          <p class="consent-hint" data-hint>Kayıt bağlantısı, iki onay kutusu işaretlendiğinde etkinleşir.</p>
+        </div>
+        <div class="mini"><b>Kontenjan neden 30 kişi?</b>Atölye bölümünde her katılımcının kurulumunu takip edebilmek ve sorulara yer açmak için grubu küçük tutuyoruz.</div>
+        <div class="mini"><b>Kurumsal kayıt</b>Aynı kurumdan birden fazla katılımcı için fatura karşılığı kayıt mümkün. <a href="#kurumsal">Formu doldurun</a>.</div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="corp" id="kurumsal">
+<section class="corp paper" id="kurumsal">
   <div class="wrap">
     <div>
-      <div class="eyebrow">Ekibinizle gelin</div>
+      <div class="eyebrow">Ekibinizle katılın</div>
       <h2>Kurumsal katılım</h2>
-      <p class="lede">Yapay zekayı kurumda tek kişi öğrendiğinde bilgi o kişide kalır; ekip öğrendiğinde kurumun çalışma biçimi değişir.</p>
-      <p>Aynı kurumdan birden fazla katılımcı için fatura karşılığı özel fiyat uyguluyoruz. Kısa formu doldurun, aynı iş günü içinde teklif ve fatura bilgileriyle dönelim.</p>
+      <p class="lede">Bir ajanı ekip birlikte kurduğunda, ertesi gün o akışı birlikte kullanmaya başlar.</p>
+      <p>Aynı kurumdan birden fazla katılımcı için fatura karşılığı kayıt yapıyoruz. Kısa formu doldurun, aynı iş günü içinde teklif ve fatura bilgileriyle dönelim.</p>
     </div>
     <form id="kurumsal-form" action="https://hook.eu1.make.com/9tjrypxa0pxp6swah8jlpl1skmsaaksp" method="post" novalidate>
+      <input type="hidden" name="egitim" value="Legal in the Loop: AI Agents Deep Dive, 27 Ekim 2026">
       <div class="frow">
         <div class="field"><label for="kurum">Kurum adı</label><input id="kurum" name="kurum" required></div>
         <div class="field"><label for="ad">Ad soyad</label><input id="ad" name="ad" required></div>
@@ -449,10 +498,7 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
         <div class="field"><label for="eposta">E-posta</label><input id="eposta" name="eposta" type="email" required></div>
         <div class="field"><label for="tel">Telefon</label><input id="tel" name="tel" type="tel"></div>
       </div>
-      <div class="frow">
-        <div class="field"><label for="fiz">Fiziki bilet sayısı</label><input id="fiz" name="fiziki" type="number" min="0" value="0"></div>
-        <div class="field"><label for="cev">Çevrimiçi bilet sayısı</label><input id="cev" name="cevrimici" type="number" min="0" value="0"></div>
-      </div>
+      <div class="field"><label for="cev">Katılımcı sayısı</label><input id="cev" name="cevrimici" type="number" min="1" value="2"></div>
       <div class="field"><label for="not">Not</label><textarea id="not" name="not"></textarea></div>
       <label class="check consent-inline">
         <input type="checkbox" id="c3" required>
@@ -468,37 +514,65 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   </div>
 </section>
 
-<section class="paper">
+<section>
   <div class="wrap">
     <div class="eyebrow">Merak edilenler</div>
     <h2>Sık sorulan sorular</h2>
     <div class="faq">
+      <details><summary>Teknik bilgim yok, katılabilir miyim?</summary><p>Evet. Atölye teknik ön bilgi gerektirmez. Her kurulumu adım adım birlikte yapıyoruz; kullanacağımız dosyalar önceden elinizde olur.</p></details>
+      <details><summary>Hangi hesaplara ihtiyacım var?</summary><p>Make, Claude ve ChatGPT'de ücretsiz hesap atölye için yeterlidir. ChatGPT Plus aboneliği olan katılımcılar özel asistan kurulumunu da kendi hesaplarında yapabilir; aboneliği olmayanlar bu adımı canlı olarak izler. Hesap açma adımlarını eğitimden önce e-posta ile iletiyoruz.</p></details>
+      <details><summary>Çevrimiçi katılım hangi platformda?</summary><p>Zoom üzerinden. Katılım bağlantısı eğitimden iki gün önce e-posta ile iletilir.</p></details>
+      <details><summary>Eğitim kaydına erişebilecek miyim?</summary><p>Evet. Tüm katılımcılar eğitim kaydına 30 gün boyunca erişir.</p></details>
+      <details><summary>Katılım belgesi verilecek mi?</summary><p>Evet. Eğitimin ardından tüm katılımcılara katılım belgesi düzenlenir.</p></details>
       <details><summary>Fatura alabilir miyim?</summary><p>Evet. Bireysel ve kurumsal tüm kayıtlar için OD Etüd ve Müşavirlik Ltd. Şti. tarafından fatura düzenlenir. Kurumsal fatura için ödeme adımında kurum bilgilerinizi girmeniz yeterlidir.</p></details>
-      <details><summary>Ödeme nasıl yapılır?</summary><p>Bireysel biletler iyzico üzerinden kredi ya da banka kartıyla alınır. Kurumsal ve çoklu biletlerde fatura karşılığı havale seçeneği sunulur.</p></details>
-      <details><summary>Katılamazsam ne olur?</summary><p>Fiziki katılım biletlerinde 16 Eylül 2026'ya kadar tam iade yapılır. Bu tarihten sonra bilet, aynı kurumdan başka bir kişiye devredilebilir ya da çevrimiçi katılıma dönüştürülür. Çevrimiçi katılım biletlerinde iptal ve iade yapılmaz; eğitim kaydına 30 gün erişim her durumda sağlanır.</p></details>
-      <details><summary>Eğitim kaydına erişebilecek miyim?</summary><p>Evet. Fiziki ve çevrimiçi tüm katılımcılar eğitim kaydına 30 gün boyunca erişir.</p></details>
-      <details><summary>Katılım belgesi verilecek mi?</summary><p>Evet. Her iki katılım biçimi için sertifika numaralı katılım belgesi düzenlenir.</p></details>
-      <details><summary>Çevrimiçi katılım hangi platformda?</summary><p>Zoom üzerinden. Katılım linki eğitimden iki gün önce e-posta ile iletilir.</p></details>
-      <details><summary>Mekana nasıl ulaşırım?</summary><p>Komünite Space, Vadistanbul'da Radisson Collection Otel girişinin hemen yanında yer alır. Metroyla ulaşım için M2 Yenikapı-Hacıosman hattında Seyrantepe istasyonunda inip havaray ile Vadistanbul'a geçebilirsiniz. Vadistanbul'da otopark bulunur; ilk 4 saat ücretsiz, sonrası ücretlidir.</p></details>
-      <details><summary>Fiziki koltuklar dolarsa?</summary><p>Fiziki katılım 50 kişiyle sınırlıdır. Koltuklar dolduğunda sayfada yalnızca çevrimiçi katılım seçeneği görünür.</p></details>
+      <details><summary>Ödeme nasıl yapılır?</summary><p>Bireysel kayıtlar iyzico üzerinden kredi ya da banka kartıyla alınır. Kurumsal ve çoklu kayıtlarda fatura karşılığı havale seçeneği sunulur.</p></details>
+      <details><summary>Katılamazsam ne olur?</summary><p>Çevrimiçi katılım kayıtlarında iptal ve iade yapılmaz. Canlı oturuma katılamasanız da eğitim kaydına 30 gün boyunca erişirsiniz.</p></details>
+      <details><summary>Kontenjan dolarsa?</summary><p>Atölye 30 kişiyle sınırlıdır. Kontenjan dolduğunda kayıt bağlantısı kapanır. Bir sonraki tarihten haberdar olmak için <a href="/paira-notes">PAIRA Notes</a>'a abone olabilirsiniz.</p></details>
     </div>
   </div>
 </section>
 
-<section class="closing on-dark">
+<section class="past on-dark" id="gecmis">
   <svg class="rings" viewBox="0 0 800 800" aria-hidden="true">
     <circle cx="400" cy="400" r="380"/><circle cx="400" cy="400" r="320"/><circle cx="400" cy="400" r="260"/>
     <circle cx="400" cy="400" r="200"/><circle cx="400" cy="400" r="140"/><circle cx="400" cy="400" r="80"/>
     <circle class="core" cx="400" cy="400" r="6"/>
   </svg>
   <div class="wrap">
-    <div class="eyebrow gold">26 Eylül 2026</div>
-    <h2>Pazartesi sabahı ne yapacağınızı bilerek ayrılın.</h2>
-    <p class="lede">Yapay zekayla ilgili ertelenen her hafta, bir başkasının önde başladığı hafta.</p>
-    <div class="seats"><span class="n" data-seats>50</span><span>fiziki koltuk kaldı<br><span class="bar"><i data-seatbar></i></span></span></div>
+    <div class="eyebrow gold">Geçmiş eğitim</div>
+    <h2>Legal in the Loop Master Class</h2>
+    <p class="lede">Hukukçular için yapay zeka yönetişimi, süreç kurulumu ve verimlilik üzerine tam günlük masterclass. Salonda ve Zoom'da aynı masaya oturan hukukçularla bir gün.</p>
+    <div class="pastfacts">
+      <span><b>26 Eylül</b>2026</span>
+      <span><b>50+</b>katılımcı</span>
+      <span>Vadistanbul ve çevrimiçi</span>
+    </div>
+
+    <!-- paira:past-media:start -->
+    <div class="reels">
+      <div class="reel"><div class="slot"><i></i>Video 1</div></div>
+      <div class="reel"><div class="slot"><i></i>Video 2</div></div>
+      <div class="reel"><div class="slot"><i></i>Video 3</div></div>
+      <div class="reel"><div class="slot"><i></i>Video 4</div></div>
+    </div>
+    <div class="gallery">
+      <figure class="lead"><div class="slot"><i></i>Görsel 1</div></figure>
+      <figure><div class="slot"><i></i>Görsel 2</div></figure>
+      <figure><div class="slot"><i></i>Görsel 3</div></figure>
+    </div>
+    <!-- paira:past-media:end -->
+
+    <p class="pastnote">Master Class'ın bir sonraki tarihi yakında duyurulacak.</p>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <div class="eyebrow gold">27 Ekim 2026 · 20:00</div>
+    <h2>İlk ajanınızı 27 Ekim akşamı birlikte kuralım.</h2>
+    <p class="lede">İki saat, otuz kişi, üç uygulama.</p>
     <div class="ctas">
-      <a class="btn btn-primary" data-fiziki-jump href="#katilim">Fiziki katılım <small>9.000 TL, KDV dahil</small></a>
-      <a class="btn btn-secondary" href="#katilim">Çevrimiçi katılım <small>5.000 TL, KDV dahil</small></a>
+      <a class="btn btn-primary" data-jump href="#katilim">Kayıt olun <small>2.000 TL + KDV</small></a>
     </div>
   </div>
 </section>
@@ -507,12 +581,8 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
   <div class="wrap">
     <div class="top">
       <div>
-        <div class="partners">
-          <img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-paira-dark">
-          <span class="x">iş birliğiyle</span>
-          <img src="/assets/stratri-logo.webp" alt="STRATRI, AI Governance &amp; Tech Policy" class="logo-stratri">
-        </div>
-        <p style="margin-top:14px;max-width:52ch">Legal in the Loop Master Class, PAIRA tarafından STRATRI iş birliğiyle düzenlenir.</p>
+        <img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-paira-dark">
+        <p style="margin-top:14px;max-width:52ch">Legal in the Loop: AI Agents Deep Dive, PAIRA tarafından düzenlenir.</p>
       </div>
       <div>
         OD Etüd ve Müşavirlik Ltd. Şti.<br>
@@ -539,31 +609,47 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 </footer>
 
 <script>
-/* Koltuk sayacı: SATILAN_FIZIKI değerini güncelleyin (elle ya da iyzico webhook ile). */
 (function(){
-  var KAPASITE = 50;
-  var SATILAN_FIZIKI = 0;
-  var kalan = Math.max(0, KAPASITE - SATILAN_FIZIKI);
+  /* Kayıt bağlantısı: iyzilink adresini buraya yazın. Boşken kayıt butonu "Kayıtlar çok yakında" olarak görünür. */
+  var IYZILINK = '';
+  /* Kontenjan sayacı: SATILAN değerini her satıştan sonra güncelleyin. */
+  var KAPASITE = 30;
+  var SATILAN = 0;
+
+  var kalan = Math.max(0, KAPASITE - SATILAN);
   document.querySelectorAll('[data-seats]').forEach(function(el){ el.textContent = kalan; });
-  document.querySelectorAll('[data-seatbar]').forEach(function(el){ el.style.width = (SATILAN_FIZIKI / KAPASITE * 100) + '%'; });
+  document.querySelectorAll('[data-seatbar]').forEach(function(el){ el.style.width = (SATILAN / KAPASITE * 100) + '%'; });
+
   var c1=document.getElementById('c1'), c2=document.getElementById('c2'), hint=document.querySelector('[data-hint]');
-  var buys=document.querySelectorAll('[data-buy]');
-  function gate(){
-    var ok=c1.checked && c2.checked;
-    buys.forEach(function(a){
-      if (a.dataset.full) return;
-      a.setAttribute('aria-disabled', ok ? 'false' : 'true');
-      if (ok) a.setAttribute('href', a.dataset.href); else { a.dataset.href = a.dataset.href || a.getAttribute('href'); a.removeAttribute('href'); }
-    });
-    hint.classList.remove('warn');
+  var buy=document.querySelector('[data-buy]');
+  var closed = (kalan === 0) || !IYZILINK;
+
+  if (kalan === 0) {
+    buy.textContent = 'Kontenjan doldu';
+    hint.textContent = 'Bu tarih için kontenjan doldu.';
+    document.querySelectorAll('[data-jump]').forEach(function(a){ a.innerHTML = 'Kontenjan doldu'; });
+  } else if (!IYZILINK) {
+    buy.textContent = 'Kayıtlar çok yakında';
   }
-  buys.forEach(function(a){
-    a.dataset.href=a.getAttribute('href');
-    a.addEventListener('click',function(e){
-      if (a.getAttribute('aria-disabled')==='true'){ e.preventDefault(); hint.classList.add('warn'); hint.textContent='Devam etmek için iki onay kutusunu işaretleyin.'; document.getElementById('onay').scrollIntoView({behavior:'smooth',block:'center'}); }
-    });
+
+  function gate(){
+    if (closed) { buy.setAttribute('aria-disabled','true'); buy.removeAttribute('href'); return; }
+    var ok = c1.checked && c2.checked;
+    buy.setAttribute('aria-disabled', ok ? 'false' : 'true');
+    if (ok) buy.setAttribute('href', IYZILINK); else buy.removeAttribute('href');
+    hint.classList.remove('warn');
+    hint.textContent = ok ? 'Onaylar tamam. Kayıt bağlantısı etkin.' : 'Kayıt bağlantısı, iki onay kutusu işaretlendiğinde etkinleşir.';
+  }
+  buy.addEventListener('click', function(e){
+    if (buy.getAttribute('aria-disabled') === 'true') {
+      e.preventDefault();
+      if (closed) return;
+      hint.classList.add('warn');
+      hint.textContent = 'Devam etmek için iki onay kutusunu işaretleyin.';
+      document.getElementById('onay').scrollIntoView({behavior:'smooth',block:'center'});
+    }
   });
-  c1.addEventListener('change',gate); c2.addEventListener('change',gate); gate();
+  c1.addEventListener('change', gate); c2.addEventListener('change', gate); gate();
 
   /* Kurumsal form: sayfadan ayrılmadan gönderim */
   var form=document.getElementById('kurumsal-form');
@@ -579,14 +665,6 @@ footer .pay{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
       fetch(form.action,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body})
         .then(function(){ form.querySelectorAll('.frow,.field,.consent-inline').forEach(function(el){el.hidden=true;}); btn.hidden=true; msg.hidden=true; done.hidden=false; })
         .catch(function(){ btn.disabled=false; btn.textContent='Kurumsal teklif isteyin'; msg.classList.add('err'); msg.textContent='Gönderim başarısız oldu. Lütfen tekrar deneyin ya da burak@mypaira.com adresine yazın.'; });
-    });
-  }
-  if (kalan === 0) {
-    document.querySelectorAll('[data-fiziki],[data-fiziki-jump]').forEach(function(a){
-      a.dataset.full='1';
-      a.setAttribute('aria-disabled','true');
-      a.removeAttribute('href');
-      a.innerHTML = 'Fiziki koltuklar doldu';
     });
   }
 })();
