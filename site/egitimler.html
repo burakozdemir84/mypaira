@@ -227,6 +227,10 @@ form .note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
 .pastfacts{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 48px}
 .pastfacts span{font-size:13px;font-weight:500;color:var(--white);border:1px solid rgba(171,212,236,.35);border-radius:999px;padding:7px 14px}
 .pastfacts span b{font-family:var(--serif);font-size:18px;font-weight:500;margin-right:4px}
+.voices{background:var(--navy);color:var(--white)}
+.voices h2{color:var(--white)}
+.voices .lede{color:var(--sky);margin-bottom:44px}
+.voices .reels{margin-bottom:0}
 .subhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 20px}
 .subhead h3{font-family:var(--serif);font-weight:500;font-size:28px;color:var(--white)}
 .subhead span{font-size:13px;color:var(--sky)}
@@ -353,6 +357,44 @@ footer .legal a{color:var(--mute)}
       <p class="lede">Hukuk ekiplerinin çoğunda yapay zeka araçları zaten masada. Asıl kazanç, bu araçlar tekrar eden bir iş akışının içine yerleştirildiğinde ortaya çıkıyor: talep gelir, ajan sınıflandırır, taslağı hazırlar, son kararı avukat verir.</p>
       <p>İlk saatte bir ajanın hangi parçalardan oluştuğunu, bir hukuki sürecin hangi adımlarının ajana devredilebileceğini ve insan onayının nereye yerleşeceğini birlikte görüyoruz. İkinci saatte aynı mantığı üç farklı uygulamada, kendi bilgisayarınızda kuruyorsunuz.</p>
       <p class="pull">Ertesi sabah, kendi hesabınızda kurulu ilk ajanınızla güne başlarsınız.</p>
+    </div>
+  </div>
+</section>
+
+<section class="voices on-dark" id="katilimcilar">
+  <div class="wrap">
+    <div class="eyebrow gold">Legal in the Loop Master Class · 26 Eylül 2026</div>
+    <h2>Katılımcılar anlatıyor</h2>
+    <p class="lede">Bir önceki Legal in the Loop eğitimine katılan hukukçuların, eğitim günü çekilen kısa röportajları.</p>
+    <div class="reels">
+      <figure class="reel">
+        <div class="frame">
+          <video src="/assets/mc/mc-roportaj-01.mp4" poster="/assets/mc/mc-roportaj-01.webp" preload="none" playsinline></video>
+          <button class="play" type="button" aria-label="Eda Tuğcu Yalkın röportajını oynat"><i></i></button>
+        </div>
+        <figcaption><b>Eda Tuğcu Yalkın</b><span>Legal Coordinator</span></figcaption>
+      </figure>
+      <figure class="reel">
+        <div class="frame">
+          <video src="/assets/mc/mc-roportaj-02.mp4" poster="/assets/mc/mc-roportaj-02.webp" preload="none" playsinline></video>
+          <button class="play" type="button" aria-label="Alper Erdem röportajını oynat"><i></i></button>
+        </div>
+        <figcaption><b>Alper Erdem</b><span>Kurucu Avukat</span></figcaption>
+      </figure>
+      <figure class="reel">
+        <div class="frame">
+          <video src="/assets/mc/mc-roportaj-03.mp4" poster="/assets/mc/mc-roportaj-03.webp" preload="none" playsinline></video>
+          <button class="play" type="button" aria-label="Enes Furkan Beytekin röportajını oynat"><i></i></button>
+        </div>
+        <figcaption><b>Enes Furkan Beytekin</b><span>Hukuk ve Uyum Direktörü</span></figcaption>
+      </figure>
+      <figure class="reel">
+        <div class="frame">
+          <video src="/assets/mc/mc-roportaj-04.mp4" poster="/assets/mc/mc-roportaj-04.webp" preload="none" playsinline></video>
+          <button class="play" type="button" aria-label="Emre Alpun röportajını oynat"><i></i></button>
+        </div>
+        <figcaption><b>Emre Alpun</b><span>Kıdemli Avukat</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -557,7 +599,7 @@ footer .legal a{color:var(--mute)}
   <div class="wrap">
     <div class="eyebrow gold">Geçmiş eğitim</div>
     <h2>Legal in the Loop Master Class</h2>
-    <p class="lede">Hukukçular için yapay zeka yönetişimi, süreç kurulumu ve verimlilik üzerine tam günlük masterclass. Salonda ve Zoom'da aynı masaya oturan hukukçularla bir gün.</p>
+    <p class="lede">Hukukçular için yapay zeka yönetişimi, süreç kurulumu ve verimlilik üzerine tam günlük masterclass. Salonda ve Zoom'da aynı masaya oturan hukukçularla bir gün. Katılımcıların yorumlarını <a href="#katilimcilar" style="color:var(--white);text-decoration:underline;text-underline-offset:3px">yukarıda</a> izleyebilirsiniz.</p>
     <div class="pastfacts">
       <span><b>26 Eylül</b>2026</span>
       <span><b>50+</b>katılımcı</span>
@@ -565,37 +607,6 @@ footer .legal a{color:var(--mute)}
     </div>
 
     <!-- paira:past-media:start -->
-    <div class="subhead"><h3>Katılımcılar anlatıyor</h3><span>Eğitim günü çekilen kısa röportajlar</span></div>
-    <div class="reels">
-      <figure class="reel">
-        <div class="frame">
-          <video src="/assets/mc/mc-roportaj-01.mp4" poster="/assets/mc/mc-roportaj-01.webp" preload="none" playsinline></video>
-          <button class="play" type="button" aria-label="Eda Tuğcu Yalkın röportajını oynat"><i></i></button>
-        </div>
-        <figcaption><b>Eda Tuğcu Yalkın</b><span>Legal Coordinator</span></figcaption>
-      </figure>
-      <figure class="reel">
-        <div class="frame">
-          <video src="/assets/mc/mc-roportaj-02.mp4" poster="/assets/mc/mc-roportaj-02.webp" preload="none" playsinline></video>
-          <button class="play" type="button" aria-label="Alper Erdem röportajını oynat"><i></i></button>
-        </div>
-        <figcaption><b>Alper Erdem</b><span>Kurucu Avukat</span></figcaption>
-      </figure>
-      <figure class="reel">
-        <div class="frame">
-          <video src="/assets/mc/mc-roportaj-03.mp4" poster="/assets/mc/mc-roportaj-03.webp" preload="none" playsinline></video>
-          <button class="play" type="button" aria-label="Enes Furkan Beytekin röportajını oynat"><i></i></button>
-        </div>
-        <figcaption><b>Enes Furkan Beytekin</b><span>Hukuk ve Uyum Direktörü</span></figcaption>
-      </figure>
-      <figure class="reel">
-        <div class="frame">
-          <video src="/assets/mc/mc-roportaj-04.mp4" poster="/assets/mc/mc-roportaj-04.webp" preload="none" playsinline></video>
-          <button class="play" type="button" aria-label="Emre Alpun röportajını oynat"><i></i></button>
-        </div>
-        <figcaption><b>Emre Alpun</b><span>Kıdemli Avukat</span></figcaption>
-      </figure>
-    </div>
     <div class="subhead"><h3>Günden kareler</h3><span>26 Eylül 2026, Komünite Space</span></div>
     <div class="gallery">
       <figure class="lead"><img src="/assets/mc/mc-gorsel-01.webp" alt="Legal in the Loop Master Class eğitmenleri sahnede" loading="lazy" decoding="async"></figure>
