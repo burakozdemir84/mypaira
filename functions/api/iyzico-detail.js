@@ -13,9 +13,10 @@
 //   env.PAIRA_AUTOMATION_KEY   -> shared secret; Make sends it as X-PAIRA-KEY
 //   env.IYZICO_BASE_URL        -> optional, defaults to https://api.iyzipay.com
 //
-// Ticket mapping is by paid amount (KDV dahil): 9000 -> fiziki, 5000 -> cevrimici.
+// Ticket mapping is by paid amount (KDV dahil): 2400 -> AI Agents Deep Dive, 9000 -> fiziki, 5000 -> cevrimici.
 
 const PRODUCTS = [
+  { amount: 2400, code: "ai-agents-2026-10-27", label: "AI Agents Deep Dive, çevrimiçi" },
   { amount: 9000, code: "fiziki", label: "Fiziki katılım" },
   { amount: 5000, code: "cevrimici", label: "Çevrimiçi katılım" },
 ];

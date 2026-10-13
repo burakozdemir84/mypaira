@@ -667,25 +667,36 @@ footer .legal a{color:var(--mute)}
 (function(){
   /* Kayıt bağlantısı: iyzilink adresini buraya yazın. Boşken kayıt butonu "Kayıtlar çok yakında" olarak görünür. */
   var IYZILINK = 'https://iyzi.link/AKyRmw';
-  /* Kontenjan sayacı: SATILAN değerini her satıştan sonra güncelleyin. */
+  /* Kontenjan sayacı: iyzilink satışları Make üzerinden /api/seats'e otomatik işlenir.
+     EK_SATILAN yalnızca iyzico dışı (kurumsal havale) kayıtlar için elle artırılır. */
+  var ETKINLIK = 'ai-agents-2026-10-27';
   var KAPASITE = 30;
-  var SATILAN = 0;
-
-  var kalan = Math.max(0, KAPASITE - SATILAN);
-  document.querySelectorAll('[data-seats]').forEach(function(el){ el.textContent = kalan; });
-  document.querySelectorAll('[data-seatbar]').forEach(function(el){ el.style.width = (SATILAN / KAPASITE * 100) + '%'; });
+  var EK_SATILAN = 0;
 
   var c1=document.getElementById('c1'), c2=document.getElementById('c2'), hint=document.querySelector('[data-hint]');
   var buy=document.querySelector('[data-buy]');
-  var closed = (kalan === 0) || !IYZILINK;
+  var closed = !IYZILINK;
+  if (!IYZILINK) buy.textContent = 'Kayıtlar çok yakında';
 
-  if (kalan === 0) {
-    buy.textContent = 'Kontenjan doldu';
-    hint.textContent = 'Bu tarih için kontenjan doldu.';
-    document.querySelectorAll('[data-jump]').forEach(function(a){ a.innerHTML = 'Kontenjan doldu'; });
-  } else if (!IYZILINK) {
-    buy.textContent = 'Kayıtlar çok yakında';
+  function renderSeats(satilan){
+    var kalan = Math.max(0, KAPASITE - satilan);
+    document.querySelectorAll('[data-seats]').forEach(function(el){ el.textContent = kalan; });
+    document.querySelectorAll('[data-seatbar]').forEach(function(el){ el.style.width = Math.min(100, satilan / KAPASITE * 100) + '%'; });
+    if (kalan === 0) {
+      closed = true;
+      buy.textContent = 'Kontenjan doldu';
+      hint.textContent = 'Bu tarih için kontenjan doldu.';
+      document.querySelectorAll('[data-jump]').forEach(function(a){ a.innerHTML = 'Kontenjan doldu'; });
+      gate();
+    }
   }
+  renderSeats(EK_SATILAN);
+  try {
+    fetch('/api/seats?event=' + ETKINLIK, {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ if (d && d.ok) renderSeats(Number(d.sold || 0) + EK_SATILAN); })
+      .catch(function(){});
+  } catch (e) {}
 
   function gate(){
     if (closed) { buy.setAttribute('aria-disabled','true'); buy.removeAttribute('href'); return; }
