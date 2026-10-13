@@ -10,6 +10,7 @@
 //      Body: { "event": "ai-agents-2026-10-27", "paymentNo": "4218335585" }
 //      -> { ok, event, capacity, sold, remaining, isNew }
 //      Aynı ödeme numarası ikinci kez gelirse sayılmaz (isNew: false).
+//      İade ya da test kaydını düşmek için: { "event": "...", "paymentNo": "...", "remove": true }
 //
 // Kişisel veri saklanmaz: yalnızca etkinlik kodu ve ödeme numarası tutulur.
 // Alıcı bilgileri Notion'da durur.
@@ -76,6 +77,13 @@ export async function onRequestPost({ request, env }) {
   if (!paymentNo) return json({ ok: false, error: "paymentNo required" }, 400);
   try {
     await ensureTable(env.DB);
+    if (input.remove === true) {
+      const d = await env.DB
+        .prepare("DELETE FROM seat_sales WHERE event = ? AND payment_no = ?")
+        .bind(event, paymentNo)
+        .run();
+      return json({ ...(await summary(env.DB, event)), removed: !!(d && d.meta && d.meta.changes > 0) });
+    }
     const r = await env.DB
       .prepare("INSERT OR IGNORE INTO seat_sales (event, payment_no) VALUES (?, ?)")
       .bind(event, paymentNo)
