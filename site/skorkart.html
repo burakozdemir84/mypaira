@@ -531,12 +531,13 @@ class Component extends DCLogic {
     }
   }
 
-  answerScored(points) {
+  answerScored(points, opt) {
     const set = this.currentSet();
     const i = this.state.qIndex;
     const q = set.scored[i];
     const answers = this.state.answers.slice(0, i);
-    answers.push({ points: points, cat: q.c });
+    // opt: 0 yes / 1 no / 2 "no, but it is my priority"; q text lets the lead alert show what they said
+    answers.push({ points: points, cat: q.c, opt: opt, q: q.t });
     this.setState({ answers: answers, qIndex: i + 1 });
     window.scrollTo(0, 0);
   }
@@ -643,9 +644,9 @@ class Component extends DCLogic {
         categoryLabel = ['Verimlilik ve Kapasite', 'Risk ve Uyum', 'Rekabet ve Konumlanma'][q.c];
         questionText = q.t;
         answerOptions = [
-          { label: 'Evet', pick: () => this.answerScored(q.p) },
-          { label: 'Hayır', pick: () => this.answerScored(0) },
-          { label: 'Hayır, ama önceliğim', pick: () => this.answerScored(0) }
+          { label: 'Evet', pick: () => this.answerScored(q.p, 0) },
+          { label: 'Hayır', pick: () => this.answerScored(0, 1) },
+          { label: 'Hayır, ama önceliğim', pick: () => this.answerScored(0, 2) }
         ];
       } else {
         const q = set.qual[i - 12];

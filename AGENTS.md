@@ -20,7 +20,7 @@ Cloudflare Pages.
 | Cloudflare account id | `60153cf9393ce1866334788c1357bb53` |
 | Account owner | `Burakozdemir84@hotmail.com` — ask this person for access |
 | Build output dir | `site/` (declared in `wrangler.toml`) |
-| Serverless endpoint | `POST /api/lead` → `functions/api/lead.js` |
+| Serverless endpoint | `POST /api/lead` → `functions/api/lead.js` (lead alerts: `docs/LEAD_ALERTS.md`) |
 | Database | Cloudflare D1, `paira_leads`, bound as `env.DB` |
 | Registrar / DNS | GoDaddy |
 | Mail | Microsoft 365 via GoDaddy — **DNS mail records must never be touched** |

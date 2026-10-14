@@ -1,10 +1,17 @@
 // Cloudflare Pages Function: POST /api/lead
+//
+// When a Scorecard reaches stage "complete", a lead event is sent once to
+// env.LEAD_WEBHOOK_URL (Make.com) with the scoring, heat and ready to send
+// e-mails. See lib/lead-intel.js and docs/LEAD_ALERTS.md.
 // Upserts lead-capture records into D1 (binding: DB) and best-effort mirrors
 // them to a Google Apps Script webhook (env: SHEET_WEBHOOK_URL).
 //
 // Bindings expected:
 //   context.env.DB                -> D1 database binding (see migrations/0001_leads.sql)
 //   context.env.SHEET_WEBHOOK_URL -> (optional) Apps Script webhook URL, string
+
+import { buildEvent } from "../../lib/lead-intel.js";
+import { deliverOnce } from "../../lib/lead-events.js";
 
 const ALLOWED_SOURCES = new Set([
   "scorecard",
@@ -233,6 +240,22 @@ export async function onRequestPost(context) {
         .bind(client_id)
         .first();
       id = row ? row.id : null;
+    }
+
+    // Lead alert: completed Scorecard -> Make.com (notification to Burak,
+    // report to the lead, CRM). Runs after the response; never blocks it.
+    if (source === "scorecard" && stage === "complete" && env.LEAD_WEBHOOK_URL) {
+      context.waitUntil(
+        (async () => {
+          try {
+            const row = await db.prepare("SELECT * FROM leads WHERE client_id = ?").bind(client_id).first();
+            if (!row) return;
+            await deliverOnce(env, client_id, "scorecard.completed", buildEvent(row, "completed"));
+          } catch (err) {
+            console.error("lead.js: lead alert failed", err);
+          }
+        })()
+      );
     }
 
     // Best-effort mirror to the Apps Script webhook. D1 is the source of truth,
