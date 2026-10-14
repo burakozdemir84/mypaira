@@ -239,6 +239,8 @@ form .note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
 .reel{margin:0}
 .reel .frame{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--navy2);border:1px solid rgba(171,212,236,.18)}
 .reel video{width:100%;height:100%;object-fit:cover;display:block;background:var(--navy2)}
+.reel video:fullscreen{object-fit:contain;width:100%;height:100%;background:#000}
+.reel video:-webkit-full-screen{object-fit:contain;width:100%;height:100%;background:#000}
 .reel .play{position:absolute;inset:0;display:flex;align-items:flex-start;justify-content:flex-end;padding:14px;background:linear-gradient(200deg,rgba(21,35,62,.35) 0,rgba(21,35,62,0) 30%);border:0;cursor:pointer}
 .reel .play i{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(21,35,62,.35);transition:transform .2s}
 .reel .play i::before{content:"";display:block;margin-left:4px;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--navy)}
@@ -370,28 +372,28 @@ footer .legal a{color:var(--mute)}
     <div class="reels">
       <figure class="reel">
         <div class="frame">
-          <video src="/assets/mc/mc-roportaj-01.mp4" poster="/assets/mc/mc-roportaj-01.webp" preload="none" playsinline></video>
+          <video src="/video/mc-roportaj-01.mp4" poster="/assets/mc/mc-roportaj-01.webp" preload="none" playsinline></video>
           <button class="play" type="button" aria-label="Eda Tuğcu Yalkın röportajını oynat"><i></i></button>
         </div>
         <figcaption><b>Eda Tuğcu Yalkın</b><span>Legal Coordinator</span></figcaption>
       </figure>
       <figure class="reel">
         <div class="frame">
-          <video src="/assets/mc/mc-roportaj-02.mp4" poster="/assets/mc/mc-roportaj-02.webp" preload="none" playsinline></video>
+          <video src="/video/mc-roportaj-02.mp4" poster="/assets/mc/mc-roportaj-02.webp" preload="none" playsinline></video>
           <button class="play" type="button" aria-label="Alper Erdem röportajını oynat"><i></i></button>
         </div>
         <figcaption><b>Alper Erdem</b><span>Kurucu Avukat</span></figcaption>
       </figure>
       <figure class="reel">
         <div class="frame">
-          <video src="/assets/mc/mc-roportaj-03.mp4" poster="/assets/mc/mc-roportaj-03.webp" preload="none" playsinline></video>
+          <video src="/video/mc-roportaj-03.mp4" poster="/assets/mc/mc-roportaj-03.webp" preload="none" playsinline></video>
           <button class="play" type="button" aria-label="Enes Furkan Beytekin röportajını oynat"><i></i></button>
         </div>
         <figcaption><b>Enes Furkan Beytekin</b><span>Hukuk ve Uyum Direktörü</span></figcaption>
       </figure>
       <figure class="reel">
         <div class="frame">
-          <video src="/assets/mc/mc-roportaj-04.mp4" poster="/assets/mc/mc-roportaj-04.webp" preload="none" playsinline></video>
+          <video src="/video/mc-roportaj-04.mp4" poster="/assets/mc/mc-roportaj-04.webp" preload="none" playsinline></video>
           <button class="play" type="button" aria-label="Emre Alpun röportajını oynat"><i></i></button>
         </div>
         <figcaption><b>Emre Alpun</b><span>Kıdemli Avukat</span></figcaption>
