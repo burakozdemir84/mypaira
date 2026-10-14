@@ -187,40 +187,14 @@ img,video{max-width:100%;height:auto}
       <span style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #ABD4EC; line-height: 1">01</span>
       <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 34px; color: #15233E">Foundational Literacy</h2>
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
-      <!-- 1A -->
-      <div id="kayit-1a" style="background: #FFFFFF; border: 1px solid #A8842C; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 4px 24px rgba(21,35,62,0.06)">
-        <div style="display: flex; align-items: center; gap: 10px">
-          <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #6B5418; border: 1px solid #A8842C; border-radius: 999px; padding: 4px 12px">Free</span>
-        </div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">AI for Legal Professionals: Getting Started</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82; flex: 1">A short-format start: fundamentals, safe use and prompt practice. A free start to your AI journey; be the first to know when it opens.</p>
-        <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
-          <sc-if value="{{ sent1a }}" hint-placeholder-val="{{ false }}">
-            <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">We have your sign-up. You will be the first to know when the programme opens.</span>
-          </sc-if>
-          <sc-if value="{{ notSent1a }}" hint-placeholder-val="{{ true }}">
-          <div style="display: flex; flex-direction: column; gap: 10px">
-            <span style="font-size: 13px; font-weight: 500; color: #22324B">Notify me when it opens</span>
-            <div style="display: flex; gap: 10px">
-              <input value="{{ email1a }}" onChange="{{ setEmail1a }}" type="email" placeholder="Your email address" style="flex: 1; min-width: 0; border: 1px solid #D7E0EA; border-radius: 8px; padding: 12px 15px; font-family: 'Outfit', sans-serif; font-size: 14px; color: #22324B; outline: none">
-              <button onClick="{{ submit1a }}" style="border: 1px solid #15233E; background: #FFFFFF; color: #15233E; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 18px; border-radius: 8px; cursor: pointer; white-space: nowrap" style-hover="background: #15233E; color: #FFFFFF">{{ btn1a }}</button>
-            </div>
-            <label style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; color: #5C6B82; line-height: 1.5; cursor: pointer"><input type="checkbox" checked="{{ kvkk1a }}" onChange="{{ toggleKvkk1a }}" style="margin-top: 2px"> <span>I have read the <a href="/en/privacy-policy" target="_blank" style="color: inherit">Privacy Policy</a> and give my explicit consent.</span></label>
-            <sc-if value="{{ err1a }}" hint-placeholder-val="{{ false }}">
-              <div style="font-size: 12px; color: #A8842C; line-height: 1.5">{{ err1a }}</div>
-            </sc-if>
-          </div>
-          </sc-if>
-        </div>
-      </div>
+    <div style="display: grid; grid-template-columns: 1fr; gap: 24px">
       <!-- 1B -->
       <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 36px; display: flex; flex-direction: column; gap: 18px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
         <div style="display: flex; align-items: center; gap: 10px">
           <span style="font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #2E6FB0; border: 1px solid #D7E0EA; border-radius: 999px; padding: 4px 12px">Live workshop</span>
         </div>
         <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; color: #15233E">AI for Legal Professionals Foundations Workshop</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82; flex: 1">A paid live workshop: hands-on practice building on the getting-started course, work on real files, and open questions. Held in small groups.</p>
+        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #5C6B82; flex: 1">A paid live workshop: hands-on practice, work on real files, and open questions. Held in small groups.</p>
         <div style="display: flex; flex-direction: column; gap: 10px; border-top: 1px solid #D7E0EA; padding-top: 20px">
           <sc-if value="{{ sent1b }}" hint-placeholder-val="{{ false }}">
             <span style="font-size: 13px; line-height: 1.6; color: #15233E; font-weight: 500">We have your sign-up. You will be the first to know when the programme opens.</span>
