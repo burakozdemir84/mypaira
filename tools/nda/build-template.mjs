@@ -58,7 +58,7 @@ newPage();
 const room = (h) => { if (y - h < MBOT) newPage(); };
 const text = (t, x, base, f, s, color = BLACK) => page.drawText(t, { x, y: base, size: s, font: f, color });
 
-const map = { fields: null, signature: null };
+const map = { fields: null, signature: null, sigDate: null };
 
 for (const item of content) {
   if (item.type === "gap") continue;
@@ -110,6 +110,13 @@ for (const item of content) {
     const colW = WIDTH / 2 - 12;
     item.rows.forEach((row, ri) => {
       row.forEach((cell, ci) => {
+        // OD's "Tarih:" is filled at request time with the date the form was started.
+        if (ci === 0 && /^Tarih:/.test(cell)) {
+          const label = "Tarih: ";
+          text(label, colX[ci], y - ASC, reg, SIZE);
+          map.sigDate = { page: pages.length - 1, x: colX[ci] + reg.widthOfTextAtSize(label, SIZE), y: y - ASC };
+          return;
+        }
         let t = cell;
         while (reg.widthOfTextAtSize(t, SIZE) > colW && /\.\.$/.test(t)) t = t.slice(0, -1);
         text(t, colX[ci], y - ASC, reg, SIZE);
@@ -151,7 +158,8 @@ pages[0].drawText(charset, { x: -9000, y: -9000, size: 1, font: reg });
 pages[0].drawText(charset, { x: -9000, y: -9100, size: 1, font: bold });
 
 // Placeholder content streams and image, rewritten per request.
-const needPages = [...new Set([map.fields.page, map.signature.page])];
+if (!map.sigDate) throw new Error("OD Tarih line not found");
+const needPages = [...new Set([map.fields.page, map.signature.page, map.sigDate.page])];
 const streams = {};
 for (const pi of needPages) {
   const ref = doc.context.register(doc.context.stream(" "));
@@ -180,7 +188,7 @@ const pick = (re) => { const m = re.exec(trailer); if (!m) throw new Error("trai
 const tpl = {
   pageCount: pages.length,
   size: SIZE, lead: LEAD, asc: ASC,
-  fields: map.fields, signature: map.signature,
+  fields: map.fields, signature: map.signature, sigDate: map.sigDate,
   streams, fontNames, imageObj: img.ref.objectNumber,
   trailer: {
     size: Number(pick(/\/Size (\d+)/)),
