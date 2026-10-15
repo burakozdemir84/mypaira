@@ -1,131 +1,91 @@
 // /api/discovery/admin   (Header: X-PAIRA-KEY: <env.PAIRA_AUTOMATION_KEY>)
 //
-// GET                 -> list of invites (no answers)
-// GET ?id=<id>        -> one invite with answers
-// POST { action: "create", org, contact_name, contact_email, meeting_at, days? }
-//                     -> { id, url, expires_at }   url is shown once; only its hash is stored
-// POST { action: "reissue", id }      -> new link, the old one stops working
-// POST { action: "extend", id, days } -> new expiry, counted from now
-// POST { action: "revoke" | "lock" | "unlock" | "delete", id }
-// POST { action: "purge", older_than_days? = 180 }
-//                     -> deletes invites whose expiry is older than N days
+// GET                     -> list of requests (no answers) and signature status
+// GET ?id=<id>            -> one request with answers
+// GET ?id=<id>&nda=1      -> that company's signed NDA as PDF (Make uses this)
+// POST { action: "signature", jpeg_base64 }   -> store PAIRA's signature/stamp image
+// POST { action: "extend", id, days }         -> keep the personal link open longer
+// POST { action: "delete", id }
+// POST { action: "purge", older_than_days }   -> delete requests expired that long ago
 
 import {
-  json, readJson, checkAdminKey, ensureTable, newToken, newId, sha256Hex,
-  computeExpiry, nowIso,
+  json, readJson, checkAdminKey, ensureTables, expiryFromNow, getSetting, setSetting,
+  b64ToBytes, ndaResponse,
 } from "../../../lib/discovery.js";
+import { jpegInfo } from "../../../lib/nda-pdf.js";
 
 const DAY = 24 * 60 * 60 * 1000;
 
-function linkFor(request, env, token) {
-  const base = env.SITE_URL || new URL(request.url).origin;
-  return base.replace(/\/$/, "") + "/on-hazirlik#t=" + token;
-}
-
-function adminView(r, withAnswers) {
-  const now = Date.now();
-  let status = "aktif";
-  if (r.revoked_at) status = "iptal";
-  else if (Date.parse(r.expires_at) < now) status = "süresi doldu";
-  else if (r.locked) status = "kilitli";
+function view(r, withAnswers) {
   const out = {
-    id: r.id, org: r.org, contact_name: r.contact_name, contact_email: r.contact_email,
-    meeting_at: r.meeting_at, expires_at: r.expires_at, created_at: r.created_at,
-    status, open_count: r.open_count || 0, first_opened_at: r.first_opened_at,
-    last_opened_at: r.last_opened_at, updated_at: r.updated_at,
-    submitted_at: r.submitted_at, submit_count: r.submit_count || 0, version: r.version || 0,
+    id: r.id, org: r.org, address: r.address, contact_name: r.contact_name, contact_title: r.contact_title,
+    contact_email: r.contact_email, phone: r.phone, nda_date: r.nda_date, created_at: r.created_at,
+    expires_at: r.expires_at, expired: Date.parse(r.expires_at) < Date.now(),
+    open_count: r.open_count || 0, last_opened_at: r.last_opened_at, updated_at: r.updated_at,
+    submitted_at: r.submitted_at, submit_count: r.submit_count || 0,
   };
-  if (withAnswers) {
-    try { out.answers = r.answers_json ? JSON.parse(r.answers_json) : {}; } catch (_e) { out.answers = {}; }
-  }
+  let answers = {};
+  try { answers = r.answers_json ? JSON.parse(r.answers_json) : {}; } catch (_e) { answers = {}; }
+  out.answered = Object.keys(answers).length;
+  if (withAnswers) out.answers = answers;
   return out;
-}
-
-function clean(v, max) {
-  return typeof v === "string" ? v.trim().slice(0, max) : "";
 }
 
 export async function onRequestGet({ request, env }) {
   if (!checkAdminKey(request, env)) return json({ ok: false, error: "unauthorized" }, 401);
   if (!env.DB) return json({ ok: false, error: "server" }, 500);
-  await ensureTable(env.DB);
-  const id = new URL(request.url).searchParams.get("id");
+  await ensureTables(env.DB);
+  const url = new URL(request.url);
+  const id = url.searchParams.get("id");
   if (id) {
-    const r = await env.DB.prepare("SELECT * FROM discovery_invites WHERE id = ?").bind(id).first();
+    const r = await env.DB.prepare("SELECT * FROM discovery_requests WHERE id = ?").bind(id).first();
     if (!r) return json({ ok: false, error: "not_found" }, 404);
-    return json({ ok: true, invite: adminView(r, true) });
+    if (url.searchParams.get("nda")) return ndaResponse(env, request, r);
+    return json({ ok: true, request: view(r, true) });
   }
-  const res = await env.DB
-    .prepare("SELECT * FROM discovery_invites ORDER BY created_at DESC LIMIT 200")
-    .all();
-  return json({ ok: true, invites: ((res && res.results) || []).map((r) => adminView(r, false)) });
+  const res = await env.DB.prepare("SELECT * FROM discovery_requests ORDER BY created_at DESC LIMIT 300").all();
+  const sig = await getSetting(env.DB, "nda_signature_jpeg");
+  return json({ ok: true, signature: !!sig, requests: ((res && res.results) || []).map((r) => view(r, false)) });
 }
 
 export async function onRequestPost({ request, env }) {
   if (!checkAdminKey(request, env)) return json({ ok: false, error: "unauthorized" }, 401);
   if (!env.DB) return json({ ok: false, error: "server" }, 500);
-  await ensureTable(env.DB);
-  const parsed = await readJson(request);
+  await ensureTables(env.DB);
+  const parsed = await readJson(request, 1024 * 1024);
   if (parsed.error) return json({ ok: false, error: parsed.error }, 400);
   const b = parsed.body || {};
   const db = env.DB;
 
-  if (b.action === "create") {
-    const org = clean(b.org, 160);
-    if (!org) return json({ ok: false, error: "org_required" }, 400);
-    const meetingAt = clean(b.meeting_at, 40);
-    if (meetingAt && isNaN(Date.parse(meetingAt))) return json({ ok: false, error: "bad_meeting_at" }, 400);
-    const token = newToken();
-    const id = newId();
-    const expires = computeExpiry(meetingAt ? new Date(meetingAt).toISOString() : "", b.days);
-    await db
-      .prepare(
-        "INSERT INTO discovery_invites (id, token_hash, org, contact_name, contact_email, meeting_at, expires_at) " +
-          "VALUES (?, ?, ?, ?, ?, ?, ?)"
-      )
-      .bind(id, await sha256Hex(token), org, clean(b.contact_name, 120), clean(b.contact_email, 160),
-        meetingAt ? new Date(meetingAt).toISOString() : null, expires)
-      .run();
-    return json({ ok: true, id, url: linkFor(request, env, token), expires_at: expires });
+  if (b.action === "signature") {
+    if (typeof b.jpeg_base64 !== "string") return json({ ok: false, error: "jpeg_required" }, 400);
+    let bytes;
+    try { bytes = b64ToBytes(b.jpeg_base64); } catch (_e) { return json({ ok: false, error: "bad_base64" }, 400); }
+    const info = jpegInfo(bytes);
+    if (!info || bytes.length > 700 * 1024) return json({ ok: false, error: "jpeg_invalid" }, 400);
+    await setSetting(db, "nda_signature_jpeg", b.jpeg_base64);
+    return json({ ok: true, width: info.width, height: info.height, bytes: bytes.length });
   }
 
   if (b.action === "purge") {
     const days = Math.max(30, Number(b.older_than_days) || 180);
     const cutoff = new Date(Date.now() - days * DAY).toISOString();
-    const r = await db.prepare("DELETE FROM discovery_invites WHERE expires_at < ?").bind(cutoff).run();
+    const r = await db.prepare("DELETE FROM discovery_requests WHERE expires_at < ?").bind(cutoff).run();
     return json({ ok: true, deleted: (r.meta && r.meta.changes) || 0, cutoff });
   }
 
-  const id = clean(b.id, 40);
-  const row = id && (await db.prepare("SELECT * FROM discovery_invites WHERE id = ?").bind(id).first());
+  const id = typeof b.id === "string" ? b.id.slice(0, 40) : "";
+  const row = id && (await db.prepare("SELECT id FROM discovery_requests WHERE id = ?").bind(id).first());
   if (!row) return json({ ok: false, error: "not_found" }, 404);
 
-  switch (b.action) {
-    case "reissue": {
-      const token = newToken();
-      const expires = Date.parse(row.expires_at) < Date.now() ? computeExpiry(row.meeting_at) : row.expires_at;
-      await db
-        .prepare("UPDATE discovery_invites SET token_hash = ?, revoked_at = NULL, expires_at = ? WHERE id = ?")
-        .bind(await sha256Hex(token), expires, id)
-        .run();
-      return json({ ok: true, id, url: linkFor(request, env, token), expires_at: expires });
-    }
-    case "extend": {
-      const expires = computeExpiry("", b.days || 7);
-      await db.prepare("UPDATE discovery_invites SET expires_at = ?, revoked_at = NULL WHERE id = ?").bind(expires, id).run();
-      return json({ ok: true, id, expires_at: expires });
-    }
-    case "revoke":
-      await db.prepare("UPDATE discovery_invites SET revoked_at = ? WHERE id = ?").bind(nowIso(), id).run();
-      return json({ ok: true, id });
-    case "lock":
-    case "unlock":
-      await db.prepare("UPDATE discovery_invites SET locked = ? WHERE id = ?").bind(b.action === "lock" ? 1 : 0, id).run();
-      return json({ ok: true, id });
-    case "delete":
-      await db.prepare("DELETE FROM discovery_invites WHERE id = ?").bind(id).run();
-      return json({ ok: true, id });
-    default:
-      return json({ ok: false, error: "unknown_action" }, 400);
+  if (b.action === "extend") {
+    const expires = expiryFromNow(b.days || 30);
+    await db.prepare("UPDATE discovery_requests SET expires_at = ? WHERE id = ?").bind(expires, id).run();
+    return json({ ok: true, id, expires_at: expires });
   }
+  if (b.action === "delete") {
+    await db.prepare("DELETE FROM discovery_requests WHERE id = ?").bind(id).run();
+    return json({ ok: true, id });
+  }
+  return json({ ok: false, error: "unknown_action" }, 400);
 }

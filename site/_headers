@@ -48,3 +48,5 @@
   Cache-Control: no-store
 /api/discovery/*
   X-Robots-Tag: noindex, nofollow
+/assets/nda/*
+  X-Robots-Tag: noindex, nofollow

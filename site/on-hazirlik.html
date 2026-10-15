@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow, noarchive">
 <meta name="referrer" content="no-referrer">
-<title>Ön Hazırlık Formu | PAIRA</title>
+<title>Ön Hazırlık | PAIRA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -23,14 +23,14 @@ header.top{background:var(--navy);color:var(--white)}
 header.top .wrap{display:flex;align-items:center;justify-content:space-between;padding:18px 20px}
 header.top img{height:30px;width:auto;display:block}
 header.top .tag{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--sky)}
-.hero{background:var(--navy);color:var(--white);padding:28px 0 54px}
+.hero{background:var(--navy);color:var(--white);padding:28px 0 44px}
 .eyebrow{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 12px}
 h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
 h1{font-size:44px}
 .hero p{color:#D9E6F2;max-width:660px}
 .meta{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px;font-size:15px;color:var(--sky)}
 .meta b{color:var(--white);font-weight:500}
-main{margin-top:-30px;padding-bottom:80px}
+main{padding:26px 0 80px}
 .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px 30px;margin-bottom:18px}
 .howto{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .howto div{font-size:15px;color:var(--mute)}
@@ -90,6 +90,24 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
   .bar .wrap{flex-wrap:wrap}
 }
 @media print{.bar,header.top{display:none}.hero{padding:10px 0;background:none;color:var(--ink)}.hero p,.meta,.meta b{color:var(--ink)}}
+.steps{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.steps button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--white);color:var(--mute);border-radius:999px;padding:7px 14px;cursor:default}
+.steps button b{font-weight:500;margin-right:6px}
+.steps button.on{background:var(--navy);border-color:var(--navy);color:var(--white)}
+.steps button.done{color:var(--navy);border-color:var(--accent);cursor:pointer}
+.card h2{font-size:30px;color:var(--navy);margin-bottom:8px}
+.req{color:var(--accent)}
+.ferr{color:var(--warn);font-size:13.5px;margin-top:5px}
+.hp{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.summary{display:grid;grid-template-columns:170px 1fr;gap:8px 16px;margin:18px 0;font-size:15.5px}
+.summary dt{color:var(--mute)}
+.summary dd{margin:0;color:var(--ink);font-weight:400}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
+button.secondary{font:inherit;font-weight:500;font-size:15.5px;background:var(--skysoft);color:var(--navy);border:0;border-radius:999px;padding:12px 24px;cursor:pointer}
+button.secondary:hover{background:#DCEAF5}
+.small{font-size:14.5px;color:var(--mute)}
+.linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--accent);text-decoration:underline;cursor:pointer}
+@media (max-width:760px){.summary{grid-template-columns:minmax(0,1fr);gap:2px 0}.summary dd{margin-bottom:8px}}
 </style>
 </head>
 <body>
@@ -98,68 +116,123 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
   <span class="tag">Ön Hazırlık</span>
 </div></header>
 
-<div id="loading" class="wrap state"><p>Form yükleniyor…</p></div>
-
 <div id="gone" class="wrap state" hidden>
   <h1 id="gone-title">Bu bağlantı açılamadı</h1>
   <p id="gone-text"></p>
-  <p style="margin-top:18px"><a href="mailto:burak@mypaira.com">burak@mypaira.com</a></p>
+  <p style="margin-top:18px"><a href="/on-hazirlik">Yeni bir ön hazırlık başlatın</a> veya bize yazın: <a href="mailto:burak@mypaira.com">burak@mypaira.com</a></p>
 </div>
 
-<div id="app" hidden>
+<div id="app">
 <section class="hero"><div class="wrap">
   <p class="eyebrow">Pre-Meeting Discovery</p>
   <h1>Toplantımıza birlikte hazırlanalım</h1>
   <p>İlk görüşmemizde mevcut hukuki iş akışınızı anlamayı, yapay zeka ajanlarıyla nasıl iyileştirilebileceğini birlikte tasarlamayı, teknik gereksinimleri belirlemeyi ve proje kapsamı ile maliyetini mümkün olduğunca netleştirmeyi hedefliyoruz.</p>
-  <div class="meta">
+  <div class="meta" id="meta" hidden>
     <span>Kurum: <b id="m-org"></b></span>
-    <span id="m-meet-wrap">Toplantı: <b id="m-meet"></b></span>
-    <span>Bağlantı geçerliliği: <b id="m-exp"></b></span>
+    <span>Gizlilik sözleşmesi tarihi: <b id="m-date"></b></span>
   </div>
 </div></section>
 
 <main><div class="wrap">
-  <div id="banner"></div>
+  <nav class="steps" aria-label="Adımlar">
+    <button type="button" data-step="1"><b>1</b>Şirket bilgileri</button>
+    <button type="button" data-step="2"><b>2</b>Gizlilik sözleşmesi</button>
+    <button type="button" data-step="3"><b>3</b>Ön hazırlık formu</button>
+  </nav>
 
-  <div class="card">
-    <p style="margin-top:0">Toplantıyı verimli geçirebilmek için aşağıdaki <b style="font-weight:500">10 başlığa</b> önceden göz atmanızı rica ediyoruz. Kısa notlar ve yaklaşık bilgiler yeterli; henüz bilmediğiniz noktaları <i>“toplantıda konuşalım”</i> olarak işaretleyip görüşmede birlikte değerlendirebiliriz.</p>
-    <div class="howto">
-      <div><strong>Yazdıkça kaydedilir</strong>Yanıtlarınız otomatik olarak saklanır. Aynı bağlantıyla toplantıya kadar istediğiniz zaman dönebilirsiniz.</div>
-      <div><strong>Ekibinizle birlikte</strong>IT veya ilgili iş birimi gibi kişilerle bağlantıyı paylaşabilirsiniz. Bağlantıyı açan herkes formu görüp düzenleyebilir, bu nedenle yalnızca ilgili kişilerle paylaşmanızı rica ederiz.</div>
-      <div><strong>Anonim ve yaklaşık</strong>Müvekkil bilgisi, kişisel veri veya gizli belge paylaşmanız gerekmiyor. Örnek belgeleri toplantıda ekran paylaşımıyla göstermeniz yeterli.</div>
+  <!-- Step 1 -->
+  <section id="step1" hidden>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:8px">Adım 1</p>
+      <h2>Şirket bilgileri</h2>
+      <p class="help" style="color:var(--mute);margin-top:0">Gizlilik sözleşmesini şirketiniz adına hazırlayabilmemiz için aşağıdaki bilgileri rica ediyoruz. Sözleşme bu bilgilerle doldurulur ve PAIRA tarafından imzalanmış olarak size iletilir. Ardından ön hazırlık formu açılır.</p>
+      <form id="company" novalidate>
+        <label class="f" for="c-org">Şirket unvanı <span class="req">*</span></label>
+        <input type="text" id="c-org" name="org" maxlength="200" placeholder="Ticaret sicilinde kayıtlı tam unvan" autocomplete="organization" required>
+        <label class="f" for="c-address">Şirket adresi <span class="req">*</span></label>
+        <textarea id="c-address" name="address" rows="2" maxlength="300" placeholder="Sözleşmede yer alacak adres" autocomplete="street-address" required style="min-height:64px"></textarea>
+        <div class="grid3" style="grid-template-columns:1fr 1fr">
+          <div><label class="f" for="c-name">Yetkili kişi <span class="req">*</span></label>
+            <input type="text" id="c-name" name="contact_name" maxlength="120" placeholder="Ad Soyad" autocomplete="name" required></div>
+          <div><label class="f" for="c-title">Unvan / görev</label>
+            <input type="text" id="c-title" name="contact_title" maxlength="120" placeholder="ör. Yönetici Ortak" autocomplete="organization-title"></div>
+          <div><label class="f" for="c-email">E-posta <span class="req">*</span></label>
+            <input type="text" id="c-email" name="email" maxlength="160" inputmode="email" placeholder="ad@sirket.com" autocomplete="email" required></div>
+          <div><label class="f" for="c-phone">Telefon</label>
+            <input type="text" id="c-phone" name="phone" maxlength="40" inputmode="tel" placeholder="İsteğe bağlı" autocomplete="tel"></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label>Web sitesi<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+        <p id="c-err" class="ferr" hidden></p>
+        <p class="small" style="margin:18px 0 16px">Paylaştığınız bilgiler <a href="/aydinlatma-metni" target="_blank" rel="noopener">Aydınlatma Metni</a> kapsamında, toplantı hazırlığı ve gizlilik sözleşmesi için işlenir.</p>
+        <button class="primary" type="submit" id="c-submit">Gizlilik sözleşmesini hazırla</button>
+      </form>
     </div>
-    <label class="f" for="filled_by" style="margin-top:22px">Formu dolduran kişi</label>
-    <div class="grid3" style="grid-template-columns:1fr 1fr">
-      <input type="text" id="filled_by" data-k="filled_by" placeholder="Ad Soyad" autocomplete="name">
-      <input type="text" id="filled_role" data-k="filled_role" placeholder="Unvan / rol" autocomplete="organization-title">
+  </section>
+
+  <!-- Step 2 -->
+  <section id="step2" hidden>
+    <div class="card">
+      <p class="eyebrow" style="margin-bottom:8px">Adım 2</p>
+      <h2>Gizlilik sözleşmeniz hazır</h2>
+      <p class="help" style="color:var(--mute);margin-top:0">PAIRA (OD Etüd ve Müşavirlik Ltd. Şti.) tarafından imzalanmış <i>Hizmet Alımları İçin Gizlilik ve Kişisel Verilerin Korunması Sözleşmesi</i>, şirketinizin bilgileriyle hazırlandı.</p>
+      <dl class="summary">
+        <dt>Hizmet Alan</dt><dd id="s-org"></dd>
+        <dt>Adres</dt><dd id="s-address"></dd>
+        <dt>Sözleşme tarihi</dt><dd id="s-date"></dd>
+      </dl>
+      <div class="actions">
+        <button class="primary" type="button" id="dl">Sözleşmeyi indir (PDF)</button>
+        <button class="secondary" type="button" id="to3">Ön hazırlık formuna geç</button>
+      </div>
+      <p id="dl-msg" class="small" style="margin-top:14px" hidden></p>
+      <p class="note" style="margin:20px 0 0" id="mail-note"></p>
     </div>
-  </div>
+  </section>
 
-  <fieldset id="form"></fieldset>
-
-  <div class="section-title"><span class="letter">→</span><h2>Toplantıya hazırlık</h2></div>
-  <div class="card">
-    <p style="margin-top:0"><b style="font-weight:500">Hazırlamanızı önerdiğimiz materyaller:</b> bir adet tipik süreç örneği, mevcut belge şablonları ve iş hacmine ilişkin yaklaşık veriler.</p>
-    <p>Toplantıya teknik ekipten birinin katılması zorunlu değil. Mevcut sistemlere erişim ve entegrasyon imkanlarını bilen bir kişinin hazır bulunması ise çözümün daha hızlı netleşmesini sağlar.</p>
-    <p style="margin-bottom:6px"><b style="font-weight:500">Toplantının sonunda birlikte netleştirmeyi hedeflediğimiz başlıklar:</b></p>
-    <div class="outputs">
-      <div><b>Süreç haritası</b>Bugünkü ve hedeflenen iş akışı</div>
-      <div><b>Çözüm taslağı</b>Ekranlar, ajan görevleri, insan onayları</div>
-      <div><b>Teknik mimari</b>Altyapı, entegrasyon, modeller, güvenlik</div>
-      <div><b>Finansal model</b>Efor, maliyet ve potansiyel getiri</div>
-      <div><b>Teklif taslağı</b>Kapsam, takvim ve varsayımlar</div>
+  <!-- Step 3 -->
+  <section id="step3" hidden>
+    <div id="banner"></div>
+    <div class="card">
+      <p style="margin-top:0">Toplantıyı verimli geçirebilmek için aşağıdaki <b style="font-weight:500">10 başlığa</b> önceden göz atmanızı rica ediyoruz. Kısa notlar ve yaklaşık bilgiler yeterli; henüz bilmediğiniz noktaları <i>“toplantıda konuşalım”</i> olarak işaretleyip görüşmede birlikte değerlendirebiliriz.</p>
+      <div class="howto">
+        <div><strong>Yazdıkça kaydedilir</strong>Yanıtlarınız otomatik olarak saklanır. Bu sayfanın adresi size özeldir; toplantıya kadar aynı adresle istediğiniz zaman dönebilirsiniz.</div>
+        <div><strong>Ekibinizle birlikte</strong>IT veya ilgili iş birimi gibi kişilerle sayfa adresini paylaşabilirsiniz. Adresi açan herkes formu görüp düzenleyebilir, bu nedenle yalnızca ilgili kişilerle paylaşmanızı rica ederiz.</div>
+        <div><strong>Anonim ve yaklaşık</strong>Müvekkil bilgisi veya kişisel veri paylaşmanız gerekmiyor. Örnek belgeleri toplantıda ekran paylaşımıyla göstermeniz yeterli.</div>
+      </div>
+      <p class="small" style="margin:18px 0 0">Gizlilik sözleşmeniz: <button type="button" class="linkbtn" id="dl3">PDF olarak indir</button></p>
+      <label class="f" for="filled_by" style="margin-top:22px">Formu dolduran kişi</label>
+      <div class="grid3" style="grid-template-columns:1fr 1fr">
+        <input type="text" id="filled_by" data-k="filled_by" placeholder="Ad Soyad" autocomplete="name">
+        <input type="text" id="filled_role" data-k="filled_role" placeholder="Unvan / rol" autocomplete="organization-title">
+      </div>
     </div>
-    <p class="note" style="margin:0">Bu çalışma ilk kapsamlı çözüm resmini oluşturur. Nihai teknik mimari ve bağlayıcı fiyat, entegrasyon erişimleri ve veri güvenliği gereksinimleri birlikte doğrulandıktan sonra netleşir.</p>
-    <label class="f" for="q_other">Toplantı öncesinde iletmek istediğiniz başka bir not var mı?</label>
-    <textarea id="q_other" data-k="q_other" rows="3"></textarea>
-  </div>
 
-  <footer>
-    Bu formda paylaştığınız bilgiler yalnızca toplantı hazırlığı ve olası proje teklifi için kullanılır; kişisel verileriniz <a href="/aydinlatma-metni" target="_blank" rel="noopener">Aydınlatma Metni</a> kapsamında işlenir. Bağlantının geçerlilik süresi dolduğunda form kapanır. Sorularınız için <a href="mailto:burak@mypaira.com">burak@mypaira.com</a>.
-  </footer>
+    <fieldset id="form"></fieldset>
+
+    <div class="section-title"><span class="letter">→</span><h2>Toplantıya hazırlık</h2></div>
+    <div class="card">
+      <p style="margin-top:0"><b style="font-weight:500">Hazırlamanızı önerdiğimiz materyaller:</b> bir adet tipik süreç örneği, mevcut belge şablonları ve iş hacmine ilişkin yaklaşık veriler.</p>
+      <p>Toplantıya teknik ekipten birinin katılması zorunlu değil. Mevcut sistemlere erişim ve entegrasyon imkanlarını bilen bir kişinin hazır bulunması ise çözümün daha hızlı netleşmesini sağlar.</p>
+      <p style="margin-bottom:6px"><b style="font-weight:500">Toplantının sonunda birlikte netleştirmeyi hedeflediğimiz başlıklar:</b></p>
+      <div class="outputs">
+        <div><b>Süreç haritası</b>Bugünkü ve hedeflenen iş akışı</div>
+        <div><b>Çözüm taslağı</b>Ekranlar, ajan görevleri, insan onayları</div>
+        <div><b>Teknik mimari</b>Altyapı, entegrasyon, modeller, güvenlik</div>
+        <div><b>Finansal model</b>Efor, maliyet ve potansiyel getiri</div>
+        <div><b>Teklif taslağı</b>Kapsam, takvim ve varsayımlar</div>
+      </div>
+      <p class="note" style="margin:0">Bu çalışma ilk kapsamlı çözüm resmini oluşturur. Nihai teknik mimari ve bağlayıcı fiyat, entegrasyon erişimleri ve veri güvenliği gereksinimleri birlikte doğrulandıktan sonra netleşir.</p>
+      <label class="f" for="q_other">Toplantı öncesinde iletmek istediğiniz başka bir not var mı?</label>
+      <textarea id="q_other" data-k="q_other" rows="3"></textarea>
+    </div>
+
+    <footer>
+      Bu formda paylaştığınız bilgiler yalnızca toplantı hazırlığı ve olası proje teklifi için kullanılır; kişisel verileriniz <a href="/aydinlatma-metni" target="_blank" rel="noopener">Aydınlatma Metni</a> kapsamında işlenir. Sorularınız için <a href="mailto:burak@mypaira.com">burak@mypaira.com</a>.
+    </footer>
+  </section>
 </div></main>
 
-<div class="bar"><div class="wrap">
+<div class="bar" id="bar" hidden><div class="wrap">
   <div><span class="progress"><b id="p-count">0</b> / 10 başlık işaretlendi</span><span id="status" class="status"></span></div>
   <button class="primary" id="submit" type="button">Formu gönder</button>
 </div></div>
@@ -168,8 +241,6 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
 <script>
 (function(){
   "use strict";
-  var API = "/api/discovery/form";
-
   // ---- question model -------------------------------------------------
   var SECTIONS = [
     {letter:"A", title:"İş akışı ve otomasyon ihtiyacı", qs:[
@@ -308,9 +379,187 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
     });
   }
 
-  // ---- state ----------------------------------------------------------
-  var token = "", version = 0, submittedAt = null, locked = false;
+  // ---- rendering ------------------------------------------------------
+  function el(tag, attrs, html){
+    var e = document.createElement(tag);
+    if (attrs) for (var a in attrs) e.setAttribute(a, attrs[a]);
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  function renderField(f, host){
+    if (f.t === "grid"){
+      var g = el("div",{class:"grid3",style:"grid-template-columns:1fr 1fr"});
+      f.items.forEach(function(it){ var d = el("div"); renderField(it, d); g.appendChild(d); });
+      host.appendChild(g); return;
+    }
+    if (f.t === "tri"){
+      var box = el("div",{style:"margin-top:8px"});
+      f.items.forEach(function(it){
+        var row = el("div",{class:"tri"});
+        row.appendChild(el("span",{class:"lbl"},esc(it.label)));
+        var c = el("div",{class:"chips",role:"radiogroup","aria-label":it.label});
+        [["var","Var"],["yok","Yok"],["bilmiyorum","Bilmiyorum"]].forEach(function(o){
+          var l = el("label",{class:"chip"});
+          l.innerHTML = '<input type="radio" name="'+it.k+'" value="'+o[0]+'" data-k="'+it.k+'" data-type="tri"><span>'+o[1]+'</span>';
+          c.appendChild(l);
+        });
+        row.appendChild(c); box.appendChild(row);
+      });
+      host.appendChild(box); return;
+    }
+    if (f.label) host.appendChild(el("label",{class:"f",for:f.k},esc(f.label)));
+    if (f.t === "text"){
+      host.appendChild(el("textarea",{id:f.k,"data-k":f.k,rows:f.rows||4,maxlength:"2000"}));
+    } else if (f.t === "short"){
+      host.appendChild(el("input",{type:"text",id:f.k,"data-k":f.k,maxlength:"200",placeholder:f.ph||""}));
+    } else if (f.t === "chips"){
+      var c = el("div",{class:"chips",style:"margin-top:4px"});
+      f.options.forEach(function(o){
+        var l = el("label",{class:"chip"});
+        l.innerHTML = '<input type="checkbox" value="'+esc(o)+'" data-k="'+f.k+'" data-type="list"><span>'+esc(o)+'</span>';
+        c.appendChild(l);
+      });
+      host.appendChild(c);
+    }
+  }
+
+  function render(){
+    var form = document.getElementById("form");
+    SECTIONS.forEach(function(s){
+      var t = el("div",{class:"section-title"});
+      t.innerHTML = '<span class="letter">'+s.letter+'</span><h2>'+esc(s.title)+'</h2>';
+      form.appendChild(t);
+      s.qs.forEach(function(q){
+        var card = el("div",{class:"card q",id:"q"+q.n});
+        card.appendChild(el("span",{class:"num"},"Başlık "+q.n));
+        card.appendChild(el("h3",null,esc(q.title)));
+        if (q.help) card.appendChild(el("p",{class:"help"},esc(q.help)));
+        if (q.ex) card.appendChild(el("p",{class:"ex"},esc(q.ex)));
+        q.fields.forEach(function(f){ renderField(f, card); });
+        if (q.later){
+          var l = el("label",{class:"later"});
+          l.innerHTML = '<input type="checkbox" data-k="'+q.later+'" data-type="flag"> '+esc(q.laterLabel || "Bu başlığı toplantıda konuşalım");
+          card.appendChild(l);
+        }
+        form.appendChild(card);
+      });
+    });
+  }
+
+  // ---- helpers ----------------------------------------------------------
+  function $(id){ return document.getElementById(id); }
+  function hhmm(iso){ try { return new Date(iso).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"}); } catch(e){ return ""; } }
+  function fmtDate(iso){ try { return new Date(iso).toLocaleString("tr-TR",{day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"}); } catch(e){ return iso; } }
+
+  var token = "", version = 0, submittedAt = null, info = null, formReady = false;
   var dirty = {}, saving = false, timer = null, pendingAgain = false;
+
+  function call(method, path, body, keepalive){
+    var h = {"Content-Type":"application/json"};
+    if (token) h["X-Invite-Token"] = token;
+    return fetch(path, {method:method, headers:h, body: body ? JSON.stringify(body) : undefined, keepalive: !!keepalive, cache:"no-store", credentials:"omit"})
+      .then(function(r){ return r.json().catch(function(){ return {ok:false,error:"server"}; }).then(function(j){ j._status = r.status; return j; }); });
+  }
+
+  // ---- steps ------------------------------------------------------------
+  var current = 0;
+  function go(n){
+    current = n;
+    [1,2,3].forEach(function(i){ $("step"+i).hidden = i !== n; });
+    document.querySelectorAll(".steps button").forEach(function(b){
+      var i = Number(b.getAttribute("data-step"));
+      b.className = i === n ? "on" : (token && i >= 2 ? "done" : "");
+    });
+    $("bar").hidden = n !== 3;
+    if (n === 3 && !formReady) initForm();
+    window.scrollTo({top:0});
+  }
+  document.querySelector(".steps").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-step]"); if (!b || !token) return;
+    var i = Number(b.getAttribute("data-step"));
+    if (i >= 2) go(i);
+  });
+
+  function showGone(code){
+    var t = {
+      invalid:["Bu bağlantı açılamadı","Size özel sayfa adresini eksiksiz açtığınızdan emin olun. Sorun devam ederse bize yazın."],
+      expired:["Bu sayfanın süresi doldu","Ön hazırlık sayfaları güvenlik amacıyla belirli bir süre sonra kapanır. Yeniden açmamızı isterseniz bize yazın."],
+      server:["Şu anda sayfaya ulaşılamıyor","Lütfen birkaç dakika sonra tekrar deneyin."]
+    }[code] || ["Bu bağlantı açılamadı",""];
+    $("app").hidden = true; $("gone").hidden = false;
+    $("gone-title").textContent = t[0]; $("gone-text").textContent = t[1];
+  }
+
+  function setInfo(r){
+    info = r;
+    $("m-org").textContent = r.org; $("m-date").textContent = r.nda_date; $("meta").hidden = false;
+    $("s-org").textContent = r.org; $("s-address").textContent = r.address; $("s-date").textContent = r.nda_date;
+  }
+
+  // ---- step 1: company --------------------------------------------------
+  var MSG = {
+    missing:"Lütfen işaretli alanları doldurun.",
+    email:"Lütfen geçerli bir e-posta adresi yazın.",
+    too_short:"Şirket unvanını ve adresini sözleşmede yer alacağı biçimde, eksiksiz yazın.",
+    rate:"Kısa sürede çok sayıda kayıt oluşturuldu. Lütfen biraz sonra tekrar deneyin.",
+    server:"Şu anda kaydedemedik. Lütfen biraz sonra tekrar deneyin."
+  };
+  $("company").addEventListener("submit", function(e){
+    e.preventDefault();
+    var f = e.target, data = {};
+    ["org","address","contact_name","contact_title","email","phone","website"].forEach(function(k){ data[k] = (f.elements[k].value || "").trim(); });
+    var err = $("c-err");
+    var miss = ["org","address","contact_name","email"].filter(function(k){ return !data[k]; });
+    if (miss.length){ err.textContent = MSG.missing; err.hidden = false; f.elements[miss[0]].focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(data.email)){ err.textContent = MSG.email; err.hidden = false; f.elements.email.focus(); return; }
+    err.hidden = true;
+    var btn = $("c-submit"); btn.disabled = true; btn.textContent = "Hazırlanıyor…";
+    call("POST", "/api/discovery/start", data).then(function(r){
+      btn.disabled = false; btn.textContent = "Gizlilik sözleşmesini hazırla";
+      if (!r.ok){ err.textContent = MSG[r.error] || MSG.server; err.hidden = false; return; }
+      if (!r.token){ return; }
+      token = r.token;
+      history.replaceState(null, "", location.pathname + "#t=" + token);
+      $("mail-note").textContent = r.emailed
+        ? "Sözleşmenin bir kopyası ve bu sayfanın size özel adresi " + data.email + " adresine de gönderilecek. Ön hazırlık formuna bu adresle toplantıya kadar istediğiniz zaman dönebilirsiniz."
+        : "Bu sayfanın adresi size özeldir. Ön hazırlık formuna toplantıya kadar dönebilmek için adresi kaydetmenizi öneririz.";
+      return call("GET", "/api/discovery/form").then(function(v){
+        if (!v.ok){ showGone(v.error); return; }
+        version = v.version; setInfo(v); applyLoaded(v); go(2);
+      });
+    }).catch(function(){ btn.disabled = false; btn.textContent = "Gizlilik sözleşmesini hazırla"; err.textContent = MSG.server; err.hidden = false; });
+  });
+
+  // ---- step 2: NDA --------------------------------------------------------
+  function download(msgEl){
+    if (msgEl){ msgEl.hidden = false; msgEl.textContent = "Sözleşme hazırlanıyor…"; }
+    fetch("/api/discovery/nda", {headers:{"X-Invite-Token":token}, cache:"no-store", credentials:"omit"}).then(function(r){
+      if (!r.ok) return r.json().catch(function(){ return {}; }).then(function(j){ throw j.error || "server"; });
+      var name = "PAIRA_Gizlilik_Sozlesmesi.pdf";
+      var cd = r.headers.get("content-disposition") || "";
+      var m = /filename="([^"]+)"/.exec(cd); if (m) name = m[1];
+      return r.blob().then(function(b){
+        var u = URL.createObjectURL(b), a = document.createElement("a");
+        a.href = u; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(u); }, 5000);
+        if (msgEl) msgEl.textContent = "Sözleşme indirildi.";
+      });
+    }).catch(function(code){
+      var t = code === "signature_missing"
+        ? "Sözleşme şu anda indirilemiyor; imzalı kopyası e-posta adresinize iletilecek. Ön hazırlık formuyla devam edebilirsiniz."
+        : "Sözleşme şu anda indirilemedi. Lütfen biraz sonra tekrar deneyin.";
+      if (msgEl){ msgEl.hidden = false; msgEl.textContent = t; } else alert(t);
+    });
+  }
+  $("dl").addEventListener("click", function(){ download($("dl-msg")); });
+  $("dl3").addEventListener("click", function(){ download(null); });
+  $("to3").addEventListener("click", function(){ go(3); });
+
+  // ---- step 3: form ---------------------------------------------------------
+  var loadedAnswers = {};
+  function applyLoaded(v){ loadedAnswers = v.answers || {}; submittedAt = v.submitted_at; }
 
   function collect(){
     var a = {};
@@ -324,7 +573,6 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
     Object.keys(a).forEach(function(k){ if (Array.isArray(a[k]) && !a[k].length) delete a[k]; });
     return a;
   }
-
   function apply(a){
     document.querySelectorAll("[data-k]").forEach(function(n){
       var k = n.getAttribute("data-k"), type = n.getAttribute("data-type"), v = a[k];
@@ -335,88 +583,40 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
     });
     progress();
   }
-
   function progress(){
     var a = collect(), n = 0;
     for (var q in QKEYS) if (QKEYS[q].some(function(k){ return a[k] != null; })) n++;
-    document.getElementById("p-count").textContent = n;
+    $("p-count").textContent = n;
   }
+  function status(text, err){ var s = $("status"); s.textContent = text; s.className = "status" + (err ? " err" : ""); }
+  function banner(html, kind){ $("banner").innerHTML = html ? '<div class="banner '+kind+'">'+html+'</div>' : ""; }
 
-  function status(text, err){
-    var s = document.getElementById("status");
-    s.textContent = text; s.className = "status" + (err ? " err" : "");
-  }
-  function banner(html, kind){
-    document.getElementById("banner").innerHTML = html ? '<div class="banner '+kind+'">'+html+'</div>' : "";
-  }
-  function hhmm(iso){ try { return new Date(iso).toLocaleTimeString("tr-TR",{hour:"2-digit",minute:"2-digit"}); } catch(e){ return ""; } }
-  function fmtDate(iso, withTime){
-    try { return new Date(iso).toLocaleString("tr-TR", withTime ? {day:"numeric",month:"long",year:"numeric",hour:"2-digit",minute:"2-digit"} : {day:"numeric",month:"long",year:"numeric"}); }
-    catch(e){ return iso; }
-  }
-
-  function api(method, body, keepalive){
-    return fetch(API, {
-      method: method,
-      headers: {"Content-Type":"application/json","X-Invite-Token":token},
-      body: body ? JSON.stringify(body) : undefined,
-      keepalive: !!keepalive,
-      cache: "no-store",
-      credentials: "omit"
-    }).then(function(r){ return r.json().catch(function(){ return {ok:false,error:"server"}; }).then(function(j){ j._status = r.status; return j; }); });
-  }
-
-  function showGone(code){
-    var t = {
-      invalid:["Bu bağlantı açılamadı","Size gönderilen e-postadaki bağlantıyı eksiksiz açtığınızdan emin olun. Sorun devam ederse bize yazın, yeni bir bağlantı iletelim."],
-      expired:["Bu bağlantının süresi doldu","Form, toplantı sonrasında güvenlik amacıyla kapanır. Yanıtlarınızı güncellemek isterseniz bize yazın, bağlantıyı yeniden açalım."],
-      revoked:["Bu bağlantı kapatıldı","Size yeni bir bağlantı iletilmiş olabilir. Lütfen son e-postamızı kontrol edin veya bize yazın."],
-      server:["Şu anda forma ulaşılamıyor","Lütfen birkaç dakika sonra tekrar deneyin."]
-    }[code] || ["Bu bağlantı açılamadı",""];
-    document.getElementById("loading").hidden = true;
-    document.getElementById("app").hidden = true;
-    document.getElementById("gone").hidden = false;
-    document.getElementById("gone-title").textContent = t[0];
-    document.getElementById("gone-text").textContent = t[1];
-  }
-
-  // ---- saving ---------------------------------------------------------
   function schedule(){
-    if (locked) return;
     status("Kaydedilmemiş değişiklikler");
     clearTimeout(timer);
     timer = setTimeout(function(){ save(false); }, 1200);
   }
-
   function save(submit){
-    if (locked) return Promise.resolve();
     if (saving){ pendingAgain = true; return Promise.resolve(); }
-    saving = true;
-    clearTimeout(timer);
+    saving = true; clearTimeout(timer);
     var sentDirty = dirty; dirty = {};
     var answers = collect();
     status(submit ? "Gönderiliyor…" : "Kaydediliyor…");
-    return api(submit ? "POST" : "PUT", {answers:answers, version:version}).then(function(r){
+    return call(submit ? "POST" : "PUT", "/api/discovery/form", {answers:answers, version:version}).then(function(r){
       saving = false;
       if (r.ok){
         version = r.version; submittedAt = r.submitted_at;
         status("Kaydedildi " + hhmm(r.updated_at));
         if (submit) done();
       } else if (r.error === "conflict" && r.latest){
-        // Someone else saved in the meantime: keep their fields, re-apply
-        // the fields this person changed, then save again.
         var merged = r.latest.answers || {};
-        var mine = answers;
         Object.keys(Object.assign({}, sentDirty, dirty)).forEach(function(k){
-          if (mine[k] != null) merged[k] = mine[k]; else delete merged[k];
+          if (answers[k] != null) merged[k] = answers[k]; else delete merged[k];
         });
-        version = r.latest.version;
-        apply(merged);
+        version = r.latest.version; apply(merged);
         banner("Bu form aynı anda ekibinizden biri tarafından da güncellendi. İki taraftaki değişiklikleri birleştirdik; lütfen yanıtlara kısaca göz atın.", "warn");
         Object.assign(dirty, sentDirty);
         return save(submit);
-      } else if (r.error === "locked"){
-        setLocked(true);
       } else if (r._status === 410 || r._status === 401){
         showGone(r.error);
       } else {
@@ -425,75 +625,55 @@ fieldset:disabled .chip span,fieldset:disabled textarea,fieldset:disabled input{
         timer = setTimeout(function(){ save(submit); }, 5000);
       }
     }).catch(function(){
-      saving = false;
-      Object.assign(dirty, sentDirty);
+      saving = false; Object.assign(dirty, sentDirty);
       status("Bağlantı sorunu, tekrar denenecek", true);
       timer = setTimeout(function(){ save(submit); }, 5000);
-    }).then(function(){
-      if (pendingAgain){ pendingAgain = false; save(false); }
-    });
+    }).then(function(){ if (pendingAgain){ pendingAgain = false; save(false); } });
   }
-
   function done(){
-    banner("Teşekkürler, yanıtlarınız bize ulaştı. Toplantıya kadar aynı bağlantıdan güncelleyebilirsiniz; güncellediğinizde yeniden “Gönder”e basmanız yeterli.", "ok");
-    document.getElementById("submit").textContent = "Güncellemeyi gönder";
+    banner("Teşekkürler, yanıtlarınız bize ulaştı. Toplantıya kadar aynı sayfadan güncelleyebilirsiniz; güncellediğinizde yeniden “Gönder”e basmanız yeterli.", "ok");
+    $("submit").textContent = "Güncellemeyi gönder";
     window.scrollTo({top:0,behavior:"smooth"});
   }
 
-  function setLocked(on){
-    locked = on;
-    document.querySelectorAll("textarea,input").forEach(function(n){ n.disabled = on; });
-    document.getElementById("submit").disabled = on;
-    if (on){ banner("Form toplantı hazırlığı için kilitlendi. Yanıtları görüntüleyebilirsiniz; değişiklik için bize yazabilirsiniz.", "warn"); status(""); }
-  }
-
-  // ---- boot -----------------------------------------------------------
-  function boot(){
-    var m = /(?:^|[#&])t=([A-Za-z0-9_-]{43})/.exec(location.hash || "");
-    if (!m){ showGone("invalid"); return; }
-    token = m[1];
+  function initForm(){
+    formReady = true;
     render();
-    api("GET").then(function(r){
-      if (!r.ok){ showGone(r.error === "server" ? "server" : r.error); return; }
-      version = r.version; submittedAt = r.submitted_at;
-      document.getElementById("m-org").textContent = r.org || "";
-      if (r.meeting_at) document.getElementById("m-meet").textContent = fmtDate(r.meeting_at, true);
-      else document.getElementById("m-meet-wrap").hidden = true;
-      document.getElementById("m-exp").textContent = fmtDate(r.expires_at, false);
-      if (r.contact_name && !(r.answers && r.answers.filled_by)) document.getElementById("filled_by").placeholder = r.contact_name;
-      apply(r.answers || {});
-      document.getElementById("loading").hidden = true;
-      document.getElementById("app").hidden = false;
-      if (submittedAt){
-        document.getElementById("submit").textContent = "Güncellemeyi gönder";
-        status("Son gönderim: " + fmtDate(submittedAt, true));
+    var a = Object.assign({}, loadedAnswers);
+    if (!a.filled_by && info && info.contact_name) a.filled_by = info.contact_name;
+    if (!a.filled_role && info && info.contact_title) a.filled_role = info.contact_title;
+    apply(a);
+    if (submittedAt){ $("submit").textContent = "Güncellemeyi gönder"; status("Son gönderim: " + fmtDate(submittedAt)); }
+    var onEdit = function(e){
+      var k = e.target && e.target.getAttribute && e.target.getAttribute("data-k");
+      if (!k) return; dirty[k] = true; progress(); schedule();
+    };
+    document.addEventListener("input", onEdit);
+    document.addEventListener("change", onEdit);
+    $("submit").addEventListener("click", function(){ save(true); });
+    document.addEventListener("visibilitychange", function(){
+      if (document.visibilityState === "hidden" && Object.keys(dirty).length && !saving){
+        clearTimeout(timer);
+        var flushed = dirty; dirty = {}; saving = true;
+        call("PUT", "/api/discovery/form", {answers:collect(), version:version}, true).then(function(r){
+          saving = false;
+          if (r.ok){ version = r.version; status("Kaydedildi " + hhmm(r.updated_at)); }
+          else { Object.assign(dirty, flushed); schedule(); }
+        }).catch(function(){ saving = false; Object.assign(dirty, flushed); });
       }
-      if (r.locked) setLocked(true);
-
-      document.addEventListener("input", function(e){
-        var k = e.target && e.target.getAttribute && e.target.getAttribute("data-k");
-        if (!k) return; dirty[k] = true; progress(); schedule();
-      });
-      document.addEventListener("change", function(e){
-        var k = e.target && e.target.getAttribute && e.target.getAttribute("data-k");
-        if (!k) return; dirty[k] = true; progress(); schedule();
-      });
-      document.getElementById("submit").addEventListener("click", function(){ save(true); });
-      // Flush pending edits when the tab is hidden or closed.
-      document.addEventListener("visibilitychange", function(){
-        if (document.visibilityState === "hidden" && Object.keys(dirty).length && !saving && !locked){
-          clearTimeout(timer);
-          var flushed = dirty; dirty = {}; saving = true;
-          api("PUT", {answers:collect(), version:version}, true).then(function(r){
-            saving = false;
-            if (r.ok){ version = r.version; status("Kaydedildi " + hhmm(r.updated_at)); }
-            else { Object.assign(dirty, flushed); schedule(); }
-          }).catch(function(){ saving = false; Object.assign(dirty, flushed); });
-        }
-      });
-    }).catch(function(){ showGone("server"); });
+    });
   }
-  boot();
+
+  // ---- boot -----------------------------------------------------------------
+  var m = /(?:^|[#&])t=([A-Za-z0-9_-]{43})/.exec(location.hash || "");
+  if (!m){ go(1); return; }
+  token = m[1];
+  call("GET", "/api/discovery/form").then(function(v){
+    if (!v.ok){ showGone(v.error === "server" ? "server" : v.error); return; }
+    version = v.version; setInfo(v); applyLoaded(v);
+    $("mail-note").textContent = "Bu sayfanın adresi size özeldir. Ön hazırlık formuna toplantıya kadar aynı adresle dönebilirsiniz.";
+    go(3);
+  }).catch(function(){ showGone("server"); });
 })();
 </script>
 </body>
