@@ -10,6 +10,7 @@
 import {
   json, readJson, readToken, ensureTables, loadByToken, publicView, sanitizeAnswers, nowIso, notify,
 } from "../../../lib/discovery.js";
+import { submittedNotify } from "../../../lib/discovery-mail.js";
 
 async function context(request, env) {
   if (!env.DB) return { res: json({ ok: false, error: "server" }, 500) };
@@ -57,10 +58,13 @@ async function save(request, env, submit, waitUntil) {
   }
 
   if (submit) {
+    const updated = !!row.submitted_at;
+    const origin = (env.SITE_URL || new URL(request.url).origin).replace(/\/$/, "");
     const send = notify(env, {
-      event: row.submitted_at ? "discovery_updated" : "discovery_submitted",
+      event: updated ? "discovery_updated" : "discovery_submitted",
       id: row.id, org: row.org, contact_name: row.contact_name, contact_email: row.contact_email,
       submitted_at: now, answers,
+      emails: { notify: submittedNotify(row, answers, updated, origin + "/on-hazirlik-yonetim") },
     });
     if (waitUntil) waitUntil(send); else await send;
   }

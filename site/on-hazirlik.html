@@ -547,7 +547,7 @@ button.secondary:hover{background:#DCEAF5}
       });
     }).catch(function(code){
       var t = code === "signature_missing"
-        ? "Sözleşme şu anda indirilemiyor; imzalı kopyası e-posta adresinize iletilecek. Ön hazırlık formuyla devam edebilirsiniz."
+        ? "Sözleşme şu anda hazırlanamadı. Lütfen birkaç dakika sonra tekrar deneyin; bu arada ön hazırlık formuyla devam edebilirsiniz."
         : "Sözleşme şu anda indirilemedi. Lütfen biraz sonra tekrar deneyin.";
       if (msgEl){ msgEl.hidden = false; msgEl.textContent = t; } else alert(t);
     });

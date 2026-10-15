@@ -30,14 +30,14 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 
 Cloudflare Pages → mypaira-pages → Settings → Variables and Secrets altında **Secret** türünde `DISCOVERY_ADMIN_KEY` tanımlanır; yönetim sayfasına bu değerle girilir. Cloudflare secret değerlerini sonradan göstermez, değeri ayrıca saklayın. Yönetim API'si Make için `PAIRA_AUTOMATION_KEY` değerini de kabul eder.
 
-## Make bildirimi (isteğe bağlı)
+## E-postalar (Make)
 
-Cloudflare Pages → mypaira-pages → Settings → Variables altında `DISCOVERY_WEBHOOK_URL` tanımlanırsa şu olaylar POST edilir:
+Cloudflare Pages → mypaira-pages → Settings → Variables and Secrets altında `DISCOVERY_WEBHOOK_URL` = `https://hook.eu1.make.com/lqplbdp9tz7mf7nh35hfe4y63btqd5oc` tanımlıdır. Site e-postaların konu ve HTML'ini hazırlar (`lib/discovery-mail.js`); Make senaryosu **PAIRA Ön hazırlık e-postaları** yalnızca Outlook (burak@mypaira.com) üzerinden teslim eder:
 
-- `discovery_started`: şirket ve kişi bilgileri, `form_url` (kişiye özel sayfa adresi), `nda_pdf_url`. Make, PDF'i `nda_pdf_url` adresinden `X-PAIRA-KEY` başlığıyla indirip e-postaya ekleyebilir.
-- `discovery_submitted` / `discovery_updated`: form yanıtları.
+- `discovery_started`: müşteriye imzalı sözleşme (PDF eki, `nda.url` adresinden `X-Invite-Token` başlığıyla indirilir) ve kişiye özel form bağlantısı; Burak'a bildirim.
+- `discovery_submitted` / `discovery_updated`: Burak'a yanıtların özeti.
 
-Değişken tanımlı değilse bildirim gitmez; kayıtlar yönetim sayfasında görülür.
+Değişken tanımlı değilse e-posta gitmez; kayıtlar yönetim sayfasında görülür.
 
 ## Koruma
 
