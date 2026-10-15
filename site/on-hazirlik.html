@@ -515,20 +515,30 @@ button.secondary:hover{background:#DCEAF5}
     if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(data.email)){ err.textContent = MSG.email; err.hidden = false; f.elements.email.focus(); return; }
     err.hidden = true;
     var btn = $("c-submit"); btn.disabled = true; btn.textContent = "Hazırlanıyor…";
+    var reset = function(){ btn.disabled = false; btn.textContent = "Gizlilik sözleşmesini hazırla"; };
     call("POST", "/api/discovery/start", data).then(function(r){
-      btn.disabled = false; btn.textContent = "Gizlilik sözleşmesini hazırla";
-      if (!r.ok){ err.textContent = MSG[r.error] || MSG.server; err.hidden = false; return; }
-      if (!r.token){ return; }
+      if (!r.ok){
+        reset();
+        err.textContent = (MSG[r.error] || MSG.server) + (MSG[r.error] ? "" : " (" + (r._status || "ağ") + ")");
+        err.hidden = false; return;
+      }
+      if (!r.token){ reset(); return; }
+      // From here the record exists: always move on, even if a later step hiccups.
       token = r.token;
-      history.replaceState(null, "", location.pathname + "#t=" + token);
+      try { history.replaceState(null, "", location.pathname + "#t=" + token); } catch (e) {}
       $("mail-note").textContent = r.emailed
-        ? "Sözleşmenin bir kopyası ve bu sayfanın size özel adresi " + data.email + " adresine de gönderilecek. Ön hazırlık formuna bu adresle toplantıya kadar istediğiniz zaman dönebilirsiniz."
+        ? "Sözleşmenin bir kopyası ve bu sayfanın size özel adresi " + data.email + " adresine de gönderildi. Ön hazırlık formuna bu adresle toplantıya kadar istediğiniz zaman dönebilirsiniz."
         : "Bu sayfanın adresi size özeldir. Ön hazırlık formuna toplantıya kadar dönebilmek için adresi kaydetmenizi öneririz.";
+      var local = {org:data.org, address:data.address, contact_name:data.contact_name, contact_title:data.contact_title, contact_email:data.email, version:0, answers:{}};
       return call("GET", "/api/discovery/form").then(function(v){
-        if (!v.ok){ showGone(v.error); return; }
-        version = v.version; setInfo(v); applyLoaded(v); go(2);
-      });
-    }).catch(function(){ btn.disabled = false; btn.textContent = "Gizlilik sözleşmesini hazırla"; err.textContent = MSG.server; err.hidden = false; });
+        var src = v && v.ok ? v : local;
+        version = src.version || 0; setInfo(src); applyLoaded(src); go(2);
+      }, function(){ setInfo(local); applyLoaded(local); go(2); });
+    }).catch(function(){
+      reset();
+      if (token){ go(2); return; }
+      err.textContent = MSG.server + " (ağ)"; err.hidden = false;
+    });
   });
 
   // ---- step 2: NDA --------------------------------------------------------

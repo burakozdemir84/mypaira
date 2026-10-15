@@ -31,7 +31,8 @@ export async function onRequestGet({ request, env }) {
   return json({ ok: true, ...publicView(c.row) });
 }
 
-async function save(request, env, submit, waitUntil) {
+async function save(ctx, submit) {
+  const { request, env } = ctx;
   const c = await context(request, env);
   if (c.res) return c.res;
   const row = c.row;
@@ -66,10 +67,15 @@ async function save(request, env, submit, waitUntil) {
       submitted_at: now, answers,
       emails: { notify: submittedNotify(row, answers, updated, origin + "/on-hazirlik-yonetim") },
     });
-    if (waitUntil) waitUntil(send); else await send;
+    try {
+      const p = send.catch((e) => console.error("discovery: notify", e));
+      if (typeof ctx.waitUntil === "function") ctx.waitUntil(p); else await p;
+    } catch (e) {
+      console.error("discovery: notify scheduling failed", e);
+    }
   }
   return json({ ok: true, version: expected + 1, updated_at: now, submitted_at: submit ? now : row.submitted_at || null });
 }
 
-export const onRequestPut = ({ request, env, waitUntil }) => save(request, env, false, waitUntil);
-export const onRequestPost = ({ request, env, waitUntil }) => save(request, env, true, waitUntil);
+export const onRequestPut = (ctx) => save(ctx, false);
+export const onRequestPost = (ctx) => save(ctx, true);

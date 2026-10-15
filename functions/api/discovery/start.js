@@ -17,7 +17,8 @@ const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 const MAX_PER_HOUR = 5;
 const clean = (v, max) => (typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : "");
 
-export async function onRequestPost({ request, env, waitUntil }) {
+export async function onRequestPost(context) {
+  const { request, env } = context;
   if (!env.DB) return json({ ok: false, error: "server" }, 500);
   const parsed = await readJson(request, 8 * 1024);
   if (parsed.error) return json({ ok: false, error: parsed.error }, 400);
@@ -82,8 +83,14 @@ export async function onRequestPost({ request, env, waitUntil }) {
       notify: startedNotify(rec, origin + "/on-hazirlik-yonetim"),
     },
   };
-  const send = notify(env, payload);
-  if (waitUntil) waitUntil(send); else await send;
+  // The record is saved; a webhook problem must never turn into an error for
+  // the visitor. waitUntil is called on the context so it keeps its binding.
+  try {
+    const send = notify(env, payload).catch((e) => console.error("discovery: notify", e));
+    if (typeof context.waitUntil === "function") context.waitUntil(send); else await send;
+  } catch (e) {
+    console.error("discovery: notify scheduling failed", e);
+  }
 
   return json({ ok: true, token, emailed: !!env.DISCOVERY_WEBHOOK_URL });
 }
