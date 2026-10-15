@@ -8,8 +8,9 @@
 // `website` is a honeypot: real visitors never fill it.
 
 import {
-  json, readJson, ensureTables, newToken, newId, sha256Hex, expiryFromNow, nowIso, notify,
+  json, readJson, ensureTables, newToken, newId, sha256Hex, expiryFromNow, nowIso, notify, slug,
 } from "../../../lib/discovery.js";
+import { customerEmail, startedNotify } from "../../../lib/discovery-mail.js";
 import { trDate } from "../../../lib/nda-pdf.js";
 
 const EMAIL_RE = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
@@ -64,20 +65,22 @@ export async function onRequestPost({ request, env, waitUntil }) {
     .run();
 
   const origin = (env.SITE_URL || new URL(request.url).origin).replace(/\/$/, "");
+  const formUrl = origin + "/on-hazirlik#t=" + token;
+  const rec = { org: f.org, address: f.address, contact_name: f.contact_name, contact_title: f.contact_title, contact_email: f.email, phone: f.phone };
   const payload = {
     event: "discovery_started",
     id,
     created_at: nowIso(),
-    org: f.org,
-    address: f.address,
-    contact_name: f.contact_name,
-    contact_title: f.contact_title,
-    contact_email: f.email,
-    phone: f.phone,
+    ...rec,
     nda_date: ndaDate,
-    form_url: origin + "/on-hazirlik#t=" + token,
-    // Make downloads the PDF from here with the X-PAIRA-KEY header and attaches it.
-    nda_pdf_url: origin + "/api/discovery/admin?nda=1&id=" + encodeURIComponent(id),
+    form_url: formUrl,
+    // Make downloads the signed PDF from nda.url with the X-Invite-Token header
+    // and attaches it to emails.customer.
+    nda: { url: origin + "/api/discovery/nda", token, filename: "PAIRA_Gizlilik_Sozlesmesi_" + slug(f.org) + ".pdf" },
+    emails: {
+      customer: customerEmail(rec, formUrl),
+      notify: startedNotify(rec, origin + "/on-hazirlik-yonetim"),
+    },
   };
   const send = notify(env, payload);
   if (waitUntil) waitUntil(send); else await send;
