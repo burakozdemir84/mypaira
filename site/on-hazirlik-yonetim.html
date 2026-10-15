@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Ön Hazırlık Yönetimi | PAIRA</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#15233E;--accent:#2E6FB0;--skysoft:#E9F2F9;--gold:#A8842C;--ink:#22324B;--mute:#5C6B82;--line:#D7E0EA}
+*{box-sizing:border-box}
+body{margin:0;font-family:Outfit,system-ui,sans-serif;font-weight:300;color:var(--ink);background:#F6F9FC;font-size:15px}
+.wrap{max-width:1100px;margin:0 auto;padding:24px 18px 80px}
+h1,h2{font-family:"Cormorant Garamond",serif;color:var(--navy);margin:0 0 12px}
+h1{font-size:34px}h2{font-size:24px;margin-top:8px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:16px}
+input,textarea{font:inherit;border:1px solid var(--line);border-radius:8px;padding:9px 11px;width:100%}
+.row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+label{font-size:13px;font-weight:500;color:var(--navy);display:block;margin-bottom:4px}
+button{font:inherit;font-weight:500;border:0;border-radius:999px;padding:9px 16px;background:var(--navy);color:#fff;cursor:pointer}
+button.ghost{background:var(--skysoft);color:var(--navy)}
+button.small{padding:5px 11px;font-size:13px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--mute);font-size:12.5px;text-transform:uppercase;letter-spacing:.06em}
+.pill{display:inline-block;border-radius:999px;padding:2px 9px;font-size:12px;background:var(--skysoft)}
+.out{background:var(--skysoft);border-radius:10px;padding:14px;white-space:pre-wrap;font-size:14px;margin-top:12px}
+.mute{color:var(--mute)}
+.actions{display:flex;flex-wrap:wrap;gap:6px}
+dl{display:grid;grid-template-columns:220px 1fr;gap:6px 14px;margin:0}
+dt{color:var(--mute)}dd{margin:0;white-space:pre-wrap}
+[hidden]{display:none!important}
+@media(max-width:760px){.row{grid-template-columns:1fr}dl{grid-template-columns:1fr}table{display:block;overflow-x:auto}}
+</style>
+</head>
+<body><div class="wrap">
+<h1>Ön Hazırlık Formları</h1>
+
+<div class="card" id="login">
+  <label for="key">Yönetim anahtarı (PAIRA_AUTOMATION_KEY, 1Password)</label>
+  <div style="display:flex;gap:8px"><input type="password" id="key" autocomplete="off"><button id="go">Giriş</button></div>
+  <p class="mute" style="margin-bottom:0">Anahtar yalnızca bu sekmede tutulur ve sekme kapanınca silinir.</p>
+</div>
+
+<div id="main" hidden>
+  <div class="card">
+    <h2>Yeni davet</h2>
+    <div class="row">
+      <div><label>Kurum *</label><input id="c-org"></div>
+      <div><label>Kişi</label><input id="c-name"></div>
+      <div><label>E-posta</label><input id="c-email" type="email"></div>
+      <div><label>Toplantı (yerel saat)</label><input id="c-meet" type="datetime-local"></div>
+    </div>
+    <p style="margin:14px 0 0"><button id="create">Bağlantı oluştur</button> <span class="mute">Bağlantı yalnızca şimdi gösterilir; kaybolursa “Yeni bağlantı” ile yenilenir.</span></p>
+    <div id="created" class="out" hidden></div>
+  </div>
+
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2>Davetler</h2><button class="ghost small" id="refresh">Yenile</button></div>
+    <table><thead><tr><th>Kurum / kişi</th><th>Toplantı</th><th>Durum</th><th>Açılma</th><th>Gönderim</th><th></th></tr></thead><tbody id="list"></tbody></table>
+  </div>
+
+  <div class="card" id="detail" hidden></div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var API = "/api/discovery/admin", key = "";
+  try { key = sessionStorage.getItem("paira_disc_key") || ""; } catch(e){}
+  var $ = function(id){ return document.getElementById(id); };
+  function esc(s){ return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+  function d(iso, t){ if(!iso) return "–"; try{ return new Date(iso).toLocaleString("tr-TR", t ? {day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"} : {day:"numeric",month:"short",year:"numeric"}); }catch(e){ return iso; } }
+  function call(method, body, qs){
+    return fetch(API + (qs || ""), {method:method, headers:{"Content-Type":"application/json","X-PAIRA-KEY":key}, body: body ? JSON.stringify(body) : undefined, cache:"no-store"})
+      .then(function(r){ return r.json().then(function(j){ if (r.status === 401){ logout(); } return j; }); });
+  }
+  function logout(){ key = ""; try{ sessionStorage.removeItem("paira_disc_key"); }catch(e){} $("main").hidden = true; $("login").hidden = false; }
+  function login(){ key = $("key").value.trim(); if(!key) return; try{ sessionStorage.setItem("paira_disc_key", key); }catch(e){} start(); }
+  function start(){
+    call("GET").then(function(r){ if(!r.ok) return; $("login").hidden = true; $("main").hidden = false; list(r.invites); });
+  }
+  function list(rows){
+    $("list").innerHTML = rows.map(function(r){
+      return "<tr><td><b style='font-weight:500'>"+esc(r.org)+"</b><br><span class='mute'>"+esc(r.contact_name)+" "+esc(r.contact_email)+"</span></td>"+
+        "<td>"+d(r.meeting_at,true)+"<br><span class='mute'>geçerli: "+d(r.expires_at)+"</span></td>"+
+        "<td><span class='pill'>"+esc(r.status)+"</span></td>"+
+        "<td>"+r.open_count+"x<br><span class='mute'>"+d(r.last_opened_at,true)+"</span></td>"+
+        "<td>"+(r.submitted_at ? d(r.submitted_at,true)+(r.submit_count>1?" ("+r.submit_count+")":"") : "–")+"</td>"+
+        "<td><div class='actions'>"+
+        "<button class='small' data-a='view' data-id='"+r.id+"'>Yanıtlar</button>"+
+        "<button class='small ghost' data-a='reissue' data-id='"+r.id+"'>Yeni bağlantı</button>"+
+        "<button class='small ghost' data-a='extend' data-id='"+r.id+"'>+7 gün</button>"+
+        "<button class='small ghost' data-a='"+(r.status==='kilitli'?'unlock':'lock')+"' data-id='"+r.id+"'>"+(r.status==='kilitli'?'Kilidi aç':'Kilitle')+"</button>"+
+        "<button class='small ghost' data-a='revoke' data-id='"+r.id+"'>İptal</button>"+
+        "<button class='small ghost' data-a='delete' data-id='"+r.id+"'>Sil</button>"+
+        "</div></td></tr>";
+    }).join("") || "<tr><td colspan='6' class='mute'>Henüz davet yok.</td></tr>";
+  }
+  function refresh(){ call("GET").then(function(r){ if(r.ok) list(r.invites); }); }
+  function mailText(r, name, meet){
+    var hi = name ? "Merhaba " + name + "," : "Merhaba,";
+    return hi + "\n\n" + (meet ? d(meet,true) + " tarihindeki " : "") + "toplantımızı verimli geçirebilmek için kısa bir ön hazırlık formu hazırladık. Yaklaşık bilgiler yeterli; bilmediğiniz başlıkları toplantıda birlikte değerlendirebiliriz.\n\n" +
+      r.url + "\n\nYanıtlarınız yazdıkça kaydedilir; aynı bağlantıyla toplantıya kadar istediğiniz zaman dönebilir, gerekirse IT ekibinizle paylaşabilirsiniz. Bağlantı " + d(r.expires_at) + " tarihine kadar geçerlidir.\n\nSaygılarımla,\nBurak Özdemir\nPAIRA";
+  }
+  function show(r, meta){
+    $("created").hidden = false;
+    $("created").innerHTML = "<b style='font-weight:500'>Bağlantı</b> <button class='small ghost' id='cp'>Kopyala</button>\n"+esc(r.url)+"\n\n<b style='font-weight:500'>E-posta metni</b> <button class='small ghost' id='cpm'>Kopyala</button>\n"+esc(mailText(r, meta.name, meta.meet));
+    $("cp").onclick = function(){ navigator.clipboard.writeText(r.url); };
+    $("cpm").onclick = function(){ navigator.clipboard.writeText(mailText(r, meta.name, meta.meet)); };
+    window.scrollTo({top:0,behavior:"smooth"});
+  }
+  var LABELS = {filled_by:"Dolduran",filled_role:"Rol",q1_process:"1. Süreç",q1_later:"1. Toplantıda",q2_roles:"2. Roller",q2_later:"2. Toplantıda",q3_volume:"3. Aylık hacim",q3_time:"3. İşlem süresi",q3_bottleneck:"3. Darboğaz",q3_later:"3. Toplantıda",q4_ready:"4. Hazır belgeler",q4_note:"4. Not",q5_systems:"5. Sistemler",q5_other:"5. Diğer",q5_owner:"5. Yöneten",q6_azure:"6. Azure",q6_api:"6. API",q6_cloud_limits:"6. Bulut kısıtı",q6_note:"6. Not",q7_target:"7. Hedef işleyiş",q7_later:"7. Toplantıda",q8_success:"8. Başarı ölçütü",q8_golive:"8. Kullanıma alma",q8_pilot:"8. Pilot ekip",q9_cost:"9. Maliyet",q9_verbal:"9. Sözlü paylaşım",q10_decision:"10. Karar süreci",q10_budget:"10. Bütçe",q10_reps:"10. Temsilciler",q_other:"Ek not"};
+  function detail(inv){
+    var a = inv.answers || {}, rows = "";
+    Object.keys(LABELS).forEach(function(k){ if (a[k] != null){ var v = a[k] === true ? "evet" : Array.isArray(a[k]) ? a[k].join(", ") : a[k]; rows += "<dt>"+LABELS[k]+"</dt><dd>"+esc(v)+"</dd>"; } });
+    $("detail").hidden = false;
+    $("detail").innerHTML = "<h2>"+esc(inv.org)+"</h2><p class='mute'>Son güncelleme: "+d(inv.updated_at,true)+" · gönderim: "+d(inv.submitted_at,true)+"</p><dl>"+(rows || "<dd class='mute'>Henüz yanıt yok.</dd>")+"</dl>";
+    $("detail").scrollIntoView({behavior:"smooth"});
+  }
+  $("go").onclick = login;
+  $("key").addEventListener("keydown", function(e){ if(e.key === "Enter") login(); });
+  $("refresh").onclick = refresh;
+  $("create").onclick = function(){
+    var meet = $("c-meet").value ? new Date($("c-meet").value).toISOString() : "";
+    var meta = {name:$("c-name").value.trim(), meet:meet};
+    call("POST", {action:"create", org:$("c-org").value, contact_name:meta.name, contact_email:$("c-email").value, meeting_at:meet})
+      .then(function(r){ if(!r.ok){ alert("Oluşturulamadı: " + r.error); return; } show(r, meta); refresh(); ["c-org","c-name","c-email","c-meet"].forEach(function(i){ $(i).value=""; }); });
+  };
+  $("list").addEventListener("click", function(e){
+    var b = e.target.closest("button[data-a]"); if(!b) return;
+    var a = b.getAttribute("data-a"), id = b.getAttribute("data-id");
+    if (a === "view"){ call("GET", null, "?id=" + encodeURIComponent(id)).then(function(r){ if(r.ok) detail(r.invite); }); return; }
+    if (a === "delete" && !confirm("Davet ve tüm yanıtlar kalıcı olarak silinsin mi?")) return;
+    if (a === "reissue" && !confirm("Eski bağlantı çalışmayı bırakacak. Devam edilsin mi?")) return;
+    if (a === "revoke" && !confirm("Bağlantı kapatılsın mı?")) return;
+    call("POST", {action:a, id:id, days:7}).then(function(r){
+      if (!r.ok){ alert("İşlem başarısız: " + r.error); return; }
+      if (a === "reissue") show(r, {name:"", meet:""});
+      refresh();
+    });
+  });
+  if (key) start();
+})();
+</script>
+</div></body>
+</html>
