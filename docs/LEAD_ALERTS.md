@@ -26,7 +26,7 @@ ICP profili: büro yöneticisi ve 16+ avukat (ICP-1), şirket hukuk yöneticisi 
 
 ## Uç noktalar
 
-Hepsi `X-PAIRA-KEY` başlığı ister: değer `LEADS_KEY` (yalnızca lead uç noktaları, skorkart Make hesabı) veya `PAIRA_AUTOMATION_KEY` olabilir. Cloudflare secret'ları sonradan okunamaz; değerin asıl kopyası 1Password'dedir.
+Hepsi `X-PAIRA-KEY` başlığı ister: değer `LEADS_KEY` (yalnızca lead uç noktaları, skorkart Make hesabı) veya `PAIRA_AUTOMATION_KEY` olabilir. Cloudflare secret'ları sonradan okunamaz; değeri güvenli bir yerde ayrıca saklayın.
 
 | Uç nokta | Ne yapar |
 |---|---|
