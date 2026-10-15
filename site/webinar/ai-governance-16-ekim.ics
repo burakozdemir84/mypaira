@@ -1,0 +1,30 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//PAIRA//Webinar//TR
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:paira-webinar-20261016@mypaira.com
+DTSTAMP:20261015T120000Z
+DTSTART:20261016T120000Z
+DTEND:20261016T130000Z
+SUMMARY:AI Çağında Hukukçunun Rolü: Kurum İçi Governance Pratikleri
+DESCRIPTION:PAIRA çevrim içi buluşması\n\nZoom: https://us06web.zoom.u
+ s/j/84445480212?pwd=OWjajYaYGVyfacJ0m3tGHJsPAXxKab.1\nToplantı ID: 844 4
+ 548 0212\nŞifre: 502957\n\nKonuşmacılar: Elvan Zeynep Berk (Loyens & L
+ oeff)\, Damla Yılmaz Çelik (A.S. Watson Group)\nModeratör: Burak Özde
+ mir (PAIRA)
+LOCATION:https://us06web.zoom.us/j/84445480212?pwd=OWjajYaYGVyfacJ0m3tGHJs
+ PAXxKab.1
+URL:https://us06web.zoom.us/j/84445480212?pwd=OWjajYaYGVyfacJ0m3tGHJsPAXxK
+ ab.1
+ORGANIZER;CN=Burak Özdemir:mailto:burak@mypaira.com
+STATUS:CONFIRMED
+TRANSP:OPAQUE
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Webinar 15 dakika sonra başlıyor
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
