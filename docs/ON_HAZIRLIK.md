@@ -13,7 +13,7 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 | | |
 |---|---|
 | Müşteri sayfası | `site/on-hazirlik.html` |
-| Yönetim sayfası | `site/on-hazirlik-yonetim.html` (`/on-hazirlik-yonetim`, `PAIRA_AUTOMATION_KEY` ile) |
+| Yönetim sayfası | `site/on-hazirlik-yonetim.html` (`/on-hazirlik-yonetim`, `DISCOVERY_ADMIN_KEY` ile) |
 | API | `functions/api/discovery/start.js`, `form.js`, `nda.js`, `admin.js`; ortak kod `lib/discovery.js` |
 | Sözleşme | `tools/nda/nda-content.json` (Word dosyasından), `tools/nda/build-template.mjs`, `site/assets/nda/paira-nda-sablon.pdf`, `lib/nda-template.js`, `lib/nda-pdf.js`, `lib/nda-layout.js` |
 | Veri | D1 `paira_leads`: `discovery_requests`, `discovery_settings` (tablolar ilk istekte oluşur) |
@@ -25,6 +25,10 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 **Sözleşme metni değişirse:** Word dosyasındaki paragrafları `tools/nda/nda-content.json` içine aktarın (müşteri alanları `fields` bloğu olarak kalacak şekilde), `node tools/nda/build-template.mjs` çalıştırın ve üretilen iki dosyayı (`site/assets/nda/paira-nda-sablon.pdf`, `lib/nda-template.js`) birlikte commit edin.
 
 **İmza ve kaşe görseli** repoda tutulmaz (repo herkese açık). Yönetim sayfasındaki "İmza ve kaşe görseli" alanından bir kez yüklenir ve D1'de saklanır. Yüklenene kadar sözleşme indirilemez.
+
+## Yönetim anahtarı
+
+Cloudflare Pages → mypaira-pages → Settings → Variables and Secrets altında **Secret** türünde `DISCOVERY_ADMIN_KEY` tanımlanır; yönetim sayfasına bu değerle girilir. Cloudflare secret değerlerini sonradan göstermez, değeri ayrıca saklayın. Yönetim API'si Make için `PAIRA_AUTOMATION_KEY` değerini de kabul eder.
 
 ## Make bildirimi (isteğe bağlı)
 
