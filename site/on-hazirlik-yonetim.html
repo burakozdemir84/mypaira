@@ -126,20 +126,30 @@ code{background:var(--skysoft);border-radius:6px;padding:3px 8px}
   }
 
   // Converts the chosen image to JPEG on a white background before upload.
+  // Reads the file as a data: URL (allowed by the page's CSP; blob: is not).
   $("sig-up").onclick = function(){
-    var f = $("sig-file").files[0]; if (!f) return;
-    var img = new Image(), url = URL.createObjectURL(f);
-    img.onload = function(){
-      var c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight;
-      var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(img,0,0);
-      var b64 = c.toDataURL("image/jpeg", 0.9).split(",")[1];
-      URL.revokeObjectURL(url);
-      call("POST", {action:"signature", jpeg_base64:b64}).then(function(r){
-        if (!r.ok){ alert("Yüklenemedi: " + r.error); return; }
-        $("sig-file").value = ""; refresh();
-      });
+    var f = $("sig-file").files[0];
+    if (!f){ alert("Önce bir görsel seçin."); return; }
+    var btn = $("sig-up"); btn.disabled = true; btn.textContent = "Yükleniyor…";
+    var done = function(){ btn.disabled = false; btn.textContent = "Yükle"; };
+    var reader = new FileReader();
+    reader.onerror = function(){ done(); alert("Dosya okunamadı."); };
+    reader.onload = function(){
+      var img = new Image();
+      img.onerror = function(){ done(); alert("Görsel açılamadı. PNG veya JPG dosyası seçin."); };
+      img.onload = function(){
+        var c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight;
+        var g = c.getContext("2d"); g.fillStyle = "#fff"; g.fillRect(0,0,c.width,c.height); g.drawImage(img,0,0);
+        var b64 = c.toDataURL("image/jpeg", 0.9).split(",")[1];
+        call("POST", {action:"signature", jpeg_base64:b64}).then(function(r){
+          done();
+          if (!r.ok){ alert("Yüklenemedi: " + r.error); return; }
+          $("sig-file").value = ""; refresh();
+        }).catch(function(){ done(); alert("Bağlantı sorunu, tekrar deneyin."); });
+      };
+      img.src = reader.result;
     };
-    img.src = url;
+    reader.readAsDataURL(f);
   };
 
   $("go").onclick = login;
