@@ -5,7 +5,7 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 ## Akış
 
 1. **Şirket bilgileri.** Müşteri unvan, adres, yetkili kişi, unvan, e-posta ve (isteğe bağlı) telefon girer.
-2. **Gizlilik sözleşmesi.** Bu bilgilerle *Hizmet Alımları İçin Gizlilik ve Kişisel Verilerin Korunması Sözleşmesi* doldurulur (1. maddedeki unvan ve adres, 12.4'teki tarih) ve PAIRA'nın imza/kaşe görseliyle PDF olarak indirilebilir. Aynı anda Make webhook'una bildirim gider.
+2. **Gizlilik sözleşmesi.** Bu bilgilerle 3 sayfalık *Proje hazırlık gizlilik taahhüdü ve sözleşmesi* doldurulur (1. maddedeki müşteri unvanı, adresi ve bildirim e-postası) ve sonundaki OD imza alanına PAIRA'nın imza/kaşe görseli yerleşir; PDF olarak indirilebilir. Aynı anda Make webhook'una bildirim gider.
 3. **Ön hazırlık formu.** 10 başlık; yazdıkça kaydedilir. Sayfanın adresi (`#t=...`) kişiye özeldir; aynı adresle toplantıya kadar dönülebilir ve ekip arkadaşlarıyla paylaşılabilir.
 
 ## Dosyalar
@@ -20,9 +20,9 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 
 ## Sözleşme nasıl üretiliyor
 
-`node tools/nda/build-template.mjs` sözleşme metnini dizip imzasız bir şablon PDF ve yerleşim haritası üretir. Her istekte `lib/nda-pdf.js` şablona küçük bir artımlı güncelleme ekler: taraflar paragrafı, tarih ve imza görseli. Şablon yeniden işlenmediği için istek başına CPU maliyeti çok düşüktür (Cloudflare'in istek başına CPU sınırı için önemli).
+`node tools/nda/build-template.mjs` sözleşme metnini dizip imzasız bir şablon PDF ve yerleşim haritası üretir. Her istekte `lib/nda-pdf.js` şablona küçük bir artımlı güncelleme ekler: müşteri unvanı, adresi, bildirim e-postası ve imza görseli. Şablon yeniden işlenmediği için istek başına CPU maliyeti çok düşüktür (Cloudflare'in istek başına CPU sınırı için önemli).
 
-**Sözleşme metni değişirse:** Word dosyasındaki paragrafları `tools/nda/nda-content.json` içine aktarın (`{{ADRES}}`, `{{UNVAN}}`, `{{TARIH}}` yer tutucuları korunarak), `node tools/nda/build-template.mjs` çalıştırın ve üretilen iki dosyayı (`site/assets/nda/paira-nda-sablon.pdf`, `lib/nda-template.js`) birlikte commit edin.
+**Sözleşme metni değişirse:** Word dosyasındaki paragrafları `tools/nda/nda-content.json` içine aktarın (müşteri alanları `fields` bloğu olarak kalacak şekilde), `node tools/nda/build-template.mjs` çalıştırın ve üretilen iki dosyayı (`site/assets/nda/paira-nda-sablon.pdf`, `lib/nda-template.js`) birlikte commit edin.
 
 **İmza ve kaşe görseli** repoda tutulmaz (repo herkese açık). Yönetim sayfasındaki "İmza ve kaşe görseli" alanından bir kez yüklenir ve D1'de saklanır. Yüklenene kadar sözleşme indirilemez.
 

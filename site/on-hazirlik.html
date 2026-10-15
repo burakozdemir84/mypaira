@@ -129,7 +129,6 @@ button.secondary:hover{background:#DCEAF5}
   <p>İlk görüşmemizde mevcut hukuki iş akışınızı anlamayı, yapay zeka ajanlarıyla nasıl iyileştirilebileceğini birlikte tasarlamayı, teknik gereksinimleri belirlemeyi ve proje kapsamı ile maliyetini mümkün olduğunca netleştirmeyi hedefliyoruz.</p>
   <div class="meta" id="meta" hidden>
     <span>Kurum: <b id="m-org"></b></span>
-    <span>Gizlilik sözleşmesi tarihi: <b id="m-date"></b></span>
   </div>
 </div></section>
 
@@ -156,7 +155,7 @@ button.secondary:hover{background:#DCEAF5}
             <input type="text" id="c-name" name="contact_name" maxlength="120" placeholder="Ad Soyad" autocomplete="name" required></div>
           <div><label class="f" for="c-title">Unvan / görev</label>
             <input type="text" id="c-title" name="contact_title" maxlength="120" placeholder="ör. Yönetici Ortak" autocomplete="organization-title"></div>
-          <div><label class="f" for="c-email">E-posta <span class="req">*</span></label>
+          <div><label class="f" for="c-email">Bildirim e-postası <span class="req">*</span></label>
             <input type="text" id="c-email" name="email" maxlength="160" inputmode="email" placeholder="ad@sirket.com" autocomplete="email" required></div>
           <div><label class="f" for="c-phone">Telefon</label>
             <input type="text" id="c-phone" name="phone" maxlength="40" inputmode="tel" placeholder="İsteğe bağlı" autocomplete="tel"></div>
@@ -174,11 +173,11 @@ button.secondary:hover{background:#DCEAF5}
     <div class="card">
       <p class="eyebrow" style="margin-bottom:8px">Adım 2</p>
       <h2>Gizlilik sözleşmeniz hazır</h2>
-      <p class="help" style="color:var(--mute);margin-top:0">PAIRA (OD Etüd ve Müşavirlik Ltd. Şti.) tarafından imzalanmış <i>Hizmet Alımları İçin Gizlilik ve Kişisel Verilerin Korunması Sözleşmesi</i>, şirketinizin bilgileriyle hazırlandı.</p>
+      <p class="help" style="color:var(--mute);margin-top:0">PAIRA (OD Etüd ve Müşavirlik Ltd. Şti.) tarafından imzalanmış <i>Proje Hazırlık Gizlilik Taahhüdü ve Sözleşmesi</i>, şirketinizin bilgileriyle hazırlandı.</p>
       <dl class="summary">
-        <dt>Hizmet Alan</dt><dd id="s-org"></dd>
+        <dt>Müşteri unvanı</dt><dd id="s-org"></dd>
         <dt>Adres</dt><dd id="s-address"></dd>
-        <dt>Sözleşme tarihi</dt><dd id="s-date"></dd>
+        <dt>Bildirim e-postası</dt><dd id="s-email"></dd>
       </dl>
       <div class="actions">
         <button class="primary" type="button" id="dl">Sözleşmeyi indir (PDF)</button>
@@ -494,8 +493,8 @@ button.secondary:hover{background:#DCEAF5}
 
   function setInfo(r){
     info = r;
-    $("m-org").textContent = r.org; $("m-date").textContent = r.nda_date; $("meta").hidden = false;
-    $("s-org").textContent = r.org; $("s-address").textContent = r.address; $("s-date").textContent = r.nda_date;
+    $("m-org").textContent = r.org; $("meta").hidden = false;
+    $("s-org").textContent = r.org; $("s-address").textContent = r.address; $("s-email").textContent = r.contact_email || "";
   }
 
   // ---- step 1: company --------------------------------------------------
