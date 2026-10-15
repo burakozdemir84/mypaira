@@ -24,3 +24,29 @@
 # Calendar files for webinar invitations (Apple "add to calendar" buttons)
 /webinar/*
   Content-Type: text/calendar; charset=utf-8
+
+# Pre-meeting discovery form (invite-only). Not indexed, never cached, no
+# Referer leaves the page, and it cannot be framed. The invite token lives in
+# the URL fragment, which browsers never send to the server.
+/on-hazirlik
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+/on-hazirlik.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+/on-hazirlik-yonetim
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'
+/on-hazirlik-yonetim.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+  Referrer-Policy: no-referrer
+  Cache-Control: no-store
+/api/discovery/*
+  X-Robots-Tag: noindex, nofollow
+/assets/nda/*
+  X-Robots-Tag: noindex, nofollow

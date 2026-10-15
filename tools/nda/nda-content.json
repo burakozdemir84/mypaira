@@ -1,0 +1,382 @@
+[
+ {
+  "type": "title",
+  "t": "Proje hazırlık gizlilik taahhüdü ve sözleşmesi"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "PAIRA kapsamında proje değerlendirme ve teklif süreci için hazırlanmıştır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "1 Kimlik ve amaç"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "line",
+  "label": "Taahhüt veren: OD ETÜD VE MÜŞAVİRLİK LTD. ŞTİ. (“OD”)"
+ },
+ {
+  "type": "line",
+  "label": "Adres: Çavuşbaşı Cad. Üniversal Plaza No:36 K-4 34810 Kavacık/İSTANBUL"
+ },
+ {
+  "type": "line",
+  "label": "OD bildirim e-postası: ",
+  "link": "burak@mypaira.com"
+ },
+ {
+  "type": "fields",
+  "lines": [
+   [
+    "Müşteri unvanı: ",
+    "unvan"
+   ],
+   [
+    "Müşteri adresi: ",
+    "adres"
+   ],
+   [
+    "Müşteri bildirim e-postası: ",
+    "eposta"
+   ]
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Bu metin, PAIRA kapsamında olası iş birliğinin değerlendirilmesi, müşterinin süreç ve ihtiyaçlarının incelenmesi, çözüm önerisi ve teklif hazırlanması amacıyla (“Amaç”) paylaşılan bilgileri korur. PAIRA bu metinde proje/faaliyet adı olarak kullanılır; taahhüt veren ve hukuki muhatap OD tüzel kişiliğidir.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "2 OD taahhüdü ve karşılıklı uygulama"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "OD, yetkili temsilcisinin imzaladığı bu metni müşteriye iletmekle, müşterinin gizli bilgileri için burada düzenlenen gizlilik, sınırlı kullanım, güvenlik, iade ve imha yükümlülüklerini açıkça üstlenir. OD’nin bu taahhüdü müşterinin kabulüne bağlı değildir; imzalı metnin müşteriye ulaştığı tarihten itibaren uygulanır ve aynı Amaç kapsamında daha önce OD’ye açıklanmış gizli bilgileri de kapsar.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Müşterinin bu metni yetkili temsilcisi aracılığıyla imzalaması veya hükümlerini açıkça kabul etmesi halinde, gizli bilgiyi alan ve açıklayan için düzenlenen hükümler müşteri bakımından da bağlayıcı hale gelir ve karşılıklı uygulanır. Metnin alınması, sessizlik, itiraz edilmemesi, bilgi paylaşılması veya görüşmelere devam edilmesi tek başına müşterinin kabulü sayılmaz. Müşterinin kabulü oluşmadan bu metne dayanılarak müşteriye sözleşmesel yükümlülük yüklendiği varsayılmaz. OD’nin ve müşterinin kanundan doğan hakları saklıdır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "3 Gizli bilgi ve istisnalar"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Gizli bilgi; Amaç kapsamında sözlü, yazılı, görsel veya elektronik olarak açıklanan, gizli olduğu belirtilen veya niteliği ve açıklanma koşulları gereği gizliliği makul olarak anlaşılması gereken bilgilerdir. İş süreçleri, müşteri ve müvekkil bilgileri, hukuki stratejiler, finansal ve teknik bilgiler, fiyatlar, teklifler, yazılım, mimariler, yöntemler, know-how ve bunları içeren not, analiz ve kopyalar bu kapsamdadır. Gizlilik işareti bulunmaması tek başına korumayı kaldırmaz.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Bilgiyi alanın gösterebildiği şu bilgiler kapsam dışındadır: yükümlülük ihlali olmaksızın kamuya açık olan veya sonradan kamuya açılan; açıklamadan önce gizlilik yükümlülüğü olmaksızın hukuka uygun biçimde bilinen; yetkili üçüncü kişiden gizlilik yükümlülüğü olmadan hukuka uygun edinilen; açıklanan gizli bilgi kullanılmadan bağımsız geliştirilen bilgiler. Açıklayanın yazılı izni, yalnızca izin verilen kapsamda kullanım veya açıklamaya olanak verir.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "4 Gizliliğin korunması ve kullanım sınırları"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Gizli bilgiyi alan, bilgiyi yalnızca Amaç için kullanır; ihtiyaç duyulan ölçüde inceler, kaydeder ve çoğaltır. OD bu kapsamda toplantı notu, süreç haritası, teknik mimari, taslak ekran, maliyet çalışması ve teklif hazırlayabilir. Bu çalışmalar müşterinin gizli bilgilerinin başka müşteriler veya başka amaçlar için kullanılmasına izin vermez.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Erişim, Amaç için bilmesi gereken çalışan, yönetici ve mesleki danışmanlarla sınırlandırılır. Bu kişiler eşdeğer sözleşmesel veya mesleki gizlilik yükümlülüğüne tabi tutulur. Bilgiyi alan, kendisinin ve bu kişilerin ihlallerinden uygulanabilir mevzuat uyarınca sorumludur. Bilgi, en az kendi benzer gizli bilgilerine gösterilen özenle ve her durumda makul teknik, idari ve fiziki önlemlerle korunur.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Gizli bilgiler, açıklayanın önceden yazılı izni olmadan diğer tedarikçilere veya başka üçüncü kişilere aktarılamaz; reklam, referans, tanıtım, model eğitimi veya Amaç dışı ticari kullanım konusu yapılamaz. Kanunen veya yetkili makam kararıyla açıklama zorunluysa yalnızca gereken bölüm açıklanır; hukuken izin verildiği ölçüde açıklayan önceden bilgilendirilir ve koruyucu önlemler için makul iş birliği sağlanır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Yetkisiz erişim, kullanım veya açıklama öğrenildiğinde açıklayana gecikmeksizin bilgi verilir; ihlalin durdurulması ve etkilerinin azaltılması için makul tedbirler alınır. Mevzuattaki özel bildirim yükümlülükleri saklıdır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "5 Know how ve fikri mülkiyet"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Her bir tarafın önceden sahip olduğu veya diğerinin gizli bilgilerini kullanmadan bağımsız geliştirdiği bilgi, materyal ve fikri mülkiyet hakları kendisinde kalır. Müşterinin sunduğu veri, belge ve süreç bilgileri üzerindeki haklar müşteride veya ilgili hak sahibinde kalır. OD’nin özgün katkılarına ilişkin haklar; hazırladığı çözüm önerileri, mimariler, yöntemler, yazılım, kod ve diğer çalışma ürünleri bakımından OD’de kalır. Bunların içerdiği müşteri gizli bilgileri üzerindeki haklar ve OD’nin gizlilik yükümlülüğü korunur.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Bu metin, Amaç için gerekli inceleme dışında hak devri veya uygulama lisansı oluşturmaz. OD’nin gizli teknik bilgileri ve korunan çalışma ürünleri, OD’nin önceden yazılı izni olmadan uygulamaya alınamaz, Amaç dışında çoğaltılamaz veya üçüncü kişilere kullandırılamaz. Bu hüküm, müşterinin OD’nin gizli bilgilerini kullanmadan bağımsız çözüm geliştirmesini veya geliştirtmesini yasaklayan genel bir rekabet yasağı değildir. Bu maddedeki müşteriye yönelik sözleşmesel sınırlar 2 nci maddedeki kabul koşuluna tabidir; kanuni korumalar saklıdır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "6 Kişisel veriler ve veri minimizasyonu"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Ön değerlendirmede öncelikle sentetik veya gerçekten anonimleştirilmiş örnekler kullanılır. Kişisel veri paylaşımı Amaç için gerekli asgari düzeyle sınırlandırılır; özellikle özel nitelikli kişisel veriler ve müvekkil dosyaları zorunluluk yoksa paylaşılmaz. Maskeleme veya takma ad kullanımı tek başına anonimleştirme sayılmaz.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Kişisel veri işlenmesi gerekiyorsa 6698 sayılı Kanun ve ilgili mevzuatın işleme, güvenlik ve aktarım şartları yerine getirilir. Bu metin açık rıza, genel veri aktarım yetkisi veya kapsamlı veri işleme sözleşmesi yerine geçmez. Gerçek verilerin harici yapay zekâ hizmetlerine ya da yurt dışına aktarılması için gerekli hukuki ve teknik koşullar ayrıca değerlendirilir; gerekli ayrı düzenlemeler yapılmadan ilgili faaliyete başlanmaz.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "7 Süre ve yükümlülüklerin devamı"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "OD’nin taahhüdü 2 nci maddede belirtilen tarihte, müşterinin karşılıklı yükümlülükleri ise kabul tarihinde başlar. Her biri yazılı bildirimle ileriye dönük bilgi paylaşımını ve değerlendirme sürecini sona erdirebilir. Sonradan ticari sözleşme yapılması bu metni veya doğmuş yükümlülükleri kendiliğinden ortadan kaldırmaz; aynı bilgilerin korunmasına ilişkin farklı bir düzenleme ancak açıkça kararlaştırılır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Sona ermeden önce edinilmiş bilgiler için gizlilik ve Amaç dışı kullanmama yükümlülükleri sona erme tarihinden itibaren üç yıl devam eder. Ticari sırlar, bu niteliği korudukları sürece korunur. Fikri mülkiyet hakları kendi kanuni koruma süreleri boyunca, kişisel verilere ilişkin yükümlülükler ise mevzuatın gerektirdiği süre boyunca saklıdır. Sona erme, önceki ihlallerden doğmuş talepleri etkilemez.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "8 İade ve imha"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Açıklayanın yazılı talebi veya değerlendirme sürecinin sona ermesi üzerine gizli bilgiler ve bunları içeren çalışma kopyaları otuz gün içinde iade edilir veya güvenli biçimde imha edilir; talep üzerine tamamlandığı yazılı olarak bildirilir. Açıklayanın bilgileri çıkarıldıktan sonra kalan özgün çalışma ürünleri ve bağımsız materyaller bu yükümlülüğe dahil değildir.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Kanuni saklama yükümlülüğü veya bir hakkın korunması için gerekli sınırlı arşiv kopyaları ile aktif kullanıma kapalı, olağan silme döngüsündeki yedekler istisnadır. Bu kopyalar yalnızca saklama gerekçesiyle tutulur, Amaç dışında kullanılmaz ve saklandıkları sürece gizlilik ve güvenlik önlemleri altında kalır. Kişisel veriler bakımından daha kısa silme süreleri dahil emredici hükümler önceliklidir.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "9 İhlal ve dengeli sorumluluk"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "OD, taahhüdünün kusurlu ihlalinden doğan ve ispatlanan doğrudan zararlardan sorumludur. Müşterinin kabulüyle karşılıklı uygulama oluştuğunda aynı esas müşteri için de geçerlidir. Cezai şart veya sabit parasal sorumluluk tavanı uygulanmaz. Hafif kusur halinde dolaylı zararlar, kâr, itibar ve müşteri kaybı tazmin kapsamı dışındadır; kast, ağır kusur ve sorumluluğun kanunen sınırlandırılamayacağı haller bu sınırlamanın dışındadır.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Zarar gören makul zarar azaltma tedbirlerini alır. İhlalin önlenmesi veya durdurulması için ihtiyati tedbir dahil kanuni yollara başvurma hakkı saklıdır. Bu madde müşterinin kabulü bulunmadığında OD’nin taahhüdünü daraltan karşılıklı bir anlaşma veya müşterinin kanuni haklarından feragati olarak yorumlanamaz.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "heading",
+  "t": "10 Genel hükümler"
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "body",
+  "r": [
+   {
+    "t": "Bu metin hizmet satın alma, hizmet sunma, bedel ödeme, münhasırlık veya ticari sözleşme yapma yükümlülüğü doğurmaz. Bildirimler yukarıdaki adreslere veya bildirilen güncel e-posta adreslerine yapılabilir; kanunen özel şekle tabi bildirimler ilgili usule uygun yapılır. OD taahhüdünü mevcut korumaları azaltacak biçimde tek taraflı değiştiremez. Karşılıklı hükümler için değişiklikler açık mutabakatla yapılır. Bir hükmün geçersizliği diğer hükümleri etkilemez. Türk hukuku uygulanır. Kanuni görev ve yetki kuralları saklıdır; geçerli bir yetki anlaşmasının koşulları oluştuğunda İstanbul Mahkemeleri ve İcra Daireleri yetkilidir.",
+    "b": false
+   }
+  ]
+ },
+ {
+  "type": "gap"
+ },
+ {
+  "type": "signature",
+  "rows": [
+   [
+    "OD ETÜD VE MÜŞAVİRLİK LTD. ŞTİ.",
+    "MÜŞTERİ"
+   ],
+   [
+    "Yetkili adı ve unvanı: Burak ÖZDEMİR",
+    "Yetkili adı ve unvanı: ..............................."
+   ],
+   [
+    "Tarih: ......................................................",
+    "Tarih: ......................................................"
+   ],
+   [
+    "Kaşe ve imza:",
+    "Kaşe ve imza:"
+   ]
+  ]
+ }
+]
