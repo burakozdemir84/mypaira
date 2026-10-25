@@ -5,13 +5,13 @@ CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
 UID:ai-agents-deep-dive-20261027@mypaira.com
-DTSTAMP:20261025T160000Z
+DTSTAMP:20261025T170000Z
 DTSTART:20261027T170000Z
 DTEND:20261027T190000Z
 SUMMARY:Legal in the Loop: AI Agents Deep Dive
-LOCATION:Zoom: {{ZOOM_LINK}}
-DESCRIPTION:PAIRA çevrimiçi atölyesi.\nZoom: {{ZOOM_LINK}}\nToplantı kimli
- ği: {{ZOOM_ID}} · Şifre: {{ZOOM_SIFRE}}
+LOCATION:Zoom
+DESCRIPTION:PAIRA çevrimiçi atölyesi.\nZoom bağlantısı ve şifre kayıt e-po
+ stanızda yer alıyor.
 URL:https://www.mypaira.com/egitimler
 BEGIN:VALARM
 TRIGGER:-PT30M
