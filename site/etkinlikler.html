@@ -348,8 +348,10 @@ const DISPOSABLE_EMAIL_DOMAINS = ['mailinator.com', 'yopmail.com', 'guerrillamai
 // AI Agents Deep Dive kontenjan sayacı: iyzilink satışları /api/seats üzerinden
 // otomatik okunur. MC_SATILAN_FIZIKI yalnızca iyzico dışı (kurumsal havale)
 // kayıtlar için elle artırılır; egitimler.html içindeki EK_SATILAN ile aynı tutulur.
+// MC_BILINEN_EN_AZ: elle teyit edilmiş toplam kayıt (egitimler.html BILINEN_EN_AZ ile aynı).
 const MC_KAPASITE = 30;
-const MC_SATILAN_FIZIKI = 0;
+const MC_SATILAN_FIZIKI = 6;
+const MC_BILINEN_EN_AZ = 7;
 
 class Component extends DCLogic {
   state = {
@@ -408,7 +410,7 @@ class Component extends DCLogic {
   renderVals() {
     const st = this.state;
     return {
-      mcKalan: Math.max(0, MC_KAPASITE - MC_SATILAN_FIZIKI - (st.seatsSold || 0)),
+      mcKalan: Math.max(0, MC_KAPASITE - Math.max(MC_SATILAN_FIZIKI + (st.seatsSold || 0), MC_BILINEN_EN_AZ)),
       name: st.name, setName: (e) => this.setState({ name: e.target.value }),
       email: st.email, setEmail: (e) => this.setState({ email: e.target.value }),
       org: st.org, setOrg: (e) => this.setState({ org: e.target.value }),

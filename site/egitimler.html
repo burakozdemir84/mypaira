@@ -671,10 +671,13 @@ footer .legal a{color:var(--mute)}
   /* Kayıt bağlantısı: iyzilink adresini buraya yazın. Boşken kayıt butonu "Kayıtlar çok yakında" olarak görünür. */
   var IYZILINK = 'https://iyzi.link/AKyRmw';
   /* Kontenjan sayacı: iyzilink satışları Make üzerinden /api/seats'e otomatik işlenir.
-     EK_SATILAN yalnızca iyzico dışı (kurumsal havale) kayıtlar için elle artırılır. */
+     EK_SATILAN yalnızca iyzico dışı (kurumsal havale) kayıtlar için elle artırılır.
+     BILINEN_EN_AZ: elle teyit edilmiş toplam kayıt; sayaç bunun altına düşmez
+     (iyzilink satışı /api/seats'e henüz işlenmemişse bile). 25 Ekim: 1 iyzilink + 6 kurumsal. */
   var ETKINLIK = 'ai-agents-2026-10-27';
   var KAPASITE = 30;
-  var EK_SATILAN = 0;
+  var EK_SATILAN = 6;
+  var BILINEN_EN_AZ = 7;
 
   var c1=document.getElementById('c1'), c2=document.getElementById('c2'), hint=document.querySelector('[data-hint]');
   var buy=document.querySelector('[data-buy]');
@@ -693,11 +696,11 @@ footer .legal a{color:var(--mute)}
       gate();
     }
   }
-  renderSeats(EK_SATILAN);
+  renderSeats(Math.max(EK_SATILAN, BILINEN_EN_AZ));
   try {
     fetch('/api/seats?event=' + ETKINLIK, {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : null; })
-      .then(function(d){ if (d && d.ok) renderSeats(Number(d.sold || 0) + EK_SATILAN); })
+      .then(function(d){ if (d && d.ok) renderSeats(Math.max(Number(d.sold || 0) + EK_SATILAN, BILINEN_EN_AZ)); })
       .catch(function(){});
   } catch (e) {}
 
