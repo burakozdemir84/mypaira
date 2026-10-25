@@ -50,3 +50,5 @@
   X-Robots-Tag: noindex, nofollow
 /assets/nda/*
   X-Robots-Tag: noindex, nofollow
+/mail/ai-agents-deep-dive/*.ics
+  Content-Type: text/calendar; charset=utf-8
