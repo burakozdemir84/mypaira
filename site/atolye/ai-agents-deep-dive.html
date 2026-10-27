@@ -392,13 +392,13 @@ html{scroll-behavior:smooth}
 
   <h3 class="step-h" id="make-a"><span>Adım A</span>Hafızayı hazırlayın</h3>
   <p class="step-lede">Senaryoya başlamadan önce ajanın hafızasını açıyoruz: önce boş bir veri deposu (A1), sonra içine ilk kayıt (A2).</p>
-  <p class="note warn"><strong>Ücretsiz planda tek veri deposu hakkı vardır.</strong> Data stores sayfasında zaten bir veri deposu görüyorsanız önce onu silin ya da bu adımı atlayıp mevcut deponuzu kullanın.</p>
+  <p class="note warn"><strong>Hazırlıkta yaptıysanız atlayın.</strong> Data stores listesinde Ajan Hafızası zaten görünüyorsa A1 ve A2'yi tekrar yapmayın; ikinci bir depo açmanız gerekmez.</p>
 
   <h3>A1 · "Ajan Hafızası" veri deposunu oluşturun</h3>
   <ol class="mini">
     <li>Make'te mor sol menünün en altındaki <span class="ui">More</span> düğmesine tıklayın, açılan listede <span class="ui">Data stores</span> seçeneğine tıklayın.</li>
-    <li>Sağ üstteki <span class="ui">Add data store</span> düğmesine tıklayın.</li>
-    <li><span class="ui">Data store name</span> alanına yazın: <code>Ajan Hafızası</code></li>
+    <li>Sayfanın sağ üstündeki, arama kutusunun yanındaki mor <span class="ui">+</span> düğmesine tıklayın. <span class="ui">Add data store</span> penceresi açılır.</li>
+    <li><span class="ui">Data store name</span> alanındaki "My data store" yazısını silin ve yazın: <code>Ajan Hafızası</code></li>
     <li><span class="ui">Data structure</span> alanının sağındaki <span class="ui">Add</span> düğmesine tıklayın. <span class="ui">Add data structure</span> paneli açılır.</li>
     <li><span class="ui">Data structure name</span> alanındaki "My data structure" yazısını silin ve yazın: <code>Ajan Hafızası kaydı</code></li>
     <li><span class="ui">Specification</span> başlığının altındaki <span class="ui">Generate</span> bağlantısına tıklayın. <span class="ui">Generate</span> penceresi açılır.</li>
@@ -414,13 +414,13 @@ html{scroll-behavior:smooth}
     <li>Pencerenin altındaki mor <span class="ui">Generate</span> düğmesine tıklayın. Specification altında 12 alan belirir: kayit_turu, tarih, konu, tur, aciliyet, sorumlu, karsi_taraf, ozet, risk_puani, durum, cikti, notlar.</li>
     <li>Türleri kontrol edin: <code>tarih</code> yanında <span class="ui">Type: date</span>, <code>risk_puani</code> yanında <span class="ui">Type: number</span> yazmalı. <span class="ui">Type: text</span> yazıyorsa alanın solundaki oka tıklayın, <span class="ui">Type</span> listesinden doğru türü seçin.</li>
     <li>Panelin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
-    <li><span class="ui">Add data store</span> penceresinde <span class="ui">Data storage size</span> alanını değiştirmeyin ve <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Add data store</span> penceresinde <span class="ui">Data storage size in MB</span> alanındaki 1 değerini değiştirmeyin ve sağ alttaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
   </ol>
 
   <h3>A2 · Hafızaya ilk kaydı elle ekleyin</h3>
   <ol class="mini">
-    <li><span class="ui">Data stores</span> listesinde <span class="ui">Ajan Hafızası</span> satırının sağındaki <span class="ui">Browse</span> düğmesine tıklayın.</li>
-    <li>Sol üstteki <span class="ui">Add</span> düğmesine tıklayın. Tabloda boş bir satır açılır.</li>
+    <li><span class="ui">Data stores</span> listesinde <span class="ui">Ajan Hafızası</span> yazısının üzerine tıklayın. Kayıt tablosu açılır (sağdaki üç nokta menüsünü kullanmayın, orada yalnızca Edit ve Delete vardır).</li>
+    <li>Tablonun üstünde, "Ajan Hafızası" başlığının sağındaki <span class="ui">+ Add</span> düğmesine tıklayın. Tabloda boş bir satır açılır.</li>
     <li>Aşağıdaki <span class="ui">Novaport kaydı</span> bloğundaki her satırın değerini aynı adlı sütuna yazın. <span class="ui">Key</span> sütununa <code>karsi-novaport</code> yazın. Bloğu tek parça yapıştırmayın; her değeri kendi hücresine girin.</li>
   </ol>
   <div class="block">
@@ -434,7 +434,7 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
   </div>
   <ol class="mini" start="4">
     <li>Boş kalan sütunlara (konu, tur, aciliyet, sorumlu, ozet, risk_puani, durum, cikti) bir şey yazmayın.</li>
-    <li>Satırın sonundaki ya da tablonun üstündeki <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li>Tablonun üstünde, <span class="ui">+ Add</span> düğmesinin sağındaki <span class="ui">Save</span> düğmesine tıklayın.</li>
   </ol>
 
   <h3 class="step-h" id="make-b"><span>Adım B</span>Senaryoyu kurun</h3>
@@ -864,7 +864,7 @@ durum:        Sorumlu avukata yönlendirildi</pre>
 
   <h3 class="step-h" id="make-d"><span>Adım D</span>Sonucu görün</h3>
   <ol class="mini">
-    <li>Sol menüden <span class="ui">Data stores</span> · <span class="ui">Ajan Hafızası</span> satırında <span class="ui">Browse</span>.</li>
+    <li>Mor sol menünün en altındaki <span class="ui">More</span> düğmesine, ardından <span class="ui">Data stores</span> seçeneğine tıklayın. Listede <span class="ui">Ajan Hafızası</span> yazısının üzerine tıklayın; kayıt tablosu açılır.</li>
     <li>Her e-posta için bir "talep" satırı göreceksiniz: tür, sorumlu avukat, durum ve çıktı.</li>
     <li>Novaport satırını açın: Adım A'da elle yazdığınız notun sonuna ajan bu akşamki incelemenin özetini eklemiş olmalı. Hafıza budur.</li>
     <li><b>Not alın:</b> Novaport ve Kuzey talepleri kaç puan aldı, hangisi kıdemli avukata gitti? İnceleme notu sözleşmede gerçekten ne yazıyorsa onu mu söylüyor? Yanınızdakiyle karşılaştırın; aynı e-postaya farklı ekranlarda farklı puan çıkmış olabilir.</li>
