@@ -764,26 +764,35 @@ E-posta ve sözleşme metni:
     <li>Bu gri daireye tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
-    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
-    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
-    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
-    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin. Altında Key, Overwrite an existing record ve Record alanları belirir. Bunları yukarıdan aşağıya şu sırayla doldurun:</li>
+    <li><b>Key:</b> aşağıdaki <span class="ui">Talep anahtarı</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
   </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 11 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r11">Kopyala</button></div>
-<pre class="short" id="r11">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
-kayit_turu:   talep
-tarih:        {{now}}
-konu:         [Modül 1 · Subject]
-tur:          [Modül 3 · tur]
-aciliyet:     [Modül 3 · aciliyet]
-karsi_taraf:  [Modül 3 · karsi_taraf]
-ozet:         [Modül 3 · ozet]
-sorumlu:      [Modül 3 · sorumlu_avukat]
-risk_puani:   Risk puanı formülü bloğunu yapıştırın
-durum:        Sorumlu avukat incelemesinde
-cikti:        [Modül 7 · inceleme_notu_metni]</pre>
+    <div class="block-head"><p class="block-title">Talep anahtarı<small>Modül 11 · Key kutusuna</small></p><button class="copy" data-copy="k11">Kopyala</button></div>
+<pre class="short" id="k11">talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}</pre>
   </div>
+  <ol class="mini" start="7">
+    <li><b>Overwrite an existing record:</b> <span class="ui">Yes</span> seçeneğini işaretleyin.</li>
+    <li><b>Record › Kayit turu:</b> kutuya yazın: <code>talep</code></li>
+    <li><b>Record › Tarih:</b> kutuya yazın: <code>{{now}}</code></li>
+    <li><b>Record › Konu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">Webhooks 1</span> altındaki <span class="ui">Subject</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Tur:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Tur</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Aciliyet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Aciliyet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Sorumlu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Sorumlu avukat</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Karsi taraf:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Ozet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Ozet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Risk puani:</b> aşağıdaki <span class="ui">Risk puanı formülü</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Risk puanı formülü<small>Modül 11 · Risk puani kutusuna</small></p><button class="copy" data-copy="rp11">Kopyala</button></div>
+<pre class="short" id="rp11">{{min(10; if(7.s1 = "evet"; 1; 0) + if(7.s2 = "evet"; 1; 0) + if(7.s3 = "evet"; 1; 0) + if(7.s4 = "evet"; 1; 0) + if(7.s5 = "evet"; 1; 0) + if(7.s6 = "evet"; 1; 0) + if(7.s7 = "evet"; 1; 0) + if(7.s8 = "evet"; 1; 0) + if(7.s9 = "evet"; 1; 0) + length(7.geri_gelen_maddeler))}}</pre>
+  </div>
+  <ol class="mini" start="17">
+    <li><b>Record › Durum:</b> kutuya yazın: <code>Sorumlu avukat incelemesinde</code></li>
+    <li><b>Record › Cikti:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 7</span> altındaki <span class="ui">Inceleme notu metni</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Notlar:</b> boş bırakın.</li>
+    <li>Pencerenin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
   <h3>Filtre 9a · Modül 9 ile Modül 10 arasındaki çizgi</h3>
   <ol class="mini">
@@ -811,25 +820,29 @@ cikti:        [Modül 7 · inceleme_notu_metni]</pre>
     <li>Bu gri daireye tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
-    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
-    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
-    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
-    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin. Altında Key, Overwrite an existing record ve Record alanları belirir. Bunları yukarıdan aşağıya şu sırayla doldurun:</li>
+    <li><b>Key:</b> aşağıdaki <span class="ui">Talep anahtarı</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
   </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 12 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r12">Kopyala</button></div>
-<pre class="short" id="r12">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
-kayit_turu:   talep
-tarih:        {{now}}
-konu:         [Modül 1 · Subject]
-tur:          [Modül 3 · tur]
-aciliyet:     [Modül 3 · aciliyet]
-karsi_taraf:  [Modül 3 · karsi_taraf]
-ozet:         [Modül 3 · ozet]
-sorumlu:      [Modül 3 · sorumlu_avukat]
-durum:        Cevap taslağı hazır, gönderim avukatta
-cikti:        [Modül 3 · cevap_taslagi]</pre>
+    <div class="block-head"><p class="block-title">Talep anahtarı<small>Modül 12 · Key kutusuna</small></p><button class="copy" data-copy="k12">Kopyala</button></div>
+<pre class="short" id="k12">talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}</pre>
   </div>
+  <ol class="mini" start="7">
+    <li><b>Overwrite an existing record:</b> <span class="ui">Yes</span> seçeneğini işaretleyin.</li>
+    <li><b>Record › Kayit turu:</b> kutuya yazın: <code>talep</code></li>
+    <li><b>Record › Tarih:</b> kutuya yazın: <code>{{now}}</code></li>
+    <li><b>Record › Konu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">Webhooks 1</span> altındaki <span class="ui">Subject</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Tur:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Tur</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Aciliyet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Aciliyet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Sorumlu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Sorumlu avukat</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Karsi taraf:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Ozet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Ozet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Risk puani:</b> boş bırakın.</li>
+    <li><b>Record › Durum:</b> kutuya yazın: <code>Cevap taslağı hazır, gönderim avukatta</code></li>
+    <li><b>Record › Cikti:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Cevap taslagi</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Notlar:</b> boş bırakın.</li>
+    <li>Pencerenin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
   <h3>Filtre 4b · Modül 4 ile Modül 12 arasındaki çizgi</h3>
   <ol class="mini">
@@ -848,24 +861,29 @@ cikti:        [Modül 3 · cevap_taslagi]</pre>
     <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
-    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
-    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
-    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
-    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin. Altında Key, Overwrite an existing record ve Record alanları belirir. Bunları yukarıdan aşağıya şu sırayla doldurun:</li>
+    <li><b>Key:</b> aşağıdaki <span class="ui">Talep anahtarı</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
   </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 13 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r13">Kopyala</button></div>
-<pre class="short" id="r13">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
-kayit_turu:   talep
-tarih:        {{now}}
-konu:         [Modül 1 · Subject]
-tur:          [Modül 3 · tur]
-aciliyet:     [Modül 3 · aciliyet]
-karsi_taraf:  [Modül 3 · karsi_taraf]
-ozet:         [Modül 3 · ozet]
-sorumlu:      [Modül 3 · sorumlu_avukat]
-durum:        Sorumlu avukata yönlendirildi</pre>
+    <div class="block-head"><p class="block-title">Talep anahtarı<small>Modül 13 · Key kutusuna</small></p><button class="copy" data-copy="k13">Kopyala</button></div>
+<pre class="short" id="k13">talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}</pre>
   </div>
+  <ol class="mini" start="7">
+    <li><b>Overwrite an existing record:</b> <span class="ui">Yes</span> seçeneğini işaretleyin.</li>
+    <li><b>Record › Kayit turu:</b> kutuya yazın: <code>talep</code></li>
+    <li><b>Record › Tarih:</b> kutuya yazın: <code>{{now}}</code></li>
+    <li><b>Record › Konu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">Webhooks 1</span> altındaki <span class="ui">Subject</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Tur:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Tur</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Aciliyet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Aciliyet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Sorumlu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Sorumlu avukat</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Karsi taraf:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Ozet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Ozet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Risk puani:</b> boş bırakın.</li>
+    <li><b>Record › Durum:</b> kutuya yazın: <code>Sorumlu avukata yönlendirildi</code></li>
+    <li><b>Record › Cikti:</b> boş bırakın.</li>
+    <li><b>Record › Notlar:</b> boş bırakın.</li>
+    <li>Pencerenin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
   <h3>Filtre 4c · Modül 4 ile Modül 13 arasındaki çizgi</h3>
   <ol class="mini">
