@@ -453,10 +453,14 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
     <li><span class="ui">Save</span> düğmesine tıklayın. Make size sonu @hook.eu1.make.com ile biten bir adres gösterir.</li>
     <li><span class="ui">Copy address to clipboard</span> düğmesine tıklayın. Adresi bir not dosyasına yapıştırıp saklayın; Adım C'de dört e-postayı bu adrese göndereceksiniz.</li>
     <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+
+  <h3>Modül 2 · Triyaj (model ve talimat)</h3>
+  <ol class="mini">
     <li>Modül 1'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Make AI Toolkit</code> yazın ve <span class="ui">Make AI Toolkit</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Simple Text Prompt</span> modülüne tıklayın (eski sürümde adı <span class="ui">Ask anything</span>).</li>
-    <li><span class="ui">Connection</span> alanında bir bağlantı seçili değilse <span class="ui">Add</span> düğmesine tıklayın, açılan pencerede <span class="ui">Save</span> deyin.</li>
+    <li><span class="ui">Connection</span> alanında bir bağlantı seçili değilse <span class="ui">Add</span> düğmesine tıklayın. Açılan <span class="ui">Create a connection</span> penceresinde <span class="ui">Connection type</span> kutusundaki oka tıklayın, listeden <span class="ui">Make's AI Provider</span> seçeneğini seçin ve <span class="ui">Save</span> düğmesine tıklayın.</li>
     <li><span class="ui">Model</span> alanını <span class="ui">Recommended: Medium</span> olarak bırakın.</li>
     <li>Aşağıdaki <span class="ui">Talimat metni</span> bloğunda <span class="ui">Kopyala</span> düğmesine tıklayın ve <span class="ui">Text</span> kutusuna yapıştırın.</li>
   </ol>
@@ -512,7 +516,7 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
   "cevap_taslagi": "Yalnızca tur yeni_is ise dolu, diğer durumlarda boş metin"
 }</pre>
   </div>
-  <ol class="mini" start="17">
+  <ol class="mini" start="7">
     <li>Yapıştırdığınız metnin sonunda Enter tuşuna iki kez basın (bir boş satır).</li>
     <li>Aşağıdaki <span class="ui">İstem (prompt) metni</span> bloğunu kopyalayın ve aynı <span class="ui">Text</span> kutusunda, boş satırın altına yapıştırın.</li>
   </ol>
@@ -525,7 +529,7 @@ Konu: [Modül 1 · Subject]
 E-posta metni:
 [Modül 1 · Text]</pre>
   </div>
-  <ol class="mini" start="19">
+  <ol class="mini" start="9">
     <li>Kutudaki <code>[Modül 1 · Sender · Email address]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Sender › Email address</span> kutucuğuna bir kez tıklayın. (Sender kapalıysa solundaki oka tıklayıp açın.)</li>
     <li>Kutudaki <code>[Modül 1 · Subject]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Subject</span> kutucuğuna bir kez tıklayın.</li>
     <li>Kutudaki <code>[Modül 1 · Text]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Text</span> kutucuğuna bir kez tıklayın. HTML content kutucuğunu değil, Text kutucuğunu seçin.</li>
@@ -565,6 +569,10 @@ E-posta metni:
     <li>Modül 3'ün sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Router</code> yazın ve <span class="ui">Flow Control</span> başlığı altındaki <span class="ui">Router</span> modülüne tıklayın.</li>
     <li>Router eklenir ve sağında boş bir modül dairesi olan ilk dal belirir. Bu dal Dal A (sözleşme incelemesi) olacak. Filtreyi Modül 5'i ekledikten sonra koyacağız; bir çizgiye filtre koyabilmek için çizginin ucunda bir modül olmalıdır.</li>
+  </ol>
+
+  <h3>Modül 5 · Hafızadan okuma (Dal A)</h3>
+  <ol class="mini">
     <li>Router'ın sağındaki boş modül dairesine tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Get a record</span> modülüne tıklayın.</li>
@@ -572,6 +580,10 @@ E-posta metni:
     <li><span class="ui">Key</span> kutusuna tıklayın ve <code>karsi-</code> yazın.</li>
     <li>İmleç <code>karsi-</code> yazısının hemen arkasındayken sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">karsi_taraf_anahtar</span> kutucuğuna tıklayın. Kutuda <code>karsi-3.karsi_taraf_anahtar</code> görünmeli.</li>
     <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+
+  <h3>Filtre 4a · Router ile Modül 5 arasındaki çizgi</h3>
+  <ol class="mini">
     <li>Modül 4 (Router) ile Modül 5 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Sözleşme</code></li>
@@ -579,6 +591,10 @@ E-posta metni:
     <li>Ortadaki operatör listesini açın ve <span class="ui">Text operators</span> başlığı altındaki <span class="ui">Equal to</span> seçeneğine tıklayın.</li>
     <li>Alttaki üçüncü kutuya yazın: <code>sozlesme_inceleme</code></li>
     <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Modül 6 · Sözleşme ön incelemesi (Dal A)</h3>
+  <ol class="mini">
     <li>Modül 5'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Make AI Toolkit</code> yazın, <span class="ui">Make AI Toolkit</span> uygulamasına ve ardından <span class="ui">Simple Text Prompt</span> modülüne tıklayın.</li>
     <li>Bağlantı ve model Modül 2'dekiyle aynı kalsın.</li>
@@ -623,7 +639,7 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
   "hafiza_ozeti": "Bu incelemenin hafızaya yazılacak tek cümlelik özeti"
 }</pre>
   </div>
-  <ol class="mini" start="22">
+  <ol class="mini" start="5">
     <li>Aşağıdaki <span class="ui">İnceleme istemi</span> bloğunu kopyalayıp boş satırın altına yapıştırın.</li>
   </ol>
   <div class="block">
@@ -637,7 +653,7 @@ Geçmiş müzakere notları:
 E-posta ve sözleşme metni:
 [Modül 1 · Text]</pre>
   </div>
-  <ol class="mini" start="23">
+  <ol class="mini" start="6">
     <li>Kutudaki <code>[Modül 3 · muvekkil]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">muvekkil</span> kutucuğuna bir kez tıklayın.</li>
     <li>Kutudaki <code>[Modül 3 · karsi_taraf]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">karsi_taraf</span> kutucuğuna bir kez tıklayın.</li>
     <li>Kutudaki <code>[Modül 5 · notlar]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Data store 5</span> başlığı altındaki <span class="ui">notlar</span> kutucuğuna bir kez tıklayın.</li>
