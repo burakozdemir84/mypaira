@@ -570,12 +570,12 @@ E-posta metni:
   <ol class="mini">
     <li>Modül 3'ün sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Router</code> yazın ve <span class="ui">Flow Control</span> başlığı altındaki <span class="ui">Router</span> modülüne tıklayın.</li>
-    <li>Router eklenir ve sağında boş bir modül dairesi olan ilk dal belirir. Bu dal Dal A (sözleşme incelemesi) olacak. Filtreyi Modül 5'i ekledikten sonra koyacağız; bir çizgiye filtre koyabilmek için çizginin ucunda bir modül olmalıdır.</li>
+    <li>Router eklenir ve sağında iki dal belirir: çizgisinde <span class="ui">1st</span> yazan <b>üstteki dal</b> ve <span class="ui">2nd</span> yazan <b>alttaki dal</b>. Her dalın ucunda gri, içinde + olan boş bir modül dairesi vardır. Üstteki dal Dal A (sözleşme incelemesi), alttaki dal Dal B (yeni iş) olacak. Filtreleri modülleri ekledikten sonra koyacağız; bir çizgiye filtre koyabilmek için çizginin ucunda bir modül olmalıdır.</li>
   </ol>
 
   <h3>Modül 5 · Hafızadan okuma (Dal A)</h3>
   <ol class="mini">
-    <li>Router'ın sağındaki boş modül dairesine tıklayın.</li>
+    <li>Router'ın <b>üstteki dalının</b> (çizgisinde <span class="ui">1st</span> yazan) ucundaki gri boş modül dairesine tıklayın. Alttaki dala dokunmayın; o Modül 12 için.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Get a record</span> modülüne tıklayın.</li>
     <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
@@ -586,7 +586,7 @@ E-posta metni:
 
   <h3>Filtre 4a · Router ile Modül 5 arasındaki çizgi</h3>
   <ol class="mini">
-    <li>Modül 4 (Router) ile Modül 5 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Modül 4 (Router) ile Modül 5 arasındaki, üstteki noktalı çizgiyi (üzerinde <span class="ui">1st</span> yazan) bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Sözleşme</code></li>
     <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">tur</span> kutucuğuna tıklayın.</li>
@@ -712,12 +712,12 @@ notlar:       [Modül 5 · notlar] {{formatDate(now; "DD.MM.YYYY")}}: [Modül 7 
   <ol class="mini">
     <li>Modül 8'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Router</code> yazın ve <span class="ui">Flow Control</span> başlığı altındaki <span class="ui">Router</span> modülüne tıklayın.</li>
-    <li>Router eklenir ve sağında boş bir modül dairesi olan ilk dal belirir. Bu dal yüksek riskli sözleşmeler içindir.</li>
+    <li>Router eklenir ve sağında iki dal belirir: çizgisinde <span class="ui">1st</span> yazan <b>üstteki dal</b> ve <span class="ui">2nd</span> yazan <b>alttaki dal</b>. Üstteki dal yüksek riskli sözleşmeler (Modül 10), alttaki dal normal riskli sözleşmeler (Modül 11) içindir.</li>
   </ol>
 
   <h3>Modül 10 · Yüksek risk kaydı (Modül 9'un ilk dalı)</h3>
   <ol class="mini">
-    <li>Modül 9'un sağındaki boş modül dairesine tıklayın.</li>
+    <li>Modül 9'un <b>üstteki dalının</b> (çizgisinde <span class="ui">1st</span> yazan) ucundaki gri boş modül dairesine tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
     <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
@@ -748,8 +748,8 @@ cikti:        [Modül 7 · inceleme_notu_metni]</pre>
 
   <h3>Modül 11 · Normal risk kaydı (Modül 9'un ikinci dalı)</h3>
   <ol class="mini">
-    <li>Modül 9'a (ikinci Router) bir kez tıklayın. Yeni bir dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
-    <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
+    <li>Modül 9'un <b>alttaki dalının</b> (çizgisinde <span class="ui">2nd</span> yazan) ucundaki gri boş modül dairesini bulun.</li>
+    <li>Bu gri daireye tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
     <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
@@ -775,7 +775,7 @@ cikti:        [Modül 7 · inceleme_notu_metni]</pre>
 
   <h3>Filtre 9a · Modül 9 ile Modül 10 arasındaki çizgi</h3>
   <ol class="mini">
-    <li>Modül 9 (Router) ile Modül 10 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Modül 9 (Router) ile Modül 10 arasındaki, üstteki noktalı çizgiyi (üzerinde <span class="ui">1st</span> yazan) bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Kıdemli onay</code></li>
     <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın ve yukarıdaki <span class="ui">Risk puanı formülü</span> bloğunu yapıştırın.</li>
@@ -786,7 +786,7 @@ cikti:        [Modül 7 · inceleme_notu_metni]</pre>
 
   <h3>Filtre 9b · Modül 9 ile Modül 11 arasındaki çizgi</h3>
   <ol class="mini">
-    <li>Modül 9 (Router) ile Modül 11 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Modül 9 (Router) ile Modül 11 arasındaki, alttaki noktalı çizgiyi (üzerinde <span class="ui">2nd</span> yazan) bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Normal risk</code></li>
     <li><span class="ui">Fallback route</span> başlığı altındaki <span class="ui">Yes</span> seçeneğini işaretleyin. Condition kutularını boş bırakın.</li>
@@ -795,8 +795,8 @@ cikti:        [Modül 7 · inceleme_notu_metni]</pre>
 
   <h3>Modül 12 · Yeni iş kaydı (Dal B)</h3>
   <ol class="mini">
-    <li>Ekranda geriye, Modül 4'e (ilk Router) dönün ve ona bir kez tıklayın. Yeni bir dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
-    <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
+    <li>Ekranda geriye, Modül 4'e (ilk Router) dönün. Modül 4'ün <b>alttaki dalının</b> (çizgisinde <span class="ui">2nd</span> yazan) ucundaki gri boş modül dairesini bulun.</li>
+    <li>Bu gri daireye tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
     <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
@@ -821,7 +821,7 @@ cikti:        [Modül 3 · cevap_taslagi]</pre>
 
   <h3>Filtre 4b · Modül 4 ile Modül 12 arasındaki çizgi</h3>
   <ol class="mini">
-    <li>Modül 4 (Router) ile Modül 12 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Modül 4 (Router) ile Modül 12 arasındaki, alttaki noktalı çizgiyi (üzerinde <span class="ui">2nd</span> yazan) bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Yeni iş</code></li>
     <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">tur</span> kutucuğuna tıklayın.</li>
@@ -832,7 +832,7 @@ cikti:        [Modül 3 · cevap_taslagi]</pre>
 
   <h3>Modül 13 · Diğer talepler kaydı (Dal C)</h3>
   <ol class="mini">
-    <li>Modül 4'e (ilk Router) bir kez daha tıklayın. Üçüncü dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
+    <li>Modül 4'e (ilk Router) bir kez tıklayın. En altta üçüncü bir dal (çizgisinde <span class="ui">3rd</span> yazan) ve ucunda gri boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
     <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
@@ -857,7 +857,7 @@ durum:        Sorumlu avukata yönlendirildi</pre>
 
   <h3>Filtre 4c · Modül 4 ile Modül 13 arasındaki çizgi</h3>
   <ol class="mini">
-    <li>Modül 4 (Router) ile Modül 13 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Modül 4 (Router) ile Modül 13 arasındaki, en alttaki noktalı çizgiyi (üzerinde <span class="ui">3rd</span> yazan) bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
     <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
     <li><span class="ui">Label</span> alanına yazın: <code>Diğer</code></li>
     <li><span class="ui">Fallback route</span> başlığı altındaki <span class="ui">Yes</span> seçeneğini işaretleyin. Condition kutularını boş bırakın.</li>
