@@ -726,31 +726,37 @@ E-posta ve sözleşme metni:
     <li>Modül 9'un <b>üstteki dalının</b> (çizgisinde <span class="ui">1st</span> yazan) ucundaki gri boş modül dairesine tıklayın.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
-    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
-    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
-    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
-    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin. Altında Key, Overwrite an existing record ve Record alanları belirir. Bunları yukarıdan aşağıya şu sırayla doldurun:</li>
+    <li><b>Key:</b> aşağıdaki <span class="ui">Talep anahtarı</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
   </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 10 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r10">Kopyala</button></div>
-<pre class="short" id="r10">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
-kayit_turu:   talep
-tarih:        {{now}}
-konu:         [Modül 1 · Subject]
-tur:          [Modül 3 · tur]
-aciliyet:     [Modül 3 · aciliyet]
-karsi_taraf:  [Modül 3 · karsi_taraf]
-ozet:         [Modül 3 · ozet]
-sorumlu:      Av. Selin Aras
-risk_puani:   aşağıdaki Risk puanı formülü bloğunu yapıştırın
-durum:        Kıdemli onayı bekliyor
-cikti:        [Modül 7 · inceleme_notu_metni]</pre>
+    <div class="block-head"><p class="block-title">Talep anahtarı<small>Modül 10, 11, 12 ve 13 · Key kutusuna</small></p><button class="copy" data-copy="k10">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Her talep kaydına o anın tarih ve saatinden benzersiz bir anahtar verilir; kayıtlar birbirinin üzerine yazılmaz.</p>
+<pre class="short" id="k10">talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}</pre>
   </div>
+  <ol class="mini" start="6">
+    <li><b>Overwrite an existing record:</b> <span class="ui">Yes</span> seçeneğini işaretleyin.</li>
+    <li><b>Record › Kayit turu:</b> kutuya yazın: <code>talep</code></li>
+    <li><b>Record › Tarih:</b> kutuya yazın: <code>{{now}}</code></li>
+    <li><b>Record › Konu:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">Webhooks 1</span> altındaki <span class="ui">Subject</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Tur:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Tur</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Aciliyet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Aciliyet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Sorumlu:</b> kutuya yazın: <code>Av. Selin Aras</code></li>
+    <li><b>Record › Karsi taraf:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Ozet:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Ozet</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Risk puani:</b> aşağıdaki <span class="ui">Risk puanı formülü</span> bloğunu kopyalayıp kutuya yapıştırın.</li>
+  </ol>
   <div class="block">
     <div class="block-head"><p class="block-title">Risk puanı formülü<small>Modül 10 ve 11 · risk_puani kutusuna · Filtre 9a · Condition kutusuna</small></p><button class="copy" data-copy="rp">Kopyala</button></div>
     <p class="why"><b>Neden</b>"Evet" cevaplarının sayısı ile geri gelen madde sayısının toplamıdır, en fazla 10. Puanı model değil kural hesaplar.</p>
 <pre class="short" id="rp">{{min(10; if(7.s1 = "evet"; 1; 0) + if(7.s2 = "evet"; 1; 0) + if(7.s3 = "evet"; 1; 0) + if(7.s4 = "evet"; 1; 0) + if(7.s5 = "evet"; 1; 0) + if(7.s6 = "evet"; 1; 0) + if(7.s7 = "evet"; 1; 0) + if(7.s8 = "evet"; 1; 0) + if(7.s9 = "evet"; 1; 0) + length(7.geri_gelen_maddeler))}}</pre>
   </div>
+  <ol class="mini" start="16">
+    <li><b>Record › Durum:</b> kutuya yazın: <code>Kıdemli onayı bekliyor</code></li>
+    <li><b>Record › Cikti:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 7</span> altındaki <span class="ui">Inceleme notu metni</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Notlar:</b> boş bırakın.</li>
+    <li>Pencerenin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
   <h3>Modül 11 · Normal risk kaydı (Modül 9'un ikinci dalı)</h3>
   <ol class="mini">
