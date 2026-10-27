@@ -507,21 +507,29 @@ E-posta metni:
 <pre class="short" id="j3">{{replace(replace(2.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
   </div>
 
-  <h3>Modül 4 · Router filtreleri</h3>
+  <h3>Modül 4 · Router ve üç dalın filtreleri</h3>
+  <p class="note"><strong>Nerede?</strong> Koşullar Router'ın içinde değil, Router'dan çıkan her çizginin üzerinde tanımlanır. Çizginin ortasına gelin, beliren anahtar ikonuna tıklayın (ya da çizgiye sağ tıklayın) ve <b>Set up a filter</b> seçin. Bir çizgiye filtre koymak için çizginin ucunda bir modül olmalı: önce dalın ilk modülünü ekleyin, sonra filtreyi kurun. Kurulan filtre çizgide küçük bir huni ikonu olarak görünür.</p>
   <div class="block">
-    <div class="block-head"><p class="block-title">Üç dalın koşulları<small>İki modül arasındaki çizgiye tıklayın · Set up a filter</small></p><button class="copy" data-copy="m4">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Kararı model verir, yolu siz çizersiniz. Ajan ile otomasyonun buluştuğu yer burasıdır.</p>
-<pre class="short" id="m4">Dal A · Sözleşme incelemesi
-  Label: Sözleşme
-  Condition: [Modül 3 · tur]   Text operators: Equal to   sozlesme_inceleme
-
-Dal B · Yeni iş talebi
-  Label: Yeni iş
-  Condition: [Modül 3 · tur]   Text operators: Equal to   yeni_is
-
-Dal C · Mevcut dosya ve diğer
-  Label: Diğer
-  Fallback route: Yes   (koşul gerekmez)</pre>
+    <div class="block-head"><p class="block-title">4a · Dal A · Sözleşme incelemesi<small>Router ile Modül 5 (Get a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4a">Kopyala</button></div>
+    <p class="why"><b>Neden</b>İçinde sözleşme metni olan e-postalar hafızaya ve incelemeye gider.</p>
+<pre class="short" id="m4a">Label:      Sözleşme
+Condition:  [Modül 3 · tur]
+Operatör:   Text operators › Equal to
+Değer:      sozlesme_inceleme</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">4b · Dal B · Yeni iş talebi<small>Router ile Dal B'nin ilk modülü (Add/replace a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4b">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Yeni iş talepleri kaydedilir ve cevap taslağı avukatın onayına hazırlanır.</p>
+<pre class="short" id="m4b">Label:      Yeni iş
+Condition:  [Modül 3 · tur]
+Operatör:   Text operators › Equal to
+Değer:      yeni_is</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">4c · Dal C · Mevcut dosya ve diğer<small>Router ile Dal C'nin ilk modülü (Add/replace a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4c">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Koşul yazılmaz. Diğer iki dala girmeyen her e-posta bu yoldan gider; hiçbir talep kaybolmaz.</p>
+<pre class="short" id="m4c">Label:           Diğer
+Fallback route:  Yes   (koşul alanını boş bırakın)</pre>
   </div>
 
   <h3>Modül 5 · Hafızadan okuma</h3>
