@@ -370,12 +370,12 @@ html{scroll-behavior:smooth}
   <h3>Senaryo haritası · kuracağımız yapının tamamı</h3>
   <ol class="flow">
     <li><span class="n">1</span><span class="mod">Webhooks · Custom mailhook<small>Make size özel bir e-posta adresi verir; o adrese gelen her e-posta ajanı çalıştırır</small></span><span class="tags"><span class="tag">Araç</span><span class="tag">Tetikleme</span></span></li>
-    <li><span class="n">2</span><span class="mod">Make AI Toolkit · Ask anything<small>Triyaj: tür, aciliyet, sorumlu avukat</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
+    <li><span class="n">2</span><span class="mod">Make AI Toolkit · Simple Text Prompt<small>Triyaj: tür, aciliyet, sorumlu avukat</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
     <li><span class="n">3</span><span class="mod">JSON · Parse JSON<small>Model cevabını alanlara ayırır</small></span><span class="tags"><span class="tag">Araç</span></span></li>
     <li><span class="n">4</span><span class="mod">Flow Control · Router<small>Türe göre üç dal</small></span><span class="tags"><span class="tag grd">Kısıt</span></span></li>
     <li class="branch">Dal A · Sözleşme incelemesi</li>
     <li><span class="n">5</span><span class="mod">Data store · Get a record<small>Bu karşı tarafla geçmişte ne konuşuldu</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
-    <li><span class="n">6</span><span class="mod">Make AI Toolkit · Ask anything<small>Ön inceleme: risk puanı, riskli maddeler, revizyon taslağı</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
+    <li><span class="n">6</span><span class="mod">Make AI Toolkit · Simple Text Prompt<small>Ön inceleme: risk puanı, riskli maddeler, revizyon taslağı</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
     <li><span class="n">7</span><span class="mod">JSON · Parse JSON</span><span class="tags"><span class="tag">Araç</span></span></li>
     <li><span class="n">8</span><span class="mod">Data store · Add/replace a record<small>Karşı taraf hafızasını günceller</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
     <li><span class="n">9</span><span class="mod">Router, iki yol · Data store · Add/replace a record<small>Puan 7 ve üstü: "Kıdemli onayı bekliyor". Diğerleri: "Sorumlu avukatta"</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
@@ -434,7 +434,7 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
 
   <h3>Modül 2 · Triyaj talimatı</h3>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Ask anything · Text alanına yapıştırın</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple Text Prompt · Text alanına yapıştırın</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
     <p class="why"><b>Neden</b>Yönlendirme kuralları talimatın içinde ayrı bir başlık olarak durur. Make'te dosya yüklenmediği için skill burada talimata gömülür; Claude ve ChatGPT'de aynı kurallar ayrı dosyadır.</p>
 <pre id="m2s">Sen Demirtaş &amp; Koral Hukuk Bürosu'nun gelen kutusu asistanısın. Görevin, büroya gelen her e-postayı okuyup sınıflandırmak ve doğru avukata yönlendirmektir.
 
@@ -487,7 +487,7 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
   </div>
   <div class="block">
     <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Aynı Text alanında, talimatın altına bir boş satır bırakıp yapıştırın · köşeli parantezli yerleri Modül 1'in alanlarıyla değiştirin</small></p><button class="copy" data-copy="m2u">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir. Bu ayrım ajanın tutarlılığını sağlar. Ask anything modülünde tek bir Text alanı vardır: önce talimat, altına bu metin.</p>
+    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir. Bu ayrım ajanın tutarlılığını sağlar. Simple Text Prompt modülünde tek bir Text alanı vardır: önce talimat, altına bu metin.</p>
 <pre class="short" id="m2u">Gönderen: [Modül 1 · Sender · Email address]
 Konu: [Modül 1 · Subject]
 
@@ -532,7 +532,7 @@ Dal C · Mevcut dosya ve diğer
 
   <h3>Modül 6 · Ön inceleme talimatı</h3>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Ask anything · Text alanına yapıştırın</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple Text Prompt · Text alanına yapıştırın</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
     <p class="why"><b>Neden</b>Kontrol listesi skill'dir: büro standardı değiştiğinde yalnızca bu blok güncellenir. Dikkat: puanı model vermiyor. Model dokuz kapalı soruyu evet/hayır cevaplar, puanı Make evetleri sayarak hesaplar. Model bulur, kural karar verir; son söz yine avukattadır.</p>
 <pre id="m6s">Sen Demirtaş &amp; Koral Hukuk Bürosu adına sözleşme ön incelemesi yapan bir asistansın. Müvekkil, istemde adı verilen ve e-postayı gönderen şirkettir; sözleşmede genellikle "Müşteri" olarak geçer. Karşı taraf genellikle "Hizmet Sağlayıcı" olarak geçer.
 
