@@ -391,28 +391,40 @@ html{scroll-behavior:smooth}
   <div class="note"><strong>Neden yalnızca Make'in kendi araçları?</strong> Kişisel Gmail ve Google Drive hesaplarını Make'e bağlamak, Google tarafında teknik bir kurulum gerektiriyor. Make'in kendi e-posta kutusu, yapay zeka modülü ve veri deposu ise ek hesap istemiyor. Mimari aynı kalıyor: büronuzda kurumsal e-posta ve doküman sistemine bağlanan sürüm, aynı kutucuklarla kurulur.</div>
 
   <h3 class="step-h" id="make-a"><span>Adım A</span>Hafızayı hazırlayın</h3>
-  <p class="step-lede">Senaryoya başlamadan önce ajanın hafızasını açıyoruz. Make'te sol menüden <span class="ui">Data stores</span> sayfasına gidin.</p>
-  <div class="block">
-    <div class="block-head"><p class="block-title">A1 · "Ajan Hafızası" veri deposunu oluşturun<small>Add data store · Data structure yanında Add · alanları sırayla ekleyin · Save</small></p><button class="copy" data-copy="ds1">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Tek bir hafıza, iki tür kayıt: "ne geldi" (talep) ve "kiminle ne konuşuldu" (karşı taraf). Ajan bir karşı tarafı ikinci kez gördüğünde geçmişi masaya bu depo getirir.</p>
-<pre class="short" id="ds1">Veri deposu adı: Ajan Hafızası
+  <p class="step-lede">Senaryoya başlamadan önce ajanın hafızasını açıyoruz: önce boş bir veri deposu (A1), sonra içine ilk kayıt (A2).</p>
+  <p class="note warn"><strong>Ücretsiz planda tek veri deposu hakkı vardır.</strong> Data stores sayfasında zaten bir veri deposu görüyorsanız önce onu silin ya da bu adımı atlayıp mevcut deponuzu kullanın.</p>
 
-Alan adı        Tür
-kayit_turu      Text
-tarih           Date
-konu            Text
-tur             Text
-aciliyet        Text
-sorumlu         Text
-karsi_taraf     Text
-ozet            Text
-risk_puani      Number
-durum           Text
-cikti           Text
-notlar          Text</pre>
-  </div>
+  <h3>A1 · "Ajan Hafızası" veri deposunu oluşturun</h3>
+  <ol class="mini">
+    <li>Make'te mor sol menünün en altındaki <span class="ui">More</span> düğmesine tıklayın, açılan listede <span class="ui">Data stores</span> seçeneğine tıklayın.</li>
+    <li>Sağ üstteki <span class="ui">Add data store</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store name</span> alanına yazın: <code>Ajan Hafızası</code></li>
+    <li><span class="ui">Data structure</span> alanının sağındaki <span class="ui">Add</span> düğmesine tıklayın. <span class="ui">Add data structure</span> paneli açılır.</li>
+    <li><span class="ui">Data structure name</span> alanındaki "My data structure" yazısını silin ve yazın: <code>Ajan Hafızası kaydı</code></li>
+    <li><span class="ui">Specification</span> başlığının altındaki <span class="ui">Generate</span> bağlantısına tıklayın. <span class="ui">Generate</span> penceresi açılır.</li>
+    <li><span class="ui">Content type</span> alanını <span class="ui">JSON</span> olarak bırakın.</li>
+    <li>Aşağıdaki <span class="ui">Hafıza yapısı örneği</span> bloğunda <span class="ui">Kopyala</span> düğmesine tıklayın ve <span class="ui">Sample data</span> kutusuna yapıştırın.</li>
+    <li>Pencerenin altındaki mor <span class="ui">Generate</span> düğmesine tıklayın. Specification altında 12 alan belirir: kayit_turu, tarih, konu, tur, aciliyet, sorumlu, karsi_taraf, ozet, risk_puani, durum, cikti, notlar.</li>
+    <li>Türleri kontrol edin: <code>tarih</code> yanında <span class="ui">Type: date</span>, <code>risk_puani</code> yanında <span class="ui">Type: number</span> yazmalı. <span class="ui">Type: text</span> yazıyorsa alanın solundaki oka tıklayın, <span class="ui">Type</span> listesinden doğru türü seçin.</li>
+    <li>Panelin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Add data store</span> penceresinde <span class="ui">Data storage size</span> alanını değiştirmeyin ve <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">A2 · Hafızaya ilk kaydı elle ekleyin<small>Data stores listesinde Ajan Hafızası satırında Browse · Add · alanları doldurun · Save</small></p><button class="copy" data-copy="ds2">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Hafıza yapısı örneği<small>A1 · Generate penceresindeki Sample data kutusuna</small></p><button class="copy" data-copy="ds1">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Tek bir hafıza, iki tür kayıt: "ne geldi" (talep) ve "kiminle ne konuşuldu" (karşı taraf). Ajan bir karşı tarafı ikinci kez gördüğünde geçmişi masaya bu depo getirir. Buradaki değerler yalnızca örnektir; Make onlardan alan adlarını ve türlerini çıkarır, hiçbirini kaydetmez.</p>
+<pre class="short" id="ds1">{"kayit_turu":"talep","tarih":"2026-10-27T09:00:00.000Z","konu":"Örnek konu","tur":"sozlesme_inceleme","aciliyet":"orta","sorumlu":"Av. Ece Tunç","karsi_taraf":"Örnek A.Ş.","ozet":"Örnek özet.","risk_puani":5,"durum":"Örnek durum","cikti":"Örnek çıktı.","notlar":"Örnek not."}</pre>
+  </div>
+
+  <h3>A2 · Hafızaya ilk kaydı elle ekleyin</h3>
+  <ol class="mini">
+    <li><span class="ui">Data stores</span> listesinde <span class="ui">Ajan Hafızası</span> satırının sağındaki <span class="ui">Browse</span> düğmesine tıklayın.</li>
+    <li>Sol üstteki <span class="ui">Add</span> düğmesine tıklayın. Tabloda boş bir satır açılır.</li>
+    <li>Aşağıdaki <span class="ui">Novaport kaydı</span> bloğundaki her satırın değerini aynı adlı sütuna yazın. <span class="ui">Key</span> sütununa <code>karsi-novaport</code> yazın. Bloğu tek parça yapıştırmayın; her değeri kendi hücresine girin.</li>
+    <li>Boş kalan sütunlara (konu, tur, aciliyet, sorumlu, ozet, risk_puani, durum, cikti) bir şey yazmayın.</li>
+    <li>Satırın sonundaki ya da tablonun üstündeki <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Novaport kaydı<small>A2 · her değeri aynı adlı sütuna</small></p><button class="copy" data-copy="ds2">Kopyala</button></div>
     <p class="why"><b>Neden</b>Ajanın "geçen sefer bu maddeyi değiştirmiştik" diyebilmesi için hafızada bir geçmiş olmalı. Bu kaydı bir kez elle ekliyoruz; sonrasını ajan kendisi yazar.</p>
 <pre class="short" id="ds2">Key:          karsi-novaport
 kayit_turu:   karsi_taraf
