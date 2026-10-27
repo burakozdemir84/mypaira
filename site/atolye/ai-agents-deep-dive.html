@@ -684,26 +684,24 @@ MODÜL 11 · Mevcut dosya ve diğer
 
   <div class="block">
     <div class="block-head"><p class="block-title">1b · İyi prompt<small>Projede ikinci yeni sohbet · bu metni yazın · altına aynı E-posta 4'ü yapıştırın</small></p><button class="copy" data-copy="t1b">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Dört başlık var: Rol, Bağlam, Görev, Çıktı. Bir stajyere iş verirken söylediğiniz her şey burada yazılı.</p>
+    <p class="why"><b>Neden</b>Yönlendirme kartının altı alanı: Rol, Görev, Bağlam, Kısıt, Format, Örnek. Bağlam en güçlüsüdür: modeli kalıba uzanmaktan kurtaran tek şey, önüne konan metindir.</p>
 <pre id="t1b"># Rol
-Sen bir hukuk bürosunda ticari sözleşmeleri ön incelemeden geçiren deneyimli bir avukat asistanısın.
-
-# Bağlam
-Müvekkilimiz e-postayı gönderen şirkettir; sözleşmenin karşı tarafı değildir. İncelemeyi müvekkilin bakış açısıyla yap. Bu bir ön incelemedir; son değerlendirmeyi avukat yapacak.
+Türk borçlar hukuku ve ticari sözleşmeler alanında deneyimli bir avukat olarak çalış.
 
 # Görev
-1. E-postanın ne istediğini ve varsa süreyi tek cümleyle özetle.
-2. Sözleşmede müvekkil aleyhine olan maddeleri bul.
-3. Her biri için neden riskli olduğunu ve önerini yaz.
-4. 1 ile 10 arasında bir risk puanı ver, tek cümleyle gerekçelendir.
+Aşağıdaki e-postadaki sözleşmeyi incele, müvekkil aleyhine olan maddeleri çıkar ve 1 ile 10 arasında bir risk puanı ver.
 
-# Çıktı
-- Özet: tek cümle
-- Risk puanı: x/10
-- Tablo: Madde | Tespit | Öneri
-- Karşı tarafa gönderilebilecek kısa bir revizyon talebi taslağı
+# Bağlam
+Müvekkilimiz e-postayı gönderen şirkettir; sözleşmede "Müşteri" olarak geçer. Sözleşmeyi bu hafta imzalaması isteniyor ve hangi maddeleri müzakere etmesi gerektiğini bilmek istiyor. Bu bir ön incelemedir; son değerlendirmeyi avukat yapacak.
 
-Sözleşmede olmayan bir şeyi varsayma; emin olmadığın yerde "kontrol edilmeli" yaz.
+# Kısıt
+Yalnızca sözleşme metnine dayan ve her tespitin yanında madde numarasını göster. Metinde düzenlenmemiş konuları "düzenlenmemiş" olarak işaretle.
+
+# Format
+Tablo olarak ver: madde no, konu, tespit, öneri. Altına risk puanını ve en fazla üç cümlelik bir özet ekle.
+
+# Örnek
+Örnek satır: m. 7 | Cezai şart | Kalan süre bedelinin %50'si öngörülmüş | %10 ile sınırlandırılması talep edilmeli
 
 E-posta:</pre>
   </div>
@@ -711,11 +709,12 @@ E-posta:</pre>
     <table>
       <thead><tr><th scope="col">Unsur</th><th scope="col">1a · Kötü prompt</th><th scope="col">1b · İyi prompt</th></tr></thead>
       <tbody>
-        <tr><th scope="row">Rol</th><td>Yok, Claude genel bir okuyucu gibi davranır</td><td>Sözleşme inceleyen avukat asistanı</td></tr>
+        <tr><th scope="row">Rol</th><td>Yok, Claude genel bir okuyucu gibi davranır</td><td>Ticari sözleşmelerde deneyimli avukat</td></tr>
+        <tr><th scope="row">Görev</th><td>"Bakar mısın" her şey olabilir</td><td>Maddeleri çıkar, puan ver</td></tr>
         <tr><th scope="row">Bağlam</th><td>Müvekkil belli değil, iki tarafı da tartabilir</td><td>Müvekkil belli, bakış açısı tek</td></tr>
-        <tr><th scope="row">Görev</th><td>"Bakar mısın" her şey olabilir</td><td>Dört net adım</td></tr>
-        <tr><th scope="row">Çıktı</th><td>Her seferinde farklı biçim</td><td>Her seferinde aynı tablo ve puan</td></tr>
-        <tr><th scope="row">Belirsizlik</th><td>Boşlukları tahminle doldurabilir</td><td>"Kontrol edilmeli" der</td></tr>
+        <tr><th scope="row">Kısıt</th><td>Boşlukları tahminle doldurabilir</td><td>Yalnızca metne dayanır, madde no gösterir</td></tr>
+        <tr><th scope="row">Format</th><td>Her seferinde farklı biçim</td><td>Her seferinde aynı tablo ve puan</td></tr>
+        <tr><th scope="row">Örnek</th><td>Yok</td><td>Bir örnek satır, biçimi sabitler</td></tr>
       </tbody>
     </table>
   </div>
@@ -728,24 +727,25 @@ E-posta:</pre>
 <pre id="t1c"># Rol
 Sen Demirtaş &amp; Koral Hukuk Bürosu'nun gelen kutusu ajanısın. Büroya gelen e-postaları sınıflandırır, sözleşmeleri ön incelemeden geçirir ve avukatlar için taslak hazırlarsın.
 
-# Bağlam
-Müvekkil, e-postayı gönderen taraftır; sözleşmenin karşı tarafı değildir. Yaptığın her inceleme ön incelemedir; son değerlendirme avukatındır.
-
 # Görev
 Sana verilen her e-posta için:
 1. Türünü (sözleşme incelemesi, yeni iş talebi, mevcut dosya, diğer), aciliyetini ve sorumlu avukatı belirle.
-2. Sözleşme varsa müvekkil aleyhine maddeleri bul, 1-10 arası risk puanı ver.
+2. Sözleşme varsa müvekkil aleyhine maddeleri çıkar, 1-10 arası risk puanı ver.
 3. Gerekirse avukat için taslak hazırla.
 
-# Çıktı
+# Bağlam
+Müvekkil, e-postayı gönderen taraftır; sözleşmenin karşı tarafı değildir. Yaptığın her inceleme ön incelemedir; son değerlendirme avukatındır.
+
+# Kısıt
+Yalnızca e-posta ve sözleşme metnine dayan, her tespitin yanında madde numarasını göster. Metinde düzenlenmemiş konuları "düzenlenmemiş" olarak işaretle.
+
+# Format
 Her e-posta için:
 **Konu**
 Tür · Aciliyet · Sorumlu avukat
 Özet: en fazla iki cümle
 Sözleşme ise: Risk puanı x/10, tablo (Madde | Tespit | Öneri), revizyon talebi taslağı.
-En sonda özet tablo: Konu | Tür | Aciliyet | Sorumlu | Durum.
-
-Sözleşmede olmayan bir şeyi varsayma; emin olmadığın yerde "kontrol edilmeli" yaz.</pre>
+En sonda özet tablo: Konu | Tür | Aciliyet | Sorumlu | Durum.</pre>
   </div>
 
   <!-- TUR 2 -->
