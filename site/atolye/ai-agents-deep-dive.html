@@ -495,7 +495,7 @@ E-posta metni:
 [Modül 1 · Text]</pre>
   </div>
 
-  <h3>Modül 3 ve 7 · JSON yapısı</h3>
+  <h3>Modül 3 · JSON yapısı</h3>
   <div class="block">
     <div class="block-head"><p class="block-title">Modül 3 · 1. Data structure<small>Parse JSON · Data structure yanında Add · Data structure name: Triyaj sonucu · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
     <p class="why"><b>Neden</b>Make, alanların adını önceden bilirse sonraki modüllerde onları tek tıkla seçebilirsiniz.</p>
@@ -505,14 +505,6 @@ E-posta metni:
     <div class="block-head"><p class="block-title">Modül 3 · 2. JSON string alanı<small>Aynı pencerede JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j3">Kopyala</button></div>
     <p class="why"><b>Neden</b>Model JSON cevabını bazen ```json işaretleri arasına koyar. Bu formül o işaretleri temizler; Parse JSON yalnızca saf JSON okuyabilir.</p>
 <pre class="short" id="j3">{{replace(replace(2.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
-  </div>
-  <div class="block">
-    <div class="block-head"><p class="block-title">Modül 7 · 1. Data structure<small>Parse JSON · Data structure yanında Add · Data structure name: İnceleme sonucu · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m7">Kopyala</button></div>
-<pre class="short" id="m7">{"s1":"evet","s2":"evet","s3":"evet","s4":"hayir","s5":"hayir","s6":"hayir","s7":"hayir","s8":"hayir","s9":"hayir","geri_gelen_maddeler":["Örnek"],"inceleme_notu_metni":"Örnek not.","hafiza_ozeti":"Örnek özet."}</pre>
-  </div>
-  <div class="block">
-    <div class="block-head"><p class="block-title">Modül 7 · 2. JSON string alanı<small>Aynı pencerede JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j7">Kopyala</button></div>
-<pre class="short" id="j7">{{replace(replace(6.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
   </div>
 
   <h3>Modül 4 · Router filtreleri</h3>
@@ -589,6 +581,16 @@ Geçmiş müzakere notları:
 
 E-posta ve sözleşme metni:
 [Modül 1 · Text]</pre>
+  </div>
+
+  <h3>Modül 7 · JSON yapısı</h3>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 7 · 1. Data structure<small>Parse JSON · Data structure yanında Add · Data structure name: İnceleme sonucu · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m7">Kopyala</button></div>
+<pre class="short" id="m7">{"s1":"evet","s2":"evet","s3":"evet","s4":"hayir","s5":"hayir","s6":"hayir","s7":"hayir","s8":"hayir","s9":"hayir","geri_gelen_maddeler":["Örnek"],"inceleme_notu_metni":"Örnek not.","hafiza_ozeti":"Örnek özet."}</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 7 · 2. JSON string alanı<small>Aynı pencerede JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j7">Kopyala</button></div>
+<pre class="short" id="j7">{{replace(replace(6.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
   </div>
 
   <h3>Modül 8, 9, 10 ve 11 · Hafızaya yazma</h3>
