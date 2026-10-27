@@ -370,12 +370,12 @@ html{scroll-behavior:smooth}
   <h3>Senaryo haritası · kuracağımız yapının tamamı</h3>
   <ol class="flow">
     <li><span class="n">1</span><span class="mod">Webhooks · Custom mailhook<small>Make size özel bir e-posta adresi verir; o adrese gelen her e-posta ajanı çalıştırır</small></span><span class="tags"><span class="tag">Araç</span><span class="tag">Tetikleme</span></span></li>
-    <li><span class="n">2</span><span class="mod">Make AI Toolkit · Simple text prompt<small>Triyaj: tür, aciliyet, sorumlu avukat</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
+    <li><span class="n">2</span><span class="mod">Make AI Toolkit · Ask anything<small>Triyaj: tür, aciliyet, sorumlu avukat</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
     <li><span class="n">3</span><span class="mod">JSON · Parse JSON<small>Model cevabını alanlara ayırır</small></span><span class="tags"><span class="tag">Araç</span></span></li>
     <li><span class="n">4</span><span class="mod">Flow Control · Router<small>Türe göre üç dal</small></span><span class="tags"><span class="tag grd">Kısıt</span></span></li>
     <li class="branch">Dal A · Sözleşme incelemesi</li>
     <li><span class="n">5</span><span class="mod">Data store · Get a record<small>Bu karşı tarafla geçmişte ne konuşuldu</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
-    <li><span class="n">6</span><span class="mod">Make AI Toolkit · Simple text prompt<small>Ön inceleme: risk puanı, riskli maddeler, revizyon taslağı</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
+    <li><span class="n">6</span><span class="mod">Make AI Toolkit · Ask anything<small>Ön inceleme: risk puanı, riskli maddeler, revizyon taslağı</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
     <li><span class="n">7</span><span class="mod">JSON · Parse JSON</span><span class="tags"><span class="tag">Araç</span></span></li>
     <li><span class="n">8</span><span class="mod">Data store · Add/replace a record<small>Karşı taraf hafızasını günceller</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
     <li><span class="n">9</span><span class="mod">Router, iki yol · Data store · Add/replace a record<small>Puan 7 ve üstü: "Kıdemli onayı bekliyor". Diğerleri: "Sorumlu avukatta"</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
@@ -434,15 +434,16 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
 
   <h3>Modül 2 · Triyaj talimatı</h3>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple text prompt · talimat (instructions) alanı</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Ask anything · Text alanına yapıştırın</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
     <p class="why"><b>Neden</b>Yönlendirme kuralları talimatın içinde ayrı bir başlık olarak durur. Make'te dosya yüklenmediği için skill burada talimata gömülür; Claude ve ChatGPT'de aynı kurallar ayrı dosyadır.</p>
 <pre id="m2s">Sen Demirtaş &amp; Koral Hukuk Bürosu'nun gelen kutusu asistanısın. Görevin, büroya gelen her e-postayı okuyup sınıflandırmak ve doğru avukata yönlendirmektir.
 
 ## Türler
-- sozlesme_inceleme: Bir sözleşmenin, protokolün veya taslağın incelenmesi isteniyor ya da e-postada sözleşme metni var.
+- sozlesme_inceleme: E-postada incelenmesi istenen bir sözleşme metni var (genellikle "=== SÖZLEŞME METNİ ===" başlığının altında).
 - yeni_is: Büroyla ilk kez çalışmak isteyen birinden veya mevcut müvekkilden yeni bir konu için talep.
 - mevcut_dosya: Devam eden bir dava, icra veya danışmanlık dosyasıyla ilgili soru ya da bilgi.
 - diger: Yukarıdakilere girmeyen her şey (davet, bülten, fatura, tanıtım).
+Yeni bir sözleşmenin hazırlanmasının istenmesi sözleşme incelemesi değildir, yeni iştir.
 
 ## Yönlendirme kuralları
 - Ticari sözleşmeler, standart inceleme: Av. Can Erdem
@@ -456,6 +457,11 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
 - orta: Bir hafta içinde dönüş bekleniyor.
 - dusuk: Belirli bir süre yok.
 
+## Taraflar
+- Müvekkil, e-postayı gönderen kişinin şirketidir (imzadaki şirket).
+- Karşı taraf, sözleşmenin müvekkil dışındaki tarafıdır. Sözleşmede genellikle "Hizmet Sağlayıcı", "Satıcı" veya "Kiraya Veren" gibi bir adla geçer. Müvekkili asla karşı taraf olarak yazma.
+- Sözleşme yoksa karşı taraf alanlarını boş bırak.
+
 ## Sınırlar
 - Hukuki görüş verme; yalnızca sınıflandır ve özetle.
 - Ücret, süre veya sonuç konusunda taahhütte bulunma.
@@ -463,7 +469,7 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
 - Emin olmadığında türü "diger", aciliyeti "orta" seç ve gerekçeye "insan kontrolü gerekli" yaz.
 
 ## Cevap taslağı (yalnızca yeni_is için)
-Kibar, kısa, resmi "siz" hitabıyla bir ilk cevap yaz: talebin alındığını, ilgili avukatın en kısa sürede dönüş yapacağını ve görüşme için uygun zamanlarını iletmesini rica ettiğini belirt. Ücret ve süre bilgisi verme.
+Gönderene hitapla başlayan, 4-6 cümlelik, resmi "siz" hitaplı tam bir e-posta yaz: talebin alındığını, sorumlu avukatın adını ve en kısa sürede dönüş yapacağını belirt, görüşme için uygun gün ve saatlerini iletmesini rica et. Ücret sorulmuşsa ücretlendirmenin görüşmede konuşulacağını söyle; rakam verme. "Saygılarımızla, Demirtaş & Koral Hukuk Bürosu" ile bitir.
 
 ## Çıktı
 Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında açıklama ekleme, kod bloğu işareti kullanma.
@@ -471,7 +477,8 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
   "tur": "sozlesme_inceleme | yeni_is | mevcut_dosya | diger",
   "aciliyet": "yuksek | orta | dusuk",
   "sorumlu_avukat": "Av. Ad Soyad",
-  "karsi_taraf": "Sözleşme varsa karşı tarafın tam unvanı, yoksa boş metin",
+  "muvekkil": "E-postayı gönderenin şirketi",
+  "karsi_taraf": "Sözleşme varsa müvekkil dışındaki tarafın tam unvanı, yoksa boş metin",
   "karsi_taraf_anahtar": "Karşı tarafın küçük harfli, Türkçe karakter ve boşluk içermeyen kısa adı (ör. novaport), yoksa boş metin",
   "ozet": "En fazla iki cümle",
   "gerekce": "Tür ve aciliyet seçiminin tek cümlelik gerekçesi",
@@ -479,8 +486,8 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
 }</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Köşeli parantezli yerleri silip, aynı yere Modül 1'in alanlarını tıklayarak ekleyin</small></p><button class="copy" data-copy="m2u">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir. Bu ayrım ajanın tutarlılığını sağlar. Modülde tek metin alanı görüyorsanız, talimatı ve bu metni alt alta aynı alana yapıştırın.</p>
+    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Aynı Text alanında, talimatın altına bir boş satır bırakıp yapıştırın · köşeli parantezli yerleri Modül 1'in alanlarıyla değiştirin</small></p><button class="copy" data-copy="m2u">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir. Bu ayrım ajanın tutarlılığını sağlar. Ask anything modülünde tek bir Text alanı vardır: önce talimat, altına bu metin.</p>
 <pre class="short" id="m2u">Gönderen: [Modül 1 · Sender · Email address]
 Konu: [Modül 1 · Subject]
 
@@ -492,11 +499,11 @@ E-posta metni:
   <div class="block">
     <div class="block-head"><p class="block-title">Modül 3 · örnek veri<small>Parse JSON · Data structure · Add · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
     <p class="why"><b>Neden</b>Make, alanların adını önceden bilirse sonraki modüllerde onları tek tıkla seçebilirsiniz.</p>
-<pre class="short" id="m3">{"tur":"sozlesme_inceleme","aciliyet":"yuksek","sorumlu_avukat":"Av. Selin Aras","karsi_taraf":"Novaport Lojistik A.Ş.","karsi_taraf_anahtar":"novaport","ozet":"Örnek özet.","gerekce":"Örnek gerekçe.","cevap_taslagi":""}</pre>
+<pre class="short" id="m3">{"tur":"sozlesme_inceleme","aciliyet":"yuksek","sorumlu_avukat":"Av. Selin Aras","muvekkil":"Ada Gıda Sanayi ve Ticaret A.Ş.","karsi_taraf":"Novaport Lojistik A.Ş.","karsi_taraf_anahtar":"novaport","ozet":"Örnek özet.","gerekce":"Örnek gerekçe.","cevap_taslagi":""}</pre>
   </div>
   <div class="block">
     <div class="block-head"><p class="block-title">Modül 7 · örnek veri</p><button class="copy" data-copy="m7">Kopyala</button></div>
-<pre class="short" id="m7">{"risk_puani":8,"risk_seviyesi":"yuksek","kidemli_onay_gerekli":true,"gecmis_karsilastirma":"Örnek.","inceleme_notu_metni":"Örnek not.","hafiza_ozeti":"Örnek özet."}</pre>
+<pre class="short" id="m7">{"s1":"evet","s2":"evet","s3":"evet","s4":"hayir","s5":"hayir","s6":"hayir","s7":"hayir","s8":"hayir","s9":"hayir","geri_gelen_maddeler":["Örnek"],"inceleme_notu_metni":"Örnek not.","hafiza_ozeti":"Örnek özet."}</pre>
   </div>
 
   <h3>Modül 4 · Router filtreleri</h3>
@@ -525,50 +532,48 @@ Dal C · Mevcut dosya ve diğer
 
   <h3>Modül 6 · Ön inceleme talimatı</h3>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple text prompt · talimat (instructions) alanı</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Kontrol listesi skill'dir: büro standardı değiştiğinde yalnızca bu blok güncellenir. Puan eşiği ve "taslak" kuralı ise kısıttır: son söz her zaman avukattadır.</p>
-<pre id="m6s">Sen Demirtaş &amp; Koral Hukuk Bürosu adına sözleşme ön incelemesi yapan bir asistansın. Müvekkil, sözleşmenin karşı tarafı olmayan taraftır. İncelemeni müvekkilin bakış açısıyla yap.
+    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Ask anything · Text alanına yapıştırın</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Kontrol listesi skill'dir: büro standardı değiştiğinde yalnızca bu blok güncellenir. Dikkat: puanı model vermiyor. Model dokuz kapalı soruyu evet/hayır cevaplar, puanı Make evetleri sayarak hesaplar. Model bulur, kural karar verir; son söz yine avukattadır.</p>
+<pre id="m6s">Sen Demirtaş &amp; Koral Hukuk Bürosu adına sözleşme ön incelemesi yapan bir asistansın. Müvekkil, istemde adı verilen ve e-postayı gönderen şirkettir; sözleşmede genellikle "Müşteri" olarak geçer. Karşı taraf genellikle "Hizmet Sağlayıcı" olarak geçer.
 
-## Kontrol listesi
-Her başlığı sözleşmede ara. Müvekkil aleyhine olan her bulguyu nota ekle.
-1. Süre ve yenileme: Otomatik yenileme, 3 aydan uzun ihbar süresi.
-2. Fesih dengesi: Karşı tarafın gerekçesiz fesih hakkı varken müvekkilin yoksa.
-3. Cezai şart: Aylık bedelin %20'sini aşan veya kalan süre bedeline bağlanan cezai şart.
-4. Sorumluluk: Karşı tarafın sorumluluğu sınırlı, müvekkilinki sınırsız ise; ya da sınır, olası zararla orantısızsa.
-5. Bedel değişikliği: Karşı tarafın tek taraflı fiyat artışı hakkı.
-6. Ödeme: 15 günden kısa vade, aylık %3'ü aşan gecikme faizi.
-7. Yetkili mahkeme veya tahkim: İstanbul dışı mahkeme, yabancı tahkim, yabancı dil.
-8. Kişisel veriler: Yurt dışına aktarım, açık rıza veya taahhütname eksikliği, veri işleyen yükümlülüklerinin belirsizliği.
-9. Gizlilik ve fikri mülkiyet: Tek taraflı gizlilik, süresiz yükümlülük, müvekkil verisi üzerinde karşı tarafa hak tanınması.
+## Görev
+Sözleşme metnini okuyup aşağıdaki dokuz soruyu tek tek "evet" veya "hayir" olarak cevapla. Her soruda ilgili maddeyi bul ve metne göre karar ver. "evet" diyebilmek için sözleşmede bunu açıkça söyleyen bir madde olmalıdır.
 
-## Puanlama
-- 1-3 düşük: Standart, küçük revizyonlarla imzalanabilir.
-- 4-6 orta: Müzakere gerektiren birkaç madde var.
-- 7-10 yüksek: Müvekkili ciddi mali veya hukuki risk altına sokan maddeler var. Kıdemli avukat onayı gerekir.
+## Sorular
+s1. Sözleşme süre sonunda kendiliğinden uzuyor mu VE bunu durdurmak için 3 aydan uzun bir ihbar süresi gerekiyor mu? (30 günlük ihbar: hayir)
+s2. Gerekçesiz fesih hakkı yalnızca karşı tarafa mı tanınmış? (İki taraf da feshedebiliyorsa: hayir)
+s3. Müvekkil aleyhine, kalan süre bedeline bağlanan veya aylık bedelin %20'sini aşan bir cezai şart var mı?
+s4. Karşı tarafın sorumluluğu sınırlıyken müvekkilin sorumluluğu sınırsız mı? (İki tarafın sorumluluğu aynı sınıra bağlıysa: hayir)
+s5. Karşı taraf bedeli müvekkilin onayı olmadan, kendi belirleyeceği oranda artırabiliyor mu? (Endekse bağlı, önceden bildirilen artış: hayir)
+s6. Ödeme vadesi 15 günden kısa mı veya gecikme faizi aylık %3'ten fazla mı? (Tam 15 gün: hayir)
+s7. Yetkili mahkeme İstanbul dışında mı, ya da yabancı tahkim veya yabancı dil öngörülmüş mü?
+s8. Kişisel veriler yurt dışına aktarılıyor mu, ya da müvekkil gerekli izinleri "almış sayılıyor" mu?
+s9. Gizlilik yükümlülüğü yalnızca müvekkili mi bağlıyor ya da süresiz mi?
 
 ## Geçmiş karşılaştırması
-İstemde bu karşı tarafla ilgili geçmiş müzakere notları varsa, yeni sözleşmeyi bu notlarla karşılaştır. Daha önce kabul ettirilen bir değişiklik yeni metinde geri gelmişse bunu açıkça belirt ve puanı en az bir puan artır. Geçmiş notlar boşsa "Kayıtlı geçmiş yok" yaz.
+İstemde geçmiş müzakere notları varsa oku. Notlarda değiştirildiği yazan her konu için yeni metinde eski, müvekkil aleyhine halin geri gelip gelmediğine bak. Geri gelen her konuyu "geri_gelen_maddeler" listesine tek cümleyle yaz (ör. "Cezai şart: geçen sefer %10'a indirilmişti, yeni metinde yine %50"). Geçmiş notlar boşsa liste boş kalır.
 
-## Sınırlar
-- Bu bir ön incelemedir; hukuki görüş yerine avukata hazırlık notu yaz.
-- Revizyon talebi yalnızca taslaktır; gönderim kararı avukatındır.
-- Kişisel verileri (kişi adları dışındaki kimlik, adres, sağlık bilgileri) nota taşıma.
-- Sözleşmede olmayan bir maddeyi varmış gibi yazma. Emin olmadığın yerde "kontrol edilmeli" de.
+## Puan
+Puan vermezsin. Puanı ajan, "evet" cevaplarının ve geri gelen maddelerin sayısından kendisi hesaplar.
+
+## İnceleme notu
+inceleme_notu_metni alanına avukat için kısa bir not yaz. Yalnızca "evet" dediğin soruları madde numarasıyla ve tek cümlelik öneriyle sırala. Sonra varsa geri gelen maddeleri yaz. En sonda karşı tarafa gönderilebilecek 2-3 cümlelik bir revizyon talebi taslağı ekle. Kişisel verileri nota taşıma; hukuki görüş yerine hazırlık notu yaz.
 
 ## Çıktı
 Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında açıklama ekleme, kod bloğu işareti kullanma.
 {
-  "risk_puani": 1,
-  "risk_seviyesi": "dusuk | orta | yuksek",
-  "kidemli_onay_gerekli": true,
-  "gecmis_karsilastirma": "Geçmiş notlarla karşılaştırma; geçmiş yoksa 'Kayıtlı geçmiş yok.'",
-  "inceleme_notu_metni": "Avukat için düz metin inceleme notu. Şu başlıklarla yaz: GENEL DEĞERLENDİRME, RİSKLİ MADDELER (her biri: madde no, tespit, öneri), GEÇMİŞ KARŞILAŞTIRMASI, REVİZYON TALEBİ TASLAĞI",
+  "s1": "evet | hayir", "s2": "evet | hayir", "s3": "evet | hayir",
+  "s4": "evet | hayir", "s5": "evet | hayir", "s6": "evet | hayir",
+  "s7": "evet | hayir", "s8": "evet | hayir", "s9": "evet | hayir",
+  "geri_gelen_maddeler": ["Geri gelen her konu için bir cümle; geri gelen yoksa boş liste"],
+  "inceleme_notu_metni": "Avukat için kısa not",
   "hafiza_ozeti": "Bu incelemenin hafızaya yazılacak tek cümlelik özeti"
 }</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Köşeli parantezli yerlere ilgili modüllerin alanlarını ekleyin</small></p><button class="copy" data-copy="m6u">Kopyala</button></div>
-<pre class="short" id="m6u">Karşı taraf: [Modül 3 · karsi_taraf]
+    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Aynı Text alanında, talimatın altına yapıştırın · köşeli parantezli yerlere ilgili modüllerin alanlarını ekleyin</small></p><button class="copy" data-copy="m6u">Kopyala</button></div>
+<pre class="short" id="m6u">Müvekkil: [Modül 3 · muvekkil]
+Karşı taraf: [Modül 3 · karsi_taraf]
 
 Geçmiş müzakere notları:
 [Modül 5 · notlar]
@@ -586,10 +591,14 @@ E-posta ve sözleşme metni:
   kayit_turu:   karsi_taraf
   tarih:        {{now}}
   karsi_taraf:  [Modül 3 · karsi_taraf]
-  notlar:       [Modül 5 · notlar]  [Modül 7 · hafiza_ozeti]
+  notlar:       [Modül 5 · notlar] {{formatDate(now; "DD.MM.YYYY")}}: [Modül 7 · hafiza_ozeti]
 
 MODÜL 9 · Talep kaydı (iki yol)
-  Filtre (üst yol): [Modül 7 · risk_puani]   Numeric operators: Greater than or equal to   7
+  Risk puanı formülü (kopyalayıp yapıştırın):
+  {{min(10; if(7.s1 = "evet"; 1; 0) + if(7.s2 = "evet"; 1; 0) + if(7.s3 = "evet"; 1; 0) + if(7.s4 = "evet"; 1; 0) + if(7.s5 = "evet"; 1; 0) + if(7.s6 = "evet"; 1; 0) + if(7.s7 = "evet"; 1; 0) + if(7.s8 = "evet"; 1; 0) + if(7.s9 = "evet"; 1; 0) + length(7.geri_gelen_maddeler))}}
+  "Evet" cevaplarının sayısı ile geri gelen madde sayısının toplamıdır, en fazla 10.
+
+  Filtre (üst yol): risk puanı formülü   Numeric operators: Greater than or equal to   7
   Alt yol: Fallback route: Yes
 
   Ortak alanlar:
@@ -601,7 +610,7 @@ MODÜL 9 · Talep kaydı (iki yol)
   aciliyet:     [Modül 3 · aciliyet]
   karsi_taraf:  [Modül 3 · karsi_taraf]
   ozet:         [Modül 3 · ozet]
-  risk_puani:   [Modül 7 · risk_puani]
+  risk_puani:   risk puanı formülü
   cikti:        [Modül 7 · inceleme_notu_metni]
 
   Üst yol:  sorumlu: Av. Selin Aras    durum: Kıdemli onayı bekliyor
@@ -632,7 +641,9 @@ MODÜL 11 · Mevcut dosya ve diğer
     <li>Sol menüden <span class="ui">Data stores</span> · <span class="ui">Ajan Hafızası</span> satırında <span class="ui">Browse</span>.</li>
     <li>Her e-posta için bir "talep" satırı göreceksiniz: tür, sorumlu avukat, durum ve çıktı.</li>
     <li>Novaport satırını açın: Adım A'da elle yazdığınız notun sonuna ajan bu akşamki incelemenin özetini eklemiş olmalı. Hafıza budur.</li>
+    <li><b>Not alın:</b> Novaport ve Kuzey talepleri kaç puan aldı, hangisi kıdemli avukata gitti? İnceleme notu sözleşmede gerçekten ne yazıyorsa onu mu söylüyor? Yanınızdakiyle karşılaştırın; aynı e-postaya farklı ekranlarda farklı puan çıkmış olabilir.</li>
   </ol>
+  <div class="note"><strong>Bu puanı unutmayın.</strong> Aynı Novaport sözleşmesini birazdan Bölüm 2'de Claude'a vereceğiz. İki sonucu yan yana koyduğumuzda neyin değiştiğini birlikte konuşacağız.</div>
 </section>
 
 <!-- 2 CLAUDE -->
@@ -709,6 +720,8 @@ E-posta:</pre>
     </table>
   </div>
 
+  <div class="note"><strong>Make ile karşılaştırın:</strong> Make'te Novaport sözleşmesi kaç puan almıştı? Claude'un iyi prompt'la bulduğu riskli maddeleri sayın. Talimat neredeyse aynı; değişen modelin kendisi. Make'in yerleşik modeli e-postayı sınıflandırmada başarılıydı, ince hukuki okumada zorlandı. <b>Model seçimi bir mimari karardır:</b> ayıklama ve yönlendirme için küçük model yeter, sözleşme analizi için güçlü model gerekir.</div>
+
   <div class="block">
     <div class="block-head"><p class="block-title">1c · İyi prompt'u kalıcı yapın<small>Proje sayfası · Set project instructions · yapıştırın · Save instructions</small></p><button class="copy" data-copy="t1c">Kopyala</button></div>
     <p class="why"><b>Neden</b>İyi bir prompt'u her sohbette yeniden yazmak yerine projeye talimat olarak koyarız. Ajanın ilk katmanı budur.</p>
@@ -764,7 +777,7 @@ Sorular bitince cevaplarımı "Kontrol Listem" başlıklı, maddeli bir metne d�
     <div class="block-head"><p class="block-title">sozlesme_kontrol_listesi<small>Skill · büronun inceleme standardı</small></p><button class="copy" data-copy="f2">Kopyala</button></div>
 <pre id="f2"># Sözleşme Ön İnceleme Kontrol Listesi
 
-Müvekkil, sözleşmenin karşı tarafı olmayan taraftır. İncelemeyi müvekkilin bakış açısıyla yap.
+Müvekkil, e-postayı gönderen şirkettir; sözleşmede genellikle "Müşteri" olarak geçer. İncelemeyi müvekkilin bakış açısıyla yap.
 
 ## Kontrol başlıkları
 1. Süre ve yenileme: Otomatik yenileme, 3 aydan uzun ihbar süresi.
@@ -778,9 +791,10 @@ Müvekkil, sözleşmenin karşı tarafı olmayan taraftır. İncelemeyi müvekki
 9. Gizlilik ve fikri mülkiyet: Tek taraflı gizlilik, süresiz yükümlülük, müvekkil verisi üzerinde karşı tarafa hak tanınması.
 
 ## Puanlama
-- 1-3 düşük: Standart, küçük revizyonlarla imzalanabilir.
-- 4-6 orta: Müzakere gerektiren birkaç madde var.
-- 7-10 yüksek: Ciddi mali veya hukuki risk. Kıdemli avukat onayı gerekir.
+Bir başlık ancak sözleşmede müvekkil aleyhine açık bir hüküm varsa riskli sayılır; hükmün madde numarasını yaz. Puanı riskli bulgu sayısına göre ver:
+- 0-1 bulgu: 1-3 düşük. Standart, küçük revizyonlarla imzalanabilir.
+- 2-3 bulgu: 4-6 orta. Müzakere gerektirir.
+- 4 veya daha fazla bulgu: 7-10 yüksek. Kıdemli avukat onayı gerekir.
 
 ## Geçmiş karşılaştırması
 Karşı tarafla geçmiş müzakere kaydı varsa yeni metni bu kayıtla karşılaştır. Daha önce kabul ettirilen bir değişiklik geri gelmişse açıkça belirt ve puanı en az bir puan artır.
@@ -1208,7 +1222,8 @@ Uyuşmazlıklar, Londra merkezli ICC tahkimi yoluyla, İngilizce olarak çözül
       <thead><tr><th scope="col">Bileşen</th><th scope="col">Make</th><th scope="col">Claude</th><th scope="col">ChatGPT</th></tr></thead>
       <tbody>
         <tr><th scope="row">Hafıza</th><td>Veri deposu: talepler ve karşı taraf geçmişi</td><td>Proje bilgisi (karşı taraf geçmişi)</td><td>Proje dosyası</td></tr>
-        <tr><th scope="row">LLM</th><td>Make AI Toolkit, iki ayrı çağrı</td><td>Claude</td><td>GPT modeli</td></tr>
+        <tr><th scope="row">LLM</th><td>Make AI Toolkit, iki ayrı çağrı; model seçilemiyor</td><td>Claude</td><td>GPT modeli</td></tr>
+        <tr><th scope="row">Bu akşamki gözleminiz</th><td>Novaport puanı: ____</td><td>Novaport puanı: ____</td><td>Novaport puanı: ____</td></tr>
         <tr><th scope="row">Talimat</th><td>Her yapay zeka modülünde ayrı talimat</td><td>Tek proje talimatı</td><td>Aynı talimat</td></tr>
         <tr><th scope="row">Araçlar</th><td>Mailhook, JSON, veri deposu</td><td>Gmail ve Drive bağlantıları (isteğe bağlı)</td><td>Sohbete yapıştırılan içerik</td></tr>
         <tr><th scope="row">Skill</th><td>Talimatın içine gömülü kurallar</td><td>Kontrol listesi ve yönlendirme dosyaları</td><td>Aynı dosyalar</td></tr>
@@ -1218,7 +1233,7 @@ Uyuşmazlıklar, Londra merkezli ICC tahkimi yoluyla, İngilizce olarak çözül
       </tbody>
     </table>
   </div>
-  <p class="takeaway">Araç değişir, mimari aynı kalır: hafıza, model, talimat, araçlar. Avukatın rolü ise her üçünde de aynı yerde durur, son onayda.</p>
+  <p class="takeaway">Araç değişir, mimari aynı kalır: hafıza, model, talimat, araçlar. Ama modelin kendisi de bir mimari karardır. Avukatın rolü ise her üçünde de aynı yerde durur, son onayda.</p>
 </section>
 
 </div>
