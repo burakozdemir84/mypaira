@@ -497,7 +497,16 @@ E-posta metni:
 
   <h3>Modül 3 ve 7 · JSON yapısı</h3>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 3 · örnek veri<small>Parse JSON · Data structure · Add · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Modül 3 · JSON string alanı<small>Parse JSON · JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j3">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Model JSON cevabını bazen ```json işaretleri arasına koyar. Bu formül o işaretleri temizler; Parse JSON yalnızca saf JSON okuyabilir. Data structure alanını boş bırakabilirsiniz: ilk e-postayı gönderdiğinizde Make alanları kendisi tanır.</p>
+<pre class="short" id="j3">{{replace(replace(2.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 7 · JSON string alanı<small>Parse JSON · JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j7">Kopyala</button></div>
+<pre class="short" id="j7">{{replace(replace(6.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 3 · örnek veri<small>İsteğe bağlı · Parse JSON · Data structure · Add · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
     <p class="why"><b>Neden</b>Make, alanların adını önceden bilirse sonraki modüllerde onları tek tıkla seçebilirsiniz.</p>
 <pre class="short" id="m3">{"tur":"sozlesme_inceleme","aciliyet":"yuksek","sorumlu_avukat":"Av. Selin Aras","muvekkil":"Ada Gıda Sanayi ve Ticaret A.Ş.","karsi_taraf":"Novaport Lojistik A.Ş.","karsi_taraf_anahtar":"novaport","ozet":"Örnek özet.","gerekce":"Örnek gerekçe.","cevap_taslagi":""}</pre>
   </div>
