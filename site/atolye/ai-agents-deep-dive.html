@@ -695,20 +695,24 @@ E-posta ve sözleşme metni:
     <li>Modül 7'nin sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
     <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
     <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
-    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
-    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
-    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
-    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin. Altında Key, Overwrite an existing record ve Record alanları belirir. Bunları yukarıdan aşağıya şu sırayla doldurun:</li>
+    <li><b>Key:</b> kutuya tıklayın ve <code>karsi-</code> yazın. İmleç yazının hemen arkasındayken sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf anahtar</span> kutucuğuna tıklayın. Kutuda <code>karsi-</code> ve yanında mor <span class="ui">3. Karsi taraf anahtar</span> görünmeli.</li>
+    <li><b>Overwrite an existing record:</b> <span class="ui">Yes</span> seçeneğini işaretleyin.</li>
+    <li><b>Record › Kayit turu:</b> kutuya yazın: <code>karsi_taraf</code></li>
+    <li><b>Record › Tarih:</b> kutuya yazın: <code>{{now}}</code></li>
+    <li><b>Record › Konu, Tur, Aciliyet, Sorumlu:</b> boş bırakın.</li>
+    <li><b>Record › Karsi taraf:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">Karsi taraf</span> kutucuğuna tıklayın.</li>
+    <li><b>Record › Ozet, Risk puani, Durum, Cikti:</b> boş bırakın.</li>
+    <li><b>Record › Notlar:</b> kutuya tıklayın ve sağdaki mor panelde <span class="ui">Data store 5</span> altındaki <span class="ui">Notlar</span> kutucuğuna tıklayın. Ardından bir boşluk bırakın, aşağıdaki <span class="ui">Tarih formülü</span> bloğunu kopyalayıp yapıştırın, iki nokta ve bir boşluk yazın (<code>: </code>), sonra sağdaki mor panelde <span class="ui">JSON 7</span> altındaki <span class="ui">Hafiza ozeti</span> kutucuğuna tıklayın.</li>
   </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 8 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r8">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Ajan her işten sonra hafızasını kendisi günceller. Bir sonraki Novaport sözleşmesinde bu satır geri döner.</p>
-<pre class="short" id="r8">Key:          karsi-[Modül 3 · karsi_taraf_anahtar]
-kayit_turu:   karsi_taraf
-tarih:        {{now}}
-karsi_taraf:  [Modül 3 · karsi_taraf]
-notlar:       [Modül 5 · notlar] {{formatDate(now; "DD.MM.YYYY")}}: [Modül 7 · hafiza_ozeti]</pre>
+    <div class="block-head"><p class="block-title">Tarih formülü<small>Modül 8 · Notlar kutusuna, Data store 5 › Notlar kutucuğunun arkasına</small></p><button class="copy" data-copy="r8">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Ajan her işten sonra hafızasını kendisi günceller: eski notların sonuna bugünün tarihiyle yeni satırı ekler. Bir sonraki Novaport sözleşmesinde bu satır geri döner. Notlar kutusunun son hali şöyle görünür: [5. Notlar] [tarih formülü]: [7. Hafiza ozeti]</p>
+<pre class="short" id="r8">{{formatDate(now; "DD.MM.YYYY")}}</pre>
   </div>
+  <ol class="mini" start="13">
+    <li>Pencerenin altındaki mor <span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
   <h3>Modül 9 · İkinci Router (risk eşiği)</h3>
   <ol class="mini">
