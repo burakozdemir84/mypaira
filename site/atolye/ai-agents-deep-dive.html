@@ -151,6 +151,7 @@ tr.key td,tr.key th{background:var(--soft)}
 h3.step-h{font-family:var(--serif);font-size:26px;letter-spacing:0;text-transform:none;color:var(--ink);font-weight:600;margin:44px 0 6px;display:flex;align-items:baseline;gap:12px;scroll-margin-top:64px;border-top:1px solid var(--line);padding-top:20px}
 h3.step-h span{font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--surface);background:var(--ok);padding:3px 10px;border-radius:999px;font-weight:500;flex:0 0 auto}
 .step-lede{margin:0 0 8px;font-size:15px}
+ol.mini code{font-family:var(--mono);font-size:13.5px;background:var(--soft);border:1px solid var(--line);border-radius:5px;padding:0 5px;color:var(--ink);word-break:break-all}
 ol.mini{margin:8px 0 0;padding-left:22px;display:grid;gap:8px;font-size:15px}
 @media (max-width:760px){.order ol{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
@@ -378,11 +379,13 @@ html{scroll-behavior:smooth}
     <li><span class="n">6</span><span class="mod">Make AI Toolkit · Simple Text Prompt<small>Ön inceleme: risk puanı, riskli maddeler, revizyon taslağı</small></span><span class="tags"><span class="tag">LLM</span><span class="tag">Talimat</span><span class="tag">Skill</span></span></li>
     <li><span class="n">7</span><span class="mod">JSON · Parse JSON</span><span class="tags"><span class="tag">Araç</span></span></li>
     <li><span class="n">8</span><span class="mod">Data store · Add/replace a record<small>Karşı taraf hafızasını günceller</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
-    <li><span class="n">9</span><span class="mod">Router, iki yol · Data store · Add/replace a record<small>Puan 7 ve üstü: "Kıdemli onayı bekliyor". Diğerleri: "Sorumlu avukatta"</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
+    <li><span class="n">9</span><span class="mod">Flow Control · Router<small>Risk puanına göre iki yol</small></span><span class="tags"><span class="tag grd">Kısıt</span></span></li>
+    <li><span class="n">10</span><span class="mod">Data store · Add/replace a record<small>Puan 7 ve üstü: "Kıdemli onayı bekliyor"</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
+    <li><span class="n">11</span><span class="mod">Data store · Add/replace a record<small>Diğerleri: "Sorumlu avukat incelemesinde"</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
     <li class="branch">Dal B · Yeni iş talebi</li>
-    <li><span class="n">10</span><span class="mod">Data store · Add/replace a record<small>Cevap taslağı kaydedilir; gönderim kararı avukatta</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
+    <li><span class="n">12</span><span class="mod">Data store · Add/replace a record<small>Cevap taslağı kaydedilir; gönderim kararı avukatta</small></span><span class="tags"><span class="tag grd">Kısıt</span><span class="tag mem">Hafıza</span></span></li>
     <li class="branch">Dal C · Mevcut dosya ve diğer</li>
-    <li><span class="n">11</span><span class="mod">Data store · Add/replace a record<small>Talep sorumlu avukata yönlendirilmiş olarak kaydedilir</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
+    <li><span class="n">13</span><span class="mod">Data store · Add/replace a record<small>Talep sorumlu avukata yönlendirilmiş olarak kaydedilir</small></span><span class="tags"><span class="tag mem">Hafıza</span></span></li>
   </ol>
   <div class="note"><strong>Make'te talimatlar hazır:</strong> Bu bölümde akışı kurmaya odaklanıyoruz; talimatları kopyalayıp yapıştırıyoruz. Bu talimatların neden böyle yazıldığını Bölüm 2'de, Claude'da kendiniz deneyerek keşfedeceksiniz.</div>
   <div class="note"><strong>Neden yalnızca Make'in kendi araçları?</strong> Kişisel Gmail ve Google Drive hesaplarını Make'e bağlamak, Google tarafında teknik bir kurulum gerektiriyor. Make'in kendi e-posta kutusu, yapay zeka modülü ve veri deposu ise ek hesap istemiyor. Mimari aynı kalıyor: büronuzda kurumsal e-posta ve doküman sistemine bağlanan sürüm, aynı kutucuklarla kurulur.</div>
@@ -419,22 +422,40 @@ notlar:       Mart 2025, müvekkil Ada Gıda adına depolama sözleşmesi müzak
   </div>
 
   <h3 class="step-h" id="make-b"><span>Adım B</span>Senaryoyu kurun</h3>
-  <p class="step-lede">Sol menüden <span class="ui">Scenarios</span> · sağ üstte <span class="ui">Create a new scenario</span>. Ortadaki büyük <span class="ui">+</span> ile ilk modülü ekleyin; sonraki her modülü bir öncekinin sağındaki yarım daireye tıklayarak bağlayın.</p>
+  <p class="step-lede">Modülleri <b>tam bu sırayla</b> ekleyin. Make her modülün altına bir numara yazar; buradaki numaralarla aynı olmalı, çünkü risk puanı formülü 7 numaralı modüle bağlıdır. Router'lar da numara alır.</p>
+  <p class="note"><strong>Her modülde aynı üç hareket:</strong> önceki modülün sağ kenarındaki yarım daireye tıklayın, arama kutusuna uygulama adını yazıp modülü seçin, ayarlar penceresinin altındaki <b>Save</b> ile kapatın. Bir alana başka modülden veri koymak için alana tıklayın; sağda mor bir panel açılır, oradaki kutucuğa bir kez tıklamanız yeterli.</p>
 
-  <h3>Modül 1 · Mailhook</h3>
-  <div class="block">
-    <div class="block-head"><p class="block-title">Kurulum<small>Modül ekle · arama kutusuna "Webhooks" · Custom mailhook</small></p><button class="copy" data-copy="m1">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Ajanın gördüğü dünyayı daraltmak ilk kısıttır. Bu adres yalnızca bu ajana aittir; büronun genel gelen kutusuna dokunmaz.</p>
-<pre class="short" id="m1">1. Create a mailhook (veya Add) düğmesine tıklayın.
-2. Webhook name alanına yazın: Gelen Kutusu Ajanı
-3. Save deyin. Make size ...@hook.eu1.make.com benzeri bir adres gösterir.
-4. Adresi Copy address to clipboard ile kopyalayın.
-5. Bölüm 4'teki dört e-postayı, kendi e-posta hesabınızdan bu adrese göndereceksiniz.</pre>
-  </div>
+  <h3>Modül 1 · Mailhook (ajanın kulağı)</h3>
+  <ol class="mini">
+    <li>Sol menüde <span class="ui">Scenarios</span> seçeneğine tıklayın.</li>
+    <li>Sağ üstteki <span class="ui">Create scenario</span> düğmesine tıklayın.</li>
+    <li>Ekranın ortasındaki büyük <span class="ui">+</span> işaretine tıklayın.</li>
+    <li>Arama kutusuna <code>Webhooks</code> yazın ve <span class="ui">Webhooks</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Custom mailhook</span> modülüne tıklayın.</li>
+    <li><span class="ui">Create a mailhook</span> düğmesine tıklayın (bazı ekranlarda <span class="ui">Add</span> yazar).</li>
+    <li><span class="ui">Webhook name</span> alanına yazın: <code>Gelen Kutusu Ajanı</code></li>
+    <li><span class="ui">Save</span> düğmesine tıklayın. Make size sonu @hook.eu1.make.com ile biten bir adres gösterir.</li>
+    <li><span class="ui">Copy address to clipboard</span> düğmesine tıklayın. Adresi bir not dosyasına yapıştırıp saklayın; Adım C'de dört e-postayı bu adrese göndereceksiniz.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
-  <h3>Modül 2 · Triyaj talimatı</h3>
+  <h3>Modül 2 · Triyaj (model ve talimat)</h3>
+  <ol class="mini">
+    <li>Modül 1'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>Make AI Toolkit</code> yazın ve <span class="ui">Make AI Toolkit</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Simple Text Prompt</span> modülüne tıklayın (eski sürümde adı <span class="ui">Ask anything</span>).</li>
+    <li><span class="ui">Connection</span> alanında bir bağlantı seçili değilse <span class="ui">Add</span> düğmesine tıklayın, açılan pencerede <span class="ui">Save</span> deyin.</li>
+    <li><span class="ui">Model</span> alanını <span class="ui">Recommended: Medium</span> olarak bırakın.</li>
+    <li>Aşağıdaki <span class="ui">Talimat metni</span> bloğunda <span class="ui">Kopyala</span> düğmesine tıklayın ve <span class="ui">Text</span> kutusuna yapıştırın.</li>
+    <li>Yapıştırdığınız metnin sonunda Enter tuşuna iki kez basın (bir boş satır).</li>
+    <li>Aşağıdaki <span class="ui">İstem (prompt) metni</span> bloğunu kopyalayın ve aynı <span class="ui">Text</span> kutusunda, boş satırın altına yapıştırın.</li>
+    <li>Kutudaki <code>[Modül 1 · Sender · Email address]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Sender › Email address</span> kutucuğuna bir kez tıklayın. (Sender kapalıysa solundaki oka tıklayıp açın.)</li>
+    <li>Kutudaki <code>[Modül 1 · Subject]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Subject</span> kutucuğuna bir kez tıklayın.</li>
+    <li>Kutudaki <code>[Modül 1 · Text]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Text</span> kutucuğuna bir kez tıklayın. HTML content kutucuğunu değil, Text kutucuğunu seçin.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple Text Prompt · Text alanına yapıştırın</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">Talimat metni<small>Modül 2 · Text kutusuna ilk olarak bu</small></p><button class="copy" data-copy="m2s">Kopyala</button></div>
     <p class="why"><b>Neden</b>Yönlendirme kuralları talimatın içinde ayrı bir başlık olarak durur. Make'te dosya yüklenmediği için skill burada talimata gömülür; Claude ve ChatGPT'de aynı kurallar ayrı dosyadır.</p>
 <pre id="m2s">Sen Demirtaş &amp; Koral Hukuk Bürosu'nun gelen kutusu asistanısın. Görevin, büroya gelen her e-postayı okuyup sınıflandırmak ve doğru avukata yönlendirmektir.
 
@@ -486,8 +507,8 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
 }</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Aynı Text alanında, talimatın altına bir boş satır bırakıp yapıştırın · köşeli parantezli yerleri Modül 1'in alanlarıyla değiştirin</small></p><button class="copy" data-copy="m2u">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir. Bu ayrım ajanın tutarlılığını sağlar. Simple Text Prompt modülünde tek bir Text alanı vardır: önce talimat, altına bu metin.</p>
+    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Modül 2 · aynı Text kutusunda, boş satırın altına</small></p><button class="copy" data-copy="m2u">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Talimat sabit kalır, her çalışmada değişen tek şey e-postanın kendisidir.</p>
 <pre class="short" id="m2u">Gönderen: [Modül 1 · Sender · Email address]
 Konu: [Modül 1 · Subject]
 
@@ -495,54 +516,75 @@ E-posta metni:
 [Modül 1 · Text]</pre>
   </div>
 
-  <h3>Modül 3 · JSON yapısı</h3>
+  <h3>Modül 3 · Cevabı alanlara ayırma (Parse JSON)</h3>
+  <ol class="mini">
+    <li>Modül 2'nin sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>JSON</code> yazın ve <span class="ui">JSON</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Parse JSON</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data structure</span> alanının sağındaki <span class="ui">Add</span> düğmesine tıklayın. Sağda <span class="ui">Add data structure</span> paneli açılır.</li>
+    <li><span class="ui">Data structure name</span> alanındaki yazıyı silin ve yazın: <code>Triyaj sonucu</code></li>
+    <li><span class="ui">Specification</span> başlığının altındaki <span class="ui">Generate</span> bağlantısına tıklayın.</li>
+    <li>Aşağıdaki <span class="ui">Triyaj sonucu örnek verisi</span> bloğunu kopyalayın, açılan <span class="ui">Sample data</span> kutusuna yapıştırın ve <span class="ui">Save</span> (bazı ekranlarda <span class="ui">Generate</span>) düğmesine tıklayın.</li>
+    <li>Listede tur, aciliyet, sorumlu_avukat ve diğerleri olmak üzere dokuz alan görünür. Panelin altındaki <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li>Aşağıdaki <span class="ui">JSON string formülü</span> bloğunu kopyalayın ve <span class="ui">JSON string</span> kutusuna yapıştırın.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 3 · 1. Data structure<small>Parse JSON · Data structure yanında Add · Data structure name: Triyaj sonucu · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Make, alanların adını önceden bilirse sonraki modüllerde onları tek tıkla seçebilirsiniz.</p>
+    <div class="block-head"><p class="block-title">Triyaj sonucu örnek verisi<small>Modül 3 · Generate penceresindeki Sample data kutusuna</small></p><button class="copy" data-copy="m3">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Make alanların adını önceden bilirse sonraki modüllerde onları tek tıkla seçebilirsiniz.</p>
 <pre class="short" id="m3">{"tur":"sozlesme_inceleme","aciliyet":"yuksek","sorumlu_avukat":"Av. Selin Aras","muvekkil":"Ada Gıda Sanayi ve Ticaret A.Ş.","karsi_taraf":"Novaport Lojistik A.Ş.","karsi_taraf_anahtar":"novaport","ozet":"Örnek özet.","gerekce":"Örnek gerekçe.","cevap_taslagi":""}</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 3 · 2. JSON string alanı<small>Aynı pencerede JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j3">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">JSON string formülü<small>Modül 3 · JSON string kutusuna</small></p><button class="copy" data-copy="j3">Kopyala</button></div>
     <p class="why"><b>Neden</b>Model JSON cevabını bazen ```json işaretleri arasına koyar. Bu formül o işaretleri temizler; Parse JSON yalnızca saf JSON okuyabilir.</p>
 <pre class="short" id="j3">{{replace(replace(2.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
   </div>
 
-  <h3>Modül 4 · Router ve üç dalın filtreleri</h3>
-  <p class="note"><strong>Nerede?</strong> Koşullar Router'ın içinde değil, Router'dan çıkan her çizginin üzerinde tanımlanır. Çizginin ortasına gelin, beliren anahtar ikonuna tıklayın (ya da çizgiye sağ tıklayın) ve <b>Set up a filter</b> seçin. Bir çizgiye filtre koymak için çizginin ucunda bir modül olmalı: önce dalın ilk modülünü ekleyin, sonra filtreyi kurun. Kurulan filtre çizgide küçük bir huni ikonu olarak görünür.</p>
-  <div class="block">
-    <div class="block-head"><p class="block-title">4a · Dal A · Sözleşme incelemesi<small>Router ile Modül 5 (Get a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4a">Kopyala</button></div>
-    <p class="why"><b>Neden</b>İçinde sözleşme metni olan e-postalar hafızaya ve incelemeye gider.</p>
-<pre class="short" id="m4a">Label:      Sözleşme
-Condition:  [Modül 3 · tur]
-Operatör:   Text operators › Equal to
-Değer:      sozlesme_inceleme</pre>
-  </div>
-  <div class="block">
-    <div class="block-head"><p class="block-title">4b · Dal B · Yeni iş talebi<small>Router ile Dal B'nin ilk modülü (Add/replace a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4b">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Yeni iş talepleri kaydedilir ve cevap taslağı avukatın onayına hazırlanır.</p>
-<pre class="short" id="m4b">Label:      Yeni iş
-Condition:  [Modül 3 · tur]
-Operatör:   Text operators › Equal to
-Değer:      yeni_is</pre>
-  </div>
-  <div class="block">
-    <div class="block-head"><p class="block-title">4c · Dal C · Mevcut dosya ve diğer<small>Router ile Dal C'nin ilk modülü (Add/replace a record) arasındaki çizgi · Set up a filter</small></p><button class="copy" data-copy="m4c">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Koşul yazılmaz. Diğer iki dala girmeyen her e-posta bu yoldan gider; hiçbir talep kaybolmaz.</p>
-<pre class="short" id="m4c">Label:           Diğer
-Fallback route:  Yes   (koşul alanını boş bırakın)</pre>
-  </div>
+  <h3>Modül 4 · Router (yol ayrımı)</h3>
+  <ol class="mini">
+    <li>Modül 3'ün sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>Router</code> yazın ve <span class="ui">Flow Control</span> başlığı altındaki <span class="ui">Router</span> modülüne tıklayın.</li>
+    <li>Router eklenir ve sağında boş bir modül dairesi olan ilk dal belirir. Bu dal Dal A (sözleşme incelemesi) olacak. Filtreyi Modül 5'i ekledikten sonra koyacağız; bir çizgiye filtre koyabilmek için çizginin ucunda bir modül olmalıdır.</li>
+  </ol>
 
-  <h3>Modül 5 · Hafızadan okuma</h3>
-  <div class="block">
-    <div class="block-head"><p class="block-title">Get a record · Key alanı<small>Data store: Ajan Hafızası</small></p><button class="copy" data-copy="m5">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Anahtar, karşı tarafın kısa adından üretilir. Model "novaport" derse ajan "karsi-novaport" kaydını açar.</p>
-<pre class="short" id="m5">karsi-[Modül 3 · karsi_taraf_anahtar]</pre>
-  </div>
+  <h3>Modül 5 · Hafızadan okuma (Dal A)</h3>
+  <ol class="mini">
+    <li>Router'ın sağındaki boş modül dairesine tıklayın.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Get a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Key</span> kutusuna tıklayın ve <code>karsi-</code> yazın.</li>
+    <li>İmleç <code>karsi-</code> yazısının hemen arkasındayken sağdaki mor panelde <span class="ui">JSON 3</span> altındaki <span class="ui">karsi_taraf_anahtar</span> kutucuğuna tıklayın. Kutuda <code>karsi-3.karsi_taraf_anahtar</code> görünmeli.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
 
-  <h3>Modül 6 · Ön inceleme talimatı</h3>
+  <h3>Filtre 4a · Router ile Modül 5 arasındaki çizgi</h3>
+  <ol class="mini">
+    <li>Modül 4 (Router) ile Modül 5 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
+    <li><span class="ui">Label</span> alanına yazın: <code>Sözleşme</code></li>
+    <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">tur</span> kutucuğuna tıklayın.</li>
+    <li>Ortadaki operatör listesini açın ve <span class="ui">Text operators</span> başlığı altındaki <span class="ui">Equal to</span> seçeneğine tıklayın.</li>
+    <li>Alttaki üçüncü kutuya yazın: <code>sozlesme_inceleme</code></li>
+    <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Modül 6 · Sözleşme ön incelemesi (Dal A)</h3>
+  <ol class="mini">
+    <li>Modül 5'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>Make AI Toolkit</code> yazın, <span class="ui">Make AI Toolkit</span> uygulamasına ve ardından <span class="ui">Simple Text Prompt</span> modülüne tıklayın.</li>
+    <li>Bağlantı ve model Modül 2'dekiyle aynı kalsın.</li>
+    <li>Aşağıdaki <span class="ui">İnceleme talimatı</span> bloğunu kopyalayıp <span class="ui">Text</span> kutusuna yapıştırın, sonuna Enter ile bir boş satır ekleyin.</li>
+    <li>Aşağıdaki <span class="ui">İnceleme istemi</span> bloğunu kopyalayıp boş satırın altına yapıştırın.</li>
+    <li>Kutudaki <code>[Modül 3 · muvekkil]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">muvekkil</span> kutucuğuna bir kez tıklayın.</li>
+    <li>Kutudaki <code>[Modül 3 · karsi_taraf]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">karsi_taraf</span> kutucuğuna bir kez tıklayın.</li>
+    <li>Kutudaki <code>[Modül 5 · notlar]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Data store 5</span> başlığı altındaki <span class="ui">notlar</span> kutucuğuna bir kez tıklayın.</li>
+    <li>Kutudaki <code>[Modül 1 · Text]</code> yazısını köşeli parantezleriyle birlikte fareyle seçin ve silin. İmleç orada kalsın. Sağda açılan mor panelde <span class="ui">Webhooks 1</span> başlığı altındaki <span class="ui">Text</span> kutucuğuna bir kez tıklayın.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Talimat metni<small>Make AI Toolkit · Simple Text Prompt · Text alanına yapıştırın</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Kontrol listesi skill'dir: büro standardı değiştiğinde yalnızca bu blok güncellenir. Dikkat: puanı model vermiyor. Model dokuz kapalı soruyu evet/hayır cevaplar, puanı Make evetleri sayarak hesaplar. Model bulur, kural karar verir; son söz yine avukattadır.</p>
+    <div class="block-head"><p class="block-title">İnceleme talimatı<small>Modül 6 · Text kutusuna ilk olarak bu</small></p><button class="copy" data-copy="m6s">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Kontrol listesi skill'dir: büro standardı değiştiğinde yalnızca bu blok güncellenir. Puanı model vermez; model dokuz kapalı soruyu evet/hayır cevaplar, puanı Make evetleri sayarak hesaplar.</p>
 <pre id="m6s">Sen Demirtaş &amp; Koral Hukuk Bürosu adına sözleşme ön incelemesi yapan bir asistansın. Müvekkil, istemde adı verilen ve e-postayı gönderen şirkettir; sözleşmede genellikle "Müşteri" olarak geçer. Karşı taraf genellikle "Hizmet Sağlayıcı" olarak geçer.
 
 ## Görev
@@ -580,7 +622,7 @@ Yalnızca aşağıdaki JSON nesnesini döndür. Öncesinde veya sonrasında aç�
 }</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">İstem (prompt) metni<small>Aynı Text alanında, talimatın altına yapıştırın · köşeli parantezli yerlere ilgili modüllerin alanlarını ekleyin</small></p><button class="copy" data-copy="m6u">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">İnceleme istemi<small>Modül 6 · aynı Text kutusunda, boş satırın altına</small></p><button class="copy" data-copy="m6u">Kopyala</button></div>
 <pre class="short" id="m6u">Müvekkil: [Modül 3 · muvekkil]
 Karşı taraf: [Modül 3 · karsi_taraf]
 
@@ -591,61 +633,210 @@ E-posta ve sözleşme metni:
 [Modül 1 · Text]</pre>
   </div>
 
-  <h3>Modül 7 · JSON yapısı</h3>
+  <h3>Modül 7 · İncelemeyi alanlara ayırma (Parse JSON)</h3>
+  <ol class="mini">
+    <li>Modül 6'nın sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>JSON</code> yazın, <span class="ui">JSON</span> uygulamasına ve ardından <span class="ui">Parse JSON</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data structure</span> alanının sağındaki <span class="ui">Add</span> düğmesine tıklayın.</li>
+    <li><span class="ui">Data structure name</span> alanına yazın: <code>İnceleme sonucu</code></li>
+    <li><span class="ui">Generate</span> bağlantısına tıklayın, aşağıdaki <span class="ui">İnceleme sonucu örnek verisi</span> bloğunu <span class="ui">Sample data</span> kutusuna yapıştırın ve <span class="ui">Save</span> (bazı ekranlarda <span class="ui">Generate</span>) deyin.</li>
+    <li>Panelin altındaki <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li>Aşağıdaki <span class="ui">İnceleme JSON string formülü</span> bloğunu <span class="ui">JSON string</span> kutusuna yapıştırın. Bu formülde <code>6.answer</code> yazar, Modül 3'tekinden farkı budur.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li>Modülün altındaki numaranın <code>7</code> olduğunu kontrol edin. Farklıysa risk puanı formülündeki her <code>7.</code> ifadesini o numarayla değiştirmeniz gerekir.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 7 · 1. Data structure<small>Parse JSON · Data structure yanında Add · Data structure name: İnceleme sonucu · Generate · bu metni yapıştırın · Save</small></p><button class="copy" data-copy="m7">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">İnceleme sonucu örnek verisi<small>Modül 7 · Generate penceresindeki Sample data kutusuna</small></p><button class="copy" data-copy="m7">Kopyala</button></div>
 <pre class="short" id="m7">{"s1":"evet","s2":"evet","s3":"evet","s4":"hayir","s5":"hayir","s6":"hayir","s7":"hayir","s8":"hayir","s9":"hayir","geri_gelen_maddeler":["Örnek"],"inceleme_notu_metni":"Örnek not.","hafiza_ozeti":"Örnek özet."}</pre>
   </div>
   <div class="block">
-    <div class="block-head"><p class="block-title">Modül 7 · 2. JSON string alanı<small>Aynı pencerede JSON string alanına yapıştırın · Save</small></p><button class="copy" data-copy="j7">Kopyala</button></div>
+    <div class="block-head"><p class="block-title">İnceleme JSON string formülü<small>Modül 7 · JSON string kutusuna</small></p><button class="copy" data-copy="j7">Kopyala</button></div>
 <pre class="short" id="j7">{{replace(replace(6.answer; "```json"; emptystring); "```"; emptystring)}}</pre>
   </div>
 
-  <h3>Modül 8, 9, 10 ve 11 · Hafızaya yazma</h3>
+  <h3>Modül 8 · Karşı taraf hafızasını güncelleme (Dal A)</h3>
+  <ol class="mini">
+    <li>Modül 7'nin sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
+    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
   <div class="block">
-    <div class="block-head"><p class="block-title">Add/replace a record alanları<small>Her modülde Data store: Ajan Hafızası</small></p><button class="copy" data-copy="m8">Kopyala</button></div>
-    <p class="why"><b>Neden</b>Ajan her işten sonra hafızasını kendisi günceller. Bir sonraki sözleşmede Modül 8'in yazdığı satır geri döner. Dışarıya hiçbir şey gönderilmez; her çıktı avukatın önüne kayıt olarak gelir.</p>
-<pre class="short" id="m8">MODÜL 8 · Karşı taraf hafızası
-  Key:          karsi-[Modül 3 · karsi_taraf_anahtar]
-  kayit_turu:   karsi_taraf
-  tarih:        {{now}}
-  karsi_taraf:  [Modül 3 · karsi_taraf]
-  notlar:       [Modül 5 · notlar] {{formatDate(now; "DD.MM.YYYY")}}: [Modül 7 · hafiza_ozeti]
-
-MODÜL 9 · Talep kaydı (iki yol)
-  Risk puanı formülü (kopyalayıp yapıştırın):
-  {{min(10; if(7.s1 = "evet"; 1; 0) + if(7.s2 = "evet"; 1; 0) + if(7.s3 = "evet"; 1; 0) + if(7.s4 = "evet"; 1; 0) + if(7.s5 = "evet"; 1; 0) + if(7.s6 = "evet"; 1; 0) + if(7.s7 = "evet"; 1; 0) + if(7.s8 = "evet"; 1; 0) + if(7.s9 = "evet"; 1; 0) + length(7.geri_gelen_maddeler))}}
-  "Evet" cevaplarının sayısı ile geri gelen madde sayısının toplamıdır, en fazla 10.
-
-  Filtre (üst yol): risk puanı formülü   Numeric operators: Greater than or equal to   7
-  Alt yol: Fallback route: Yes
-
-  Ortak alanlar:
-  Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
-  kayit_turu:   talep
-  tarih:        {{now}}
-  konu:         [Modül 1 · Subject]
-  tur:          [Modül 3 · tur]
-  aciliyet:     [Modül 3 · aciliyet]
-  karsi_taraf:  [Modül 3 · karsi_taraf]
-  ozet:         [Modül 3 · ozet]
-  risk_puani:   risk puanı formülü
-  cikti:        [Modül 7 · inceleme_notu_metni]
-
-  Üst yol:  sorumlu: Av. Selin Aras    durum: Kıdemli onayı bekliyor
-  Alt yol:  sorumlu: [Modül 3 · sorumlu_avukat]    durum: Sorumlu avukat incelemesinde
-
-MODÜL 10 · Yeni iş talebi
-  Key, kayit_turu, tarih, konu, tur, aciliyet, ozet: Modül 9 ile aynı
-  sorumlu:      [Modül 3 · sorumlu_avukat]
-  durum:        Cevap taslağı hazır, gönderim avukatta
-  cikti:        [Modül 3 · cevap_taslagi]
-
-MODÜL 11 · Mevcut dosya ve diğer
-  Key, kayit_turu, tarih, konu, tur, aciliyet, ozet: Modül 9 ile aynı
-  sorumlu:      [Modül 3 · sorumlu_avukat]
-  durum:        Sorumlu avukata yönlendirildi</pre>
+    <div class="block-head"><p class="block-title">Modül 8 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r8">Kopyala</button></div>
+    <p class="why"><b>Neden</b>Ajan her işten sonra hafızasını kendisi günceller. Bir sonraki Novaport sözleşmesinde bu satır geri döner.</p>
+<pre class="short" id="r8">Key:          karsi-[Modül 3 · karsi_taraf_anahtar]
+kayit_turu:   karsi_taraf
+tarih:        {{now}}
+karsi_taraf:  [Modül 3 · karsi_taraf]
+notlar:       [Modül 5 · notlar] {{formatDate(now; "DD.MM.YYYY")}}: [Modül 7 · hafiza_ozeti]</pre>
   </div>
+
+  <h3>Modül 9 · İkinci Router (risk eşiği)</h3>
+  <ol class="mini">
+    <li>Modül 8'in sağ kenarındaki küçük yarım daireye tıklayın. Modül arama penceresi açılır.</li>
+    <li>Arama kutusuna <code>Router</code> yazın ve <span class="ui">Flow Control</span> başlığı altındaki <span class="ui">Router</span> modülüne tıklayın.</li>
+    <li>Router eklenir ve sağında boş bir modül dairesi olan ilk dal belirir. Bu dal yüksek riskli sözleşmeler içindir.</li>
+  </ol>
+
+  <h3>Modül 10 · Yüksek risk kaydı (Modül 9'un ilk dalı)</h3>
+  <ol class="mini">
+    <li>Modül 9'un sağındaki boş modül dairesine tıklayın.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
+    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 10 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r10">Kopyala</button></div>
+<pre class="short" id="r10">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
+kayit_turu:   talep
+tarih:        {{now}}
+konu:         [Modül 1 · Subject]
+tur:          [Modül 3 · tur]
+aciliyet:     [Modül 3 · aciliyet]
+karsi_taraf:  [Modül 3 · karsi_taraf]
+ozet:         [Modül 3 · ozet]
+sorumlu:      Av. Selin Aras
+risk_puani:   aşağıdaki Risk puanı formülü bloğunu yapıştırın
+durum:        Kıdemli onayı bekliyor
+cikti:        [Modül 7 · inceleme_notu_metni]</pre>
+  </div>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Risk puanı formülü<small>Modül 10 ve 11 · risk_puani kutusuna · Filtre 9a · Condition kutusuna</small></p><button class="copy" data-copy="rp">Kopyala</button></div>
+    <p class="why"><b>Neden</b>"Evet" cevaplarının sayısı ile geri gelen madde sayısının toplamıdır, en fazla 10. Puanı model değil kural hesaplar.</p>
+<pre class="short" id="rp">{{min(10; if(7.s1 = "evet"; 1; 0) + if(7.s2 = "evet"; 1; 0) + if(7.s3 = "evet"; 1; 0) + if(7.s4 = "evet"; 1; 0) + if(7.s5 = "evet"; 1; 0) + if(7.s6 = "evet"; 1; 0) + if(7.s7 = "evet"; 1; 0) + if(7.s8 = "evet"; 1; 0) + if(7.s9 = "evet"; 1; 0) + length(7.geri_gelen_maddeler))}}</pre>
+  </div>
+
+  <h3>Modül 11 · Normal risk kaydı (Modül 9'un ikinci dalı)</h3>
+  <ol class="mini">
+    <li>Modül 9'a (ikinci Router) bir kez tıklayın. Yeni bir dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
+    <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
+    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 11 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r11">Kopyala</button></div>
+<pre class="short" id="r11">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
+kayit_turu:   talep
+tarih:        {{now}}
+konu:         [Modül 1 · Subject]
+tur:          [Modül 3 · tur]
+aciliyet:     [Modül 3 · aciliyet]
+karsi_taraf:  [Modül 3 · karsi_taraf]
+ozet:         [Modül 3 · ozet]
+sorumlu:      [Modül 3 · sorumlu_avukat]
+risk_puani:   Risk puanı formülü bloğunu yapıştırın
+durum:        Sorumlu avukat incelemesinde
+cikti:        [Modül 7 · inceleme_notu_metni]</pre>
+  </div>
+
+  <h3>Filtre 9a · Modül 9 ile Modül 10 arasındaki çizgi</h3>
+  <ol class="mini">
+    <li>Modül 9 (Router) ile Modül 10 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
+    <li><span class="ui">Label</span> alanına yazın: <code>Kıdemli onay</code></li>
+    <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın ve yukarıdaki <span class="ui">Risk puanı formülü</span> bloğunu yapıştırın.</li>
+    <li>Ortadaki operatör listesini açın ve <span class="ui">Numeric operators</span> başlığı altındaki <span class="ui">Greater than or equal to</span> seçeneğine tıklayın.</li>
+    <li>Alttaki üçüncü kutuya yazın: <code>7</code></li>
+    <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Filtre 9b · Modül 9 ile Modül 11 arasındaki çizgi</h3>
+  <ol class="mini">
+    <li>Modül 9 (Router) ile Modül 11 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
+    <li><span class="ui">Label</span> alanına yazın: <code>Normal risk</code></li>
+    <li><span class="ui">Fallback route</span> başlığı altındaki <span class="ui">Yes</span> seçeneğini işaretleyin. Condition kutularını boş bırakın.</li>
+    <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Modül 12 · Yeni iş kaydı (Dal B)</h3>
+  <ol class="mini">
+    <li>Ekranda geriye, Modül 4'e (ilk Router) dönün ve ona bir kez tıklayın. Yeni bir dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
+    <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
+    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 12 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r12">Kopyala</button></div>
+<pre class="short" id="r12">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
+kayit_turu:   talep
+tarih:        {{now}}
+konu:         [Modül 1 · Subject]
+tur:          [Modül 3 · tur]
+aciliyet:     [Modül 3 · aciliyet]
+karsi_taraf:  [Modül 3 · karsi_taraf]
+ozet:         [Modül 3 · ozet]
+sorumlu:      [Modül 3 · sorumlu_avukat]
+durum:        Cevap taslağı hazır, gönderim avukatta
+cikti:        [Modül 3 · cevap_taslagi]</pre>
+  </div>
+
+  <h3>Filtre 4b · Modül 4 ile Modül 12 arasındaki çizgi</h3>
+  <ol class="mini">
+    <li>Modül 4 (Router) ile Modül 12 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
+    <li><span class="ui">Label</span> alanına yazın: <code>Yeni iş</code></li>
+    <li><span class="ui">Condition</span> altındaki ilk kutuya tıklayın. Sağda açılan mor panelde <span class="ui">JSON 3</span> başlığı altındaki <span class="ui">tur</span> kutucuğuna tıklayın.</li>
+    <li>Ortadaki operatör listesini açın ve <span class="ui">Text operators</span> başlığı altındaki <span class="ui">Equal to</span> seçeneğine tıklayın.</li>
+    <li>Alttaki üçüncü kutuya yazın: <code>yeni_is</code></li>
+    <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Modül 13 · Diğer talepler kaydı (Dal C)</h3>
+  <ol class="mini">
+    <li>Modül 4'e (ilk Router) bir kez daha tıklayın. Üçüncü dal ve ucunda boş bir modül dairesi belirir. Menü açılırsa <span class="ui">Add route</span> seçeneğine tıklayın.</li>
+    <li>Yeni dalın ucundaki boş modül dairesine tıklayın.</li>
+    <li>Arama kutusuna <code>Data store</code> yazın ve <span class="ui">Data store</span> uygulamasına tıklayın.</li>
+    <li><span class="ui">Add/replace a record</span> modülüne tıklayın.</li>
+    <li><span class="ui">Data store</span> listesinden <span class="ui">Ajan Hafızası</span> seçin.</li>
+    <li><span class="ui">Overwrite an existing record</span> seçeneğini <span class="ui">Yes</span> olarak işaretleyin.</li>
+    <li>Aşağıdaki bloktaki her satırı ilgili alana yazın. Köşeli parantezli yerler için kutuya tıklayın ve sağdaki mor panelden o modülün o alanına tıklayın. <code>{{</code> ile başlayan değerleri olduğu gibi kopyalayıp yapıştırın; Make onları formül olarak tanır.</li>
+    <li><span class="ui">Save</span> düğmesine tıklayın.</li>
+  </ol>
+  <div class="block">
+    <div class="block-head"><p class="block-title">Modül 13 alanları<small>Add/replace a record · Ajan Hafızası</small></p><button class="copy" data-copy="r13">Kopyala</button></div>
+<pre class="short" id="r13">Key:          talep-{{formatDate(now; "YYYYMMDD-HHmmss")}}
+kayit_turu:   talep
+tarih:        {{now}}
+konu:         [Modül 1 · Subject]
+tur:          [Modül 3 · tur]
+aciliyet:     [Modül 3 · aciliyet]
+karsi_taraf:  [Modül 3 · karsi_taraf]
+ozet:         [Modül 3 · ozet]
+sorumlu:      [Modül 3 · sorumlu_avukat]
+durum:        Sorumlu avukata yönlendirildi</pre>
+  </div>
+
+  <h3>Filtre 4c · Modül 4 ile Modül 13 arasındaki çizgi</h3>
+  <ol class="mini">
+    <li>Modül 4 (Router) ile Modül 13 arasındaki noktalı çizgiyi bulun. Farenizi çizginin tam ortasına getirin; küçük bir anahtar ikonu belirir. İkona tıklayın. İkon görünmezse çizgiye sağ tıklayın.</li>
+    <li>Açılan menüde <span class="ui">Set up a filter</span> seçeneğine tıklayın.</li>
+    <li><span class="ui">Label</span> alanına yazın: <code>Diğer</code></li>
+    <li><span class="ui">Fallback route</span> başlığı altındaki <span class="ui">Yes</span> seçeneğini işaretleyin. Condition kutularını boş bırakın.</li>
+    <li>Pencerenin altındaki <span class="ui">Save</span> düğmesine tıklayın. Çizginin üzerinde küçük bir huni ikonu belirir.</li>
+  </ol>
+
+  <h3>Kaydedin</h3>
+  <ol class="mini">
+    <li>Ekranın altındaki araç çubuğunda <span class="ui">Save</span> düğmesine tıklayın.</li>
+    <li>Sol üstteki senaryo adına tıklayın ve yazın: <code>Gelen Kutusu Ajanı</code></li>
+    <li>Kontrol: ekranda 13 modül, Modül 4'ten üç dal, Modül 9'dan iki dal ve beş çizgide huni ikonu görünmeli.</li>
+  </ol>
+
   <h3 class="step-h" id="make-c"><span>Adım C</span>E-postaları gönderin</h3>
   <ol class="mini">
     <li>Senaryonun altındaki <span class="ui">Save</span> düğmesine, ardından <span class="ui">Run once</span> düğmesine tıklayın. Make e-posta beklemeye başlar.</li>
