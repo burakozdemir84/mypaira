@@ -16,15 +16,17 @@
 <meta property="og:title" content="Legal in the Loop: AI Agents Deep Dive · 27 Ekim 2026 · PAIRA">
 <meta property="og:description" content="Hukukçular için yapay zeka ajanları, süreç yönetimi ve süreç otomasyonu üzerine iki saatlik çevrimiçi atölye. 27 Ekim 2026, 20:00 ila 22:00, Zoom.">
 <meta property="og:url" content="https://www.mypaira.com/egitimler">
+<meta property="og:image" content="https://www.mypaira.com/assets/og-paira.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="PAIRA">
 <meta property="og:locale" content="tr_TR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mypaira.com/assets/og-paira.png">
 <meta name="twitter:title" content="Legal in the Loop: AI Agents Deep Dive · 27 Ekim 2026 · PAIRA">
 <meta name="twitter:description" content="Hukukçular için yapay zeka ajanları, süreç yönetimi ve süreç otomasyonu üzerine iki saatlik çevrimiçi atölye. 27 Ekim 2026, 20:00 ila 22:00, Zoom.">
 <!-- paira:seo:end -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/paira-fonts.css">
 <style>
 :root{
   --navy:#15233E; --navy2:#223E68; --accent:#2E6FB0; --sky:#ABD4EC; --skysoft:#E9F2F9;
@@ -137,6 +139,7 @@ section{padding:clamp(72px,9vw,120px) 0}
 
 /* audience */
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid3.grid3-two{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:30px 28px;box-shadow:0 8px 28px rgba(21,35,62,.05)}
 .card h3{margin-bottom:12px}
 .card p{font-size:16px;color:var(--ink)}
@@ -275,7 +278,7 @@ footer .legal a{color:var(--mute)}
 
 @media (max-width:900px){
   .intro .wrap,.outcomes .wrap,.corp .wrap{grid-template-columns:1fr}
-  .grid3,.halves,.ticketwrap{grid-template-columns:1fr}
+  .grid3,.grid3.grid3-two,.halves,.ticketwrap{grid-template-columns:1fr}
   .prep{grid-template-columns:1fr 1fr}
   .outlist{grid-template-columns:1fr}
   .solo{grid-template-columns:1fr}
@@ -453,14 +456,10 @@ footer .legal a{color:var(--mute)}
   <div class="wrap">
     <div class="eyebrow">Katılımcı profili</div>
     <h2>Kim için</h2>
-    <div class="grid3">
+    <div class="grid3 grid3-two">
       <div class="card">
         <h3>Büro avukatları ve ortaklar</h3>
         <p>Tekrar eden dosya işlerini, müvekkil taleplerini ve yazışmaları daha düzenli bir akışa taşımak isteyen avukatlar ve büro ortakları.</p>
-      </div>
-      <div class="card">
-        <h3>Şirket hukuk ekipleri</h3>
-        <p>İç müşteri taleplerini, sözleşme ön incelemesini ve raporlamayı otomasyonla hızlandırmak isteyen şirket avukatları ve hukuk müdürleri.</p>
       </div>
       <div class="card">
         <h3>Yapay zekayı denemiş hukukçular</h3>

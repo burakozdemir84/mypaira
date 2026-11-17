@@ -124,20 +124,50 @@ img,video{max-width:100%;height:auto}
 <meta property="og:title" content="About · PAIRA">
 <meta property="og:description" content="About PAIRA: our mission for people-first AI readiness and adoption, our team, and our approach to guiding legal professionals.">
 <meta property="og:url" content="https://www.mypaira.com/en/about">
+<meta property="og:image" content="https://www.mypaira.com/assets/og-paira.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:site_name" content="PAIRA">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://www.mypaira.com/assets/og-paira.png">
 <meta name="twitter:title" content="About · PAIRA">
 <meta name="twitter:description" content="About PAIRA: our mission for people-first AI readiness and adoption, our team, and our approach to guiding legal professionals.">
 <!-- paira:seo:end -->
+<!-- paira:mobilenav:start -->
+<style data-paira-mobilenav>
+/* The runtime host div is viewport-high, which caps how far a sticky header can travel.
+   Letting it grow with the page keeps the header pinned on every screen size. */
+#dc-root > .sc-host{height:auto!important;min-height:100%}
+@media (max-width:900px){
+  /* overflow-x:hidden on body (responsive layer) turns it into a scroll box and breaks
+     sticky; clip hides the same overflow without that side effect. */
+  html,body{overflow-x:clip!important}
+  div[style*="position: sticky"]:has(header){position:sticky!important;top:0!important;z-index:60!important}
+  header{position:sticky!important;top:0!important;z-index:60!important}
+  header > div{flex-wrap:wrap!important;justify-content:space-between!important;align-items:center!important;gap:0!important;padding:10px 20px!important}
+  [data-paira-burger]{display:flex!important;position:relative;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;cursor:pointer}
+  [data-paira-burger] span{display:block;width:22px;height:2px;margin:0 auto;background:#15233E;border-radius:2px;transition:transform .2s,opacity .2s}
+  [data-paira-burger] input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+  [data-paira-burger]:has(input:focus-visible){outline:2px solid #2E6FB0;outline-offset:2px;border-radius:6px}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(1){transform:translateY(7px) rotate(45deg)}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(2){opacity:0}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(3){transform:translateY(-7px) rotate(-45deg)}
+  header nav{display:none!important;width:100%!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:6px 0 14px!important}
+  header:has([data-paira-navt]:checked) nav{display:flex!important}
+  header nav > a{font-size:16px!important;padding:13px 2px!important;border-top:1px solid #E6ECF2}
+  header nav > div{align-self:flex-start;margin:12px 2px 4px}
+  header nav > a:last-child{text-align:center;border-top:0;margin-top:10px;padding:14px 22px!important}
+}
+</style>
+<!-- paira:mobilenav:end -->
 </head>
 <body>
 <x-dc>
 <helmet>
 <script>document.documentElement.lang='en';</script>
 <title>About · PAIRA</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/fonts/paira-fonts.css">
 <style>
   body { margin: 0; background: #FFFFFF; font-family: 'Outfit', sans-serif; color: #22324B; }
   a { color: #2E6FB0; }
@@ -150,7 +180,8 @@ img,video{max-width:100%;height:auto}
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
   <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
     <a href="/en/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
-    <nav style="display: flex; align-items: center; gap: 22px">
+    <label data-paira-burger aria-label="Menu" style="display: none"><input type="checkbox" data-paira-navt aria-label="Open menu"><span></span><span></span><span></span></label>
+      <nav style="display: flex; align-items: center; gap: 22px">
       <a href="/en/scorecard" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Readiness Score</a>
       <a href="/en/consulting" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Consulting</a>
       <a href="/en/trainings" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Trainings</a>
@@ -162,7 +193,7 @@ img,video{max-width:100%;height:auto}
         <span style="width: 1px; height: 11px; background: #D7E0EA"></span>
         <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #15233E">EN</span>
       </div>
-      <a href="/en/scorecard?start=1" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Discover Your Score</a>
+      <a href="https://calendly.com/burakoz-demir/30min-1" target="_blank" rel="noopener" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Discovery Call</a>
     </nav>
   </div>
 </header>
@@ -175,7 +206,7 @@ img,video{max-width:100%;height:auto}
     <div style="display: flex; flex-direction: column; gap: 22px; text-align: left; font-size: 17px; line-height: 1.7; color: #22324B">
       <p style="margin: 0">PAIRA was born from an observation: as AI entered the legal profession quickly, almost no one was explaining that transformation to lawyers in their own language. Technology companies were selling tools, and consultancies were leaving a deck behind and walking away. Yet the point was never the tool; the point was the profession.</p>
       <p style="margin: 0">Our name is our approach: People-First AI Readiness &amp; Adoption. People first, because transformation is carried not by software but by the people who use it. To adapt is to take the shape of a vessel, to be formed from outside. Internalization is to bring the technology into your own vessel, to grow from within. PAIRA exists for the second.</p>
-      <p style="margin: 0">Today, with a team working between Istanbul and Amsterdam, we accompany law firms and in-house legal teams on this journey. Our belief fits in a single sentence: if you want to be irreplaceable in the age of AI, you must be more human than you have ever been.</p>
+      <p style="margin: 0">Today, with a team working between Istanbul and Amsterdam, we accompany law firms on this journey. Our belief fits in a single sentence: if you want to be irreplaceable in the age of AI, you must be more human than you have ever been.</p>
     </div>
   </div>
 </section>
@@ -189,7 +220,7 @@ img,video{max-width:100%;height:auto}
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; align-items: start">
       <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/burak-ozdemir.webp" alt="Burak Özdemir" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 60px">BÖ</div>
         <div style="display: flex; flex-direction: column; gap: 4px">
           <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Burak Özdemir</h3>
           <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">Co-founder &amp; Chief Executive Officer</span>
@@ -197,7 +228,7 @@ img,video{max-width:100%;height:auto}
         </div>
       </div>
       <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/anil-akbas-2026.webp" alt="Anıl Akbaş" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 60px">AA</div>
         <div style="display: flex; flex-direction: column; gap: 4px">
           <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Anıl Akbaş</h3>
           <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">Co-founder &amp; Chief Community and Operations Officer</span>
@@ -205,19 +236,18 @@ img,video{max-width:100%;height:auto}
         </div>
       </div>
       <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/mert-ozoner-sq.webp" alt="Mert Özöner" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 60px">GK</div>
         <div style="display: flex; flex-direction: column; gap: 4px">
-          <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Mert Özöner</h3>
-          <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">Software Engineer</span>
-          <a href="https://www.linkedin.com/in/mert-ozoner/" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 500; color: #2E6FB0; text-decoration: none; margin-top: 4px">LinkedIn →</a>
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Giray Kefelioğlu</h3>
+          <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">Chief Technology Officer</span>
+          <a href="https://www.linkedin.com/in/girayk/" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 500; color: #2E6FB0; text-decoration: none; margin-top: 4px">LinkedIn →</a>
         </div>
       </div>
       <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden"><img src="/assets/selma-toktas-sq2.webp" alt="Selma Toktaş PhD" style="width: 100%; height: 100%; object-fit: cover; display: block"></div>
+        <div style="aspect-ratio: 1 / 1; border-radius: 10px; border: 1px solid #D7E0EA; overflow: hidden; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 60px">VD</div>
         <div style="display: flex; flex-direction: column; gap: 4px">
-          <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Selma Toktaş PhD</h3>
-          <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">Chief Consultant (Nebularis)</span>
-          <a href="https://www.linkedin.com/in/selma-toktas-phd-b61b6b32/" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 500; color: #2E6FB0; text-decoration: none; margin-top: 4px">LinkedIn →</a>
+          <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Volkan Doğan</h3>
+          <span style="font-size: 13.5px; line-height: 1.45; color: #5C6B82">AI Architect</span>
         </div>
       </div>
     </div>
@@ -254,6 +284,7 @@ img,video{max-width:100%;height:auto}
           <a href="/en/vibe-legal" style="font-size: 13px; color: #ABD4EC; text-decoration: none">VibeLegal</a>
           <a href="/en/paira-notes" style="font-size: 13px; color: #ABD4EC; text-decoration: none">PAIRA Notes</a>
           <a href="/en/contact" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Contact</a>
+          <a href="https://www.youtube.com/mypaira" target="_blank" rel="noopener" style="font-size: 13px; color: #ABD4EC; text-decoration: none">YouTube</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px">
           <a href="/en/privacy-policy" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Privacy Policy</a>
