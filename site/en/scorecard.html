@@ -453,7 +453,7 @@ class Component extends DCLogic {
           { t: 'Have you ever assessed whether AI use at your firm complies with your KVKK obligations?', p: 1, c: 1 },
           { t: 'If one of your lawyers unknowingly used a faulty AI-generated precedent, do you have a control step to catch it before release?', p: 2, c: 1 },
           { t: 'Could you give a clear answer today to a client asking about your firm\'s AI approach?', p: 1, c: 2 },
-          { t: 'Do you have a sense of how competing firms or corporate legal departments use AI?', p: 1, c: 2 },
+          { t: 'Do you have a sense of how competing firms use AI?', p: 1, c: 2 },
           { t: 'Do you consider AI literacy a criterion when hiring junior lawyers?', p: 1, c: 2 },
           { t: 'In the last three months, have you given your team any AI training or briefing?', p: 2, c: 2 }
         ],
@@ -720,7 +720,6 @@ class Component extends DCLogic {
 
       segmentOptions: [
         { label: 'I am a law firm partner or manager', pick: () => { this.setState({ segment: 'A', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } },
-        { label: 'I am a manager in an in-house legal department (legal counsel, director, GC)', pick: () => { this.setState({ segment: 'B', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } },
         { label: 'I am a lawyer or legal professional (not in a managing role)', pick: () => { this.setState({ segment: 'D', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } }
       ],
 
