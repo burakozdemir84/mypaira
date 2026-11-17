@@ -187,11 +187,10 @@ img,video{max-width:100%;height:auto}
       <a href="/en/scorecard?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0; align-self: flex-start">See your readiness score first →</a>
     </div>
     <div style="display: flex; flex-direction: column; gap: 14px">
-      <!-- TANITIM VİDEOSU: tıklanana kadar YouTube'a istek gitmez. Poster fotoğrafı için: /assets/hero-poster.webp -->
+      <!-- TANITIM VİDEOSU: tıklanana kadar YouTube'a istek gitmez. -->
       <div style="position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #15233E; box-shadow: 0 18px 48px rgba(21,35,62,0.18)">
         <sc-if value="{{ videoOff }}" hint-placeholder-val="{{ true }}">
-          <button onClick="{{ playVideo }}" aria-label="Play the introduction video" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: radial-gradient(circle at 50% 50%, #223E68 0%, #15233E 70%); font-family: 'Outfit', sans-serif; overflow: hidden">
-            <span style="position: absolute; left: 50%; top: 50%; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.08)"></span><span style="position: absolute; left: 50%; top: 50%; width: 400px; height: 400px; margin: -200px 0 0 -200px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.12)"></span><span style="position: absolute; left: 50%; top: 50%; width: 250px; height: 250px; margin: -125px 0 0 -125px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.18)"></span>
+          <button onClick="{{ playVideo }}" aria-label="Play the introduction video" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: linear-gradient(180deg, rgba(21,35,62,0.10) 45%, rgba(21,35,62,0.72) 100%), url(/assets/hero-poster.webp) center / cover no-repeat #15233E; font-family: 'Outfit', sans-serif; overflow: hidden">
             <span style="position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(0,0,0,0.28)"><span style="width: 0; height: 0; border-top: 13px solid transparent; border-bottom: 13px solid transparent; border-left: 21px solid #15233E; margin-left: 6px"></span></span>
             <span style="position: absolute; left: 24px; bottom: 20px; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #FFFFFF">Watch PAIRA</span>
             <span style="position: absolute; right: 24px; bottom: 20px; letter-spacing: 0.4em; font-weight: 600; font-size: 12px; color: #ABD4EC">PAIRA</span>
@@ -206,6 +205,21 @@ img,video{max-width:100%;height:auto}
         <a href="https://www.youtube.com/mypaira" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0">Our YouTube channel →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<section data-screen-label="Problem" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">The core problem</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">More work, less revenue</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #5C6B82; max-width: 640px">We see a similar picture in every conversation with managing partners.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Competition rises, revenue falls</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Growing competition is narrowing the margin within legal fees and project revenue.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">A new cost pressure every day</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Rising costs, inflation and currency swings add a new cost item with each passing day.</p></div>
+    </div>
+    <div style="border-left: 3px solid #A8842C; padding: 4px 0 4px 20px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 26px; line-height: 1.3; color: #15233E">This problem has a solution, and the technology is now ready for it. PAIRA's AI agents reduce your workload and raise your profitability.</div>
   </div>
 </section>
 
@@ -237,144 +251,174 @@ img,video{max-width:100%;height:auto}
   </div>
 </section>
 
-<!-- ÜÇ KİTLE KARTI -->
-<section data-screen-label="Kitle Kartlari" style="background: #F4F7FA; border-top: 1px solid #D7E0EA; border-bottom: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 44px">
-    <div style="display: flex; flex-direction: column; gap: 12px; max-width: 640px">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">See yourself</div>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #15233E">Which desk are you looking from?</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
-      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #ABD4EC; line-height: 1">01</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #15233E">Running a law firm?</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82; flex: 1">See your team's capacity, risk and client-facing position in a single score.</p>
-        <a href="/en/scorecard?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none">Discover Your Score →</a>
-      </div>
-      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 32px; display: flex; flex-direction: column; gap: 14px; box-shadow: 0 2px 12px rgba(21,35,62,0.04)">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; color: #ABD4EC; line-height: 1">02</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px; color: #15233E">Leading an in-house legal team?</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82; flex: 1">Request volume, data rules and your seat at the management table: take a snapshot of your department.</p>
-        <a href="/en/scorecard?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none">Discover Your Score →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WHAT WE CHANGE -->
-<section data-screen-label="Transformation Table" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
-  <div style="max-width: 1000px; margin: 0 auto; padding: 88px 32px; display: flex; flex-direction: column; gap: 40px">
-    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Transformation</div>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #15233E">What do we change?</h2>
-    </div>
-    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap">
-      <button onClick="{{ setFirm }}" style="{{ firmTabStyle }}">Law Firms</button>
-      <button onClick="{{ setInhouse }}" style="{{ inhouseTabStyle }}">In-house Legal Teams</button>
-    </div>
-    <div style="display: flex; flex-direction: column">
-      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; padding-bottom: 14px">
-        <span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #5C6B82">Today</span>
-        <span style="width: 24px"></span>
-        <span style="font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; color: #A8842C">Later</span>
-      </div>
-      <sc-for list="{{ tabRows }}" as="row" hint-placeholder-count="6">
-        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 28px; align-items: center; padding: 20px 0; border-top: 1px solid #D7E0EA">
-          <span style="font-size: 15.5px; line-height: 1.5; color: #5C6B82">{{ row.today }}</span>
-          <span style="font-size: 20px; color: #A8842C; text-align: center; line-height: 1">→</span>
-          <span style="font-size: 15.5px; line-height: 1.5; font-weight: 500; color: #15233E">{{ row.later }}</span>
-        </div>
-      </sc-for>
-    </div>
-    <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; border-top: 1px solid #D7E0EA; padding-top: 36px">
-      <p style="margin: 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 22px; color: #15233E">Where are you on your journey?</p>
-      <a href="/en/scorecard" style="background: #15233E; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 15px 32px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Get Your Score</a>
-    </div>
-  </div>
-</section>
-
-<!-- NASIL ÇALIŞIR -->
-<section data-screen-label="Nasil Calisir" style="background: #FFFFFF">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px; display: flex; flex-direction: column; gap: 48px">
-    <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: center">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">How it works</div>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #15233E">Your personal roadmap in three steps</h2>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid #D7E0EA">
-      <div style="padding: 36px 32px 8px; border-right: 1px solid #D7E0EA; display: flex; flex-direction: column; gap: 12px">
-        <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 600; color: #2E6FB0">STEP 1</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Answer the questions</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">15 questions tailored to your role. Yes, no, or "no, but it is my priority". Under 3 minutes.</p>
-      </div>
-      <div style="padding: 36px 32px 8px; border-right: 1px solid #D7E0EA; display: flex; flex-direction: column; gap: 12px">
-        <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 600; color: #2E6FB0">STEP 2</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Get your score and report</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Your overall score, a three-category analysis and your personal report appear on screen, and you can download them as a PDF.</p>
-      </div>
-      <div style="padding: 36px 32px 8px; display: flex; flex-direction: column; gap: 12px">
-        <div style="font-size: 12px; letter-spacing: 0.16em; font-weight: 600; color: #2E6FB0">STEP 3</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #15233E">Move forward with your personal roadmap</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">First steps based on your score and role: the right training, the right service, in the right order.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HİZMET VE EĞİTİM ÖZETİ -->
-<section data-screen-label="Hizmetler" style="background: #15233E">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px; display: flex; flex-direction: column; gap: 48px">
+<section data-screen-label="Bes Deger" style="background: #FFFFFF">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
     <div style="display: flex; flex-direction: column; gap: 12px">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">The steps of your roadmap</div>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #FFFFFF">Guidance moves along two tracks</h2>
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">What you gain</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Five gains for your team</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px">
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #2E6FB0">01</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Scale your expertise</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Regulatory tracking becomes regular, client-specific reporting. A new service line.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #2E6FB0">02</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Increase your capacity</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">An agent team for every lawyer: research, review, drafting. Under lawyer supervision.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #2E6FB0">03</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Lower your costs</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Collect, classify, transfer: routine steps run automatically and the cost per matter falls.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #2E6FB0">04</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Reduce unbilled effort</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Matter opening, status updates and reporting move to agents; time stays for judgement.</p></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-family: 'Cormorant Garamond', serif; font-size: 30px; line-height: 1; color: #2E6FB0">05</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Answer clients faster</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">The update draft arrives ready, the lawyer checks it, the client sees a clear next step.</p></div>
+      <div style="background: #15233E; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; justify-content: center"><div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Result</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; line-height: 1.2; color: #FFFFFF">Make room for higher-value growth</h3></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Sahadan" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">From the field</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Workflows we are working on</h2>
+      <p style="margin: 0; font-size: 17px; line-height: 1.55; color: #5C6B82; max-width: 640px">Client names are not shared for confidentiality reasons.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; gap: 12px">
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: #15233E">Contract Lifecycle Management</h3>
+        <span style="font-size: 13px; font-weight: 600; color: #A8842C">Law firm with 90+ lawyers</span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Automating all contract drafting and management processes with lawyer approval.</p>
+        <div style="border-top: 1px solid #D7E0EA; margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">2.5 - 3 weeks</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">of working time gained per lawyer each month</span></div></div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; gap: 12px">
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: #15233E">Consumer Complaint Management and Automated Response Workflow</h3>
+        <span style="font-size: 13px; font-weight: 600; color: #A8842C">Law firm with 80+ lawyers</span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Automating the responses given to consumer complaints.</p>
+        <div style="border-top: 1px solid #D7E0EA; margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">95%</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">targeted reduction in lawyer effort</span></div><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">50%</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">targeted reduction in client effort</span></div></div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; gap: 12px">
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: #15233E">Case and Litigation Management</h3>
+        <span style="font-size: 13px; font-weight: 600; color: #A8842C">Law firm with 20+ lawyers</span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Making the entire case-tracking process agent-supported.</p>
+        <div style="border-top: 1px solid #D7E0EA; margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">50%</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">reduction in human input</span></div><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">2x</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">process capacity</span></div></div>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px; gap: 12px">
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: #15233E">Antitrust Internal Audit Automation</h3>
+        <span style="font-size: 13px; font-weight: 600; color: #A8842C">Holding legal department with 15+ lawyers</span>
+        <p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">An AI internal audit process for competition-law internal audits.</p>
+        <div style="border-top: 1px solid #D7E0EA; margin-top: auto; padding-top: 16px; display: flex; flex-direction: column; gap: 12px"><div style="display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1; color: #2E6FB0">80%</span><span style="font-size: 13px; line-height: 1.4; color: #5C6B82">capacity saved</span></div></div>
+      </div>
+    </div>
+    <div style="border-left: 3px solid #A8842C; padding: 4px 0 4px 20px; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 26px; line-height: 1.3; color: #15233E">Four different workflows, one method. The next one could be yours.</div>
+  </div>
+</section>
+
+<section data-screen-label="Yol Haritasi" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Roadmap</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Starting is easy: we run the process</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 20px">
+      <div style="border-top: 2px solid #15233E; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #A8842C">T-0</span>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Discovery</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">A 30-minute call, a candidate workflow, an NDA.</p>
+      </div>
+      <div style="border-top: 2px solid #15233E; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #A8842C">Week 1 · Phase 1</span>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Analysis</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Process map, baseline measurement, target agent design.</p>
+      </div>
+      <div style="border-top: 2px solid #15233E; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #A8842C">Weeks 2-3 · Phase 2</span>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Test</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">An agent-run trial on a real matter, measured before and after.</p>
+      </div>
+      <div style="border-top: 2px solid #15233E; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #A8842C">Weeks 4-5 · Phase 3</span>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Transformation</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Approval points, integration, team workshop, go-live.</p>
+      </div>
+      <div style="border-top: 2px solid #15233E; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 8px">
+        <span style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: #A8842C">Week 6+ · Phase 4</span>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Monitoring</h3><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Monthly measurement, improvement, new workflows.</p>
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 5fr 7fr; gap: 48px; align-items: center; background: #F4F7FA; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px 32px">
+      <div style="display: flex; flex-direction: column; gap: 4px"><span style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 48px; line-height: 1; color: #15233E">6 weeks</span><span style="font-size: 14px; color: #5C6B82">target timeline for the first agent-run workflow</span></div>
+      <div style="display: flex; flex-direction: column; gap: 6px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 21px; line-height: 1.2; color: #15233E">Decision points</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Every phase closes with measured results. We move to the next phase together: your commitment is always only the next phase.</p></div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Ilkeler" style="background: #15233E">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Principles</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #FFFFFF">The same approach in every project, the decision stays with the lawyer</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px">
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">Workflows built for you</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Every agent is designed around your process, your templates and your language.</p></div>
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">The screens you know</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Agents work in the screens you use today, such as Outlook, Word and Teams.</p></div>
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">Existing licences first</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Your Microsoft setup comes first; where a safer or more economical option exists, we say so openly.</p></div>
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">Human approval points</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Every output that reaches a client and every legal assessment passes lawyer approval.</p></div>
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">Audit trail, defined authority</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Every agent works within a defined task and data boundary; who approved what, and when, is recorded.</p></div>
+      <div style="border-top: 1px solid rgba(171,212,236,0.25); padding-top: 18px; display: flex; flex-direction: column; gap: 8px"><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #FFFFFF">Security and compliance</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">The data flow protects client confidentiality; personal data is masked locally where needed.</p></div>
+    </div>
+    <p style="margin: 0; font-size: 14px; letter-spacing: 0.02em; color: #ABD4EC">Design framework: KVKK · GDPR · EU AI Act · ISO/IEC 42001</p>
+  </div>
+</section>
+
+<section data-screen-label="Calisma Modeli" style="background: #F4F7FA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Engagement model</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Two models, you choose the one that fits</h2>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
-      <a href="/en/consulting" style="background: #223E68; border: 1px solid rgba(171,212,236,0.25); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-decoration: none" style-hover="border: 1px solid rgba(171,212,236,0.6)">
-        <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #ABD4EC">Service</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 28px; color: #FFFFFF">AI Adoption Consulting</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #ABD4EC">A human-centered, four-phase internalization process that starts with diagnosis. Not a single leap, but an arc that advances on evidence.</p>
-        <span style="font-size: 14px; font-weight: 500; color: #FFFFFF">Explore the service →</span>
-      </a>
-      <a href="/en/trainings" style="background: #223E68; border: 1px solid rgba(171,212,236,0.25); border-radius: 12px; padding: 40px; display: flex; flex-direction: column; gap: 16px; text-decoration: none" style-hover="border: 1px solid rgba(171,212,236,0.6)">
-        <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #ABD4EC">Training</div>
-        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 28px; color: #FFFFFF">Training Programs</h3>
-        <p style="margin: 0; font-size: 15px; line-height: 1.6; color: #ABD4EC">A seven-product ladder from foundational literacy to advanced governance programs. A step for every level.</p>
-        <span style="font-size: 14px; font-weight: 500; color: #FFFFFF">See the programs →</span>
-      </a>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Model 1 · Project-based</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; line-height: 1.2; color: #15233E">Fixed project fee</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Scope and fee are settled in Phase 1. Your cost is known from the start.</p><span style="font-size: 13.5px; line-height: 1.5; color: #15233E; border-top: 1px solid #D7E0EA; padding-top: 12px; margin-top: auto">A good fit for: teams that plan their budget in advance</span></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Model 2 · Gain partnership</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; line-height: 1.2; color: #15233E">A share of measured gains</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">During development, only model usage costs. Once live, a share of the measured gains the agents create.</p><span style="font-size: 13.5px; line-height: 1.5; color: #15233E; border-top: 1px solid #D7E0EA; padding-top: 12px; margin-top: auto">A good fit for: teams that want to share the starting risk</span></div>
+    </div>
+    <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Both models include a monthly fee per running agent: monitoring, maintenance and continuous improvement. Rates and fees are set out in your tailored proposal after the discovery call.</p>
+  </div>
+</section>
+
+<section data-screen-label="Ekip" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Team</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Same profession, same side of the table</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px">
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px">BÖ</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Burak Özdemir</h3><span style="font-size: 13px; font-weight: 600; color: #A8842C">Founder, CEO · Lawyer, LL.M.</span><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Strategy, client relationship and final quality approval.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px">AA</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Anıl Akbaş</h3><span style="font-size: 13px; font-weight: 600; color: #A8842C">COO · Lawyer, LL.M.</span><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Project management, work with process owners, timeline and delivery.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px">GK</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Giray Kefelioğlu</h3><span style="font-size: 13px; font-weight: 600; color: #A8842C">CTO</span><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Agent development and technical infrastructure.</p>
+      </div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px">
+        <div style="width: 64px; height: 64px; border-radius: 50%; background: #15233E; color: #FFFFFF; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 24px">VD</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; line-height: 1.2; color: #15233E">Volkan Doğan</h3><span style="font-size: 13px; font-weight: 600; color: #A8842C">AI Architect</span><p style="margin: 0; font-size: 14px; line-height: 1.55; color: #5C6B82">Independent view on architecture, security and governance.</p>
+      </div>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 6px"><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">Day-to-day contact in a project: the Legal Engineering team on the process side, the AI Development team on the technical side.</p><a href="/en/about" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0; align-self: flex-start">Meet the team →</a></div>
+  </div>
+</section>
+
+<section data-screen-label="Hazirlik" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 40px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Readiness</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; line-height: 1.15; color: #15233E">Two ways to prepare your team</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px">
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Training</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; line-height: 1.2; color: #15233E">Legal in the Loop</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">AI Literacy, AI Governance, AI Productivity, AI Agents &amp; Automation: four modules, in one programme or separately according to your team's needs.</p><a href="/en/trainings" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0; align-self: flex-start">Explore the trainings →</a></div>
+      <div style="background: #FFFFFF; border: 1px solid #D7E0EA; border-radius: 12px; padding: 28px; display: flex; flex-direction: column; gap: 10px"><div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #2E6FB0">Readiness Score</div><h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 26px; line-height: 1.2; color: #15233E">See where you stand</h3><p style="margin: 0; font-size: 15px; line-height: 1.55; color: #5C6B82">15 role-specific questions, under 3 minutes. Your overall score and personal report appear on screen at once.</p><a href="/en/scorecard?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0; align-self: flex-start">Get your score →</a></div>
     </div>
   </div>
 </section>
 
-<!-- GÜVENİLİRLİK BANDI -->
-<section data-screen-label="Guvenilirlik" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 64px 32px; display: flex; flex-direction: column; gap: 40px">
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px">
-      <div style="display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: #15233E">400+</div>
-        <div style="font-size: 13px; color: #5C6B82">participants across industry events</div>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: #15233E">7</div>
-        <div style="font-size: 13px; color: #5C6B82">training programs built for legal professionals</div>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: #15233E">4</div>
-        <div style="font-size: 13px; color: #5C6B82">phase transformation methodology</div>
-      </div>
-      <div style="display: flex; flex-direction: column; gap: 6px; align-items: center; text-align: center">
-        <div style="font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; color: #15233E">3</div>
-        <div style="font-size: 13px; color: #5C6B82">minutes to your personal readiness score</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- HAZIRLIK SKORU CTA BANDI -->
-<section data-screen-label="CTA Bandi" style="background: #F4F7FA; border-top: 1px solid #D7E0EA">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
-    <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 36px; color: #15233E; max-width: 640px">Let us define your starting workflow together</h2>
-    <p style="margin: 0; font-size: 16px; color: #5C6B82; max-width: 560px">In a 30-minute discovery call we discuss your first candidate workflow and its scope.</p>
-    <a href="https://calendly.com/burakoz-demir/30min-1" target="_blank" rel="noopener" style="background: #15233E; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 15px 32px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Book a discovery call</a>
-    <a href="/en/scorecard?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0">See your readiness score first →</a>
+<section data-screen-label="CTA Bandi" style="background: #FFFFFF; border-top: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; align-items: center; gap: 20px; text-align: center">
+    <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #15233E; max-width: 680px">Let us define your starting workflow together</h2>
+    <p style="margin: 0; font-size: 16px; color: #5C6B82; max-width: 560px">In a 30-minute discovery call we discuss your starting workflow and the scope of Phase 1.</p>
+    <a href="https://calendly.com/burakoz-demir/30min-1" target="_blank" rel="noopener" style="background: #15233E; color: #FFFFFF; font-size: 16px; font-weight: 500; padding: 16px 34px; border-radius: 8px; text-decoration: none" style-hover="background: #223E68; color: #FFFFFF">Book a discovery call</a>
+    <a href="mailto:burak@mypaira.com" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0">burak@mypaira.com</a>
   </div>
 </section>
 
@@ -409,6 +453,7 @@ img,video{max-width:100%;height:auto}
           <a href="/en/vibe-legal" style="font-size: 13px; color: #ABD4EC; text-decoration: none">VibeLegal</a>
           <a href="/en/paira-notes" style="font-size: 13px; color: #ABD4EC; text-decoration: none">PAIRA Notes</a>
           <a href="/en/contact" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Contact</a>
+          <a href="https://www.youtube.com/mypaira" target="_blank" rel="noopener" style="font-size: 13px; color: #ABD4EC; text-decoration: none">YouTube</a>
         </div>
         <div style="display: flex; flex-direction: column; gap: 10px">
           <a href="/en/privacy-policy" style="font-size: 13px; color: #ABD4EC; text-decoration: none">Privacy Policy</a>
@@ -431,42 +476,12 @@ img,video{max-width:100%;height:auto}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { activeTab: 'firm', videoOn: false };
+  state = { videoOn: false };
   renderVals() {
-    const firm = this.state.activeTab === 'firm';
-    const firmRows = [
-      { today: 'AI intent that stays on paper', later: 'A way of working built into every role' },
-      { today: 'Tools used quietly, without oversight', later: 'AI used safely under clear rules' },
-      { today: 'Hours dissolving into routine', later: 'Hours deepening into advisory work' },
-      { today: 'An answer searched for when a client asks', later: 'A firm that can state its approach in one sentence' },
-      { today: 'Junior lawyers looking for modern practice', later: 'A firm culture that attracts talent' },
-      { today: 'A firm that adapts to the tool', later: 'A firm that shapes the tool to itself' }
-    ];
-    const inhouseRows = [
-      { today: 'Pilots that start with excitement and end in silence', later: 'Implementations completed with measured results' },
-      { today: 'Tool bought first, problem sought later', later: 'Work first, tool second' },
-      { today: 'Features purchased but never opened', later: 'Capability working inside the daily flow' },
-      { today: 'The same invoice paid for outside counsel efficiency', later: 'Capability that stays in-house and grows' },
-      { today: 'One-off training, expecting lasting change', later: 'Habits that settle in through continuity' },
-      { today: 'Legal called to the table after the fact', later: 'Legal leading the transformation from the head of the table' }
-    ];
-    const tabBtn = (active) => ({
-      fontFamily: "'Outfit', sans-serif", fontSize: '14px', fontWeight: 500,
-      padding: '11px 22px', borderRadius: '999px', cursor: 'pointer',
-      background: active ? '#15233E' : '#FFFFFF',
-      color: active ? '#FFFFFF' : '#15233E',
-      border: active ? '1px solid #15233E' : '1px solid #D7E0EA'
-    });
     return {
-      activeTab: this.state.activeTab,
       videoOn: this.state.videoOn,
       videoOff: !this.state.videoOn,
-      playVideo: () => this.setState({ videoOn: true }),
-      tabRows: firm ? firmRows : inhouseRows,
-      firmTabStyle: tabBtn(firm),
-      inhouseTabStyle: tabBtn(!firm),
-      setFirm: () => this.setState({ activeTab: 'firm' }),
-      setInhouse: () => this.setState({ activeTab: 'inhouse' })
+      playVideo: () => this.setState({ videoOn: true })
     };
   }
 }
