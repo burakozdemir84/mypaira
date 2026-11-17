@@ -175,7 +175,7 @@ img,video{max-width:100%;height:auto}
 
 <!-- HERO -->
 <section data-screen-label="Hero" style="background: #FFFFFF">
-  <div style="max-width: 1240px; margin: 0 auto; padding: 96px 32px 88px; display: grid; grid-template-columns: 7fr 5fr; gap: 72px; align-items: center">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 88px 32px 80px; display: grid; grid-template-columns: 5fr 6fr; gap: 72px; align-items: center">
     <div style="display: flex; flex-direction: column; gap: 28px">
       <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Hukuk büroları ve kurum içi hukuk ekipleri için</div>
       <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 64px; line-height: 1.05; color: #15233E">Daha az yük.<br>Daha fazla değer.</h1>
@@ -187,36 +187,53 @@ img,video{max-width:100%;height:auto}
       <a href="/skorkart?start=1" style="font-size: 14px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0; align-self: flex-start">Önce hazırlık skorunuzu görün →</a>
     </div>
     <div style="display: flex; flex-direction: column; gap: 14px">
-      <div style="background: #15233E; border-radius: 12px; padding: 32px 32px 24px; display: flex; flex-direction: column">
-        <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Nasıl çalışır</div>
-        <div style="font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 26px; line-height: 1.2; color: #FFFFFF; margin: 10px 0 8px">Belge gelir, ajan işler, avukat onaylar</div>
-        <div style="padding: 18px 0; display: flex; gap: 18px; align-items: flex-start">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: #ABD4EC; min-width: 30px">1</span>
-          <div style="display: flex; flex-direction: column; gap: 4px">
-            <span style="font-size: 16px; font-weight: 500; color: #FFFFFF">İş başlar</span>
-            <span style="font-size: 14px; line-height: 1.5; color: #ABD4EC">Bir e-posta, bir belge veya bir talep iş akışını başlatır.</span>
-          </div>
-        </div>
-        <div style="border-top: 1px solid rgba(171,212,236,0.2); padding: 18px 0; display: flex; gap: 18px; align-items: flex-start">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: #ABD4EC; min-width: 30px">2</span>
-          <div style="display: flex; flex-direction: column; gap: 4px">
-            <span style="font-size: 16px; font-weight: 500; color: #FFFFFF">Ajan yürütür</span>
-            <span style="font-size: 14px; line-height: 1.5; color: #ABD4EC">Tekrar eden ve yüksek emek gerektiren adımları ajan devralır.</span>
-          </div>
-        </div>
-        <div style="border-top: 1px solid rgba(171,212,236,0.2); padding: 18px 0; display: flex; gap: 18px; align-items: flex-start">
-          <span style="font-family: 'Cormorant Garamond', serif; font-size: 34px; line-height: 1; color: #ABD4EC; min-width: 30px">3</span>
-          <div style="display: flex; flex-direction: column; gap: 4px">
-            <span style="font-size: 16px; font-weight: 500; color: #FFFFFF">Avukat onaylar</span>
-            <span style="font-size: 14px; line-height: 1.5; color: #ABD4EC">Çıktıyı onaylar, düzeltir veya yeniden yazdırır. Karar avukatta kalır.</span>
-          </div>
-        </div>
-        <div style="border-top: 1px solid rgba(171,212,236,0.2); padding-top: 16px; font-size: 13px; line-height: 1.5; color: #ABD4EC">Mevcut altyapınızın üzerine kurulur: Microsoft 365, şablon ve emsal arşiviniz.</div>
+      <!-- TANITIM VİDEOSU: tıklanana kadar YouTube'a istek gitmez. Poster fotoğrafı için: /assets/hero-poster.webp -->
+      <div style="position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: #15233E; box-shadow: 0 18px 48px rgba(21,35,62,0.18)">
+        <sc-if value="{{ videoOff }}" hint-placeholder-val="{{ true }}">
+          <button onClick="{{ playVideo }}" aria-label="Tanıtım videosunu oynatın" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; padding: 0; cursor: pointer; background: radial-gradient(circle at 50% 50%, #223E68 0%, #15233E 70%); font-family: 'Outfit', sans-serif; overflow: hidden">
+            <span style="position: absolute; left: 50%; top: 50%; width: 560px; height: 560px; margin: -280px 0 0 -280px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.08)"></span><span style="position: absolute; left: 50%; top: 50%; width: 400px; height: 400px; margin: -200px 0 0 -200px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.12)"></span><span style="position: absolute; left: 50%; top: 50%; width: 250px; height: 250px; margin: -125px 0 0 -125px; border-radius: 50%; border: 1px solid rgba(171,212,236,0.18)"></span>
+            <span style="position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; margin: -42px 0 0 -42px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 28px rgba(0,0,0,0.28)"><span style="width: 0; height: 0; border-top: 13px solid transparent; border-bottom: 13px solid transparent; border-left: 21px solid #15233E; margin-left: 6px"></span></span>
+            <span style="position: absolute; left: 24px; bottom: 20px; font-size: 14px; font-weight: 500; letter-spacing: 0.04em; color: #FFFFFF">PAIRA'yı izleyin</span>
+            <span style="position: absolute; right: 24px; bottom: 20px; letter-spacing: 0.4em; font-weight: 600; font-size: 12px; color: #ABD4EC">PAIRA</span>
+          </button>
+        </sc-if>
+        <sc-if value="{{ videoOn }}" hint-placeholder-val="{{ false }}">
+          <iframe src="https://www.youtube-nocookie.com/embed/CABK1Wd1lkM?autoplay=1&amp;rel=0" title="PAIRA tanıtım videosu" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block"></iframe>
+        </sc-if>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 2px">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap">
         <span style="font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 19px; color: #15233E">Aynı meslekten, aynı masadan.</span>
+        <a href="https://www.youtube.com/mypaira" target="_blank" rel="noopener" style="font-size: 13px; font-weight: 500; color: #2E6FB0; text-decoration: none; padding: 6px 0">YouTube kanalımız →</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ÜÇ ADIM -->
+<section data-screen-label="Uc Adim" style="background: #15233E">
+  <div style="max-width: 1240px; margin: 0 auto; padding: 72px 32px; display: flex; flex-direction: column; gap: 36px">
+    <div style="display: flex; flex-direction: column; gap: 12px">
+      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Nasıl çalışır</div>
+      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 38px; color: #FFFFFF">Belge gelir, ajan işler, avukat onaylar</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(171,212,236,0.2)">
+      <div style="padding: 28px 32px 8px; border-right: 1px solid rgba(171,212,236,0.2); display: flex; flex-direction: column; gap: 10px">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1; color: #ABD4EC">1</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #FFFFFF">İş başlar</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Bir e-posta, bir belge veya bir talep iş akışını başlatır.</p>
+      </div>
+      <div style="padding: 28px 32px 8px; border-right: 1px solid rgba(171,212,236,0.2); display: flex; flex-direction: column; gap: 10px">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1; color: #ABD4EC">2</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #FFFFFF">Ajan yürütür</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Tekrar eden ve yüksek emek gerektiren adımları ajan devralır.</p>
+      </div>
+      <div style="padding: 28px 32px 8px; display: flex; flex-direction: column; gap: 10px">
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 40px; line-height: 1; color: #ABD4EC">3</div>
+        <h3 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 600; font-size: 23px; color: #FFFFFF">Avukat onaylar</h3>
+        <p style="margin: 0; font-size: 15px; line-height: 1.55; color: #ABD4EC">Çıktıyı onaylar, düzeltir veya yeniden yazdırır. Karar avukatta kalır.</p>
+      </div>
+    </div>
+    <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #ABD4EC">Mevcut altyapınızın üzerine kurulur: Microsoft 365, şablon ve emsal arşiviniz.</p>
   </div>
 </section>
 
@@ -414,7 +431,7 @@ img,video{max-width:100%;height:auto}
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { activeTab: 'firm' };
+  state = { activeTab: 'firm', videoOn: false };
   renderVals() {
     const firm = this.state.activeTab === 'firm';
     const firmRows = [
@@ -442,6 +459,9 @@ class Component extends DCLogic {
     });
     return {
       activeTab: this.state.activeTab,
+      videoOn: this.state.videoOn,
+      videoOff: !this.state.videoOn,
+      playVideo: () => this.setState({ videoOn: true }),
       tabRows: firm ? firmRows : inhouseRows,
       firmTabStyle: tabBtn(firm),
       inhouseTabStyle: tabBtn(!firm),
