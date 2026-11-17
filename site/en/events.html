@@ -163,6 +163,7 @@ img,video{max-width:100%;height:auto}
 <!-- paira:mobilenav:end -->
 </head>
 <body>
+<!--email_off-->
 <x-dc>
 <helmet>
 <script>document.documentElement.lang='en';</script>
@@ -205,20 +206,6 @@ img,video{max-width:100%;height:auto}
     <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Events and Community</div>
     <h1 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 52px; line-height: 1.1; color: #15233E">Human-first gatherings for understanding AI</h1>
     <p style="margin: 0; font-size: 17px; line-height: 1.6; color: #5C6B82; max-width: 600px">Events feed the community, and the community feeds the events. Calm, high-quality gatherings that bring law and technology to the same table.</p>
-  </div>
-</section>
-
-<!-- TEMATİK ETKİNLİKLER · PERA FORUM -->
-<section data-screen-label="Tematik Etkinlikler" style="background: #15233E">
-  <div style="max-width: 840px; margin: 0 auto; padding: 80px 32px; display: flex; flex-direction: column; gap: 24px">
-    <div style="display: flex; flex-direction: column; gap: 20px">
-      <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: #A8842C">Thematic Events</div>
-      <h2 style="margin: 0; font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 44px; line-height: 1.1; color: #FFFFFF">Pera Forum</h2>
-      <p style="margin: 0; font-size: 17px; line-height: 1.65; color: #ABD4EC; max-width: 560px">Pera Forum, PAIRA's flagship event brand, is being prepared as the meeting point of the law and AI intersection. When the stage is set, the waitlist hears it first.</p>
-      <div style="display: flex; align-items: center; gap: 16px; margin-top: 4px">
-        <a href="/en/contact?topic=Thematic%20Events" style="background: #FFFFFF; color: #15233E; font-size: 15px; font-weight: 500; padding: 14px 28px; border-radius: 8px; text-decoration: none" style-hover="background: #E9F2F9; color: #15233E">Get information or become a sponsor</a>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -278,7 +265,6 @@ img,video{max-width:100%;height:auto}
       <input value="{{ org }}" onChange="{{ setOrg }}" placeholder="Organization" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
       <select value="{{ eventType }}" onChange="{{ setEventType }}" style="border: 1px solid #D7E0EA; border-radius: 8px; padding: 13px 16px; font-family: 'Outfit', sans-serif; font-size: 15px; color: #22324B; outline: none; background: #FFFFFF">
         <option value="Kurumsal Etkinlik">Event type: Corporate event</option>
-        <option value="Pera Forum">Event type: Pera Forum</option>
         <option value="Topluluk Buluşması">Event type: Community meet-up</option>
         <option value="Konuşmacı Talebi">Event type: Speaker request</option>
         <option value="Diğer">Event type: Other</option>
@@ -363,7 +349,7 @@ class Component extends DCLogic {
     clientId: (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Math.random()).slice(2)
   };
   componentDidMount() {
-    // Deep-link support: /en/events?type=Pera%20Forum preselects the type.
+    // Deep-link support: /en/events?type=Kurumsal%20Etkinlik preselects the type.
     // Values stay Turkish so both languages aggregate into one bucket in D1.
     try {
       const type = new URLSearchParams(window.location.search).get('type');
@@ -446,5 +432,6 @@ class Component extends DCLogic {
   }
 }
 </script>
+<!--/email_off-->
 </body>
 </html>
