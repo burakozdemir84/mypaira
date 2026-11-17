@@ -327,17 +327,60 @@ footer .legal a{color:var(--mute)}
 @media (max-width:900px){.mods{grid-template-columns:repeat(2,1fr)}.formats{grid-template-columns:1fr}}
 @media (max-width:640px){.mods{grid-template-columns:1fr}}
 </style>
+<!-- paira:mobilenav:start -->
+<style data-paira-mobilenav>
+/* The runtime host div is viewport-high, which caps how far a sticky header can travel.
+   Letting it grow with the page keeps the header pinned on every screen size. */
+#dc-root > .sc-host{height:auto!important;min-height:100%}
+@media (max-width:900px){
+  /* overflow-x:hidden on body (responsive layer) turns it into a scroll box and breaks
+     sticky; clip hides the same overflow without that side effect. */
+  html,body{overflow-x:clip!important}
+  div[style*="position: sticky"]:has(header){position:sticky!important;top:0!important;z-index:60!important}
+  header{position:sticky!important;top:0!important;z-index:60!important}
+  header > div{flex-wrap:wrap!important;justify-content:space-between!important;align-items:center!important;gap:0!important;padding:10px 20px!important}
+  [data-paira-burger]{display:flex!important;position:relative;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;cursor:pointer}
+  [data-paira-burger] span{display:block;width:22px;height:2px;margin:0 auto;background:#15233E;border-radius:2px;transition:transform .2s,opacity .2s}
+  [data-paira-burger] input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+  [data-paira-burger]:has(input:focus-visible){outline:2px solid #2E6FB0;outline-offset:2px;border-radius:6px}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(1){transform:translateY(7px) rotate(45deg)}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(2){opacity:0}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(3){transform:translateY(-7px) rotate(-45deg)}
+  header nav{display:none!important;width:100%!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:6px 0 14px!important}
+  header:has([data-paira-navt]:checked) nav{display:flex!important}
+  header nav > a{font-size:16px!important;padding:13px 2px!important;border-top:1px solid #E6ECF2}
+  header nav > div{align-self:flex-start;margin:12px 2px 4px}
+  header nav > a:last-child{text-align:center;border-top:0;margin-top:10px;padding:14px 22px!important}
+}
+</style>
+<!-- paira:mobilenav:end -->
 </head>
 <body>
+<!--email_off-->
 
-<nav class="nav" aria-label="Main menu">
-  <div class="wrap">
-    <a class="brand" href="/en/"><img src="/assets/paira-logo.webp" alt="PAIRA" class="logo-nav"><em>Legal in the Loop</em></a>
-    <a class="nav-cta" href="https://calendly.com/burakoz-demir/30min-1" target="_blank" rel="noopener">Plan a training</a>
+<!-- HEADER -->
+<header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
+  <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
+    <a href="/en/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
+      <label data-paira-burger aria-label="Menu" style="display: none"><input type="checkbox" data-paira-navt aria-label="Open menu"><span></span><span></span><span></span></label>
+      <nav style="display: flex; align-items: center; gap: 22px">
+      <a href="/en/scorecard" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none">Readiness Score</a>
+      <a href="/en/consulting" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none">Consulting</a>
+      <a href="/en/trainings" style="font-size: 14px; font-weight: 500; color: #15233E; text-decoration: none">Trainings</a>
+      <a href="/en/events" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none">Events</a>
+      <a href="/en/manifesto" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none">Manifesto</a>
+      <a href="/en/about" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none">About</a>
+      <div style="display: flex; align-items: center; gap: 8px; border: 1px solid #D7E0EA; border-radius: 999px; padding: 5px 12px">
+        <a href="/egitimler" style="font-size: 12px; font-weight: 400; letter-spacing: 0.06em; color: #5C6B82; text-decoration: none">TR</a>
+        <span style="width: 1px; height: 11px; background: #D7E0EA"></span>
+        <span style="font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #15233E">EN</span>
+      </div>
+      <a href="https://calendly.com/burakoz-demir/30min-1" target="_blank" rel="noopener" style="background: #15233E; color: #FFFFFF; font-size: 14px; font-weight: 500; padding: 12px 22px; border-radius: 8px; text-decoration: none">Discovery Call</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<header class="hero on-dark">
+<section class="hero on-dark">
   <svg class="rings" viewBox="0 0 800 800" aria-hidden="true">
     <circle cx="400" cy="400" r="380"/><circle cx="400" cy="400" r="320"/><circle cx="400" cy="400" r="260"/>
     <circle cx="400" cy="400" r="200"/><circle cx="400" cy="400" r="140"/><circle cx="400" cy="400" r="80"/>
@@ -352,7 +395,7 @@ footer .legal a{color:var(--mute)}
       <a class="btn btn-secondary" href="#modules">Explore the modules</a>
     </div>
   </div>
-</header>
+</section>
 
 <section class="paper" id="modules">
   <div class="wrap">
@@ -492,5 +535,6 @@ footer .legal a{color:var(--mute)}
   });
 })();
 </script>
+<!--/email_off-->
 </body>
 </html>
