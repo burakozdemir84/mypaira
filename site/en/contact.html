@@ -134,6 +134,33 @@ img,video{max-width:100%;height:auto}
 <meta name="twitter:title" content="Contact · PAIRA">
 <meta name="twitter:description" content="Contact PAIRA: send your questions about consulting, trainings and events; we reply within one business day. Free 30-minute intro call.">
 <!-- paira:seo:end -->
+<!-- paira:mobilenav:start -->
+<style data-paira-mobilenav>
+/* The runtime host div is viewport-high, which caps how far a sticky header can travel.
+   Letting it grow with the page keeps the header pinned on every screen size. */
+#dc-root > .sc-host{height:auto!important;min-height:100%}
+@media (max-width:900px){
+  /* overflow-x:hidden on body (responsive layer) turns it into a scroll box and breaks
+     sticky; clip hides the same overflow without that side effect. */
+  html,body{overflow-x:clip!important}
+  div[style*="position: sticky"]:has(header){position:sticky!important;top:0!important;z-index:60!important}
+  header{position:sticky!important;top:0!important;z-index:60!important}
+  header > div{flex-wrap:wrap!important;justify-content:space-between!important;align-items:center!important;gap:0!important;padding:10px 20px!important}
+  [data-paira-burger]{display:flex!important;position:relative;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;cursor:pointer}
+  [data-paira-burger] span{display:block;width:22px;height:2px;margin:0 auto;background:#15233E;border-radius:2px;transition:transform .2s,opacity .2s}
+  [data-paira-burger] input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer}
+  [data-paira-burger]:has(input:focus-visible){outline:2px solid #2E6FB0;outline-offset:2px;border-radius:6px}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(1){transform:translateY(7px) rotate(45deg)}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(2){opacity:0}
+  [data-paira-burger]:has(input:checked) span:nth-of-type(3){transform:translateY(-7px) rotate(-45deg)}
+  header nav{display:none!important;width:100%!important;flex-direction:column!important;align-items:stretch!important;gap:0!important;padding:6px 0 14px!important}
+  header:has([data-paira-navt]:checked) nav{display:flex!important}
+  header nav > a{font-size:16px!important;padding:13px 2px!important;border-top:1px solid #E6ECF2}
+  header nav > div{align-self:flex-start;margin:12px 2px 4px}
+  header nav > a:last-child{text-align:center;border-top:0;margin-top:10px;padding:14px 22px!important}
+}
+</style>
+<!-- paira:mobilenav:end -->
 </head>
 <body>
 <x-dc>
@@ -155,7 +182,8 @@ img,video{max-width:100%;height:auto}
 <header style="position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid #D7E0EA">
   <div style="max-width: 1240px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 18px 32px">
     <a href="/en/" style="font-family: 'Outfit', sans-serif; letter-spacing: 0.4em; font-weight: 600; font-size: 17px; color: #15233E; text-decoration: none">PAIRA</a>
-    <nav style="display: flex; align-items: center; gap: 22px">
+    <label data-paira-burger aria-label="Menu" style="display: none"><input type="checkbox" data-paira-navt aria-label="Open menu"><span></span><span></span><span></span></label>
+      <nav style="display: flex; align-items: center; gap: 22px">
       <a href="/en/scorecard" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Readiness Score</a>
       <a href="/en/consulting" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Consulting</a>
       <a href="/en/trainings" style="font-size: 14px; font-weight: 400; color: #22324B; text-decoration: none" style-hover="color: #2E6FB0">Trainings</a>
