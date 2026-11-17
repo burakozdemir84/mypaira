@@ -453,7 +453,7 @@ class Component extends DCLogic {
           { t: 'Büronuzdaki yapay zeka kullanımının KVKK yükümlülüklerinizle uyumunu hiç değerlendirdiniz mi?', p: 1, c: 1 },
           { t: 'Bir avukatınız yapay zekanın ürettiği hatalı bir içtihadı fark etmeden kullansa, bunu yayın öncesi yakalayacak bir kontrol adımınız var mı?', p: 2, c: 1 },
           { t: 'Büronuzun yapay zeka yaklaşımını soran bir müvekkile bugün net bir yanıt verebilir misiniz?', p: 1, c: 2 },
-          { t: 'Rakip büroların yapay zekayı nasıl kullandığı hakkında bir fikriniz var mı?', p: 1, c: 2 },
+          { t: 'Rakip büroların veya kurumsal hukuk departmanlarının yapay zekayı nasıl kullandığı hakkında bir fikriniz var mı?', p: 1, c: 2 },
           { t: 'Genç avukat işe alımlarında yapay zeka okuryazarlığını bir kriter olarak değerlendiriyor musunuz?', p: 1, c: 2 },
           { t: 'Son üç ay içinde ekibinize yapay zeka konusunda herhangi bir eğitim veya bilgilendirme yaptınız mı?', p: 2, c: 2 }
         ],
@@ -720,6 +720,7 @@ class Component extends DCLogic {
 
       segmentOptions: [
         { label: 'Hukuk bürosu ortağı veya yöneticisiyim', pick: () => { this.setState({ segment: 'A', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } },
+        { label: 'Şirket içi hukuk departmanında yöneticiyim (hukuk müşaviri, direktör, GC)', pick: () => { this.setState({ segment: 'B', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } },
         { label: 'Avukatım veya hukuk profesyoneliyim (yönetici rolünde değilim)', pick: () => { this.setState({ segment: 'D', phase: 'degerlendirme', qIndex: 0, answers: [] }); window.scrollTo(0, 0); } }
       ],
 
