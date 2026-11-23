@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow, noarchive">
+<title>Legal in the Loop: AI Agents Workshop · Greymore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#15233E; --bg:#F6F9FC; --card:#FEFEFE; --gold:#C9A453; --gold-dk:#8A6B1F; --blue:#2E6FB0;
+  --ink:#15233E; --muted:#56617A; --line:#E2E8F0; --soft:#EEF3F9;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Outfit,system-ui,sans-serif;font-weight:400;font-size:17px;line-height:1.6;
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+h1{font-size:clamp(34px,8vw,54px)}
+h2{font-size:clamp(28px,6vw,38px)}
+h3{font-size:24px}
+a{color:var(--blue)}
+.wrap{max-width:820px;margin:0 auto;padding:0 18px}
+.eyebrow{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--gold-dk)}
+
+/* header */
+header.top{background:var(--navy);color:#fff;padding:calc(34px + env(safe-area-inset-top)) 0 28px}
+header.top .eyebrow{color:var(--gold)}
+header.top h1{color:#fff;margin:10px 0 12px}
+.event{color:#D5DDEA;font-size:15px}
+.fiction{margin-top:18px;border:1px solid rgba(201,164,83,.55);border-radius:10px;padding:10px 14px;font-size:14.5px;color:#F1E6CC}
+.fiction strong{color:var(--gold)}
+nav.chips{position:sticky;top:0;z-index:20;background:rgba(246,249,252,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav.chips .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav.chips .wrap::-webkit-scrollbar{display:none}
+nav.chips a{flex:none;text-decoration:none;color:var(--navy);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:14px;font-weight:500;white-space:nowrap}
+nav.chips a:hover,nav.chips a:focus-visible{border-color:var(--gold)}
+.progress{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:22px 0 6px}
+.progress .count{font-weight:600;font-size:15px}
+.bar{flex:1 1 180px;height:6px;background:var(--line);border-radius:6px;overflow:hidden;min-width:140px}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.note{font-size:13.5px;color:var(--muted)}
+
+/* sections */
+section{padding:44px 0 8px;scroll-margin-top:60px}
+section > .wrap > h2{margin:6px 0 14px}
+.lead{color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 18px;margin:16px 0}
+.why{background:var(--soft);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 16px;margin:16px 0}
+.why b{color:var(--navy)}
+.warn{background:#FFF8E8;border:1px solid #EAD7A6;border-radius:12px;padding:14px 16px;margin:16px 0}
+.warn b{color:var(--gold-dk)}
+.lesson{background:var(--navy);color:#fff;border-radius:14px;padding:22px 20px;margin:22px 0;font-family:"Cormorant Garamond",Georgia,serif;font-size:25px;line-height:1.3}
+.lesson .eyebrow{display:block;font-family:Outfit,sans-serif;color:var(--gold);margin-bottom:8px}
+
+/* steps */
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 18px 14px;margin:16px 0;scroll-margin-top:64px}
+.step.done{border-color:#CDE0C9}
+.step-head{display:flex;gap:12px;align-items:flex-start}
+.num{flex:none;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:600;font-size:15px}
+.step-head h3{flex:1;font-size:22px;padding-top:3px}
+.tick{flex:none;display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted);cursor:pointer;padding:6px 0 6px 6px;min-height:34px}
+.tick input{width:22px;height:22px;accent-color:var(--blue);cursor:pointer;margin:0}
+.step ol,.step ul{padding-left:22px;margin:12px 0}
+.step li{margin:4px 0}
+.ui{font-weight:600}
+code.i{font-family:var(--mono);font-size:.88em;background:var(--soft);border-radius:5px;padding:1px 5px;word-break:break-word}
+
+/* copy blocks */
+.cb{margin:14px 0}
+.cb-label{font-size:12.5px;font-weight:600;color:var(--gold-dk);letter-spacing:.02em;margin-bottom:5px}
+.cb-box{position:relative;background:#0F1A30;border-radius:10px}
+.cb-box pre{margin:0;padding:14px 14px 14px;padding-right:86px;color:#E8EEF7;font-family:var(--mono);font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-break:break-word;max-height:420px;overflow:auto}
+.cb-btn{position:absolute;top:8px;right:8px;font:600 13px Outfit,sans-serif;color:var(--navy);background:var(--gold);border:0;border-radius:7px;padding:6px 12px;cursor:pointer;min-height:32px}
+.cb-btn.ok{background:#9FD3A2}
+@media (max-width:520px){.cb-box pre{padding:48px 14px 14px}}
+.cb-btn:focus-visible{outline:2px solid #fff;outline-offset:2px}
+
+/* tables */
+.tbl{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:600;font-size:13px;letter-spacing:.03em;color:var(--gold-dk);background:#FBF8F0}
+tr:last-child td{border-bottom:0}
+td.k{font-weight:600;white-space:nowrap}
+.mono{font-family:var(--mono);font-size:13px}
+.copy-sm{font:600 12px Outfit,sans-serif;border:1px solid var(--line);background:var(--card);color:var(--navy);border-radius:6px;padding:3px 9px;margin-left:6px;cursor:pointer;min-height:28px}
+.copy-sm.ok{background:#E4F3E5;border-color:#9FD3A2}
+
+/* chain */
+.chain{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+.chain span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14.5px;font-weight:500}
+.chain i{font-style:normal;color:var(--gold-dk);font-weight:600}
+
+/* timeline */
+.flow{display:grid;gap:10px;margin:12px 0}
+.flow .slot{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.flow .t{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;font-size:24px;color:var(--blue);width:64px;flex:none}
+.flow .d{color:var(--muted);font-size:14px}
+.flow .slot.brk{background:transparent;border-style:dashed}
+
+/* screenshots */
+.shots{margin-top:12px;border-top:1px solid var(--line);padding-top:10px}
+.shots-btn{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;background:transparent;border:0;padding:8px 2px;font:500 15px Outfit,sans-serif;color:var(--blue);cursor:pointer;text-align:left;min-height:40px}
+.shots-btn .chev{transition:transform .3s;font-size:13px}
+.shots-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.shots-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+.shots-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.shots-panel.open{grid-template-rows:1fr}
+.shots-inner{overflow:hidden}
+figure{margin:12px 0 18px}
+figure button{display:block;width:100%;padding:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--soft);cursor:zoom-in}
+figure img{display:block;width:100%;height:auto;min-height:60px}
+figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+figcaption b{color:var(--navy);font-weight:600}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:100;background:rgba(10,18,34,.94);display:none;align-items:center;justify-content:center;padding:calc(54px + env(safe-area-inset-top)) 10px calc(16px + env(safe-area-inset-bottom))}
+.lb.open{display:flex}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;background:#fff}
+.lb-close{position:absolute;top:calc(10px + env(safe-area-inset-top));right:12px;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:24px;cursor:pointer;line-height:1}
+.lb-cap{position:absolute;left:0;right:0;top:calc(18px + env(safe-area-inset-top));text-align:center;color:#D5DDEA;font-size:14px;padding:0 64px}
+
+/* downloads */
+.dl{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:10px 0}
+.dl .n{font-weight:500;word-break:break-word}
+.dl .s{font-size:13px;color:var(--muted)}
+.dl a{text-decoration:none;background:var(--navy);color:#fff;border-radius:8px;padding:8px 14px;font-weight:500;font-size:14.5px}
+.dl a:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+.closing{font-family:"Cormorant Garamond",Georgia,serif;font-size:28px;line-height:1.3;text-align:center;margin:28px 0 10px}
+.next{border:1px solid var(--gold);background:#FBF8F0}
+footer{margin-top:44px;padding:26px 0 calc(30px + env(safe-area-inset-bottom));border-top:1px solid var(--line);font-size:13.5px;color:var(--muted);text-align:center}
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (min-width:700px){
+  .wrap{padding:0 28px}
+  .step{padding:22px 24px 16px}
+  .flow{grid-template-columns:repeat(5,1fr)}
+  .flow .slot{flex-direction:column;align-items:flex-start;gap:4px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="eyebrow">Legal in the Loop · Greymore</div>
+    <h1>AI Agents Workshop</h1>
+    <div class="event">24 November 2026 · 10:00 to 12:00 (UK time) · Online · Burak Özdemir, PAIRA</div>
+    <div class="fiction"><strong>Fictional case.</strong> All names, companies and addresses are invented. Nothing in this workshop is sent to anyone.</div>
+  </div>
+</header>
+
+<nav class="chips" aria-label="Sections">
+  <div class="wrap">
+    <a href="#before">0 Before you start</a>
+    <a href="#flow">Flow</a>
+    <a href="#make">1 Make</a>
+    <a href="#claude">2 Claude</a>
+    <a href="#test-data">3 Test data</a>
+    <a href="#compare">4 Make vs Claude</a>
+    <a href="#downloads">Downloads</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="progress" aria-live="polite">
+    <span class="count"><span id="doneN">0</span> / <span id="totalN">0</span> steps done</span>
+    <span class="bar" aria-hidden="true"><i id="barFill"></i></span>
+  </div>
+  <div class="note">Your ticks are saved in this browser only.</div>
+</div>
+
+<main>
+
+<!-- SECTION 0 -->
+<section id="before">
+<div class="wrap">
+  <div class="eyebrow">Section 0 · 5 minutes</div>
+  <h2>Before you start</h2>
+
+  <div class="step" data-step="s0-a">
+    <div class="step-head"><span class="num">A</span><h3>Open make.com and sign in</h3></div>
+    <p>Go to <a href="https://www.make.com" target="_blank" rel="noopener">make.com</a> and sign in. The free plan is enough.</p>
+  </div>
+  <div class="step" data-step="s0-b">
+    <div class="step-head"><span class="num">B</span><h3>Open claude.ai</h3></div>
+    <p>Open <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a>. You only need it if you want to repeat the demo later. During the session you watch.</p>
+  </div>
+  <div class="step" data-step="s0-c">
+    <div class="step-head"><span class="num">C</span><h3>Have your own email open</h3></div>
+    <p>You will send one test message from it to your agent.</p>
+  </div>
+  <div class="step" data-step="s0-d">
+    <div class="step-head"><span class="num">D</span><h3>Keep this page open next to Make</h3></div>
+    <p>Every prompt you need is on this page with a Copy button. A second screen or a phone works well.</p>
+  </div>
+
+  <div class="why"><b>Why.</b> We build one agent in two tools. The tool changes; the four elements (model, instructions, memory, tools) stay.</div>
+</div>
+</section>
+
+<!-- FLOW -->
+<section id="flow">
+<div class="wrap">
+  <div class="eyebrow">Today</div>
+  <h2>Flow</h2>
+  <div class="flow">
+    <div class="slot"><span class="t">10:00</span><span><b>Briefing</b><br><span class="d">30 min</span></span></div>
+    <div class="slot"><span class="t">10:30</span><span><b>Make, built together</b><br><span class="d">45 min</span></span></div>
+    <div class="slot brk"><span class="t">11:15</span><span><b>Break</b><br><span class="d">5 min</span></span></div>
+    <div class="slot"><span class="t">11:20</span><span><b>Claude, live demo</b><br><span class="d">30 min</span></span></div>
+    <div class="slot"><span class="t">11:50</span><span><b>Close</b><br><span class="d">10 min</span></span></div>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 1 MAKE -->
+<section id="make">
+<div class="wrap">
+  <div class="eyebrow">Section 1</div>
+  <h2>Make, step by step</h2>
+  <p class="lead"><b>The Multilingual Desk Agent.</b> A client writes in their own language. The agent detects the language, writes an English brief for the solicitor, drafts a reply in the client's language, translates the draft back into English, saves everything to a register and stops for solicitor approval. Nothing is sent.</p>
+
+  <div class="chain" aria-label="Scenario map">
+    <span>Mailhook</span><i>›</i><span>Detect language</span><i>›</i><span>English brief</span><i>›</i><span>Draft reply</span><i>›</i><span>Back translation</span><i>›</i><span>Desk register</span>
+  </div>
+
+  <div class="warn"><b>Known limit.</b> On the free plan the mailhook reads the email body only. It cannot read attachments.</div>
+
+  <div class="why"><b>Why memory first.</b> An agent that forgets every run is a chatbot. The register is where each run leaves its trace, and where the solicitor checks the result.</div>
+
+  <!-- Step 1 -->
+  <div class="step" data-step="m1">
+    <div class="step-head"><span class="num">1</span><h3>Memory first: create the register</h3></div>
+    <ol>
+      <li>Left menu: <span class="ui">Data stores</span> › <span class="ui">Add data store</span>.</li>
+      <li>Data store name: <code class="i">Multilingual Desk Register</code></li>
+      <li>Next to Data structure click <span class="ui">Add</span> (on a new account the button may say <span class="ui">Create a data structure</span>). Give it any name, for example <code class="i">Desk record</code>.</li>
+      <li>Click <span class="ui">Generate</span>, paste the sample below, then <span class="ui">Generate</span> again. Make creates all eight fields at once: Received, From, Subject, Language, English brief, Draft reply, Back translation, Status.</li>
+      <li><span class="ui">Save</span> the structure, then <span class="ui">Save</span> the data store.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: Generate › Sample data</div><div class="cb-box"><pre>{"received":"text","from":"text","subject":"text","language":"text","english_brief":"text","draft_reply":"text","back_translation":"text","status":"text"}</pre></div></div>
+    <div class="shots" data-shots="m1"></div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="step" data-step="m2">
+    <div class="step-head"><span class="num">2</span><h3>The trigger: a mailhook</h3></div>
+    <ol>
+      <li><span class="ui">Scenarios</span> › <span class="ui">Create a new scenario</span>. Name it <code class="i">Multilingual Desk Agent</code>.</li>
+      <li>Click the big <span class="ui">+</span>, search <code class="i">Webhooks</code>, choose <span class="ui">Custom mailhook</span>.</li>
+      <li>Create the hook and <span class="ui">Save</span>. Make shows an address ending in <code class="i">@hook.eu1.make.com</code> (the region part may differ).</li>
+      <li>Copy that address. You will send the client email to it in Step 8.</li>
+    </ol>
+    <div class="shots" data-shots="m2"></div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="step" data-step="m3">
+    <div class="step-head"><span class="num">3</span><h3>Detect the language</h3></div>
+    <ol>
+      <li>Click <span class="ui">+</span> to the right of the mailhook, search <code class="i">Identify language</code>, choose <span class="ui">Make AI Toolkit › Identify language</span>.</li>
+      <li>Connection: <span class="ui">Make's AI Provider</span> (the default). Leave it.</li>
+      <li>In <span class="ui">Text</span>, map <b>1. Text</b> (the email body). Pasting the line below creates the tag by itself.</li>
+      <li><span class="ui">Save</span>.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: Identify language › Text</div><div class="cb-box"><pre>{{1.text}}</pre></div></div>
+    <div class="shots" data-shots="m3"></div>
+  </div>
+
+  <!-- Step 4 -->
+  <div class="step" data-step="m4">
+    <div class="step-head"><span class="num">4</span><h3>The English brief (first version, run A)</h3></div>
+    <ol>
+      <li><span class="ui">+</span> › search <code class="i">Simple Text Prompt</code> › <span class="ui">Make AI Toolkit › Simple Text Prompt</span>.</li>
+      <li>Model: <b>Small</b>.</li>
+      <li>Paste the one-line prompt below into <span class="ui">Text</span>. Check that <code class="i">{{1.text}}</code> has turned into a coloured <b>1. Text</b> tag.</li>
+      <li><span class="ui">Save</span>. Right-click the module › <span class="ui">Rename</span> › <code class="i">English brief</code>.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: English brief › Text (the 1. Text tag forms by itself)</div><div class="cb-box"><pre>Summarise this email for a solicitor.
+
+{{1.text}}</pre></div></div>
+    <div class="why"><b>Deliberately weak.</b> This prompt is too short on purpose. Run A shows what a model does when you give it no structure.</div>
+    <div class="shots" data-shots="m4"></div>
+  </div>
+
+  <!-- Step 5 -->
+  <div class="step" data-step="m5">
+    <div class="step-head"><span class="num">5</span><h3>The draft reply</h3></div>
+    <ol>
+      <li><span class="ui">+</span> › <span class="ui">Make AI Toolkit › Simple Text Prompt</span> again.</li>
+      <li>Model: <b>Medium</b>. This module stays the same in runs A to D.</li>
+      <li>Paste the prompt below into <span class="ui">Text</span>. Four kinds of tag should form: <b>2. Language</b> (twice), <b>1. Name</b>, <b>1. Subject</b>, <b>1. Text</b>.</li>
+      <li><span class="ui">Save</span>. Right-click › <span class="ui">Rename</span> › <code class="i">Draft reply</code>. Optional: rename the language module to <code class="i">Detect language</code>.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: Draft reply › Text</div><div class="cb-box"><pre>You are a client care assistant at a London law firm. Draft a first reply to the client below, written entirely in {{2.language}}.
+
+Client name: {{1.from.name}}
+Subject: {{1.subject}}
+Client message:
+{{1.text}}
+
+Rules:
+- Write only in {{2.language}}. Plain text, no markdown, no subject line.
+- Thank the client and confirm in one sentence what they are asking for.
+- Say that a solicitor will review the matter and come back to them.
+- If information or documents are clearly missing, ask for them.
+- Do not give legal advice, predict outcomes, quote fees or promise any deadline.
+- End with "[Solicitor name]" and "Greymore" on separate lines.
+- Keep it under 150 words.</pre></div></div>
+    <div class="warn"><b>Save often.</b> An orange dot on the Save icon means the scenario has unsaved changes. Renames count too.</div>
+    <div class="shots" data-shots="m5"></div>
+  </div>
+
+  <!-- Step 6 -->
+  <div class="step" data-step="m6">
+    <div class="step-head"><span class="num">6</span><h3>Translate the draft back</h3></div>
+    <ol>
+      <li><span class="ui">+</span> › search <code class="i">Translate text</code> › <span class="ui">Make AI Toolkit › Translate text</span>.</li>
+      <li>Model, if shown: <b>Medium</b>.</li>
+      <li>Text to translate: map <b>4. Answer</b> (the Draft reply output) by pasting the line below.</li>
+      <li>Target language: <code class="i">English</code></li>
+      <li><span class="ui">Save</span>. Right-click › <span class="ui">Rename</span> › <code class="i">Back translation</code>. Save the scenario.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: Back translation › Text to translate</div><div class="cb-box"><pre>{{4.answer}}</pre></div></div>
+    <div class="shots" data-shots="m6"></div>
+  </div>
+
+  <!-- Step 7 -->
+  <div class="step" data-step="m7">
+    <div class="step-head"><span class="num">7</span><h3>Write to the register, and stop</h3></div>
+    <ol>
+      <li><span class="ui">+</span> › search <code class="i">Add/replace a record</code> › <span class="ui">Data store › Add/replace a record</span>.</li>
+      <li>Data store: <b>Multilingual Desk Register</b></li>
+      <li>Key: <code class="i">A</code> (the run label; in runs B to E you only change this letter).</li>
+      <li><span class="ui">Overwrite an existing record</span>: set it to <b>Yes</b>. It may not be Yes by default.</li>
+      <li>Fill the eight fields from the table. Every value except Status should turn into a tag.</li>
+      <li><span class="ui">Save</span>. Right-click › <span class="ui">Rename</span> › <code class="i">Desk register</code>. Save the scenario until the orange dot disappears.</li>
+    </ol>
+    <div class="tbl"><table>
+      <thead><tr><th>Field</th><th>Paste</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Received</td><td><span class="mono">{{1.date}}</span><button class="copy-sm" type="button" data-copy="{{1.date}}">Copy</button></td></tr>
+        <tr><td class="k">From</td><td><span class="mono">{{1.from.address}}</span><button class="copy-sm" type="button" data-copy="{{1.from.address}}">Copy</button></td></tr>
+        <tr><td class="k">Subject</td><td><span class="mono">{{1.subject}}</span><button class="copy-sm" type="button" data-copy="{{1.subject}}">Copy</button></td></tr>
+        <tr><td class="k">Language</td><td><span class="mono">{{2.language}}</span><button class="copy-sm" type="button" data-copy="{{2.language}}">Copy</button></td></tr>
+        <tr><td class="k">English brief</td><td><span class="mono">{{3.answer}}</span><button class="copy-sm" type="button" data-copy="{{3.answer}}">Copy</button></td></tr>
+        <tr><td class="k">Draft reply</td><td><span class="mono">{{4.answer}}</span><button class="copy-sm" type="button" data-copy="{{4.answer}}">Copy</button></td></tr>
+        <tr><td class="k">Back translation</td><td><span class="mono">{{5.translation}}</span><button class="copy-sm" type="button" data-copy="{{5.translation}}">Copy</button></td></tr>
+        <tr><td class="k">Status</td><td><span class="mono">Draft, awaiting solicitor approval</span><button class="copy-sm" type="button" data-copy="Draft, awaiting solicitor approval">Copy</button></td></tr>
+      </tbody>
+    </table></div>
+    <div class="why"><b>Why it stops here.</b> There is no send module. The agent's last action is to write a row that says it is waiting for a solicitor.</div>
+    <div class="shots" data-shots="m7"></div>
+  </div>
+
+  <!-- Step 8 -->
+  <div class="step" data-step="m8">
+    <div class="step-head"><span class="num">8</span><h3>Run it</h3></div>
+    <ol>
+      <li>In the editor click <span class="ui">Run once</span>. The mailhook starts waiting for data.</li>
+      <li>From your own email, write a new message to your mailhook address. Copy the subject and body from <a href="#test-data">Section 3</a>. No attachment. Do not use Forward, it adds extra text.</li>
+      <li>Watch the bubbles appear above each module.</li>
+      <li>Open <span class="ui">Data stores</span> › <span class="ui">Multilingual Desk Register</span> and read row <b>A</b>. Click a cell to see the full text.</li>
+    </ol>
+    <div class="shots" data-shots="m8"></div>
+  </div>
+
+  <h3 style="margin:34px 0 6px">Five runs, one email</h3>
+  <p class="lead">Same client message every time. Only the model or the prompt changes. You do not need to send the email again: next to <span class="ui">Run once</span> open the arrow › <span class="ui">Run with existing data</span> › pick your first run › <span class="ui">Run once</span>.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Run</th><th>Brief model</th><th>Brief prompt</th><th>Reply prompt</th><th>Result</th></tr></thead>
+    <tbody>
+      <tr><td class="k">A</td><td>Small</td><td>One line</td><td>Basic</td><td>Fluent, wrong</td></tr>
+      <tr><td class="k">B</td><td>Medium</td><td>One line</td><td>Basic</td><td>Fluent, still wrong</td></tr>
+      <tr><td class="k">C</td><td>Medium</td><td>Six fields</td><td>Basic</td><td>Correct brief</td></tr>
+      <tr><td class="k">D</td><td>Small</td><td>Six fields</td><td>Basic</td><td>Right format, one fact reversed</td></tr>
+      <tr><td class="k">E</td><td>Medium</td><td>Six fields</td><td>Six-field rules</td><td>Correct brief, better reply</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="step" data-step="rB">
+    <div class="step-head"><span class="num">B</span><h3>Run B: a bigger model</h3></div>
+    <ol>
+      <li>Open <b>English brief</b>, set Model to <b>Medium</b>. Do not change the prompt. <span class="ui">Save</span>.</li>
+      <li>Open <b>Desk register</b>, set Key to <code class="i">B</code>. <span class="ui">Save</span>. Save the scenario.</li>
+      <li>Arrow next to Run once › <span class="ui">Run with existing data</span> › first run › <span class="ui">Run once</span>.</li>
+      <li>Compare rows A and B in the register.</li>
+    </ol>
+    <div class="shots" data-shots="rB"></div>
+  </div>
+
+  <div class="step" data-step="rC">
+    <div class="step-head"><span class="num">C</span><h3>Run C: a structured prompt</h3></div>
+    <ol>
+      <li>Open <b>English brief</b>. Model stays <b>Medium</b>. Click in <span class="ui">Text</span>, select all, delete, paste the six-field prompt below.</li>
+      <li>Check that four tags formed: <b>1. Date</b>, <b>2. Language</b>, <b>1. Subject</b>, <b>1. Text</b>. <span class="ui">Save</span>.</li>
+      <li>Desk register Key: <code class="i">C</code>. Save. Run with existing data.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: English brief › Text (replace everything)</div><div class="cb-box"><pre>ROLE: You are a trainee solicitor at a London law firm, preparing an intake brief for a supervising solicitor.
+
+TASK: Read the client email below and write a brief the solicitor can act on in two minutes.
+
+CONTEXT:
+Received: {{1.date}}
+Language of the message: {{2.language}}
+Subject: {{1.subject}}
+Client message:
+{{1.text}}
+You only have the email text. No attachments were received or read.
+
+CONSTRAINTS:
+- Use only facts stated in the email. Never say a document was provided or reviewed.
+- Convert every time limit into an estimated calendar date and mark it "estimate, verify".
+- If something is unclear or missing, write "unclear" and list it as a point to check.
+- Do not give legal advice. Do not answer questions about outcome or fees; flag them instead.
+- Do not copy phone numbers, addresses or other personal identifiers into the brief.
+
+FORMAT: plain text, no markdown, exactly these headings:
+URGENCY: High, Medium or Low, with the reason in one line
+SUMMARY: two sentences
+KEY FACTS: up to five lines
+DEADLINES: each time limit with its estimated date
+CHECK BEFORE REPLYING: numbered list
+CLIENT QUESTIONS NOT TO ANSWER YET: list
+Maximum 200 words.
+
+EXAMPLE of a DEADLINES line:
+- Respond to claim form: 14 days from service on 2 Oct 2026, approx. 16 Oct 2026 (estimate, verify)</pre></div></div>
+    <div class="shots" data-shots="rC"></div>
+  </div>
+
+  <div class="step" data-step="rD">
+    <div class="step-head"><span class="num">D</span><h3>Run D: structure on a small model</h3></div>
+    <ol>
+      <li><b>English brief</b>: keep the six-field prompt, set Model back to <b>Small</b>. <span class="ui">Save</span>.</li>
+      <li>Desk register Key: <code class="i">D</code>. Save. Run with existing data.</li>
+      <li>Read the brief closely. It looks right. Is every fact right?</li>
+    </ol>
+    <div class="shots" data-shots="rD"></div>
+  </div>
+
+  <div class="step" data-step="rE">
+    <div class="step-head"><span class="num">E</span><h3>Run E: a better reply</h3></div>
+    <ol>
+      <li><b>English brief</b>: Model <b>Medium</b>, six-field prompt. <span class="ui">Save</span>.</li>
+      <li>Open <b>Draft reply</b>, select all in <span class="ui">Text</span>, delete, paste the prompt below. Model stays Medium. <span class="ui">Save</span>.</li>
+      <li>Desk register Key: <code class="i">E</code>. Save. Run with existing data.</li>
+      <li>The draft should greet the client by name and end only with [Solicitor name] and Greymore.</li>
+    </ol>
+    <div class="cb"><div class="cb-label">Paste into: Draft reply › Text (replace everything)</div><div class="cb-box"><pre>You are a client care assistant at a London law firm. Draft a first reply to the client below, written entirely in {{2.language}}.
+
+Subject: {{1.subject}}
+Client message:
+{{1.text}}
+
+Rules:
+- Address the client by the name they sign with at the end of the message. If there is no signature, use a neutral greeting.
+- Do not repeat the client's signature, phone number or contact details. The reply is signed only by the firm.
+- Write only in {{2.language}}. Plain text, no markdown, no subject line.
+- Thank the client and confirm in one sentence what they are asking for.
+- Say that a solicitor will review the matter and come back to them.
+- If information or documents are clearly missing, ask for them.
+- Do not give legal advice, predict outcomes, quote fees or promise any deadline.
+- End with "[Solicitor name]" and "Greymore" on separate lines.
+- Keep it under 150 words.</pre></div></div>
+    <div class="why"><b>Why the reply changed.</b> The basic prompt took the name from the email header, so the draft greeted whoever sent the test, and it copied the client's own signature and phone number into the firm's reply. Two rules fixed both.</div>
+    <div class="shots" data-shots="rE"></div>
+  </div>
+
+  <div class="lesson"><span class="eyebrow">The lesson</span>The prompt gives structure. The model gives precision. The solicitor makes the final check.</div>
+</div>
+</section>
+
+<!-- SECTION 2 CLAUDE -->
+<section id="claude">
+<div class="wrap">
+  <div class="eyebrow">Section 2 · Live demo</div>
+  <h2>Claude</h2>
+  <p class="lead">You watch during the session. Repeat it later at your own pace with the texts below and the two PDFs from <a href="#downloads">Downloads</a>.</p>
+  <div class="why"><b>Why Claude.</b> Same agent, same four elements. This time the model plans the steps inside one chat, and it can read the attachments Make could not.</div>
+
+  <div class="step" data-step="c0">
+    <div class="step-head"><span class="num">1</span><h3>Settings</h3></div>
+    <ol>
+      <li>Claude free plan, one new chat.</li>
+      <li>Model menu: <b>Sonnet 5.5</b>, Effort: <b>Medium</b>.</li>
+      <li><span class="ui">+</span> menu: switch <b>Web search</b> off. The agent should work only from what you give it.</li>
+    </ol>
+    <div class="shots" data-shots="c0"></div>
+  </div>
+
+  <div class="step" data-step="c1">
+    <div class="step-head"><span class="num">2</span><h3>Message 1 · Instructions</h3></div>
+    <p>Send this as the first message. Claude should answer only with the ready line.</p>
+    <div class="cb"><div class="cb-label">Paste into: Claude › new chat › message box</div><div class="cb-box"><pre>ROLE
+You are the Multilingual Desk Agent for Greymore, a London law firm. You work for the solicitor, not for the client.
+
+TASK
+When I paste a client message with attachments, do these steps in order:
+1. Detect the language of the client message.
+2. Read every attached document.
+3. Write an English brief for the solicitor.
+4. Draft a reply to the client in the client's language.
+5. Translate your draft back into English.
+6. Create a desk register entry.
+Then stop. Nothing is sent. The solicitor approves everything.
+
+CONTEXT
+Clients write in their own language and often attach documents. The solicitor needs facts, risks and deadlines fast, in English. Documents may contain facts the client has forgotten or misunderstood.
+
+CONSTRAINTS
+- Use only the client message and the attached documents.
+- Never state a fact the sources do not support. If something is unclear, write "unclear, verify".
+- Name each document you reviewed. If there are no attachments, write "No attachments reviewed".
+- Where the client's account and the documents disagree, flag it.
+- Turn every time limit into a calendar date and mark it "estimate, verify".
+- Do not answer questions about outcome or fees in the draft reply. List them for the solicitor instead.
+- Keep the client's phone number and email out of the brief.
+- In the draft reply, address the client by name. Do not copy the client's signature or contact details. Sign off with "[Solicitor name]" and "Greymore" only.
+- Do not use em dashes.
+
+FORMAT
+A. LANGUAGE
+B. DOCUMENTS REVIEWED
+C. SOLICITOR BRIEF (English): Urgency (High/Medium/Low, with reason), Key facts, Key dates and deadlines, Issues found in the documents, Conflicts between client and documents, Questions not to answer in the reply, Recommended next steps
+D. DRAFT REPLY (client's language)
+E. BACK TRANSLATION (English)
+F. DESK REGISTER ENTRY: one table row: Date received | Client | Language | Matter | Urgency | First deadline | Status: Awaiting solicitor approval
+
+EXAMPLE
+"URGENCY: Medium. Employer asked for a response within 14 days of 2 March 2027, approx. 16 March 2027 (estimate, verify)."
+
+Reply now only with: "Ready. Paste the client message and attach the documents."</pre></div></div>
+    <div class="shots" data-shots="c1"></div>
+  </div>
+
+  <div class="step" data-step="c2">
+    <div class="step-head"><span class="num">3</span><h3>Message 2 · The case</h3></div>
+    <ol>
+      <li><span class="ui">+</span> › <span class="ui">Upload or add files</span>: attach both PDFs from <a href="#downloads">Downloads</a>.</li>
+      <li>Paste the client email body from <a href="#test-data">Section 3</a> exactly as it is. Add nothing before or after it.</li>
+      <li>Send.</li>
+    </ol>
+    <div class="shots" data-shots="c2"></div>
+    <h3 style="font-size:20px;margin:18px 0 0">What came back</h3>
+    <div class="shots" data-shots="c2out" data-label="Show the output"></div>
+  </div>
+
+  <div class="step" data-step="c3">
+    <div class="step-head"><span class="num">4</span><h3>Message 3 · Follow-up</h3></div>
+    <p>A new fact arrives. Watch what the agent changes, and what it leaves alone.</p>
+    <div class="cb"><div class="cb-label">Paste into: the same Claude chat</div><div class="cb-box"><pre>Update: the client called. He received the letter by hand on 10 November 2026. Update only the parts of your output that change, and say what changed.</pre></div></div>
+    <div class="shots" data-shots="c3"></div>
+  </div>
+
+  <div class="card">
+    <div class="eyebrow">Key findings</div>
+    <ul style="padding-left:20px;margin:10px 0 0">
+      <li>Read both documents and listed what it had not read: the full lease, the Deed of Guarantee and the message records.</li>
+      <li>Matched the document the client forgot to the Deed of Guarantee and flagged his personal risk.</li>
+      <li>Flagged that paying in cash conflicts with clause 3.2, and possible protection under the Landlord and Tenant Act 1954.</li>
+      <li>Worked out that the 21 days from 4 November end on 25 November.</li>
+      <li>On the follow-up it changed only what the new fact affected.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin:28px 0 6px">The four elements in both tools</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Element</th><th>Make</th><th>Claude</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Model</td><td>Small or Medium per module</td><td>Model selector + Effort</td></tr>
+      <tr><td class="k">Instructions</td><td>Each prompt module</td><td>The first message</td></tr>
+      <tr><td class="k">Memory</td><td>Data store register</td><td>Chat context</td></tr>
+      <tr><td class="k">Tools</td><td>Mailhook, translate, data store</td><td>+ menu, file upload, web search off</td></tr>
+    </tbody>
+  </table></div>
+</div>
+</section>
+
+<!-- SECTION 3 TEST DATA -->
+<section id="test-data">
+<div class="wrap">
+  <div class="eyebrow">Section 3</div>
+  <h2>Test data</h2>
+  <p class="lead">Send this from your own email to your mailhook address. Copy both blocks exactly, including the Turkish characters.</p>
+
+  <div class="cb"><div class="cb-label">Paste into: your email › Subject</div><div class="cb-box"><pre>Dükkan kira sözleşmesi - ev sahibinden gelen mektup</pre></div></div>
+
+  <div class="cb"><div class="cb-label">Paste into: your email › Body</div><div class="cb-box"><pre>Merhaba,
+
+Ben Mehmet Yıldız. Hackney'de 2019'dan beri Yıldız Café adıyla bir kafe işletiyorum. Mülk sahibi şirketten 4 Kasım tarihli bir mektup aldım. Mektupta kira sözleşmesini 31 Mayıs 2027'de sona erdirmek istediklerini ve iki ay içinde yazılı cevap vermem gerektiğini söylüyorlar.
+
+Ayrıca 4.800 sterlin kira borcum olduğunu iddia ediyorlar. Ancak bunun 1.200 sterlinini Mart ayında elden ödedim. Makbuzum yok ama mesaj kayıtlarım var.
+
+Sözleşmeyi imzalarken bir belge daha imzalamıştım, ne olduğunu tam hatırlamıyorum.
+
+Sözleşmeyi ve mektubu ekte gönderiyorum. Sizce bu davayı kazanırız? Avukatlık ücreti ne kadar tutar? Dükkanı kaybetmek istemiyorum, lütfen acil dönün.
+
+Saygılarımla,
+Mehmet Yıldız
+07700 900123</pre></div></div>
+
+  <div class="card">
+    <div class="eyebrow">The case in English</div>
+    <p style="margin:8px 0 0">Mehmet Yıldız has run Yıldız Café in Hackney since 2019. His landlord's letter of 4 November 2026 gives notice to end the lease on 31 May 2027 and asks for a written reply within two months. It claims £4,800 in rent arrears; he says March (£1,200) was paid in cash, with no receipt but with message records. The letter also says the guarantor may be pursued if the arrears are not paid within 21 days. When he signed the lease he signed a second document he does not remember. He asks whether he will win and what it will cost.</p>
+    <p class="note" style="margin:10px 0 0">The phone number is from Ofcom's range reserved for drama. It belongs to nobody.</p>
+  </div>
+</div>
+</section>
+
+<!-- SECTION 4 COMPARE -->
+<section id="compare">
+<div class="wrap">
+  <div class="eyebrow">Section 4</div>
+  <h2>Make vs Claude</h2>
+  <div class="tbl"><table>
+    <thead><tr><th></th><th>Make</th><th>Claude</th></tr></thead>
+    <tbody>
+      <tr><td class="k">Who runs the flow</td><td>You draw every step</td><td>The model plans inside one chat</td></tr>
+      <tr><td class="k">Attachments</td><td>Not read on this plan</td><td>Read both PDFs</td></tr>
+      <tr><td class="k">Trigger</td><td>An email arrives</td><td>You paste the case</td></tr>
+      <tr><td class="k">Memory</td><td>A register row per run</td><td>The conversation</td></tr>
+      <tr><td class="k">Sends anything</td><td>No</td><td>No</td></tr>
+      <tr><td class="k">Final approval</td><td>Solicitor</td><td>Solicitor</td></tr>
+    </tbody>
+  </table></div>
+  <p class="closing">The tool changes. The architecture stays. The solicitor always has the last word.</p>
+</div>
+</section>
+
+<!-- DOWNLOADS -->
+<section id="downloads">
+<div class="wrap">
+  <div class="eyebrow">Files</div>
+  <h2>Downloads</h2>
+  <div id="dlList"></div>
+
+  <div class="card next">
+    <div class="eyebrow">Next step</div>
+    <p style="margin:8px 0 0">Want to map one of your own processes? <a id="bookLink" href="#" target="_blank" rel="noopener">Book a 30-minute conversation</a>.</p>
+  </div>
+</div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Legal in the Loop · AI Agents Workshop · Greymore · PAIRA · <a href="https://mypaira.com">mypaira.com</a></div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Screenshot" tabindex="-1">
+  <div class="lb-cap" id="lbCap"></div>
+  <button class="lb-close" id="lbClose" type="button" aria-label="Close">&times;</button>
+  <img id="lbImg" alt="">
+</div>
+
+<script>
+/* ===== Edit these before publishing ===== */
+var CONFIG = {
+  downloads: [
+    { name: "Workshop slides (PDF)", url: "files/greymore-ai-agents-workshop-slides.pdf", size: "14.9 MB" },
+    { name: "fernlow-road-lease-summary.pdf", url: "files/fernlow-road-lease-summary.pdf", size: "45 KB" },
+    { name: "ashcombe-letter-4-november-2026.pdf", url: "files/ashcombe-letter-4-november-2026.pdf", size: "44 KB" }
+  ],
+  booking: "https://calendly.com/burakoz-demir/30min-1",
+  imgWeb: "img/web/",   // WebP, max 1600 px wide
+  imgFull: "img/full/"  // originals for the lightbox
+};
+
+/* name, caption (caption is also the alt text) */
+var SHOTS = {
+  m1: [
+    ["make-01a-data-stores-empty","Data stores, empty, before you add anything"],
+    ["make-01b-add-data-store","Add data store: name it Multilingual Desk Register"],
+    ["make-01c-add-data-structure","Add a data structure next to Data structure"],
+    ["make-01d-generate-json","Generate: paste the JSON sample"],
+    ["make-01e-structure-generated","Eight text fields created in one go"],
+    ["make-01f-data-store-ready","The data store, ready to save"],
+    ["make-01g-data-store-created","The register appears in the list"],
+    ["make-01h-register-empty","The register is open and still empty"]
+  ],
+  m2: [
+    ["make-02a-scenario-empty","A new, empty scenario"],
+    ["make-02b-webhooks-modules","Webhooks: choose Custom mailhook"],
+    ["make-02c-create-mailhook","Create the mailhook"],
+    ["make-02d-mailhook-address","Your mailhook address: copy it"],
+    ["make-02e-scenario-one-module","The scenario with its trigger"]
+  ],
+  m3: [
+    ["make-03a-search-identify-language","Search for Identify language"],
+    ["make-03b-ai-connection","Connection: Make's AI Provider (default) and the model list"],
+    ["make-03c-map-text","Text mapped to 1. Text"],
+    ["make-03d-two-modules","Two modules: mailhook and language"]
+  ],
+  m4: [
+    ["make-04a-search-simple-text-prompt","Search for Simple Text Prompt"],
+    ["make-04b-model-small-prompt-v1","Model Small with the one-line prompt"],
+    ["make-04c-three-modules","Three modules"]
+  ],
+  m5: [
+    ["make-05a-search-simple-text-prompt","A second Simple Text Prompt"],
+    ["make-05b-model-medium-reply-prompt","Model Medium with the reply prompt and its tags"],
+    ["make-05c-four-modules","Four modules"],
+    ["make-05d-right-click-rename","Right-click a module, then Rename"],
+    ["make-05e-rename-english-brief","Rename module 3 to English brief"],
+    ["make-05f-rename-draft-reply","Rename module 4 to Draft reply"],
+    ["make-05g-four-modules","Renamed modules (note the orange dot: save)"],
+    ["make-05h-four-modules-module2-renamed","Optional: module 2 renamed to Detect language"]
+  ],
+  m6: [
+    ["make-06a-translate-text","Search for Translate text"],
+    ["make-06b-translate-settings1","Translate text settings, empty"],
+    ["make-06c-translate-settings2","Text: 4. Answer, target language: English"],
+    ["make-06d-five-modules-module5-renamed","Five modules, Back translation renamed"]
+  ],
+  m7: [
+    ["make-07a-data-store","Search for Add/replace a record"],
+    ["make-07b-data-store-key","Data store: Multilingual Desk Register"],
+    ["make-07c-field-mapping1","Key A, Overwrite an existing record set to Yes"],
+    ["make-07d-field-mapping2","All eight fields mapped; Status is plain text"],
+    ["make-07e-six-modules","Six modules: the scenario was saved"]
+  ],
+  m8: [
+    ["make-08a-compose-test-email","The test email, addressed to the mailhook"],
+    ["make-08b-run-once-button","Run once"],
+    ["make-08c-waiting-for-data","The mailhook waits for your email"],
+    ["make-08d-running","The scenario is running"],
+    ["make-08e-run-complete","Run complete: every module ticked"],
+    ["make-08f-output-brief-A","Brief A: fluent, but wrong"]
+  ],
+  rB: [
+    ["make-09a-model-medium","English brief set to Medium"],
+    ["make-09b-key-B","Key B"],
+    ["make-09c-run-once-menu","Arrow next to Run once: Run with existing data"],
+    ["make-09d-output-brief-B","Brief B: a bigger model, the same mistakes"]
+  ],
+  rC: [
+    ["make-10a-prompt-v2","The six-field prompt in English brief"],
+    ["make-10b-key-C","Key C"],
+    ["make-10c-run-with-existing-data","Pick the first run and run again"],
+    ["make-10d-output-brief-C","Brief C: urgency, dated deadline, no invented attachments"]
+  ],
+  rD: [
+    ["make-11a-model-small-v2","Six-field prompt on Small"],
+    ["make-11b-key-D","Key D"],
+    ["make-11c-output-brief-D","Brief D: right format, one fact reversed"]
+  ],
+  rE: [
+    ["make-12a-prompt-v3","The new reply prompt in Draft reply"],
+    ["make-12b-key-E","English brief back on Medium with the six-field prompt"],
+    ["make-12c-output-brief-D-E-comparison","Rows D and E side by side"]
+  ],
+  c0: [
+    ["claude-01a-model-settings","Model menu: Sonnet 5.5"],
+    ["claude-01b-effort-settings","Effort: Medium"],
+    ["claude-01c-model-comparison","Which Claude model for which kind of work", "jpeg"],
+    ["claude-02a-new-chat-menu","A new chat and the + menu"],
+    ["claude-03a-web-search-off","Web search switched off"]
+  ],
+  c1: [["claude-03b-prompt-sent","Instructions sent; the agent waits for the case"]],
+  c2: [["claude-04a-email-and-attachments","The client email with both PDFs attached"]],
+  c2out: [
+    ["claude-04b-output-a-b-c","Documents reviewed and solicitor brief"],
+    ["claude-04c-output-dates-issues","Key dates and issues"],
+    ["claude-04d-output-conflicts","Conflicts between the client's account and the documents"],
+    ["claude-04e-output-next-steps","Next steps"],
+    ["claude-04f-output-draft-reply","Draft reply in Turkish"],
+    ["claude-04g-output-back-translation","Back translation"],
+    ["claude-04h-output-register","Register entry"]
+  ],
+  c3: [
+    ["claude-05a-follow-up","The follow-up message"],
+    ["claude-05b-memory-update-1","What changed, part 1"],
+    ["claude-05b-memory-update-2","What changed, part 2"],
+    ["claude-05b-memory-update-3","What changed, part 3"]
+  ]
+};
+
+(function(){
+  var store = {
+    get: function(k){ try { return JSON.parse(localStorage.getItem(k)); } catch(e){ return null; } },
+    set: function(k,v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch(e){} }
+  };
+  var KEY = "greymore-ai-agents-ticks";
+
+  /* ---------- copy ---------- */
+  function copyText(text, btn, label){
+    function ok(){
+      btn.textContent = "Copied"; btn.classList.add("ok");
+      clearTimeout(btn._t);
+      btn._t = setTimeout(function(){ btn.textContent = label; btn.classList.remove("ok"); }, 2000);
+    }
+    function fallback(){
+      var ta = document.createElement("textarea");
+      ta.value = text; ta.setAttribute("readonly",""); ta.style.position="fixed"; ta.style.opacity="0";
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, text.length);
+      try { document.execCommand("copy"); ok(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(ok, fallback);
+    } else { fallback(); }
+  }
+  document.querySelectorAll(".cb-box").forEach(function(box){
+    var pre = box.querySelector("pre");
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "cb-btn"; btn.textContent = "Copy";
+    var lbl = box.parentNode.querySelector(".cb-label");
+    btn.setAttribute("aria-label", "Copy: " + (lbl ? lbl.textContent : "text"));
+    btn.addEventListener("click", function(){ copyText(pre.textContent, btn, "Copy"); });
+    box.appendChild(btn);
+  });
+  document.querySelectorAll("[data-copy]").forEach(function(btn){
+    btn.addEventListener("click", function(){ copyText(btn.getAttribute("data-copy"), btn, "Copy"); });
+  });
+
+  /* ---------- ticks ---------- */
+  var ticks = store.get(KEY) || {};
+  var steps = document.querySelectorAll(".step[data-step]");
+  document.getElementById("totalN").textContent = steps.length;
+  function refresh(){
+    var n = 0;
+    steps.forEach(function(s){ if (ticks[s.getAttribute("data-step")]) n++; });
+    document.getElementById("doneN").textContent = n;
+    document.getElementById("barFill").style.width = (steps.length ? (100*n/steps.length) : 0) + "%";
+  }
+  steps.forEach(function(s){
+    var id = s.getAttribute("data-step");
+    var head = s.querySelector(".step-head");
+    var title = head.querySelector("h3").textContent;
+    var lab = document.createElement("label"); lab.className = "tick";
+    var cb = document.createElement("input"); cb.type = "checkbox";
+    cb.setAttribute("aria-label", "Done: " + title);
+    cb.checked = !!ticks[id];
+    s.classList.toggle("done", cb.checked);
+    cb.addEventListener("change", function(){
+      if (cb.checked) ticks[id] = 1; else delete ticks[id];
+      s.classList.toggle("done", cb.checked);
+      store.set(KEY, ticks); refresh();
+    });
+    var t = document.createElement("span"); t.textContent = "Done"; t.setAttribute("aria-hidden","true");
+    lab.appendChild(cb); lab.appendChild(t); head.appendChild(lab);
+  });
+  refresh();
+
+  /* ---------- screenshots ---------- */
+  var uid = 0;
+  document.querySelectorAll(".shots[data-shots]").forEach(function(box){
+    var list = SHOTS[box.getAttribute("data-shots")] || [];
+    if (!list.length) { box.remove(); return; }
+    var label = box.getAttribute("data-label") || "Show screenshots";
+    var pid = "shots-" + (++uid);
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "shots-btn";
+    btn.setAttribute("aria-expanded","false"); btn.setAttribute("aria-controls", pid);
+    var txt = document.createElement("span");
+    function setTxt(open){ txt.textContent = (open ? label.replace("Show","Hide") : label) + " (" + list.length + ")"; }
+    setTxt(false);
+    var chev = document.createElement("span"); chev.className = "chev"; chev.setAttribute("aria-hidden","true"); chev.textContent = "▼";
+    btn.appendChild(txt); btn.appendChild(chev);
+    var panel = document.createElement("div"); panel.className = "shots-panel"; panel.id = pid;
+    var inner = document.createElement("div"); inner.className = "shots-inner"; inner.hidden = true;
+    panel.appendChild(inner);
+    var built = false;
+    function build(){
+      list.forEach(function(item){
+        var ext = item[2] || "png";
+        var fig = document.createElement("figure");
+        var b = document.createElement("button"); b.type = "button";
+        b.setAttribute("aria-label", "Open full size: " + item[1]);
+        var img = document.createElement("img");
+        img.loading = "lazy"; img.decoding = "async"; img.alt = item[1];
+        img.src = CONFIG.imgWeb + item[0] + ".webp";
+        img.onerror = function(){ img.onerror = null; img.src = CONFIG.imgFull + item[0] + "." + ext; };
+        b.appendChild(img);
+        b.addEventListener("click", function(){ openLb(CONFIG.imgFull + item[0] + "." + ext, item[1], b); });
+        var cap = document.createElement("figcaption"); cap.textContent = item[1];
+        fig.appendChild(b); fig.appendChild(cap); inner.appendChild(fig);
+      });
+      built = true;
+    }
+    btn.addEventListener("click", function(){
+      var open = btn.getAttribute("aria-expanded") !== "true";
+      if (open) {
+        if (!built) build();
+        inner.hidden = false;
+        requestAnimationFrame(function(){ panel.classList.add("open"); });
+      } else {
+        panel.classList.remove("open");
+        setTimeout(function(){ if (btn.getAttribute("aria-expanded") === "false") inner.hidden = true; }, 420);
+      }
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      setTxt(open);
+    });
+    box.appendChild(btn); box.appendChild(panel);
+  });
+
+  /* ---------- lightbox ---------- */
+  var lb = document.getElementById("lb"), lbImg = document.getElementById("lbImg"),
+      lbCap = document.getElementById("lbCap"), lbClose = document.getElementById("lbClose"), lastFocus = null;
+  function openLb(src, cap, from){
+    lastFocus = from; lbImg.src = src; lbImg.alt = cap; lbCap.textContent = cap;
+    lb.classList.add("open"); document.body.style.overflow = "hidden"; lbClose.focus();
+  }
+  function closeLb(){
+    lb.classList.remove("open"); document.body.style.overflow = ""; lbImg.removeAttribute("src");
+    if (lastFocus) lastFocus.focus();
+  }
+  lbClose.addEventListener("click", closeLb);
+  lb.addEventListener("click", function(e){ if (e.target === lb || e.target === lbCap) closeLb(); });
+  document.addEventListener("keydown", function(e){
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") closeLb();
+    if (e.key === "Tab") { e.preventDefault(); lbClose.focus(); }
+  });
+
+  /* ---------- downloads ---------- */
+  var dl = document.getElementById("dlList");
+  CONFIG.downloads.forEach(function(d){
+    var row = document.createElement("div"); row.className = "dl";
+    var left = document.createElement("div");
+    var n = document.createElement("div"); n.className = "n"; n.textContent = d.name;
+    left.appendChild(n);
+    if (d.size) { var s = document.createElement("div"); s.className = "s"; s.textContent = "PDF · " + d.size; left.appendChild(s); }
+    var a = document.createElement("a"); a.href = d.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = "Download";
+    a.setAttribute("aria-label", "Download " + d.name + (d.size ? ", " + d.size : "") + " (opens in a new tab)");
+    row.appendChild(left); row.appendChild(a); dl.appendChild(row);
+  });
+  document.getElementById("bookLink").href = CONFIG.booking;
+})();
+</script>
+</body>
+</html>
