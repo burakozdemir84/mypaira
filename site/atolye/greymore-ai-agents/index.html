@@ -665,13 +665,14 @@ Mehmet Yıldız
 /* ===== Edit these before publishing ===== */
 var CONFIG = {
   downloads: [
-    { name: "Workshop slides (PDF)", url: "files/greymore-ai-agents-workshop-slides.pdf", size: "14.9 MB" },
-    { name: "fernlow-road-lease-summary.pdf", url: "files/fernlow-road-lease-summary.pdf", size: "45 KB" },
-    { name: "ashcombe-letter-4-november-2026.pdf", url: "files/ashcombe-letter-4-november-2026.pdf", size: "44 KB" }
+    { name: "Workshop slides (PDF)", url: "/atolye/greymore-ai-agents/files/greymore-ai-agents-workshop-slides.pdf", size: "14.9 MB" },
+    { name: "fernlow-road-lease-summary.pdf", url: "/atolye/greymore-ai-agents/files/fernlow-road-lease-summary.pdf", size: "45 KB" },
+    { name: "ashcombe-letter-4-november-2026.pdf", url: "/atolye/greymore-ai-agents/files/ashcombe-letter-4-november-2026.pdf", size: "44 KB" }
   ],
   booking: "https://calendly.com/burakoz-demir/30min-1",
-  imgWeb: "img/web/",   // WebP, max 1600 px wide
-  imgFull: "img/full/"  // originals for the lightbox
+  // Paths match where the files sit in the repo (site/atolye/greymore-ai-agents/...)
+  imgWeb: function(name){ return "/atolye/greymore-ai-agents/img/web/" + (name.indexOf("make-") === 0 ? "web/" : ""); },
+  imgFull: "/atolye/greymore-ai-agents/img/web/full/"
 };
 
 /* name, caption (caption is also the alt text) */
@@ -877,7 +878,7 @@ var SHOTS = {
         b.setAttribute("aria-label", "Open full size: " + item[1]);
         var img = document.createElement("img");
         img.loading = "lazy"; img.decoding = "async"; img.alt = item[1];
-        img.src = CONFIG.imgWeb + item[0] + ".webp";
+        img.src = CONFIG.imgWeb(item[0]) + item[0] + ".webp";
         img.onerror = function(){ img.onerror = null; img.src = CONFIG.imgFull + item[0] + "." + ext; };
         b.appendChild(img);
         b.addEventListener("click", function(){ openLb(CONFIG.imgFull + item[0] + "." + ext, item[1], b); });
