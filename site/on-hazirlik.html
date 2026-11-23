@@ -133,7 +133,7 @@ button.secondary:hover{background:#DCEAF5}
 
 <main><div class="wrap">
   <nav class="steps" aria-label="Adımlar">
-    <button type="button" data-step="1"><b>1</b>Şirket bilgileri</button>
+    <button type="button" data-step="1"><b>1</b>Kurum bilgileri</button>
     <button type="button" data-step="2"><b>2</b>Gizlilik sözleşmesi</button>
     <button type="button" data-step="3"><b>3</b>Ön hazırlık formu</button>
   </nav>
@@ -142,12 +142,12 @@ button.secondary:hover{background:#DCEAF5}
   <section id="step1" hidden>
     <div class="card">
       <p class="eyebrow" style="margin-bottom:8px">Adım 1</p>
-      <h2>Şirket bilgileri</h2>
-      <p class="help" style="color:var(--mute);margin-top:0">Gizlilik sözleşmesini şirketiniz adına hazırlayabilmemiz için aşağıdaki bilgileri rica ediyoruz. Sözleşme bu bilgilerle doldurulur ve PAIRA tarafından imzalanmış olarak size iletilir. Ardından ön hazırlık formu açılır.</p>
+      <h2>Kurum bilgileri</h2>
+      <p class="help" style="color:var(--mute);margin-top:0">Gizlilik sözleşmesini büronuz veya şirketiniz adına hazırlayabilmemiz için aşağıdaki bilgileri rica ediyoruz. Sözleşme bu bilgilerle doldurulur ve PAIRA tarafından imzalanmış olarak size iletilir. Ardından ön hazırlık formu açılır.</p>
       <form id="company" novalidate>
-        <label class="f" for="c-org">Şirket unvanı <span class="req">*</span></label>
-        <input type="text" id="c-org" name="org" maxlength="200" placeholder="Ticaret sicilinde kayıtlı tam unvan" autocomplete="organization" required>
-        <label class="f" for="c-address">Şirket adresi <span class="req">*</span></label>
+        <label class="f" for="c-org">Büro veya şirket unvanı <span class="req">*</span></label>
+        <input type="text" id="c-org" name="org" maxlength="200" placeholder="Baroya veya ticaret siciline kayıtlı tam unvan" autocomplete="organization" required>
+        <label class="f" for="c-address">Büro veya şirket adresi <span class="req">*</span></label>
         <textarea id="c-address" name="address" rows="2" maxlength="300" placeholder="Sözleşmede yer alacak adres" autocomplete="street-address" required style="min-height:64px"></textarea>
         <div class="grid3" style="grid-template-columns:1fr 1fr">
           <div><label class="f" for="c-name">Yetkili kişi <span class="req">*</span></label>
@@ -155,7 +155,7 @@ button.secondary:hover{background:#DCEAF5}
           <div><label class="f" for="c-title">Unvan / görev</label>
             <input type="text" id="c-title" name="contact_title" maxlength="120" placeholder="ör. Yönetici Ortak" autocomplete="organization-title"></div>
           <div><label class="f" for="c-email">Bildirim e-postası <span class="req">*</span></label>
-            <input type="text" id="c-email" name="email" maxlength="160" inputmode="email" placeholder="ad@sirket.com" autocomplete="email" required></div>
+            <input type="text" id="c-email" name="email" maxlength="160" inputmode="email" placeholder="ad@kurumunuz.com" autocomplete="email" required></div>
           <div><label class="f" for="c-phone">Telefon</label>
             <input type="text" id="c-phone" name="phone" maxlength="40" inputmode="tel" placeholder="İsteğe bağlı" autocomplete="tel"></div>
         </div>
@@ -172,7 +172,7 @@ button.secondary:hover{background:#DCEAF5}
     <div class="card">
       <p class="eyebrow" style="margin-bottom:8px">Adım 2</p>
       <h2>Gizlilik sözleşmeniz hazır</h2>
-      <p class="help" style="color:var(--mute);margin-top:0">PAIRA (OD Etüd ve Müşavirlik Ltd. Şti.) tarafından imzalanmış <i>Proje Hazırlık Gizlilik Taahhüdü ve Sözleşmesi</i>, şirketinizin bilgileriyle hazırlandı.</p>
+      <p class="help" style="color:var(--mute);margin-top:0">PAIRA (OD Etüd ve Müşavirlik Ltd. Şti.) tarafından imzalanmış <i>Proje Hazırlık Gizlilik Taahhüdü ve Sözleşmesi</i>, kurumunuzun bilgileriyle hazırlandı.</p>
       <dl class="summary">
         <dt>Müşteri unvanı</dt><dd id="s-org"></dd>
         <dt>Adres</dt><dd id="s-address"></dd>
@@ -500,7 +500,7 @@ button.secondary:hover{background:#DCEAF5}
   var MSG = {
     missing:"Lütfen işaretli alanları doldurun.",
     email:"Lütfen geçerli bir e-posta adresi yazın.",
-    too_short:"Şirket unvanını ve adresini sözleşmede yer alacağı biçimde, eksiksiz yazın.",
+    too_short:"Unvanı ve adresi sözleşmede yer alacağı biçimde, eksiksiz yazın.",
     rate:"Kısa sürede çok sayıda kayıt oluşturuldu. Lütfen biraz sonra tekrar deneyin.",
     server:"Şu anda kaydedemedik. Lütfen biraz sonra tekrar deneyin."
   };
