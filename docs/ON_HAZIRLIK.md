@@ -4,7 +4,7 @@ Müşteriye toplantı öncesinde gönderilen tek bağlantı: **https://www.mypai
 
 ## Akış
 
-1. **Şirket bilgileri.** Müşteri unvan, adres, yetkili kişi, unvan, e-posta ve (isteğe bağlı) telefon girer.
+1. **Kurum bilgileri** (hukuk bürosu veya şirket). Müşteri unvan, adres, yetkili kişi, unvan, e-posta ve (isteğe bağlı) telefon girer.
 2. **Gizlilik sözleşmesi.** Bu bilgilerle 3 sayfalık *Proje hazırlık gizlilik taahhüdü ve sözleşmesi* doldurulur (1. maddedeki müşteri unvanı, adresi ve bildirim e-postası) ve sonundaki OD imza alanına PAIRA'nın imza/kaşe görseli yerleşir; PDF olarak indirilebilir. Aynı anda Make webhook'una bildirim gider.
 3. **Ön hazırlık formu.** 10 başlık; yazdıkça kaydedilir. Sayfanın adresi (`#t=...`) kişiye özeldir; aynı adresle toplantıya kadar dönülebilir ve ekip arkadaşlarıyla paylaşılabilir.
 
